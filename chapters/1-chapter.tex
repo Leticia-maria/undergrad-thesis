@@ -8,8 +8,6 @@ simulações, ou predições - propriedades que não podem ser obtidas experimen
 
 Nesse sentido, existe uma pungente necessidade de criar novas abordagens de compreensão da química através da visualização molecular tridimensional, que por vezes faz-se mais efetiva para criar modelos mentais do que o uso de esboços bidimensionais das estruturas. Importante delimitar que modelagem, aqui, refere-se a um procedimento visual de interação entre a realidade e a teoria a partir de um modelo: filosófico, mecânico ou computacional \autocite{Snyder2021}, cada qual com sua respectiva aproximação, pois sistemas quânticos possuem alta complexidade e nem sempre é possível reproduzir de forma analítica ou computacional os resultados experimentais. Os fenômenos físicos envolvendo os núcleos dos átomos e seus elétrons são problemas dinâmicos, de múltiplos corpos, que não têm uma solução fechada.
 
-
-
 %Ou seja, a computação gráfica auxilia na manipulação/representação direta dos objetos de estudo químico, sendo eles: átomos, moléculas (leia-se quaisquer agregados atômicos, independentemente da origem de suas interações) ou partes delas. Como esses são elementos de difícil abstração, uma vez que 
 
 % Nesse seguimento, um dos avanços mais importantes é a aplicação da teoria de grafos à notação química e aos sistemas de busca de subestruturas e cálculos de propriedades, como a aromaticidade, que é muito sensível à geometria do sistema $\pi$, pois descreve as moléculas estabilizadas energeticamente pela deslocalização de elétrons móveis em ciclos (geometrias fechadas). Tal temática é extremamente explorada por trabalhos que vem sendo somados desde a primeira citação de Hoffmann na literatura, em 1855. Por exemplo, com uma busca sobre os termos aromático/aromaticidade no \textit{\href{https://scholar.google.com.br/scholar?hl=pt-BR&as_sdt=0\%2C5&as_ylo=2016&as_yhi=2022&q=aromatic&btnG=}{Google Scholar}} no período de 2016 a 2022, foram encontrados mais de 380 trabalhos/dia publicados, sendo a maioria destes na área de Química, uma vez que, entre os compostos carbocíclicos, destacam-se os derivados aromáticos, cuja estabilidade e reatividade dependem do caráter de deslocalização eletrônica. Para tais sistemas, é possível utilizar a equalização dos comprimentos de ligação como principal critério geométrico de análise quantitativa.
@@ -31,14 +29,22 @@ Uma nota de rodapé, já tem seu estilo automático com o comando \texttt{$\back
 % ----------------------------------------------------------
 \section{Objetivos}
 % ----------------------------------------------------------
-
-Nas seções abaixo estão descritos o objetivo geral e os objetivos específicos deste TCC.
-
+ Desenvolver um \textit{software} de interação gráfica capaz de representar a molécula tridimensionalmente através da leitura de dados de coordenadas cartesianas atômicas e assim retornar parâmetros de aromaticidade segundo a metodologia definida pelo usuário. Poderá, portanto, ser utilizado como uma ferramenta de pós-processamento para o cálculo de propriedades eletrônicas. Além disso, também pretende-se implementar métodos semiempíricos de baixo custo computacional (Hueckel e Hueckel estendido) para auxiliar na avaliação e representação dos orbitais atômicos e moleculares.
 % ----------------------------------------------------------
 \subsection{Objetivo Geral}
 % ----------------------------------------------------------
 
-Descrição...
+\begin{itemize}
+    %\item Realizar pré-otimizações de geometria utilizando métodos semi-empíricos e \textcolor{red}{realizando leituras de estruturas obtidas por outros métodos através de outros \textit{softwares}; complementar};
+    
+    \item Utilizar métodos semiempíricos para avaliar orbitais atômicos e moleculares.
+    
+    \item Automatizar a leitura de arquivos de saída \textit{outputs} \textit{logfiles} de cálculos de estrutura eletrônica molecular visando extrair dados geométricos para determinar critérios de aromaticidade geométricos em sistemas orgânicos, através de uma interface gráfica.
+
+    \item Utilizar a teoria de grafos para implementar a determinação dos índices HOMA, EN, e GEO; 
+    
+    \item Realizar \textit{benchmark} dos resultados obtidos com estruturas já reportadas na literatura para fins de  validação e comparação do tempo de computação na metodologia aplicada.
+\end{itemize}
 
 % ----------------------------------------------------------
 \subsection{Objetivos Específicos}
