@@ -45,7 +45,54 @@
 
 % To generate dummy text
 \usepackage{blindtext}
+
+% for tikz
+\usepackage{tikz}
+%\usetikzlibrary{trees}
+\usetikzlibrary{arrows,shapes,positioning,shadows,trees,mindmap}
+% \usepackage{forest}
+\usepackage[edges]{forest}
+\usetikzlibrary{arrows.meta}
+\colorlet{linecol}{black!75}
+\usepackage{xkcdcolors} % xkcd colors
+
+
+% for colorful equation
+\usepackage{tikz}
+\usetikzlibrary{backgrounds}
+\usetikzlibrary{arrows,shapes}
+\usepackage{tcolorbox}
+% for custom commands
+\usepackage{xspace}
+
+% table alignment
+\usepackage{array}
+\usepackage{ragged2e}
+\usetikzlibrary{tikzmark}
+\usetikzlibrary{calc}
+% Commands for Highlighting text -- non tikz method
+\newcommand{\highlight}[2]{\colorbox{#1!17}{$\displaystyle #2$}}
+%\newcommand{\highlight}[2]{\colorbox{#1!17}{$#2$}}
+\newcommand{\highlightdark}[2]{\colorbox{#1!47}{$\displaystyle #2$}}
+
+% my custom colors for shading
+\colorlet{mhpurple}{Plum!80}
+
+
+% Commands for Highlighting text -- non tikz method
 % ---
+
+% Commands for Highlighting text -- non tikz method
+\renewcommand{\highlight}[2]{\colorbox{#1!17}{#2}}
+\renewcommand{\highlightdark}[2]{\colorbox{#1!47}{#2}}
+
+% Some math definitions
+\newcommand{\lap}{\mathrm{Lap}}
+\newcommand{\pr}{\mathrm{Pr}}
+
+\newcommand{\Tset}{\mathcal{T}}
+\newcommand{\Dset}{\mathcal{D}}
+\newcommand{\Rbound}{\widetilde{\mathcal{R}}}
 % Filtering and Mapping Bibliographies
 % ---
 % Pacotes de citações
