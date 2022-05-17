@@ -11,10 +11,19 @@ Considerando métodos semiempíricos fundamentados na teoria \gls{HF}, utilizam-
     \Psi =  a_1\tikzmarknode{wavefunction}{\highlight{blue}{$\phi_1$}} + \tikzmarknode{coefficient}{\highlight{red}{$a_2$}}\phi_2 + \dots + a_i \phi_i
 \end{equation}
 \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
-    \path (wavefunction.north) ++ (-1.2em,1.5em) node[anchor=south east,color=blue!67] (scalep){\textbf{contribution coefficient}};
+    \path (wavefunction.north) ++ (-1.2em,1.5em) node[anchor=south east,color=blue!67] (scalep){\textbf{função de onda}};
     \draw [color=blue!87](wavefunction.north) |- ([xshift=-3em,color=blue]scalep.south west);
     
-    \path (coefficient.south) ++ (1.2em,-1.5em) node[anchor=north west,color=red!67] (scalep){\textbf{eletronic wavefunction}};
+    \path (coefficient.south) ++ (1.2em,-1.5em) node[anchor=north west,color=red!67] (scalep){\textbf{coeficiente de contribuição}};
     \draw [color=red!87](coefficient.south) |- ([xshift=3em,color=red]scalep.north east);
 \end{tikzpicture}
 \end{figure}
+
+Como somente os elétrons dos orbitais p estão contribuindo para a função de onda, a \autoref{ap:eq:1} pode ser escrita como a \autoref{ap:eq:2}.
+
+\begin{equation}
+    \label{ap:eq:2}
+    \Psi = a_1 p_1 + a_2 p_2 + \dots + a_i p_i
+\end{equation}
+
+Tomando o eteno como exemplo, pode-se afirmar que cada carbono contribui com um elétron para a ligação $\pi$, sendo $p_1$ e $p_2$ os elétrons dos átomos de carbono 1 e 2, cujas respectivas contribuições são ponderadas por $a_1$ e $a_2$. Para os elétrons p não hibridizados, orbitais moleculares são formados pela LCAO
