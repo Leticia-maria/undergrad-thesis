@@ -8,7 +8,7 @@ Considerando métodos semiempíricos fundamentados na teoria \gls{HF}, utilizam-
     \vspace{2\baselineskip}
 \begin{equation}
     \label{ap:eq:1}
-    \Psi =  a_1\tikzmarknode{wavefunction}{\highlight{blue}{$\phi_1$}} + \tikzmarknode{coefficient}{\highlight{red}{$a_2$}}\phi_2 + \dots + a_i \phi_i
+    \psi =  a_1\tikzmarknode{wavefunction}{\highlight{blue}{$\phi_1$}} + \tikzmarknode{coefficient}{\highlight{red}{$a_2$}}\phi_2 + \dots + a_i \phi_i
 \end{equation}
 \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
     \path (wavefunction.north) ++ (-1.2em,1.5em) node[anchor=south east,color=blue!67] (scalep){\textbf{função de onda}};
@@ -21,10 +21,13 @@ Considerando métodos semiempíricos fundamentados na teoria \gls{HF}, utilizam-
 
 Como somente os elétrons dos orbitais p estão contribuindo para a função de onda, a \autoref{ap:eq:1} pode ser escrita como a \autoref{ap:eq:2}.
 
+\begin{figure}[htb]
+    \vspace{2\baselineskip}
 \begin{equation}
     \label{ap:eq:2}
     \psi = a_1 p_1 + a_2 p_2 + \dots + a_i p_i
 \end{equation}
+\end{figure}
 
 Tomando o eteno como exemplo, pode-se afirmar que cada carbono contribui com um elétron para a ligação $\pi$, sendo $p_1$ e $p_2$ os elétrons dos átomos de carbono 1 e 2, cujas respectivas contribuições são ponderadas por $a_1$ e $a_2$. No caso dos elétrons p não hibridizados, os orbitais moleculares são formados pela \gls{LCAO} $p_1$ e $p_2$. Sobreposição entre orbitais atômicos podem ocorrer de forma simétrica (resultando em um orbital ligante) ou antissimétrica (formando um orbital antiligante).
 
@@ -48,10 +51,18 @@ Tomando o eteno como exemplo, pode-se afirmar que cada carbono contribui com um 
 
 Voltamos então à equação de Schroedinger (\autoref{ap:eq:4}).
 
+\begin{figure}[htb]
+    \vspace{2\baselineskip}
 \begin{equation}
 \label{ap:eq:4}
-    \hat{H} \psi = E \psi
+    \hat{H} \psi = \tikzmarknode{energy}{\highlight{blue}{E}} \psi
 \end{equation}
+\begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
+    \path (energy.north) ++ (-1.2em,1.5em) node[anchor=south east,color=blue!67] (scalep){\textbf{energia}};
+    \draw [color=blue!87](energy.north) |- ([xshift=-3em,color=blue]scalep.south west);
+\end{tikzpicture}
+\end{figure}
+
 
 multiplicando ambos os lados por $\psi$, nós obtemos a \autoref{ap:eq:5}.
 
@@ -60,9 +71,11 @@ multiplicando ambos os lados por $\psi$, nós obtemos a \autoref{ap:eq:5}.
     \psi \hat{H} \psi = \psi^2 E
 \end{equation}
 
-Para sistemas com muitos elétrons, uma expressão similar () é obtida integrando ambos os lados da \autoref{ap:eq:5}.
+Para sistemas com muitos elétrons, uma expressão similar (\autoref{ap:eq:6}) é obtida integrando ambos os lados da \autoref{ap:eq:5}.
 
 \begin{equation}
 \label{ap:eq:6}
     E = \frac{\displaystyle \int \psi \hat{H} \psi d\tau}{\displaystyle \int \psi^2 d\tau}
 \end{equation}
+
+Na \autoref{ap:eq:5}, a energia 
