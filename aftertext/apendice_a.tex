@@ -2,7 +2,7 @@
 \chapter{Método de Hueckel}
 % ----------------------------------------------------------
 
-Considerando métodos semiempíricos fundamentados na teoria \gls{HF}, utilizam-se as devidas aproximações resultantes dos conceitos e dados experimentais, pois estes tendem a ser intuitivos. Em alcenos e alcinos, os elétrons-$\pi$ estão presentes nos orbitais-p, os quais são considerados como independentes da estrutura sigma dos orbitais híbridos e elétrons sigma. Funções de onda $\Psi$ é dada pela \autoref{ap:eq:1}.
+Considerando métodos semiempíricos fundamentados na teoria \gls{HF}, utilizam-se as devidas aproximações resultantes dos conceitos e dados experimentais, pois estes tendem a ser intuitivos. Em alcenos e alcinos, os elétrons-$\pi$ estão presentes nos orbitais p, os quais são considerados como independentes da estrutura sigma dos orbitais híbridos e elétrons sigma. Funções de onda $\psi$ é dada pela \autoref{ap:eq:1}.
 
 \begin{figure}[htb]
     \vspace{2\baselineskip}
@@ -23,8 +23,26 @@ Como somente os elétrons dos orbitais p estão contribuindo para a função de 
 
 \begin{equation}
     \label{ap:eq:2}
-    \Psi = a_1 p_1 + a_2 p_2 + \dots + a_i p_i
+    \psi = a_1 p_1 + a_2 p_2 + \dots + a_i p_i
 \end{equation}
 
-Tomando o eteno como exemplo, pode-se afirmar que cada carbono contribui com um elétron para a ligação $\pi$, sendo $p_1$ e $p_2$ os elétrons dos átomos de carbono 1 e 2, cujas respectivas contribuições são ponderadas por $a_1$ e $a_2$. No caso dos elétrons p não hibridizados, os orbitais moleculares são formados pela \gls{LCAO} $p_1$ e $p_2$. Sobreposição entre orbitais atômicos podem ocorrer de forma simétrica (resultando na formação de um orbital ligante) ou antissimétrica (formando um orbital antiligante).
+Tomando o eteno como exemplo, pode-se afirmar que cada carbono contribui com um elétron para a ligação $\pi$, sendo $p_1$ e $p_2$ os elétrons dos átomos de carbono 1 e 2, cujas respectivas contribuições são ponderadas por $a_1$ e $a_2$. No caso dos elétrons p não hibridizados, os orbitais moleculares são formados pela \gls{LCAO} $p_1$ e $p_2$. Sobreposição entre orbitais atômicos podem ocorrer de forma simétrica (resultando em um orbital ligante) ou antissimétrica (formando um orbital antiligante).
+
+\begin{figure}[htb]
+    \vspace{2\baselineskip}
+\begin{equation}
+    \label{ap:eq:3}
+    \begin{cases}
+\tikzmarknode{simetric}{\highlight{blue}{$\psi^+$}} = a_1 p_1 + a_2 p_2 \\
+\tikzmarknode{antissimetric}{\highlight{red}{$\psi^-$}} = a_1 p_1 - a_2 p_2
+    \end{cases}
+\end{equation}
+\begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
+    \path (simetric.north) ++ (-1.2em,1.5em) node[anchor=south east,color=blue!67] (scalep){\textbf{função simétrica}};
+    \draw [color=blue!87](simetric.north) |- ([xshift=-3em,color=blue]scalep.south west);
+    
+    \path (antissimetric.south) ++ (1.2em,-1.5em) node[anchor=north west,color=red!67] (scalep){\textbf{função antissimétrica}};
+    \draw [color=red!87](antissimetric.south) |- ([xshift=3em,color=red]scalep.north east);
+\end{tikzpicture}
+\end{figure}
 
