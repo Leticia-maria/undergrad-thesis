@@ -49,6 +49,10 @@ Tomando o eteno como exemplo, pode-se afirmar que cada carbono contribui com um 
 \end{tikzpicture}
 \end{figure}
 
+Usando a \autoref{ap:eq:4} (equação de Schroedinger) como base fundamental para avançar na discussão do cálculo dos valores de energia associados aos orbitais, pode-se aplicar o princípio variacional como uma aproximação necessária e conveniente para encontrar as funções de minimização da energia relativa aos orbitais no estado fundamental. Este método consiste em escolher uma função de onda inicial que dependa de um ou mais parâmetros, e encontrar os valores destes parâmetros para cada valor esperado onde a energia seja a menor possível. A função de onda obtida na substituição dos parâmetros pelos valores encontrados será uma aproximação do estado fundamental da função de onda, e o valor esperado de energia neste estado será majorante para a energia deste estado fundamental.
+
+%%% TODO: explicar o princípio variacional 
+
 \begin{figure}[htb]
     \vspace{2\baselineskip}
 \begin{equation}
@@ -61,27 +65,18 @@ Tomando o eteno como exemplo, pode-se afirmar que cada carbono contribui com um 
 \end{tikzpicture}
 \end{figure}
 
-Usando a \autoref{ap:eq:4} (equação de Schroedinger) como base fundamental para avançar na discussão do cálculo dos valores de energia associados aos orbitais, pode-se aplicar o princípio variacional como uma aproximação necessária e conveniente para encontrar as funções de minimização da energia relativa aos orbitais no estado fundamental. Este método consiste em escolher uma função de onda inicial que dependa de um ou mais parâmetros, e encontrar os valores destes parâmetros para cada valor esperado onde a energia seja a menor possível. A função de onda obtida pela substituição dos parâmetros pelos valores encontrados será uma aproximação do estado fundamental da função de onda, e o valor esperado de energia neste estado será majorante para a energia deste estado fundamental.
-
-%%% TODO: explicar o princípio variacional 
-
-\begin{figure}[htb]
-    \vspace{2\baselineskip}
 \begin{equation}
 \label{ap:eq:5}
     \psi \hat{H} \psi = \psi^2 E
 \end{equation}
-\end{figure}
+
 
 Multiplicando ambos os lados por $\psi$, obtém-se a \autoref{ap:eq:5}. Aplicado a integral nessa expressão (mantendo a igualdade) e, em seguida, isolando a energia $E$, obtém-se a \autoref{ap:eq:6}.
 
-\begin{figure}[htb]
-    \vspace{2\baselineskip}
 \begin{equation}
 \label{ap:eq:6}
     E = \frac{\displaystyle \int \psi \hat{H} \psi d\tau}{\displaystyle \int \psi^2 d\tau}
 \end{equation}
-\end{figure}
 
 Na \autoref{ap:eq:5}, a energia esperada vai ser superestimada em relação ao valor real. Desse modo, o resultado calculado vai ser minimizado através de um procedimento matemático submetido a um conjunto de funções de base. No caso do eteno, podemos substituir o termo $\psi$ da \autoref{ap:eq:6} pela \autoref{ap:eq:2}, obtendo a \autoref{ap:eq:7}.
 
