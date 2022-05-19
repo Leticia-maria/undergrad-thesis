@@ -76,6 +76,7 @@ multiplicando ambos os lados por $\psi$, nós obtemos a \autoref{ap:eq:5}.
 Para sistemas com muitos elétrons, uma expressão similar (\autoref{ap:eq:6}) é obtida integrando ambos os lados da \autoref{ap:eq:5}.
 
 \begin{equation}
+    \vspace{2\baselineskip}
 \label{ap:eq:6}
     E = \frac{\displaystyle \int \psi \hat{H} \psi d\tau}{\displaystyle \int \psi^2 d\tau}
 \end{equation}
@@ -100,11 +101,7 @@ Abrindo a expressão da \autoref{ap:eq:7}, é possível isolar as seguintes inte
     \vspace{2\baselineskip}
 \begin{equation}
 \label{ap:eq:8}
-\begin{cases}
     \displaystyle \int (p_1 \hat{H} p_1) d\tau = \tikzmarknode{alpha}{\highlight{blue}{$\alpha$}} \\
-    
-    
-\end{cases}
 \end{equation}
 \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
     \path (alpha.north) ++ (1.2em,1.5em) node[anchor=south west,color=blue!67] (scalep){\textbf{integral de Coulomb}};
@@ -115,7 +112,7 @@ Abrindo a expressão da \autoref{ap:eq:7}, é possível isolar as seguintes inte
 \begin{figure}[htb]
     \vspace{2\baselineskip}
 \begin{equation}
-\label{ap:eq:8}
+\label{ap:eq:9}
     \displaystyle \int (p_1 \hat{H} p_2) d\tau = \displaystyle \int (p_2 \hat{H} p_1) d\tau = \tikzmarknode{beta}{\highlight{blue}{$\beta$}}
 \end{equation}
 \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
@@ -127,11 +124,31 @@ Abrindo a expressão da \autoref{ap:eq:7}, é possível isolar as seguintes inte
 \begin{figure}[htb]
     \vspace{2\baselineskip}
 \begin{equation}
-\label{ap:eq:8}
-    \displaystyle \int (p_1 \hat{H} p_2) d\tau = \displaystyle \int (p_2 \hat{H} p_1) d\tau = \tikzmarknode{beta}{\highlight{blue}{$\beta$}}
+\label{ap:eq:10}
+    \displaystyle \int (p_1 p_1) d\tau = \tikzmarknode{s11}{\highlight{blue}{$S_{11}$}} = \displaystyle \int (p_2 p_2) d\tau = \highlight{blue}{$S_{22}$}
 \end{equation}
 \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
-    \path (beta.north) ++ (-1.2em,1.5em) node[anchor=south east,color=blue!67] (scalep){\textbf{integral de troca (ou de ressonância)}};
-    \draw [color=blue!87](beta.north) |- ([xshift=-3em,color=blue]scalep.south west);
+    \path (s11.north) ++ (1.2em,1.5em) node[anchor=south west,color=blue!67] (scalep){\textbf{integral de sobreposição}};
+    \draw [color=blue!87](s11.north) |- ([xshift=3em,color=blue]scalep.south east);
 \end{tikzpicture}
+\end{figure}
+
+\begin{figure}[htb]
+    \vspace{2\baselineskip}
+\begin{equation}
+\label{ap:eq:11}
+    \displaystyle \int (p_1 p_2) d\tau = \highlight{blue}{$S_{12}$} = \displaystyle \int (p_2 p_1) d\tau = \tikzmarknode{s21}{\highlight{blue}{$S_{21}$}}
+\end{equation}
+\begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
+    \path (s21.north) ++ (-1.2em,1.5em) node[anchor=south east,color=blue!67] (scalep){\textbf{integral de sobreposição}};
+    \draw [color=blue!87](s21.north) |- ([xshift=-3em,color=blue]scalep.south west);
+\end{tikzpicture}
+\end{figure}
+
+\begin{figure}[htb]
+    \vspace{2\baselineskip}
+\begin{equation}
+\label{ap:eq:12}
+    E = \frac{a_1^2 \alpha + 2a_1 a_2 \beta + a_2^2 \alpha}{a_1^2 S_{11} + 2a_1 a_2 S_{12} + a_2^2 S_{22}}
+\end{equation}
 \end{figure}
