@@ -109,6 +109,8 @@ Abrindo a expressão da \autoref{ap:eq:7}, é possível isolar as seguintes inte
 \end{tikzpicture}
 \end{figure}
 
+A integral de Coulomb, mostrada na \autoref{ap:eq:8}, é o Hamiltoniano para a energia de Coulomb relativa a um elétron com uma função de onda $p_i$ no campo do átomo $i$ e influenciado pelo seu núcleo. Esse elétron não sofre efeito de nenhum outro núcleo. Essa aproximação funciona melhor quando os átomos das vizinhanças não possuem cargas elétricas. Ou seja, $\alpha$ é uma função da carga nuclear e do tipo de orbital. Por ser um termo atrativo, possui um valor negativo. 
+
 \begin{figure}[htb]
     \vspace{2\baselineskip}
 \begin{equation}
@@ -120,6 +122,8 @@ Abrindo a expressão da \autoref{ap:eq:7}, é possível isolar as seguintes inte
     \draw [color=blue!87](beta.north) |- ([xshift=-3em,color=blue]scalep.south west);
 \end{tikzpicture}
 \end{figure}
+
+As integrais de sobreposição são dadas pelas expressões na \autoref{ap:eq:10} e na \autoref{ap:eq:11}. Se $i=j$, a integral $S_{ii} = \displaystyle \int p_i p_i d \tau$ para os orbitais atômicos normalizados. Se $i \neq j $, a integral de sobreposição é igual a $0$ para os orbitais atômicos ortogonais. Ou seja, o valor de $S$ varia de $0$ a $1$ e representa uma medida da não-ortogonalidade dos orbitais. Uma vez que as funções $p$ dos orbitais são amplamente separadas no espaço e são independentes, espera-se que elas sejam ortogonais.
 
 \begin{figure}[htb]
     \vspace{2\baselineskip}
@@ -150,5 +154,13 @@ Abrindo a expressão da \autoref{ap:eq:7}, é possível isolar as seguintes inte
 \begin{equation}
 \label{ap:eq:12}
     E = \frac{a_1^2 \alpha + 2a_1 a_2 \beta + a_2^2 \alpha}{a_1^2 S_{11} + 2a_1 a_2 S_{12} + a_2^2 S_{22}}
+\end{equation}
+\end{figure}
+
+\begin{figure}[htb]
+    \vspace{2\baselineskip}
+\begin{equation}
+\label{ap:eq:12}
+    \frac{\partial E}{\partial a_1} = \frac{\partial E}{\partial a_2} = 0
 \end{equation}
 \end{figure}
