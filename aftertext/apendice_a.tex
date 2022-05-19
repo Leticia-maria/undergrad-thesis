@@ -49,8 +49,6 @@ Tomando o eteno como exemplo, pode-se afirmar que cada carbono contribui com um 
 \end{tikzpicture}
 \end{figure}
 
-Voltamos então à equação de Schroedinger (\autoref{ap:eq:4}).
-
 \begin{figure}[htb]
     \vspace{2\baselineskip}
 \begin{equation}
@@ -63,7 +61,9 @@ Voltamos então à equação de Schroedinger (\autoref{ap:eq:4}).
 \end{tikzpicture}
 \end{figure}
 
-multiplicando ambos os lados por $\psi$, nós obtemos a \autoref{ap:eq:5}.
+Usando a \autoref{ap:eq:4} (equação de Schroedinger) como base fundamental para avançar na discussão do cálculo dos valores de energia associados aos orbitais, pode-se aplicar o princípio variacional como uma aproximação necessária e conveniente para encontrar as funções de minimização da energia relativa aos orbitais no estado fundamental. Este método consiste em escolher uma função de onda inicial que dependa de um ou mais parâmetros, e encontrar os valores destes parâmetros para cada valor esperado onde a energia seja a menor possível. A função de onda obtida pela substituição dos parâmetros pelos valores encontrados será uma aproximação do estado fundamental da função de onda, e o valor esperado de energia neste estado será majorante para a energia deste estado fundamental.
+
+%%% TODO: explicar o princípio variacional 
 
 \begin{figure}[htb]
     \vspace{2\baselineskip}
@@ -73,13 +73,15 @@ multiplicando ambos os lados por $\psi$, nós obtemos a \autoref{ap:eq:5}.
 \end{equation}
 \end{figure}
 
-Para sistemas com muitos elétrons, uma expressão similar (\autoref{ap:eq:6}) é obtida integrando ambos os lados da \autoref{ap:eq:5}.
+Multiplicando ambos os lados por $\psi$, obtém-se a \autoref{ap:eq:5}. Aplicado a integral nessa expressão (mantendo a igualdade) e, em seguida, isolando a energia $E$, obtém-se a \autoref{ap:eq:6}.
 
-\begin{equation}
+\begin{figure}[htb]
     \vspace{2\baselineskip}
+\begin{equation}
 \label{ap:eq:6}
     E = \frac{\displaystyle \int \psi \hat{H} \psi d\tau}{\displaystyle \int \psi^2 d\tau}
 \end{equation}
+\end{figure}
 
 Na \autoref{ap:eq:5}, a energia esperada vai ser superestimada em relação ao valor real. Desse modo, o resultado calculado vai ser minimizado através de um procedimento matemático submetido a um conjunto de funções de base. No caso do eteno, podemos substituir o termo $\psi$ da \autoref{ap:eq:6} pela \autoref{ap:eq:2}, obtendo a \autoref{ap:eq:7}.
 
@@ -87,7 +89,7 @@ Na \autoref{ap:eq:5}, a energia esperada vai ser superestimada em relação ao v
     \vspace{2\baselineskip}
 \begin{equation}
 \label{ap:eq:7}
-    E = \frac{\displaystyle \int \tikzmarknode{LCAO}{\highlight{blue}{$(a_i p_i + a_2 p_2)$}} \hat{H} (a_i p_i + a_2 p_2) d\tau}{\displaystyle \int (a_i p_i + a_2 p_2)^2 d\tau}
+    E = \frac{\displaystyle \int \tikzmarknode{LCAO}{\highlight{blue}{$(a_i p_i + a_2 p_2)$}} \hat{H} \highlight{blue}{$(a_i p_i + a_2 p_2)$} d\tau}{\displaystyle \int \highlight{blue}{$(a_i p_i + a_2 p_2)$}^2 d\tau}
 \end{equation}
 \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
     \path (LCAO.north) ++ (-1.2em,1.5em) node[anchor=south east,color=blue!67] (scalep){\textbf{LCAO}};
@@ -104,8 +106,8 @@ Abrindo a expressão da \autoref{ap:eq:7}, é possível isolar as seguintes inte
     \displaystyle \int (p_1 \hat{H} p_1) d\tau = \tikzmarknode{alpha}{\highlight{blue}{$\alpha$}} \\
 \end{equation}
 \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
-    \path (alpha.north) ++ (1.2em,1.5em) node[anchor=south west,color=blue!67] (scalep){\textbf{integral de Coulomb}};
-    \draw [color=blue!87](alpha.north) |- ([xshift=3em,color=blue]scalep.south east);
+    \path (alpha.north) ++ (-1.2em,1.5em) node[anchor=south east,color=blue!67] (scalep){\textbf{integral de Coulomb}};
+    \draw [color=blue!87](alpha.north) |- ([xshift=-3em,color=blue]scalep.south west);
 \end{tikzpicture}
 \end{figure}
 
@@ -123,7 +125,7 @@ A integral de Coulomb, mostrada na \autoref{ap:eq:8}, é o Hamiltoniano para a e
 \end{tikzpicture}
 \end{figure}
 
-As integrais de sobreposição são dadas pelas expressões na \autoref{ap:eq:10} e na \autoref{ap:eq:11}. Se $i=j$, a integral $S_{ii} = \displaystyle \int p_i p_i d \tau$ para os orbitais atômicos normalizados. Se $i \neq j $, a integral de sobreposição é igual a $0$ para os orbitais atômicos ortogonais. Ou seja, o valor de $S$ varia de $0$ a $1$ e representa uma medida da não-ortogonalidade dos orbitais. Uma vez que as funções $p$ dos orbitais são amplamente separadas no espaço e são independentes, espera-se que elas sejam ortogonais.
+As integrais de sobreposição são dadas pelas expressões na \autoref{ap:eq:10} e na \autoref{ap:eq:11}. Se $i=j$, então $S_{ii} = \displaystyle \int p_i p_i d \tau$ para os orbitais atômicos normalizados. Se $i \neq j $, a integral de sobreposição é igual a $0$ para os orbitais atômicos ortogonais. Ou seja, o valor de $S$ varia de $0$ a $1$ e representa uma medida da não-ortogonalidade dos orbitais. Uma vez que as funções $p$ dos orbitais são amplamente separadas no espaço e são independentes, espera-se que elas sejam ortogonais.
 
 \begin{figure}[htb]
     \vspace{2\baselineskip}
@@ -141,13 +143,15 @@ As integrais de sobreposição são dadas pelas expressões na \autoref{ap:eq:10
     \vspace{2\baselineskip}
 \begin{equation}
 \label{ap:eq:11}
-    \displaystyle \int (p_1 p_2) d\tau = \highlight{blue}{$S_{12}$} = \displaystyle \int (p_2 p_1) d\tau = \tikzmarknode{s21}{\highlight{blue}{$S_{21}$}}
+    \displaystyle \int (p_1 p_2) d\tau = \tikzmarknode{s12}{\highlight{blue}{$S_{12}$}} = \displaystyle \int (p_2 p_1) d\tau = \highlight{blue}{$S_{21}$}
 \end{equation}
 \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
-    \path (s21.north) ++ (-1.2em,1.5em) node[anchor=south east,color=blue!67] (scalep){\textbf{integral de sobreposição}};
-    \draw [color=blue!87](s21.north) |- ([xshift=-3em,color=blue]scalep.south west);
+    \path (s12.north) ++ (1.2em,1.5em) node[anchor=south west,color=blue!67] (scalep){\textbf{integral de sobreposição}};
+    \draw [color=blue!87](s12.north) |- ([xshift=3em,color=blue]scalep.south east);
 \end{tikzpicture}
 \end{figure}
+
+Com as simplificações feitas anteriormente, é possível reescrever a expressão que calcula a energia para a molécula de eteno de acordo com a \autoref{ap:eq:12}.
 
 \begin{figure}[htb]
     \vspace{2\baselineskip}
@@ -157,6 +161,8 @@ As integrais de sobreposição são dadas pelas expressões na \autoref{ap:eq:10
 \end{equation}
 \end{figure}
 
+Desse modo, conhecendo $\alpha$, $\beta$ e $S$, a energia pode ser calculada. O critério de minimização em relação a alguns parâmetros é mostrado na \autoref{ap:eq:12}.
+
 \begin{figure}[htb]
     \vspace{2\baselineskip}
 \begin{equation}
@@ -164,3 +170,5 @@ As integrais de sobreposição são dadas pelas expressões na \autoref{ap:eq:10
     \frac{\partial E}{\partial a_1} = \frac{\partial E}{\partial a_2} = 0
 \end{equation}
 \end{figure}
+
+Como alternativa, ao invés de variar a função teste para encontrar o valor mínimo de $E$, pode-se variar os coeficientes lineares.
