@@ -63,13 +63,15 @@ Voltamos então à equação de Schroedinger (\autoref{ap:eq:4}).
 \end{tikzpicture}
 \end{figure}
 
-
 multiplicando ambos os lados por $\psi$, nós obtemos a \autoref{ap:eq:5}.
 
+\begin{figure}[htb]
+    \vspace{2\baselineskip}
 \begin{equation}
 \label{ap:eq:5}
     \psi \hat{H} \psi = \psi^2 E
 \end{equation}
+\end{figure}
 
 Para sistemas com muitos elétrons, uma expressão similar (\autoref{ap:eq:6}) é obtida integrando ambos os lados da \autoref{ap:eq:5}.
 
@@ -78,4 +80,58 @@ Para sistemas com muitos elétrons, uma expressão similar (\autoref{ap:eq:6}) �
     E = \frac{\displaystyle \int \psi \hat{H} \psi d\tau}{\displaystyle \int \psi^2 d\tau}
 \end{equation}
 
-Na \autoref{ap:eq:5}, a energia 
+Na \autoref{ap:eq:5}, a energia esperada vai ser superestimada em relação ao valor real. Desse modo, o resultado calculado vai ser minimizado através de um procedimento matemático submetido a um conjunto de funções de base. No caso do eteno, podemos substituir o termo $\psi$ da \autoref{ap:eq:6} pela \autoref{ap:eq:2}, obtendo a \autoref{ap:eq:7}.
+
+\begin{figure}[htb]
+    \vspace{2\baselineskip}
+\begin{equation}
+\label{ap:eq:7}
+    E = \frac{\displaystyle \int \tikzmarknode{LCAO}{\highlight{blue}{$(a_i p_i + a_2 p_2)$}} \hat{H} (a_i p_i + a_2 p_2) d\tau}{\displaystyle \int (a_i p_i + a_2 p_2)^2 d\tau}
+\end{equation}
+\begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
+    \path (LCAO.north) ++ (-1.2em,1.5em) node[anchor=south east,color=blue!67] (scalep){\textbf{LCAO}};
+    \draw [color=blue!87](LCAO.north) |- ([xshift=-3em,color=blue]scalep.south west);
+\end{tikzpicture}
+\end{figure}
+
+Abrindo a expressão da \autoref{ap:eq:7}, é possível isolar as seguintes integrais:
+
+\begin{figure}[htb]
+    \vspace{2\baselineskip}
+\begin{equation}
+\label{ap:eq:8}
+\begin{cases}
+    \displaystyle \int (p_1 \hat{H} p_1) d\tau = \tikzmarknode{alpha}{\highlight{blue}{$\alpha$}} \\
+    
+    
+\end{cases}
+\end{equation}
+\begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
+    \path (alpha.north) ++ (1.2em,1.5em) node[anchor=south west,color=blue!67] (scalep){\textbf{integral de Coulomb}};
+    \draw [color=blue!87](alpha.north) |- ([xshift=3em,color=blue]scalep.south east);
+\end{tikzpicture}
+\end{figure}
+
+\begin{figure}[htb]
+    \vspace{2\baselineskip}
+\begin{equation}
+\label{ap:eq:8}
+    \displaystyle \int (p_1 \hat{H} p_2) d\tau = \displaystyle \int (p_2 \hat{H} p_1) d\tau = \tikzmarknode{beta}{\highlight{blue}{$\beta$}}
+\end{equation}
+\begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
+    \path (beta.north) ++ (-1.2em,1.5em) node[anchor=south east,color=blue!67] (scalep){\textbf{integral de troca (ou de ressonância)}};
+    \draw [color=blue!87](beta.north) |- ([xshift=-3em,color=blue]scalep.south west);
+\end{tikzpicture}
+\end{figure}
+
+\begin{figure}[htb]
+    \vspace{2\baselineskip}
+\begin{equation}
+\label{ap:eq:8}
+    \displaystyle \int (p_1 \hat{H} p_2) d\tau = \displaystyle \int (p_2 \hat{H} p_1) d\tau = \tikzmarknode{beta}{\highlight{blue}{$\beta$}}
+\end{equation}
+\begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
+    \path (beta.north) ++ (-1.2em,1.5em) node[anchor=south east,color=blue!67] (scalep){\textbf{integral de troca (ou de ressonância)}};
+    \draw [color=blue!87](beta.north) |- ([xshift=-3em,color=blue]scalep.south west);
+\end{tikzpicture}
+\end{figure}
