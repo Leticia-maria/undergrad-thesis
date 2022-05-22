@@ -75,13 +75,13 @@ As equações e fórmulas devem ser destacadas no texto para facilitar a leitura
     \vspace{2\baselineskip}
 \begin{equation}
     \label{cor}
-    R_{opt} = \frac{ \tikzmarknode{single}{ \highlight{blue}{$R_{C-C}$}} + 2 \tikzmarknode{double}{ \highlight{red}{$R_{C=C}$}}}{3} = 1.397 \textbf{\AA}
+    R_{opt} = \frac{ \tikzmarknode{single}{ \highlight{blue}{$R_{C-C}$}} + 2 \tikzmarknode{double}{ \highlight{red}{$R_{C=C}$}}}{3} = 1.397 \textit{\AA}
 \end{equation}
 \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
-    \path (single.north) ++ (-1,2em) node[anchor=south east,color=blue!67] (scalep){\textbf{$R_{C-C} = 1.524$ \AA}};
+    \path (single.north) ++ (-1,2em) node[anchor=south east,color=blue!67] (scalep){\textit{$R_{C-C} = 1.524$ \AA}};
     \draw [color=blue!87](single.north) |- ([xshift=-3em,color=blue]scalep.south west);
     
-    \path (double.north) ++ (1,2em) node[anchor=south west, color=red!67] (scalep){\textbf{$R_{C=C} = 1.334$ \AA}};
+    \path (double.north) ++ (1,2em) node[anchor=south west, color=red!67] (scalep){\textit{$R_{C=C} = 1.334$ \AA}};
     \draw [color=red!87](double.north) |- ([xshift=3em,color=red]scalep.south east);
 \end{tikzpicture}
 \end{figure}
@@ -93,7 +93,7 @@ As equações e fórmulas devem ser destacadas no texto para facilitar a leitura
     \tikzmarknode{homa}{\highlight{blue}{HOMA}} = 1 - EN - GEO
 \end{equation}
 \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
-    \path (homa.north) ++ (-2em,1.5em) node[anchor=south east,color=blue!67] (scalep){\textbf{índice geométrico}};
+    \path (homa.north) ++ (-2em,1.5em) node[anchor=south east,color=blue!67] (scalep){\textit{índice geométrico}};
     \draw [color=blue!87](homa.north) |- ([xshift=-3em,color=blue]scalep.south west);
 \end{tikzpicture}
 \end{figure}
