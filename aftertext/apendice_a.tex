@@ -171,15 +171,50 @@ Como alternativa, ao invés de variar a função teste para encontrar o valor m�
 
 \chapter{Método de Hueckel Estendido}
 
-O \gls{EHMO} surgiu como um aprimoramento do procedimento enunciado por Hueckel, considerando todos os elétrons da valência em um cálculo de orbitais moleculares. Ou seja, a partir disso, pode-se calcular as barreiras de energia para rotacionar as ligações, e mesmo determinar as energias e estruturas dos estados de transição para reações.
+O \gls{EHMO} surgiu como um aprimoramento do procedimento enunciado por Hueckel, considerando todos os elétrons da valência em um cálculo de orbitais moleculares (\autoref{ap:eq:14}). Ou seja, a partir disso, pode-se calcular as barreiras de energia para rotacionar as ligações, e mesmo determinar as energias e estruturas dos estados de transição para reações.
 
 A função de onda eletrônica é considerada, nesse modelo, como um produto de funções de onda monoeletrônicas:
 
-% todo: add equation 4.74
+\begin{figure}[htb]
+    \vspace{2\baselineskip}
+\begin{equation}
+    \label{ap:eq:14}
+    \psi_{\textbf{total}} = \phi_{\textbf{núcleo}} + \tikzmarknode{hmo}{\highlight{red}{$\phi_{\textbf{valência}}$}}
+\end{equation}
+\begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
+    \path (hmo.north) ++ (1.2em,1.5em) node[anchor=south west,color=red!67] (scalep){\textit{Hueckel estendido}};
+    \draw [color=red!87](hmo.north) |- ([xshift=3em,color=red]scalep.south east);
+\end{tikzpicture}
+\end{figure}
 
-onde $n$ é o número de elétrons e $j$ identifica o orbital molecular. Novamente, cada um dos \gls{MOs} é dada pela LCAO.
+\begin{figure}[htb]
+    \vspace{2\baselineskip}
+\begin{equation}
+    \phi_{\textbf{valência}} = \psi_1 (1) \psi_2 (2) \psi_3 (3) \dots \tikzmarknode{j}{\highlight{red}{$\psi_j$}} (\tikzmarknode{n}{\highlight{blue}{$n$}})
+\end{equation}
+\begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
+    \path (j.north) ++ (1.2em,1.5em) node[anchor=south west,color=red!67] (scalep){$\displaystyle \psi_j = \sum_{r=1}^N c_{jr} \phi_r$};
+    \draw [color=red!87](j.north) |- ([xshift=3em,color=red]scalep.south east);
+    
+    \path (n.south) ++ (1.2em,-1.5em) node[anchor=north west,color=blue!67] (scalep){\textit{$n^o$ de elétrons}};
+    \draw [color=blue!87](n.south) |- ([xshift=3em,color=blue]scalep.north east);
+\end{tikzpicture}
+\end{figure}
 
+\noindent onde $n$ é o número de elétrons e $j$ identifica o orbital molecular. Novamente, cada um dos \gls{MOs} é dada pela LCAO. O conjunto de orbitais aqui definidos são chamados \textit{conjunto mínimo de base}, pois contém somente as informações dos orbitais atômicos para a camada de valência dos átomos. 
 
-O conjunto de orbitais aqui definidos são chamados \textbf{conjuntos de base}. Uma vez que esse conjunto contém somente os 
+\begin{equation}
+    HC = SCE
+\end{equation}
 
+\noindent onde $H$ é uma matriz quadrada contendo o $H_{rs}$, integrais de energia de um único elétron, e $C$ é a matriz dos coeficientes relativos aos orbitais atômicos. Cada coluna em $C$ é $C'$, que define um orbital molecular em termos das funções de base. Na teoria molecular de Hueckel estendido, a sobreposição não é negligenciado, e $S$ é a matriz das integrais de sobreposição. Essas matrizes são quadradas, possuem o tamanho igual ao número de orbitais atômicos usados na combinação linear. Para qualquer cálculo desse tipo, deve-se construir essas matrizes e então encontrar os autovalores (energias orbitais) e autovetores (coeficientes que definem o orbital molecular em termos das funções de base).
+
+Os elementos da matriz $H$ são atribuídos a partir de dados experimentais, uma vez que o método em questão é semi-empírico. Os elementos de matriz Hamiltoniana fora de diagonal são dados por uma aproximação devido a Wolfsberg e Helmholz
+que os relaciona com os elementos diagonais e o elemento da matriz de sobreposição.
+
+\begin{equation}
+    H_{ij} = \frac{1}{2} K(H_{ii} + H_{jj}) S_{ij}
+\end{equation}
+
+De acordo com essa expressão, a energia deveria ser proporcional à energia dos orbitais atômicos, e será tão maior quanto maior a sobreposição desses orbitais. A contribuição desses efeitos com a energia é escalada pelo fator $K$. Hoffmann atribuiu o valor de 1.75 para $K$, após um estudo do efeito desse parâmetro nas energias dos orbitais ocupados do etano. Os valores de $H_{ii}$ são escolhidos como um estado de potenciais de ionização com o valor negativo, indicando ligação.
 
