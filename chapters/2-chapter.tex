@@ -74,14 +74,14 @@ As equações e fórmulas devem ser destacadas no texto para facilitar a leitura
 \begin{figure}[htb]
     \vspace{2\baselineskip}
 \begin{equation}
-    \label{correcao}
-    R_{opt} = \frac{\tikzmarknode{single}{\highlight{blue}{$R_{C-C}$}} + 2\tikzmarknode{double}{\highlight{red}{$R_{C=C}$}}}{3} = 1.397 \AA
+    \label{cor}
+    R_{opt} = \frac{ \tikzmarknode{single}{ \highlight{blue}{$R_{C-C}$}} + 2 \tikzmarknode{double}{ \highlight{red}{$R_{C=C}$}}}{3} = 1.397
 \end{equation}
 \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
-    \path (single.north) ++ (-1,2em) node[anchor=south east,color=blue!67] (scalep){\textbf{$R_{C-C} = 1.524 \AA$}};
+    \path (single.north) ++ (-1,2em) node[anchor=south east,color=blue!67] (scalep){\textbf{$R_{C-C} = 1.524 $}};
     \draw [color=blue!87](single.north) |- ([xshift=-3em,color=blue]scalep.south west);
     
-    \path (double.north) ++ (1,2em) node[anchor=south west, color=red!67] (scalep){\textbf{$R_{C=C} = 1.334 \AA$}};
+    \path (double.north) ++ (1,2em) node[anchor=south west, color=red!67] (scalep){\textbf{$R_{C=C} = 1.334$}};
     \draw [color=red!87](double.north) |- ([xshift=3em,color=red]scalep.south east);
 \end{tikzpicture}
 \end{figure}

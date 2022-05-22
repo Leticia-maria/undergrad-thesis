@@ -29,6 +29,7 @@
 	]{abntex2}
 
 \usepackage{setup/ufscthesisA4-alf}
+\DeclareUnicodeCharacter{0301}{\'{e}}
 \usepackage[dvipsnames]{xcolor}
 \usepackage{tikz}
 \usetikzlibrary{backgrounds}
@@ -100,7 +101,7 @@
 \usepackage{csquotes}
 % \usepackage[backend = biber, style = abnt]{biblatex}
 % FIXME Se desejar estilo numérico de citações,  comente a linha acima e descomente a linha a seguir.
-% \usepackage[backend = biber, style = numeric-comp]{biblatex}
+% \usepackage[backend = bibtex, style = numeric-comp]{biblatex}
 \usepackage[style=numeric-comp, autocite = superscript, doi=true, sorting=none, url=false, maxcitenames=3, maxbibnames=100, block=none, backref=true]{biblatex}
 
 \setlength\bibitemsep{\baselineskip}
@@ -232,18 +233,15 @@
 % ---
 
 % Declaração das siglas
-\siglalista{ABNT}{Associação Brasileira de Normas Técnicas}
 \siglalista{HF}{Hartree-Fock}
 \siglalista{MOs}{Orbitais Moleculares}
 \siglalista{AOs}{Orbitais Atômicos}
 \siglalista{LCAO}{Combinação Linear de Orbitais Atômicos}
 \siglalista{HOMA}{Modelo de Aromaticidade baseado em Oscilador Harmônico}
+\siglalista{HMO}{Método de Hueckel}
+\siglalista{EHMO}{Método de Hueckel Estendido}
 
 % Declaração dos simbolos
-\simbololista{C}{\ensuremath{C}}{Circunferência de um círculo}
-\simbololista{pi}{\ensuremath{\pi}}{Número pi} 
-\simbololista{r}{\ensuremath{r}}{Raio de um círculo}
-\simbololista{A}{\ensuremath{A}}{Área de um círculo}
 
 % compila a lista de abreviaturas e siglas e a lista de símbolos
 \makenoidxglossaries 
