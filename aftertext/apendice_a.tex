@@ -151,8 +151,15 @@ Com as simplificações feitas anteriormente, é possível reescrever a express�
     \vspace{2\baselineskip}
 \begin{equation}
 \label{ap:eq:12}
-    E = \frac{a_1^2 \alpha + 2a_1 a_2 \beta + a_2^2 \alpha}{a_1^2 S_{11} + 2a_1 a_2 S_{12} + a_2^2 S_{22}}
+    E = \frac{\tikzmarknode{numerador}{\highlight{blue}{$a_1^2 \alpha + 2a_1 a_2 \beta + a_2^2 \alpha$}}}{\tikzmarknode{denominador}{\highlight{red}{$a_1^2 S_{11} + 2a_1 a_2 S_{12} + a_2^2 S_{22}$}}}
 \end{equation}
+\begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
+    \path (numerador.north) ++ (1.2em,1.5em) node[anchor=south west,color=blue!67] (scalep){\textit{numerador($N$)}};
+    \draw [color=blue!87](numerador.north) |- ([xshift=3em,color=blue]scalep.south east);
+    
+    \path (denominador.south) ++ (1.2em,-1.5em) node[anchor=north west,color=red!67] (scalep){\textit{denominador($D$)}};
+    \draw [color=red!87](denominador.south) |- ([xshift=3em,color=red]scalep.north east);
+\end{tikzpicture}
 \end{figure}
 
 Desse modo, conhecendo $\alpha$, $\beta$ e $S$, a energia pode ser calculada. O critério de minimização em relação a alguns parâmetros é mostrado na \autoref{ap:eq:12}.
@@ -165,7 +172,22 @@ Desse modo, conhecendo $\alpha$, $\beta$ e $S$, a energia pode ser calculada. O 
 \end{equation}
 \end{figure}
 
-Como alternativa, ao invés de variar a função teste para encontrar o valor mínimo de $E$, pode-se variar os coeficientes lineares.
+Como alternativa, ao invés de variar a função teste para encontrar o valor mínimo de $E$ (\autoref{ap:eq:12}), pode-se variar os coeficientes lineares. Esse é um caso direto da busca pelo mínimo de uma função. Aplicando, então, a condição da \autoref{ap:eq:13}), obtém-se a \autoref{ap:eq:13a}.
+
+\begin{figure}[htb]
+    \vspace{2\baselineskip}
+\begin{equation}
+\label{ap:eq:13a}
+    \frac{\partial E}{\partial a_1} = \frac{\tikzmarknode{nlinha}{\highlight{blue}{$N'$}}D - E \tikzmarknode{dlinha}{\highlight{red}{$D'$}}}{D^2}
+\end{equation}
+\begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
+    \path (nlinha.north) ++ (-1.2em,1.5em) node[anchor=south east,color=blue!67] (scalep){\textit{$2(a_1 \alpha + a_2 \beta)$}};
+    \draw [color=blue!87](nlinha.north) |- ([xshift=-3em,color=blue]scalep.south west);
+    
+    \path (dlinha.north) ++ (1.2em,1.5em) node[anchor=south west,color=red!67] (scalep){\textit{$2(a_1 S_{11} + a_2 S_{12})$}};
+    \draw [color=red!87](dlinha.north) |- ([xshift=3em,color=red]scalep.south east);
+\end{tikzpicture}
+\end{figure}
 
 
 \chapter{Método de Hueckel Estendido}
