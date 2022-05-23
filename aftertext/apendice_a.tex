@@ -172,22 +172,111 @@ Desse modo, conhecendo $\alpha$, $\beta$ e $S$, a energia pode ser calculada. O 
 \end{equation}
 \end{figure}
 
-Como alternativa, ao invés de variar a função teste para encontrar o valor mínimo de $E$ (\autoref{ap:eq:12}), pode-se variar os coeficientes lineares. Esse é um caso direto da busca pelo mínimo de uma função. Aplicando, então, a condição da \autoref{ap:eq:13}), obtém-se a \autoref{ap:eq:13a}.
+Como alternativa, ao invés de variar a função teste para encontrar o valor mínimo de $E$ (\autoref{ap:eq:12}), pode-se variar os coeficientes lineares. Esse é um caso direto da busca pelo mínimo de uma função. Aplicando, então, a condição da \autoref{ap:eq:13}, obtém-se a \autoref{ap:eq:13a}.
 
 \begin{figure}[htb]
     \vspace{2\baselineskip}
-\begin{equation}
+
+\begin{align}
 \label{ap:eq:13a}
-    \frac{\partial E}{\partial a_1} = \frac{\tikzmarknode{nlinha}{\highlight{blue}{$N'$}}D - E \tikzmarknode{dlinha}{\highlight{red}{$D'$}}}{D^2}
-\end{equation}
+   \frac{\partial E}{\partial a_1} = \frac{\tikzmarknode{nlinha}{\highlight{blue}{$N'$}}D - E \tikzmarknode{dlinha}{\highlight{red}{$D'$}}}{D^2} = \frac{N' - ED'}{D} = 0 \\[0.3cm]
+    \frac{\partial E}{\partial a_2} = \frac{\tikzmarknode{nlinha2}{\highlight{blue}{$N'$}}D - E \tikzmarknode{dlinha2}{\highlight{red}{$D'$}}}{D^2} = \frac{N' - ED'}{D} = 0
+\end{align}
 \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
     \path (nlinha.north) ++ (-1.2em,1.5em) node[anchor=south east,color=blue!67] (scalep){\textit{$2(a_1 \alpha + a_2 \beta)$}};
     \draw [color=blue!87](nlinha.north) |- ([xshift=-3em,color=blue]scalep.south west);
     
     \path (dlinha.north) ++ (1.2em,1.5em) node[anchor=south west,color=red!67] (scalep){\textit{$2(a_1 S_{11} + a_2 S_{12})$}};
     \draw [color=red!87](dlinha.north) |- ([xshift=3em,color=red]scalep.south east);
+    
+    \path (nlinha2.south) ++ (-1.5em,-1.8em) node[anchor=north east,color=blue!67] (scalep){\textit{$2(a_1 \beta + a_2 \alpha)$}};
+    \draw [color=blue!87](nlinha2.south) |- ([xshift=-3em,color=blue]scalep.north west);
+    
+    \path (dlinha2.south) ++ (1.5em,-1.8em) node[anchor=north west,color=red!67] (scalep){\textit{$2(a_1 S_{11} + a_2 S_{12})$}};
+    \draw [color=red!87](dlinha2.south) |- ([xshift=3em,color=red]scalep.north east);
 \end{tikzpicture}
 \end{figure}
+
+Simplificando \autoref{ap:eq:13a}, temos que $N' - ED' = 0$ e, portanto, $N' = ED'$. Desse modo, fazendo as substituições obtidas nas expressões da  \label{ap:eq:13a}, obtemos a \autoref{ap:eq:13b}.
+
+\begin{figure}[htb]
+    \vspace{2\baselineskip}
+\begin{align}
+\label{ap:eq:13b}
+    a_1 \alpha + a_2 \beta = E(a_1 S_{11} + a_2 S_{12}) \\[0.35cm]
+    a_1 \beta - E a_1 S_{12} + a_2 \alpha - E a_2 S_{22} = 0 \\[0.35cm]
+    a_1 (\beta - ES_{12}) + a_2 (\alpha - ES_{22}) = 0
+\end{align}
+\end{figure}
+
+Para prosseguir, assumimos que as funções de onda $p_1$ e $p_2$ retêm a condição de ortonormalidade, mesmo no estadop molecular. Ou seja, $S_{12} = S_{21} = 0$ e $S_{11} = S_{22} = 1$. Substituindo essas aproximações nas equações anteriores, temos:
+
+\begin{figure}[htb]
+    \vspace{2\baselineskip}
+\begin{align}
+\label{ap:eq:13b}
+    a_1 (\alpha - E) + a_2 \beta = 0 \\[0.35cm]
+    a_2 (\alpha - E) + a_1 \beta = 0
+\end{align}
+\end{figure}
+
+Essas equações ortonormais são chamadas equações seculares, cujos coeficientes podem ser transformados em uma matriz quadrada, para o caso do eteno (\autoref{ap:eq:13c}). A partir dessa matriz, a solução de $E$ é computacionalmente simples, uma vez que este é autovalor da matriz secular dos coeficientes.
+
+\begin{equation}
+\label{ap:eq:13c}
+\begin{bmatrix}
+    (\alpha - E) & \beta \\
+    \beta  & (\alpha - E)
+\end{bmatrix}
+\end{equation}
+
+Assim, para o eteno, nós obtemos dois autovalores: $E = \alpha - \beta$ e $E = \alpha + \beta$, gerando um diagrama de orbitais moleculares.
+
+% TODO: MOs of ethene
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 \chapter{Método de Hueckel Estendido}
