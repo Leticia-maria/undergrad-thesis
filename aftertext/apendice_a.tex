@@ -58,11 +58,14 @@ Usando a \autoref{ap:eq:4} (equação de Schroedinger) como base fundamental par
     \vspace{2\baselineskip}
 \begin{equation}
 \label{ap:eq:4}
-    \hat{H} \psi = \tikzmarknode{energy}{\highlight{blue}{$E$}} \psi
+    \tikzmarknode{hamiltonian}{\highlight{red}{$\hat{H}$}} \psi = \tikzmarknode{energy}{\highlight{blue}{$E$}} \psi
 \end{equation}
 \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
     \path (energy.north) ++ (-1.2em,1.5em) node[anchor=south east,color=blue!67] (scalep){\textit{energia}};
     \draw [color=blue!87](energy.north) |- ([xshift=-3em,color=blue]scalep.south west);
+    
+    \path (hamiltonian.south) ++ (1.2em,-1.5em) node[anchor=north west,color=red!67] (scalep){\textit{operador}};
+    \draw [color=red!87](hamiltonian.south) |- ([xshift=3em,color=blue]scalep.north east);
 \end{tikzpicture}
 \end{figure}
 
@@ -88,8 +91,8 @@ Na \autoref{ap:eq:5}, a energia esperada vai ser superestimada em relação ao v
     E = \frac{\displaystyle \int \tikzmarknode{LCAO}{\highlight{blue}{$(a_1 p_1 + a_2 p_2)$}} \hat{H} \highlight{blue}{$(a_1 p_1 + a_2 p_2)$} d\tau}{\displaystyle \int \highlight{blue}{$(a_1 p_1 + a_2 p_2)$}^2 d\tau}
 \end{equation}
 \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
-    \path (LCAO.north) ++ (-1.2em,1.5em) node[anchor=south east,color=blue!67] (scalep){LCAO \textit{do eteno}};
-    \draw [color=blue!87](LCAO.north) |- ([xshift=-3em,color=blue]scalep.south west);
+    \path (LCAO.north) ++ (1.2em,1.5em) node[anchor=south west,color=blue!67] (scalep){LCAO \textit{do eteno}};
+    \draw [color=blue!87](LCAO.north) |- ([xshift=3em,color=blue]scalep.south east);
 \end{tikzpicture}
 \end{figure}
 
