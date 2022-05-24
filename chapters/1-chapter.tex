@@ -99,7 +99,28 @@ Ou seja, os índices geométricos de aromaticidade, servem para três propósito
 
 \subsection{O conceito de Julg Aj (1967)}
 
+A primeira abordagem quantitativa da definição de aromaticidade foi desenvolvida por Julg et al. \autocite{Julg1967, Bergmann1971}, que construiu uma função normalizada da variância dos comprimentos de ligação CC no perímetro de sistemas carbocíclicos $\pi$-eletrônicos.
 
+\begin{figure}[htb]
+    \vspace{2\baselineskip}
+\begin{equation}
+    \label{eq:1}
+    A_j = 1 - \frac{225}{\tikzmarknode{numberOfBonds}{\highlight{blue}{$n$}}} \sum^n_{i=1} \bigg{(}1 - \frac{\tikzmarknode{bondLengths}{\highlight{red}{$R_i$}}}{\tikzmarknode{bondAverage}{\highlight{red}{$R_{av}$}}} \bigg{)}^2
+\end{equation}
+\begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
+    \path (numberOfBonds.south) ++ (-1,-2em) node[anchor=north east,color=blue!67] (scalep){\textit{número de ligações}};
+    \draw [color=blue!87](numberOfBonds.south) |- ([xshift=-2.5em,color=blue]scalep.north west);
+    
+    \path (bondLengths.north) ++ (1,2em) node[anchor=south west,color=red!67] (scalep){\textit{comprimento de ligação}};
+    \draw [color=red!87](bondLengths.north) |- ([xshift=1.0em,color=red]scalep.south east);
+    
+    \path (bondAverage.south) ++ (1,-2em) node[anchor=north west,color=red!67] (scalep){\textit{$R_{av} = \frac{\displaystyle \sum_{i=1}^n R_i}{\displaystyle n}$}};
+    \draw [color=red!87](bondAverage.south) |- ([xshift=4.3em,color=red]scalep.north east);
+\end{tikzpicture}
+    \vspace{4\baselineskip}
+\end{figure}
+
+Na \autoref{eq:1}, a constante 225 resulta da condição de normalização, na qual $A_j$ assume valor 0 no caso na estrutura do benzeno de Kekulé (cujos comprimentos de ligação seriam diferentes). Para qualquer sistema que possui todas as ligações do mesmo comprimento, o valor de $A_j$ = 1.
 
 % ----------------------------------------------------------
 \chapter{Objetivos}
