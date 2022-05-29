@@ -120,7 +120,34 @@ A primeira abordagem quantitativa da definição de aromaticidade foi desenvolvi
     \vspace{4\baselineskip}
 \end{figure}
 
-Na \autoref{eq:1}, a constante 225 resulta da condição de normalização, na qual $A_j$ assume valor 0 no caso na estrutura do benzeno de Kekulé (cujos comprimentos de ligação seriam diferentes). Para qualquer sistema que possui todas as ligações do mesmo comprimento, o valor de $A_j$ = 1.
+Na \autoref{eq:1}, a constante 225 resulta da condição de normalização, na qual $A_j$ assume valor 0 no caso na estrutura do benzeno de Kekulé (cujos comprimentos de ligação seriam diferentes). Para qualquer sistema que possui todas as ligações do mesmo comprimento, o valor de $A_j$ = 1. Em 1971, tal abordagem foi estendida para também incluir sistemas heterocíclicos, mas levando em conta somente as ligações CC.
+
+\subsection{O modelo do oscilador harmônico (1972)}
+
+O próximo passo foi feito modificando a ideia de Julg, substituindo o comprimento de ligação médio ($R_{av}$) da \autoref{eq:1} por um valor conceitual, denominado o comprimento de ligação ótimo ($R_{opt}$)\footnote{No artigo original, esse valor é denotado por $d$ \autocite{Kruszewski1972}}. Tal modelo baseia-se no fato de que a energia do oscilador harmônico relativa à extensão ou compressão de uma ligação química depende das constantes de força, diretamente relacionada aos comprimentos dessa ligação. Ou seja, $R_{opt}$ representa a medida da ligação cujo valor de energia requerido para estirá-la até o comprimento de uma ligação simples ou constringir até o comprimento de uma ligação dupla. Desse modo, os comprimentos das ligações CC no etano e no eteno foram tomadas como valores de referência, assumindo que a relação entre as constantes de força para ligações simples e duplas é 2:1.
+
+\begin{figure}[htb]
+    \vspace{2\baselineskip}
+\begin{equation}
+    \label{cor}
+    R_{opt} = \frac{ \tikzmarknode{single}{ \highlight{blue}{$R_{C-C}$}} + 2 \tikzmarknode{double}{ \highlight{red}{$R_{C=C}$}}}{3} = 1.397 \textit{\AA}
+\end{equation}
+\begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
+    \path (single.north) ++ (-1,1.5em) node[anchor=south east,color=blue!67] (scalep){\textit{$R_{C-C} = 1.524$ \AA}};
+    \draw [color=blue!87](single.north) |- ([xshift=-3em,color=blue]scalep.south west);
+    
+    \path (double.north) ++ (1,1.5em) node[anchor=south west, color=red!67] (scalep){\textit{$R_{C=C} = 1.334$ \AA}};
+    \draw [color=red!87](double.north) |- ([xshift=3em,color=red]scalep.south east);
+    
+    \path (single.south) ++ (-1,-1.5em) node[anchor=north east,color=blue!67] (scalep){\textit{etano}};
+    \draw [color=blue!87](single.south) |- ([xshift=-3em,color=blue]scalep.north west);
+    
+    \path (double.south) ++ (1,-1.5em) node[anchor=north west, color=red!67] (scalep){\textit{eteno}};
+    \draw [color=red!87](double.south) |- ([xshift=3em,color=red]scalep.north east);
+\end{tikzpicture}
+\vspace{2\baselineskip}
+
+\end{figure}
 
 % ----------------------------------------------------------
 \chapter{Objetivos}
