@@ -124,19 +124,19 @@ Na \autoref{eq:1}, a constante 225 resulta da condição de normalização, na q
 
 \subsection{O modelo do oscilador harmônico (1972)}
 
-O próximo passo foi feito modificando a ideia de Julg, substituindo o comprimento de ligação médio ($R_{av}$) da \autoref{eq:1} por um valor conceitual, denominado o comprimento de ligação ótimo ($R_{opt}$)\footnote{No artigo original, esse valor é denotado por $d$ \autocite{Kruszewski1972}}. Tal modelo baseia-se no fato de que a energia do oscilador harmônico relativa à extensão ou compressão de uma ligação química depende das constantes de força, diretamente relacionada aos comprimentos dessa ligação. Ou seja, $R_{opt}$ representa a medida da ligação cujo valor de energia requerido para estirá-la até o comprimento de uma ligação simples ou constringir até o comprimento de uma ligação dupla. Desse modo, os comprimentos das ligações CC no etano e no eteno foram tomadas como valores de referência, assumindo que a relação entre as constantes de força para ligações simples e duplas é 2:1.
+O próximo passo foi feito modificando a ideia de Julg, substituindo o comprimento de ligação médio ($R_{av}$) da \autoref{eq:1} por um valor conceitual, denominado o comprimento de ligação ótimo ($R_{opt}$)\footnote{No artigo original, esse valor é denotado por $d$ \autocite{Kruszewski1972}}. Tal modelo baseia-se no fato de que a energia do oscilador harmônico relativa à extensão ou compressão de uma ligação química depende das constantes de força, diretamente relacionada aos comprimentos dessa ligação. Ou seja, $R_{opt}$ (\autoref{eq:2}) representa a medida da ligação cujo valor de energia requerido para estirá-la até o comprimento de uma ligação simples ou constringir até o comprimento de uma ligação dupla. Desse modo, os comprimentos das ligações CC no etano e no eteno foram tomadas como valores de referência, assumindo que a relação entre as constantes de força para ligações simples e duplas é 2:1.
 
 \begin{figure}[htb]
     \vspace{2\baselineskip}
 \begin{equation}
-    \label{cor}
+    \label{eq:2}
     R_{opt} = \frac{ \tikzmarknode{single}{ \highlight{blue}{$R_{C-C}$}} + 2 \tikzmarknode{double}{ \highlight{red}{$R_{C=C}$}}}{3} = 1.397 \textit{\AA}
 \end{equation}
 \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
-    \path (single.north) ++ (-1,1.5em) node[anchor=south east,color=blue!67] (scalep){\textit{$R_{C-C} = 1.524$ \AA}};
+    \path (single.north) ++ (-1,1.5em) node[anchor=south east,color=blue!67] (scalep){\textit{$R_{C-C} = 1.524$} \AA};
     \draw [color=blue!87](single.north) |- ([xshift=-3em,color=blue]scalep.south west);
     
-    \path (double.north) ++ (1,1.5em) node[anchor=south west, color=red!67] (scalep){\textit{$R_{C=C} = 1.334$ \AA}};
+    \path (double.north) ++ (1,1.5em) node[anchor=south west, color=red!67] (scalep){\textit{$R_{C=C} = 1.334$} \AA};
     \draw [color=red!87](double.north) |- ([xshift=3em,color=red]scalep.south east);
     
     \path (single.south) ++ (-1,-1.5em) node[anchor=north east,color=blue!67] (scalep){\textit{etano}};
@@ -145,9 +145,30 @@ O próximo passo foi feito modificando a ideia de Julg, substituindo o comprimen
     \path (double.south) ++ (1,-1.5em) node[anchor=north west, color=red!67] (scalep){\textit{eteno}};
     \draw [color=red!87](double.south) |- ([xshift=3em,color=red]scalep.north east);
 \end{tikzpicture}
-\vspace{2\baselineskip}
-
 \end{figure}
+
+O valor obtido pela \autoref{eq:2} apresenta uma boa concordância com o valor experimental obtido para o benzeno (1.398 \AA) \footnote{Esse valor foi medido através de difração de raio X a 10 K\autocite{Stewart1991}.}. A fórmula para o HOMA está abaixo:
+
+\begin{figure}[htb]
+    \vspace{2\baselineskip}
+\begin{equation}
+    \label{eq:3}
+    \tikzmarknode{HOMA}{\highlight{red}{HOMA}} = 1 - \frac{\tikzmarknode{norm}{\highlight{blue}{$\alpha$}}}{n} \sum_i^n (R_{opt} - R_i)^2
+\end{equation}
+\begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
+    \path (norm.north) ++ (1,1.5em) node[anchor=south west,color=blue!67] (scalep){\textit{$\alpha = 98.89$}};
+    \draw [color=blue!87](norm.north) |- ([xshift=3em,color=blue]scalep.south east);
+    
+    \path (HOMA.north) ++ (-0.75,1.5em) node[anchor=south east,color=red!67] (scalep){\textit{(aromático perfeito) = 1}};
+    \draw [color=red!87](HOMA.north) |- ([xshift=-0.75em,color=red]scalep.south west);
+    
+    \path (HOMA.south) ++ (-1,-1.5em) node[anchor=north east,color=red!67] (scalep){\textit{(não aromático) = 0}};
+    \draw [color=red!87](HOMA.south) |- ([xshift=-1.65em,color=blue]scalep.north west);
+\end{tikzpicture}
+\vspace{2\baselineskip}
+\end{figure}
+
+
 
 % ----------------------------------------------------------
 \chapter{Objetivos}
