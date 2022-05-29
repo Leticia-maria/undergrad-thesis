@@ -159,14 +159,34 @@ O valor obtido pela \autoref{eq:2} apresenta uma boa concordância com o valor e
     \path (norm.north) ++ (1,1.5em) node[anchor=south west,color=blue!67] (scalep){\textit{$\alpha = 98.89$}};
     \draw [color=blue!87](norm.north) |- ([xshift=3em,color=blue]scalep.south east);
     
-    \path (HOMA.north) ++ (-0.75,1.5em) node[anchor=south east,color=red!67] (scalep){\textit{(aromático perfeito) = 1}};
-    \draw [color=red!87](HOMA.north) |- ([xshift=-0.75em,color=red]scalep.south west);
+    \path (HOMA.north) ++ (-0.70,1.5em) node[anchor=south east,color=red!67] (scalep){\textit{(aromático perfeito) = 1}};
+    \draw [color=red!87](HOMA.north) |- ([xshift=-0.70em,color=red]scalep.south west);
     
     \path (HOMA.south) ++ (-1,-1.5em) node[anchor=north east,color=red!67] (scalep){\textit{(não aromático) = 0}};
     \draw [color=red!87](HOMA.south) |- ([xshift=-1.65em,color=blue]scalep.north west);
 \end{tikzpicture}
 \vspace{2\baselineskip}
 \end{figure}
+
+A \autoref{eq:3} pode ser analiticamente convertido na \autoref{eq:4} \autocite{MarekKrygowski1998}. 
+
+\begin{figure}[htb]
+    \vspace{2\baselineskip}
+\begin{equation}
+    \label{eq:4}
+    HOMA = 1 - \tikzmarknode{en}{\highlight{blue}{EN}} - \tikzmarknode{geo}{\highlight{red}{GEO}}
+\end{equation}
+\begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
+    \path (en.north) ++ (1,1.5em) node[anchor=south west,color=blue!67] (scalep){\textit{$\alpha(R_{opt} - R_{av})^2$}};
+    \draw [color=blue!87](en.north) |- ([xshift=3em,color=blue]scalep.south east);
+    
+    \path (geo.south) ++ (-1,-1.5em) node[anchor=north east,color=red!67] (scalep){\textit{$\displaystyle \frac{1}{n} \sum_i \alpha(R_{av} - R_i)^2$}};
+    \draw [color=red!87](geo.south) |- ([xshift=-1.65em,color=blue]scalep.north west);
+\end{tikzpicture}
+\vspace{2\baselineskip}
+\end{figure}
+
+O componente GEO representa uma diminuição da aromaticidade devido ao aumento da alternação do comprimento de ligação, enquanto EN revela um aumento do comprimento de ligação médio em uma dada estrutura. Note que, o aumento de EN denota uma diminuição da aromaticidade, uma vez que o valor do HOMA diminui.
 
 
 
