@@ -133,15 +133,15 @@ As integrais de sobreposição são dadas pelas expressões na \autoref{ap:eq:10
 \displaystyle \int (p_i p_j) d\tau =
 \begin{cases}
  \tikzmarknode{s11}{\highlight{blue}{$S_{11}$}} = \displaystyle \int (p_1 p_1) d\tau = \highlight{blue}{$S_{22}$} = \displaystyle \int (p_2 p_2) d\tau \\
- \tikzmarknode{s12}{\highlight{blue}{$S_{12}$}} = \displaystyle \int (p_2 p_1) d\tau = \highlight{blue}{$S_{21}$} = \displaystyle \int (p_1 p_2) d\tau
+ \tikzmarknode{s12}{\highlight{red}{$S_{12}$}} = \displaystyle \int (p_2 p_1) d\tau = \highlight{red}{$S_{21}$} = \displaystyle \int (p_1 p_2) d\tau
 \end{cases}
 \end{equation}
 \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
     \path (s11.north) ++ (1.2em,1.5em) node[anchor=south west,color=blue!67] (scalep){\textit{integral de sobreposição ($i = j$)}};
     \draw [color=blue!87](s11.north) |- ([xshift=3em,color=blue]scalep.south east);
     
-    \path (s12.south) ++ (1.2em,-1.5em) node[anchor=north west,color=blue!67] (scalep){\textit{integral de sobreposição ($i \neq j$)}};
-    \draw [color=blue!87](s12.south) |- ([xshift=3em,color=blue]scalep.north east);
+    \path (s12.south) ++ (1.2em,-1.5em) node[anchor=north west,color=red!67] (scalep){\textit{integral de sobreposição ($i \neq j$)}};
+    \draw [color=red!87](s12.south) |- ([xshift=3em,color=red]scalep.north east);
 \end{tikzpicture}
 \end{figure}
 
@@ -230,24 +230,44 @@ Essas equações ortonormais são chamadas equações seculares, cujos coeficien
 \end{bmatrix}
 \end{equation}
 
-Se dividirmos os elementos da matriz representada na \autoref{ap:eq:13c} por $\beta$, obtemos a \autoref{ap:eq:13d}.
+Se dividirmos os elementos da matriz representada na \autoref{ap:eq:13c} por $\beta$, obtemos a \autoref{ap:eq:13d}, que pode ainda ser reduzida à \autoref{ap:eq:13e}.
 
+\begin{figure}[htb]
+    \vspace{3 \baselineskip}
 \begin{equation}
 \label{ap:eq:13d}
 \begin{bmatrix}
-    \displaystyle \frac{(\alpha - E)}{\beta} & 1 \\
-    1  & \displaystyle \frac{(\alpha - E)}{\beta}
+    \displaystyle \tikzmarknode{term}{\highlight{blue}{$ \displaystyle \frac{(\alpha - E)}{\beta}$}} & 1 \\
+    1  & \highlight{blue}{$\displaystyle \frac{(\alpha - E)}{\beta}$}
 \end{bmatrix}
 \end{equation}
-
-Ao reduzir a expressão a $\displaystyle x = \frac{(\alpha - E)}{\beta}$, a matriz se transforma na \autoref{ap:eq:13e}.
+\begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
+    \path (term.north) ++ (1.2em,1.5em) node[anchor=south west,color=blue!67] (scalep){\textit{$\displaystyle x = \frac{(\alpha - E)}{\beta}$}};
+    \draw [color=blue!87](term.north) |- ([xshift=3em,color=blue]scalep.south east);
+\end{tikzpicture}
+\end{figure}
 
 \begin{equation}
-\label{ap:eq:13d}
+\label{ap:eq:13e}
 \begin{bmatrix}
     x & 1 \\
     1  & x
 \end{bmatrix}
+\end{equation}
+
+A solução dessa matriz (\autoref{ap:eq:13e}) pode ser obtida simplesmente pela expansão do determinante correspondente (determinante secular) ou encontrando os autovalores e autovetores da matriz (matriz secular). Como a situação envolve dependência linear, o determinante secular deve ser igual a zero.
+
+\begin{equation}
+    \begin{vmatrix}
+    x & 1 \\
+    1  & x
+\end{vmatrix}
+= 0 \implies
+\begin{cases}
+ x^2 - 1 = 0 \\
+ x^2 = 1 \\
+ x = \pm 1
+\end{cases}
 \end{equation}
 
 Assim, para o eteno, nós obtemos dois autovalores: $E = \alpha - \beta$ e $E = \alpha + \beta$, gerando um diagrama de orbitais moleculares \autoref{fig:A2}. Essa metodologia pode ser generalizada por sistemas conjugados de qualquer tamanho. Desse modo, dimensão da matriz na \autoref{ap:eq:13c} é dada pelo número de átomos no sistema $\pi$ conjugado.
@@ -260,7 +280,27 @@ Assim, para o eteno, nós obtemos dois autovalores: $E = \alpha - \beta$ e $E = 
 	\fonte{Autor(a).}
 \end{figure}
 
-Ou seja, os resultados da teoria de Hueckel mostram alguns aspectos para hidrocarbonetos conjugados, mantendo as ligações simples e duplas alternadas. 
+Tomemos agora como exemplo um sistema alílico \ce{[CH_2=CH-CH_2-]}, que possui 3 carbonos. Obtém-se, portanto, uma matriz $3 \times 3$ como matriz secular dos coeficientes, cujos elementos seguem as seguintes regras:
+
+\begin{enumerate}
+    \item Cada período representa a conectividade do átomo correspondente;
+    \item Em cada período, o átomo de referência é rotulado como $x$ (posições $i=j$);
+    \item Se $i \neq j$, e se o átomo correspondente é conectado ao respectivo átomo de referência, o elemento de matriz é igual a 1;
+    \item Se $i \neq j$, e se o átomo correspondente não é conectado ao respectivo átomo de referência, o elemento de matriz é igual a 0.
+\end{enumerate}
+
+\noindent A partir de tais afirmações, a matriz secular será dada pela \autoref{ap:eq:13f}.
+
+\begin{equation}
+\label{ap:eq:13f}
+\begin{bmatrix}
+    x & 1 & 0 \\
+    1 & x & 1 \\
+    0 & 1 & x 
+\end{bmatrix}
+\end{equation}
+
+Resolvendo-a por meio do mesmo procedimento empregado anteriormente, obtém-se: $E = \alpha$, $E = \alpha + \beta \sqrt{2}$ e $E = \alpha - \beta \sqrt{2}$, no qual o nível mais baixo de energia será ocupado com dois elétrons obtidos de orbitais não hibridizados dos dois átomos de carbono.
 
 \chapter{Método de Hueckel Estendido}
 
