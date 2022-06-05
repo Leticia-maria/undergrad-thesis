@@ -230,7 +230,19 @@ Essas equações ortonormais são chamadas equações seculares, cujos coeficien
 \end{bmatrix}
 \end{equation}
 
-Assim, para o eteno, nós obtemos dois autovalores: $E = \alpha - \beta$ e $E = \alpha + \beta$, gerando um diagrama de orbitais moleculares.
+Assim, para o eteno, nós obtemos dois autovalores: $E = \alpha - \beta$ e $E = \alpha + \beta$, gerando um diagrama de orbitais moleculares \autoref{fig:A2}.
+
+\begin{figure}[htb]
+	\caption{\label{fig:A2} Orbitais moleculares de Hueckel para o eteno.}
+	\begin{center}
+		\includegraphics[width=0.75\textwidth]{images/figA2.png}
+	\end{center}
+	\fonte{Autor(a).}
+\end{figure}
+
+
+Essa metodologia pode ser generalizada por sistemas conjugados de qualquer tamanho.
+
 
 % TODO: MOs of ethene
 
@@ -319,12 +331,35 @@ A função de onda eletrônica é considerada, nesse modelo, como um produto de 
 
 \noindent onde $H$ é uma matriz quadrada contendo o $H_{rs}$, integrais de energia de um único elétron, e $C$ é a matriz dos coeficientes relativos aos orbitais atômicos. Cada coluna em $C$ é $C'$, que define um orbital molecular em termos das funções de base. Na teoria molecular de Hueckel estendido, a sobreposição não é negligenciado, e $S$ é a matriz das integrais de sobreposição. Essas matrizes são quadradas, possuem o tamanho igual ao número de orbitais atômicos usados na combinação linear. Para qualquer cálculo desse tipo, deve-se construir essas matrizes e então encontrar os autovalores (energias orbitais) e autovetores (coeficientes que definem o orbital molecular em termos das funções de base).
 
-Os elementos da matriz $H$ são atribuídos a partir de dados experimentais, uma vez que o método em questão é semi-empírico. Os elementos de matriz Hamiltoniana fora de diagonal são dados por uma aproximação devido a Wolfsberg e Helmholz
-que os relaciona com os elementos diagonais e o elemento da matriz de sobreposição.
+Os elementos da matriz $H$ são atribuídos a partir de dados experimentais, uma vez que o método em questão é semi-empírico. Os elementos de matriz Hamiltoniana fora de diagonal são dados por uma aproximação feita por Wolfsberg e Helmholz, que relaciona com os elementos diagonais e o elemento da matriz de sobreposição, seguindo a \autoref{hamiltonian}.
 
 \begin{equation}
+\label{hamiltonian}
     H_{ij} = \frac{1}{2} K(H_{ii} + H_{jj}) S_{ij}
 \end{equation}
 
 De acordo com essa expressão, a energia deveria ser proporcional à energia dos orbitais atômicos, e será tão maior quanto maior a sobreposição desses orbitais. A contribuição desses efeitos com a energia é escalada pelo fator $K$. Hoffmann \autocite{Hoffmann1963} atribuiu o valor de 1.75 para $K$, após um estudo do efeito desse parâmetro nas energias dos orbitais ocupados do etano. Os valores de $H_{ii}$ são escolhidos como um estado de potenciais de ionização com o valor negativo, indicando ligação. Isso ocorre em função do teorema de Koopman\autocite{Koopmans1934}, cujo enunciado determina que a primeira energia de ionização de um sistema molecular é o oposto da energia atribuída ao \gls{HOMO}, uma vez que. no contexto do \gls{RHF}, considera-se que os orbitais do íon são idênticos àqueles da molécula neutra (segundo a aproximação do orbital \textit{congelado}). 
 
+\begin{table}[htb]
+	\centering
+	\caption{\label{qua:Quadro_1} Valores de $H_{ii}$ tomados a partir do potencial de ionização.}	
+	\begin{tabular}{ccc}
+		\toprule
+		\textbf{Sítio de ligação} & \textbf{Potencial de ionização/(eV)} & \textbf{Valores de $H_{ii}$/(eV)}
+		\\ 
+		\midrule
+        H-1s & 13.60 & -13.60 \\
+        C-2s & 21.40 & -21.40 \\
+        C-2p & 11.40 & -11.40 \\
+        N-2s & 25.58 & -25.58 \\
+        N-2p & 13.90 & -13.90 \\
+        O-2s & 32.28 & -32.28 \\
+        O-2p & 15.85 & -15.85 \\
+        F-2s & 40.20 & -40.20 \\
+        F-2p & 18.66 & -18.66 \\
+    \bottomrule
+	\end{tabular}
+	\fonte{\textit{Department of Organic and Polymeric Materials}, \href{t http://www.op.titech.ac.jp/lab/mori/EHTB/EHTB.html}{\textit{Tokyo Institute of Technology}.}}
+\end{table}
+
+É comum, em muitos estudos teóricos\autocite{Zubatiuk2021, BroJrgensen2021}, utilizar a metodologia em questão como um passo preliminar para determinar os orbitais moleculares por um método mais sofisticado, mais caro computacionalmente, como cálculo \textit{ab initio}.
