@@ -4,7 +4,11 @@
 % ----------------------------------------------------------
 \section{Interface gráfica}
 
+A interface gráfica publicada no navegador foi elaborada utilizando CSS, JavaScript e HTML. 
+
 \section{Representação tridimensional}
+
+As representações tridimensionais moleculares foram feitas com Three.js, uma biblioteca que usa WebGL para desenhar (na realidade, renderizar) objetos 3D de maneira facilitada. 
 
 \section{Método de Hueckel Estendido}
 
@@ -24,7 +28,7 @@ Esse modelo baseia-se no fato de que a interação entre dois orbitais atômicos
 
 Posteriormente, essa teoria foi estendida para tratar moléculas com heteroátomos (aqueles diferentes do carbono e hidrogênio)\autocite{Liwschitz1963}. Uma mudança ainda maior foi feita por Roald Hoffmann \autocite{Hoffmann1963}, que desenvolveu o método \gls{EHMO}, o qual inclui todos os elétrons da valência (inclusive elétrons $\sigma$) no cálculo das energias dos orbitais moleculares. Esse método é classificado como semiempírico, ou seja, utiliza dados experimentais para facilitar o processo de cálculo das integrais que acessam a interação elétron-elétron para contabilizar os efeitos de correlação eletrônica na estrutura química.
 
-Como o objetivo do trabalho é desenvolver uma ferramenta rápida e eficiente para ser utilizada dentro no navegador de internet, tal método foi escolhido pelo seu baixo custo computacional de operação, devido às aproximações das matrizes Hamiltonianas pelo teorema de Koopman.
+Como o objetivo do trabalho é desenvolver uma ferramenta rápida e eficiente para ser utilizada dentro no navegador de internet, tal método foi escolhido pelo seu baixo custo computacional de operação, devido às aproximações das matrizes Hamiltonianas pelo teorema de Koopman, responsável por aproximar os valores de $H_{ii}$ pelas energias de ionização
 
 \section{Otimização de geometria}
 
@@ -35,21 +39,3 @@ Uma vez que os núcleos são muito mais pesados do que os elétrons, nós podemo
 \section{Teoria de grafos}
 
 \section{Critérios quantitativos da aromaticidade}
-
-\begin{figure}[htb]
-    \vspace{2\baselineskip}
-\begin{equation}
-    \label{correcao}
-    \tikzmarknode{homa}{\highlight{blue}{HOMA}} = 1 - EN - GEO
-\end{equation}
-\begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
-    \path (homa.north) ++ (-2em,1.5em) node[anchor=south east,color=blue!67] (scalep){\textit{índice geométrico}};
-    \draw [color=blue!87](homa.north) |- ([xshift=-3em,color=blue]scalep.south west);
-\end{tikzpicture}
-\end{figure}
-
-
-% ----------------------------------------------------------
-\subsubsubsection{Exemplo tabela}
-% ----------------------------------------------------------
-
