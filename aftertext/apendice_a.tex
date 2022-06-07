@@ -374,3 +374,64 @@ De acordo com essa expressão, a energia deveria ser proporcional à energia dos
 \end{table}
 
 É comum, em muitos estudos teóricos\autocite{Zubatiuk2021, BroJrgensen2021}, utilizar a metodologia em questão como um passo preliminar para determinar os orbitais moleculares por um método mais sofisticado, mais caro computacionalmente, como cálculo \textit{ab initio}.
+
+\chapter{Teoria de grafos}
+
+A Teoria dos Grafos tem uma origem relativamente recente (século XVIII) na
+história da Matemática. Desenvolvida já no século XX, cuja importância se tem
+imposto por suas ligações e aplicações em outras ciências, bem como em outras
+áreas da Matemática, pois estuda as relações entre os objetos de um determinado conjunto\autocite{neto2016topicos, soares2014introduccao}.
+
+Tal conceito simples torna claro que ele permite a modelagem de situações concretas como: redes de computadores, de comunicações, a Web (ligação física entre
+os nós da rede), árvores genealógicas, Química Orgânica (isômeros), etc.
+Contudo, a ligação física não é necessária; também pode ser associado um grafo
+a um qualquer conjunto no qual esteja definida uma relação binária, como a relação
+(a é primo com b) que determina um grafo num conjunto fixado de inteiros, ou a
+relação (a é filho de b) que permite associar a uma dada família um grafo (árvore
+genealógica).
+
+
+As aplicações químicas da teoria de grafos são altamente úteis, por exemplo, para a enumeração e representação de isômeros constitucionais, como para derivados regioisoméricos de benzeno ou para hidrocarbonetos ramificados. Os cálculos da teoria gráfica envolvem procedimentos combinatórios, para gerar grafos como representações topológicas, e álgebra linear - a formação de matrizes e vetores, a extração de autovalores e  autovetores e operações relacionadas. Todos estes procedimentos são eficiente e rapidamente implementados com programas para computação simbólica\autocite{allinger2010molecular}.
+
+\begin{definition}
+Um \textbf{grafo (simples)} G consiste de um conjunto finito e não vazio
+V(G) de objetos chamados vértices, juntamente com um conjunto E(G) de pares
+não ordenados de vértices; os elementos de E(G) são chamados de \textbf{arestas}. Pode-se representá-lo por G = (V;E), onde V = V(G) e E = E(G).
+\end{definition}
+
+Se $G = (V;E)$ é um grafo é um grafo e $u$ e $v$ são dois de seus vértices, diremos que são adjacentes se $\{u,v\} \in E$; neste caso, dizemos ainda que a aresta $\{u,v\}$ incide nos vértices $u$ e $v$. Podemos denotar a aresta simplesmente por $uv$, sempre que não houver risco de confusão. Se $u$ e $v$ não forem adjacentes, diremos que são vértices não adjacentes de $G$.
+
+Grafos são geralmente representados por diagramas, onde os elementos de $V$ correspondem a pontos no plano e as arestas de $G$ correspondem a arcos ligando os vértices correspondentes. A figura assim obtida não tem nenhum significado geométrico, seu propósito sendo somente o de representar esquematicamente as relações
+de adjacência entre os vértices de $G$.
+
+\begin{equation}
+    G = (\{a,b,c,d\}; \{\{a,b\},\{a,c\},\{a,d\}, \{b,c\}\})
+\end{equation}
+
+\begin{definition}
+Seja G = (V,E) um grafo. Se u $\in$, o \textbf{grau} de u, denotado $d_G(u)$, é o número de vértices adjacentes a u: 
+\begin{center}
+$d_G(u) = \#N_G(u)$
+\end{center}
+\end{definition}
+
+\begin{definition}
+Dado um grafo G = (V;E), com |V| = n, suponha que V=$I_n$. A \textbf{matriz de adjacência} de G é a matriz Adj(G) = $(a_{ij})_{n\times n}$, tal que
+\begin{center}
+\begin{equation*}
+a_{ij}= \Bigg{\{} \begin{array}{ll} 1, \; se \; i\neq j  \; e \; \{i,j\} \in E \\ 0, \; se \; \textrm{\textit{não}} \end{array}
+\end{equation*}
+\end{center}
+\end{definition}
+
+De acordo com o grafo da Equação 19, obtemos a matriz de adjacência na \autoref{adj}.
+
+\begin{equation}
+\label{adj}
+    \begin{bmatrix}
+       0 & 1 & 1 & 1 \\
+       1 & 0 & 1 & 0 \\
+       1 & 1 & 0 & 0 \\
+       1 & 0 & 0 & 0 \\
+    \end{bmatrix}
+\end{equation}
