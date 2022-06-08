@@ -124,7 +124,7 @@ Na \autoref{eq:1}, a constante 225 resulta da condição de normalização, na q
 
 \subsection{O modelo do oscilador harmônico (1972)}
 
-O próximo passo foi feito modificando a ideia de Julg, substituindo o comprimento de ligação médio ($R_{av}$) da \autoref{eq:1} por um valor conceitual, denominado o comprimento de ligação ótimo ($R_{opt}$)\footnote{No artigo original, esse valor é denotado por $d$ \autocite{Kruszewski1972}}. Tal modelo baseia-se no fato de que a energia do oscilador harmônico relativa à extensão ou compressão de uma ligação química depende das constantes de força, diretamente relacionada aos comprimentos dessa ligação. Ou seja, $R_{opt}$ (\autoref{eq:2}) representa a medida da ligação cujo valor de energia requerido para estirá-la até o comprimento de uma ligação simples ou constringir até o comprimento de uma ligação dupla. Desse modo, os comprimentos das ligações CC no etano e no eteno foram tomadas como valores de referência, assumindo que a relação entre as constantes de força para ligações simples e duplas é 2:1.
+O próximo passo foi feito modificando a ideia de Julg, substituindo o comprimento de ligação médio ($R_{av}$) da \autoref{eq:1} por um valor conceitual, denominado o comprimento de ligação ótimo ($R_{opt}$)\footnote{No artigo original\autocite{Kruszewski1972}, esse valor é denotado por $d$}. Tal modelo baseia-se no fato de que a energia do oscilador harmônico relativa à extensão ou compressão de uma ligação química depende das constantes de força, diretamente relacionada aos comprimentos dessa ligação. Ou seja, $R_{opt}$ (\autoref{eq:2}) representa a medida da ligação cujo valor de energia requerido para estirá-la até o comprimento de uma ligação simples ou constringir até o comprimento de uma ligação dupla. Desse modo, os comprimentos das ligações CC no etano e no eteno foram tomadas como valores de referência, assumindo que a relação entre as constantes de força para ligações simples e duplas é 2:1.
 
 \begin{figure}[htb]
     \vspace{2\baselineskip}
@@ -181,12 +181,70 @@ A \autoref{eq:3} pode ser analiticamente convertido na \autoref{eq:4} \autocite{
     \draw [color=blue!87](en.north) |- ([xshift=3em,color=blue]scalep.south east);
     
     \path (geo.south) ++ (-1,-1.5em) node[anchor=north east,color=red!67] (scalep){\textit{$\displaystyle \frac{1}{n} \sum_i \alpha(R_{av} - R_i)^2$}};
-    \draw [color=red!87](geo.south) |- ([xshift=-1.65em,color=blue]scalep.north west);
+    \draw [color=red!87](geo.south) |- ([xshift=-1.65em,color=red]scalep.north west);
 \end{tikzpicture}
 \vspace{2\baselineskip}
 \end{figure}
 
 O componente GEO representa uma diminuição da aromaticidade devido ao aumento da alternação do comprimento de ligação, enquanto EN revela um aumento do comprimento de ligação médio em uma dada estrutura. Note que, o aumento de EN denota uma diminuição da aromaticidade, uma vez que o valor do HOMA diminui. Vale relembrar que a \autoref{eq:4} funciona somente para compostos carbocíclicos.
+
+A próxima tentativa de uma descrição quantitativa da aromaticidade foi feita por Fringuelli et al.\autocite{Fringuelli1974}, que propuseram o uso das ordens de ligação ao invés dos comprimentos das mesmas, uma vez que a ligação entre dois átomos diferentes, mas podem diferir em suas respectivas ordens de ligação. Os valores de $N$ foram calculados pela \autoref{eq:5}, denominada equação de Gordy\autocite{Gordy1947}.
+
+\begin{figure}[htb]
+\begin{equation}
+    \label{eq:5}
+    N = \bigg{(} \frac{a}{\tikzmarknode{length}{\highlight{blue}{R}}^2} \bigg{)} - b
+\end{equation}
+\begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
+    \path (length.south) ++ (-1,-1.5em) node[anchor=north east,color=blue!67] (scalep){\textit{comprimento de ligação}};
+    \draw [color=blue!87](length.south) |- ([xshift=-1.65em,color=blue]scalep.north west);
+\end{tikzpicture}
+\vspace{2\baselineskip}
+\end{figure}
+
+Portanto, a soma das diferenças nas ordens de ligação em um anel $\bigg{(} \displaystyle \sum \Delta N \bigg{)}$ foi tomada como uma medida da aromaticidade. Desse modo, quanto menor esse valor, mais aromático o sistema, gerando uma escala do decréscimo da aromaticidade: benzeno > tiofeno > selenofeno > telurofeno > furano \autocite{Fringuelli1974} (\autoref{fig:4}). 
+
+\begin{table}[htb]
+	\centering
+	\caption{\label{tab:1} Valores das constantes $a$ e $b$ usadas no cálculo das ordens de ligação de acordo na \autoref{eq:5}.}
+	\begin{tabular}{cccc}
+		\toprule
+		\textbf{Tipo de ligação} & \textbf{\textit{a}} & \textbf{\textit{b}} & \textbf{Referência}
+		\\ 
+		\midrule
+        CC & 6.80 & 1.71 & \cite{Gordy1947} \\
+        CN & 6.48 & 2.00 & \cite{Gordy1947} \\
+        CP & 13.5 & 3.02 & \cite{Gordy1947} \\
+        CO & 5.75 & 1.85 & \cite{Gordy1947} \\
+        CS & 11.9 & 2.59 & \cite{Gordy1947} \\
+        CSe & 15.2 & 3.09 & \cite{Fringuelli1974}\\
+        CTe & 21.4 & 3.81 & \cite{Fringuelli1974}\\
+    \bottomrule
+	\end{tabular}
+	\fonte{\textit{Krygowski et al.}\autocite{krygowski-2014}}
+\end{table}
+
+\begin{figure}[htb]
+\begin{equation}
+    \label{eq:5}
+    N = \bigg{(} \frac{a}{\tikzmarknode{length}{\highlight{blue}{R}}^2} \bigg{)} - b
+\end{equation}
+\begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
+    \path (length.south) ++ (-1,-1.5em) node[anchor=north east,color=blue!67] (scalep){\textit{comprimento de ligação}};
+    \draw [color=blue!87](length.south) |- ([xshift=-1.65em,color=blue]scalep.north west);
+\end{tikzpicture}
+\vspace{2\baselineskip}
+\end{figure}
+
+%% TODO: explain values of a and b
+
+\begin{figure}[htb]
+	\caption{\label{fig:4} Valores de $\bigg{(} \displaystyle \sum \Delta N \bigg{)}$, definidos pela \autoref{eq:5} e parametrizadas pelos valores de $a$ e $b$ da \autoref{tab:1}.}
+	\begin{center}
+		\includegraphics[width=0.6\textwidth]{images/aromaticity.png}
+	\end{center}
+	\fonte{Autor(a).}
+\end{figure}
 
 % ----------------------------------------------------------
 \chapter{Objetivos}
