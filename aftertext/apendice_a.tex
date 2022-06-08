@@ -401,8 +401,15 @@ não ordenados de vértices; os elementos de E(G) são chamados de \textbf{arest
 
 Se $G = (V;E)$ é um grafo é um grafo e $u$ e $v$ são dois de seus vértices, diremos que são adjacentes se $\{u,v\} \in E$; neste caso, dizemos ainda que a aresta $\{u,v\}$ incide nos vértices $u$ e $v$. Podemos denotar a aresta simplesmente por $uv$, sempre que não houver risco de confusão. Se $u$ e $v$ não forem adjacentes, diremos que são vértices não adjacentes de $G$.
 
-Grafos são geralmente representados por diagramas, onde os elementos de $V$ correspondem a pontos no plano e as arestas de $G$ correspondem a arcos ligando os vértices correspondentes. A figura assim obtida não tem nenhum significado geométrico, seu propósito sendo somente o de representar esquematicamente as relações
-de adjacência entre os vértices de $G$.
+Grafos são geralmente representados por diagramas, onde os elementos de $V$ correspondem a pontos no plano e as arestas de $G$ correspondem a arcos ligando os vértices correspondentes. A figura assim obtida não tem nenhum significado geométrico, seu propósito sendo somente o de representar esquematicamente as relações de adjacência entre os vértices de $G$ (\autoref{fig:G1}).
+
+\begin{figure}[htb]
+	\caption{\label{fig:G1} Imagem representativa de um grafo simples não direcionado.}
+	\begin{center}
+		\includegraphics[width=0.6\textwidth]{images/grafo.png}
+	\end{center}
+	\fonte{Autor(a).}
+\end{figure}
 
 \begin{equation}
     G = (\{a,b,c,d\}; \{\{a,b\},\{a,c\},\{a,d\}, \{b,c\}\})
@@ -424,7 +431,7 @@ a_{ij}= \Bigg{\{} \begin{array}{ll} 1, \; se \; i\neq j  \; e \; \{i,j\} \in E \
 \end{center}
 \end{definition}
 
-De acordo com o grafo da Equação 19, obtemos a matriz de adjacência na \autoref{adj}.
+De acordo com o grafo da \autoref{fig:G1}, obtemos a matriz de adjacência na \autoref{adj}.
 
 \begin{equation}
 \label{adj}
@@ -432,6 +439,6 @@ De acordo com o grafo da Equação 19, obtemos a matriz de adjacência na \autor
        0 & 1 & 1 & 1 \\
        1 & 0 & 1 & 0 \\
        1 & 1 & 0 & 0 \\
-       1 & 0 & 0 & 0 \\
+       1 & 0 & 0 & 0 
     \end{bmatrix}
 \end{equation}
