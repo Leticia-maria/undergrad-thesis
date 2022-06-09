@@ -226,21 +226,20 @@ Portanto, a soma das diferenças nas ordens de ligação em um anel $\bigg{(} \d
 	\fonte{\textit{Krygowski et al.}\autocite{krygowski-2014}}
 \end{table}
 
-\begin{figure}[htb]
-\begin{equation}
-    \label{eq:5}
-    N = \bigg{(} \frac{a}{\tikzmarknode{length}{\highlight{blue}{R}}^2} \bigg{)} - b
-\end{equation}
-\begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
-    \path (length.south) ++ (-1,-1.5em) node[anchor=north east,color=blue!67] (scalep){\textit{comprimento de ligação}};
-    \draw [color=blue!87](length.south) |- ([xshift=-1.65em,color=blue]scalep.north west);
-\end{tikzpicture}
-\vspace{2\baselineskip}
-\end{figure}
 
 %% TODO: explain values of a and b
 
 Os valores de $a$ e $b$ definidos na \autoref{eq:5} representam parâmetros de ajuste calculados com base nos deslocamentos químicos dos hidrogênios e no volume molar das espécies.
+
+\begin{equation}
+    a = \Delta \delta_1 {V_m}^{2/3}
+\end{equation}
+
+\begin{equation}
+    b = \frac{1}{\displaystyle \sum_{i,j} |(\Delta (\delta_2)_i - (\delta_2)_j|}
+\end{equation}
+
+%% add equations to a and b
 
 \begin{figure}[htb]
 	\caption{\label{fig:4} Valores de $\bigg{(} \displaystyle \sum \Delta N \bigg{)}$, definidos pela \autoref{eq:5} e parametrizadas pelos valores de $a$ e $b$ da \autoref{tab:1}.}
@@ -251,6 +250,12 @@ Os valores de $a$ e $b$ definidos na \autoref{eq:5} representam parâmetros de a
 \end{figure}
 
 \section{Aplicações dos critérios geométricos}
+
+No início, a aromaticidade estava fortemente relacionada à reatividade, uma vez que os compostos aromáticos não são somente considerados menos reativos, mas compostos que preferivelmente reagem via mecanismo de substituição, ao invés da adição. Nas espécies policíclicas, as observações podem ser experimentalmente documentadas pela estimativa da basicidade relativa a posições particulares em hidrocarbonetos benzenoides.
+
+Os resultados da protonação na...
+
+Uma discussão qualitativa do caráter aromático de um anel particular em uma molécula de um hidrocarboneto policíclico benzenoide é oferecida pelas regras de Clar. Essas regras classificam os aneis de acordo com a estrutura dos seus elétrons $\pi$, podendo nomeá-los de acordo com um sexteto aromático, um anel vazio, anel de migração ou aquela espécie com ligações duplas localizadas. Através do HOMA, podemos facilmente identificar a primeira classe, que possui altos valores de HOMA.
 
 % ----------------------------------------------------------
 \chapter{Objetivos}
