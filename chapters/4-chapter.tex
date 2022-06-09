@@ -26,15 +26,17 @@ No modelo primeiramente proposto por Phong, é calculado continuamente o produto
 
 Na \autoref{eq:R1}, $P_H$ é a matriz de Householder que reflete um ponto no hiperplano que contém a origem e tem um vetor normal $H$. Este produto escalar é o cosseno de um ângulo que é metade do ângulo representado pelo produto escalar de Phong (se $V$, $L$, $N$ e $R$ estiverem todos no mesmo plano). Esta relação entre os ângulos sofre desvios discretos quando os vetores não se encontram no mesmo plano, especialmente em relação aos ângulos pequenos.
 
-Considerando que o ângulo entre o vetor a meio caminho e a superfície normal é provavelmente menor do que o ângulo entre $R$ e $V$ usado no modelo de Phong (a menos que a superfície seja vista de um ângulo muito íngreme para o qual é provável que seja maior), e já que Phong está usando $(R \cdot V)^\alpha$, um expoente pode ser definido como $\alpha' > \alpha$, tal que $(N \cdot H)^{\alpha'}$ está mais próxima da expressão anterior.
+Ainda sobre os ajustes de Blinn ao modelo de Phong, consideremos que o ângulo entre o vetor a meio caminho $(N \cdot H)$ e a superfície normal é provavelmente menor do que o ângulo entre $R$ e $V$ usado no modelo original (a menos que a superfície seja vista de um ângulo muito íngreme para o qual é provável que seja maior), e já que Phong está usando $(R \cdot V)^\alpha$, um expoente (chamado de constante de brilho) pode ser definido como $\alpha' > \alpha$, tal que $(N \cdot H)^{\alpha'}$ está mais próxima da expressão original de Phong.
 
 \begin{figure}[htb]
-\caption{\label{fig:DFS} Representação esquemática do algoritmo DFS (Algoritmo \ref{alg:1}). Todos os nodos adjacentes são visitados até que sejam marcados como visitados (cinza). O ciclo é encontrado quando o último nodo é igual ao nodo raiz.}
+\caption{\label{fig:representations} Exemplo da aplicação do modelo de Blinn-Phong na molécula de benzenos a partir da alteração dos coeficientes $\alpha'$ para os átomos (representados por esferas). Da direita para a esquerda, os valores atribuídos foram: 0, 10, 50, 100, 1000.}
 	\begin{center}
-		\includegraphics[width=1.0\textwidth]{images/shininess.png}
+		\includegraphics[width=1.0\textwidth]{images/shininess(1).png}
 	\end{center}
 	\fonte{Autor(a)}
 \end{figure}
+
+Variando, portanto, o valor de $\alpha'$, é possível notar que, na \autoref{fig:representations}, quanto maior for seu valor, menor será o holofote especular, representado pelos pontos luminosos nas estruturas moleculares.
 
 \section{Influência de K}
 
