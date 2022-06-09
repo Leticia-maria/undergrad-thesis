@@ -8,6 +8,33 @@ O WebBalmy.jl foi publicado utilizando o GitHub Pages, uma ferramenta gratuita p
 \section{Interface gráfica}
 
 \section{Representação tridimensional}
+Para representar os modelos tridimensionais utilizando o Three.js, é utilizado o modelo de Blinn-Phong, capaz de simular superfícies brilhantes com holofotes especulares. O sombreamento é calculado \textit{per pixel} de acordo com o modelo de Phong. Desse modo, apesar de custar um pouco mais de tempo para renderizar, ele atinge uma acurácia maior do que outros modelos disponíveis (o de Lambert, por exemplo).
+
+No modelo primeiramente proposto por Phong, é calculado continuamente o produto escalar $R \cdot V$ entre um observador $V$ e o feixe de uma fonte de luz ($L$) refletida ($R$) sobre uma superfície. No ajuste proposto por Blinn, no entanto, calcula-se um vetor a meio caminho entre o espectador e os vetores de fonte luminosa, podendo substituir $R \cdot V$ por $N \cdot H$, onde $N$ é o vetor normal ã superfície.
+
+\begin{figure}[htb]
+\begin{equation}
+    \label{eq:R1}
+    H = \frac{L + \highlight{blue}{V} }{||L + \tikzmarknode{value}{\highlight{blue}{V}}||}
+\end{equation}
+\begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
+    \path (value.south) ++ (-1,-1.5em) node[anchor=north east,color=blue!67] (scalep){\textit{$V = P_H (-L)$}};
+    \draw [color=blue!87](value.south) |- ([xshift=-1.65em,color=blue]scalep.north west);
+\end{tikzpicture}
+\vspace{2\baselineskip}
+\end{figure}
+
+Na \autoref{eq:R1}, $P_H$ é a matriz de Householder que reflete um ponto no hiperplano que contém a origem e tem um vetor normal $H$. Este produto escalar é o cosseno de um ângulo que é metade do ângulo representado pelo produto escalar de Phong (se $V$, $L$, $N$ e $R$ estiverem todos no mesmo plano). Esta relação entre os ângulos sofre desvios discretos quando os vetores não se encontram no mesmo plano, especialmente em relação aos ângulos pequenos.
+
+Considerando que o ângulo entre o vetor a meio caminho e a superfície normal é provavelmente menor do que o ângulo entre $R$ e $V$ usado no modelo de Phong (a menos que a superfície seja vista de um ângulo muito íngreme para o qual é provável que seja maior), e já que Phong está usando $(R \cdot V)^\alpha$, um expoente pode ser definido como $\alpha' > \alpha$, tal que $(N \cdot H)^{\alpha'}$ está mais próxima da expressão anterior.
+
+\begin{figure}[htb]
+\caption{\label{fig:DFS} Representação esquemática do algoritmo DFS (Algoritmo \ref{alg:1}). Todos os nodos adjacentes são visitados até que sejam marcados como visitados (cinza). O ciclo é encontrado quando o último nodo é igual ao nodo raiz.}
+	\begin{center}
+		\includegraphics[width=1.0\textwidth]{images/shininess.png}
+	\end{center}
+	\fonte{Autor(a)}
+\end{figure}
 
 \section{Influência de K}
 
