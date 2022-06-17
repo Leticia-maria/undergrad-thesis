@@ -40,11 +40,15 @@ Posteriormente, essa teoria foi estendida para tratar moléculas com heteroátom
 
 Como o objetivo do trabalho é desenvolver uma ferramenta rápida e eficiente para ser utilizada dentro no navegador de internet, tal método foi escolhido pelo seu baixo custo computacional de operação, devido às aproximações das matrizes Hamiltonianas pelo teorema de Koopman, responsável por aproximar os valores de $H_{ii}$ pelas energias de ionização. 
 
-\section{Otimização de geometria}
+%\section{Otimização de geometria}
 
-Predizer o arranjo mais estável dos átomos em uma molécula é uma das mais importantes tarefas na química quântica computacional. Essencialmente, este é um problema de otimização onde a energia total da molécula é minimizada com relação às posições dos núcleos atômicos. A geometria molecular obtida desse cálculo é, dessa forma, um ponto de partida para inúmeras simulações de propriedades moleculares. Se a geometria não é acurada, então quaisquer cálculos que derivam dele também podem ser espúrios.
+%Predizer o arranjo mais estável dos átomos em uma molécula é uma das mais importantes tarefas na %química quântica computacional. Essencialmente, este é um problema de otimização onde a energia total %da molécula é minimizada com relação às posições dos núcleos atômicos. A geometria molecular obtida %desse cálculo é, dessa forma, um ponto de partida para inúmeras simulações de propriedades %moleculares. Se a geometria não é acurada, então quaisquer cálculos que derivam dele também podem ser %espúrios.
 
-Uma vez que os núcleos são muito mais pesados do que os elétrons, nós podemos tratá-los como partículas pontuais associadas às suas respectivas posições. A partir disso, é possível afirmar que a energia da molécula $E(x)$.
+%Uma vez que os núcleos são muito mais pesados do que os elétrons, nós podemos tratá-los como %partículas pontuais associadas às suas respectivas posições. A partir disso, é possível afirmar que a %energia da molécula $E(x)$ depende das coordenadas nucleares $x$, as quais definem a energia de %superfície potencial. Resolver, portanto, o problema estacionário $\nabla_x E(x)$, corresponde à %otimização das coordenadas nucleares, e a partir delas é possível determinar a energia de equilíbrio %da molécula.
+
+%No trabalho em questão, foi utilizado um método genérico (variacional) para encontrar a estrutura %situada na região de mínima energia. A ideia central desse algoritmo é considerar explicitamente o %Hamiltoniano $H(x)$ como uma observável parametrizada, que depende das coordenadas nucleares $x$. O %objetivo desse procedimento é encontrar o mínimo global da função de custo global $g(\theta, x) = < %\Psi(\theta) | H(x) | \Psi(\theta) >$.
+
+
 
 \section{Teoria de grafos}
 
