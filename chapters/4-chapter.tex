@@ -18,7 +18,7 @@ O WebBalmy.jl foi publicado utilizando o GitHub Pages, uma ferramenta gratuita p
 \section{Representação tridimensional}
 Para representar os modelos tridimensionais utilizando o Three.js, é utilizado o modelo de Blinn-Phong, capaz de simular superfícies brilhantes com holofotes especulares. O sombreamento é calculado \textit{per pixel} de acordo com o modelo de Phong. Desse modo, apesar de custar um pouco mais de tempo para renderizar, ele atinge uma acurácia maior do que outros modelos disponíveis (o de Lambert, por exemplo).
 
-No modelo primeiramente proposto por Phong, é calculado continuamente o produto escalar $R \cdot V$ entre um observador $V$ e o feixe de uma fonte de luz ($L$) refletida ($R$) sobre uma superfície. No ajuste proposto por Blinn, no entanto, calcula-se um vetor a meio caminho entre o espectador e os vetores de fonte luminosa, podendo substituir $R \cdot V$ por $N \cdot H$, onde $N$ é o vetor normal ã superfície.
+No modelo primeiramente proposto por Phong, é calculado continuamente o produto escalar $R \cdot V$ entre um observador $V$ e o feixe de uma fonte de luz ($L$) refletida ($R$) sobre uma superfície. No ajuste proposto por Blinn, no entanto, calcula-se um vetor a meio caminho entre o espectador e os vetores de fonte luminosa, podendo substituir $R \cdot V$ por $N \cdot H$, onde $N$ é o vetor normal à superfície.
 
 \begin{figure}[htb]
 \begin{equation}
@@ -50,6 +50,8 @@ Variando, portanto, o valor de $\alpha'$, é possível notar que, na \autoref{fi
 
 Seguindo o grafo mostrado na \autoref{fig:M2} e enumerado na \autoref{fig:graphEnumerated}, é possível construir uma matriz de adjacência de dimensão $n \times n$, onde $n$ é o número de átomos, excluindo-se os hidrogênios. No caso do benzeno, a ordem da matriz em questão é 6.
 
+\begin{figure}[htb]
+\vspace{0.8\baselineskip}
 \begin{equation}
 \label{eq:adjmatrix}
 \begin{bmatrix}
@@ -61,9 +63,12 @@ Seguindo o grafo mostrado na \autoref{fig:M2} e enumerado na \autoref{fig:graphE
     1 & 0 & 0 & 0 & 1 & 0
 \end{bmatrix}
 \end{equation}
+\end{figure}
 
 \noindent Consideremos $a_{ij}$ o elemento geral associado à matriz da \autoref{eq:5}, sendo igual a uma unidade quando os carbonos $i$ e $j$ estão ligados. Analogamente, na teoria de Hueckel e de Hueckel estendido, a matriz do determinante secular (\autoref{eq:secularmatrix}) é aquela cujos autovalores determinam as energias dos orbitais moleculares.
 
+\begin{figure}[htb]
+\vspace{0.8\baselineskip}
 \begin{equation}
 \label{eq:secularmatrix}
 \begin{bmatrix}
@@ -75,8 +80,9 @@ Seguindo o grafo mostrado na \autoref{fig:M2} e enumerado na \autoref{fig:graphE
     \beta & 0 & 0 & 0 & \beta & \alpha - E \\
 \end{bmatrix}
 \end{equation}
+\end{figure}
 
-No caso do benzeno, ao resolver o determinante secular da matriz anterior (através do procedimento mostrado no \autoref{ap:a1}), obtemos a equação
+No caso do benzeno, ao resolver o determinante secular da matriz anterior (através do procedimento mostrado no \autoref{ap:HMO} e no \autoref{ap:EHMO}), obtemos a equação
 
 \begin{figure}[htb]
 \begin{equation}
@@ -90,37 +96,45 @@ No caso do benzeno, ao resolver o determinante secular da matriz anterior (atrav
 \vspace{2\baselineskip}
 \end{figure}
 
-Resolvendo o polinômio da \autoref{eq:R3}, conseguimos suas raízes ($x = \pm 1, \pm 1, \pm 2$) e, portanto, as energias para seis orbitais moleculares do benzeno (HOMO-2, HOMO-1, HOMO, LUMO, LUMO+1, LUMO+2). 
+\begin{figure}[htb]
+\vspace{2\baselineskip}
+\begin{equation}
+    \label{eq:orb_mols}
+\begin{split}
+    \tikzmarknode{e1}{\highlight{blue}{$E_1$}} = \alpha +  2 \beta \\[0.3cm]
+    \tikzmarknode{e2}{\highlight{red}{$E_2 = E_3$}} = \alpha + \beta \\
+    \tikzmarknode{e3}{\highlight{red}{$E_4 = E_5$}} = \alpha - \beta \\[0.3cm]
+    \tikzmarknode{e6}{\highlight{blue}{$E_6$}} = \alpha - 2\beta
+\end{split}
+\end{equation}
+\begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
+    \path (e1.north) ++ (1,1.5em) node[anchor=south west,color=blue!67] (scalep){\textit{HOMO-1}};
+    \draw [color=blue!87](e1.north) |- ([xshift=1.65em,color=blue]scalep.south east);
+
+    \path (e2.north) ++ (-0.60,0.6em) node[anchor=south east,color=red!67] (scalep){\textit{HOMO (orbitais degenerados)}};
+    \draw [color=red!87](e2.north) |- ([xshift=-1.65em,color=red]scalep.south west);
+    
+    \path (e3.south) ++ (-0.60,-0.6em) node[anchor=north east,color=red!67] (scalep){\textit{LUMO (orbitais degenerados)}};
+    \draw [color=red!87](e3.south) |- ([xshift=-1.65em,color=red]scalep.north west);
+    
+    \path (e6.south) ++ (1,-1.5em) node[anchor=north west,color=blue!67] (scalep){\textit{LUMO+1}};
+    \draw [color=blue!87](e6.south) |- ([xshift=1.65em,color=blue]scalep.north east);
+\end{tikzpicture}
+\end{figure}
+
+Resolvendo o polinômio da \autoref{eq:R3}, conseguimos suas raízes ($x = \pm 1, \pm 1, \pm 2$) e, portanto, as energias para seis orbitais moleculares do benzeno (HOMO-1, HOMO, LUMO, LUMO+1). Combinando as raízes com os parâmetros $\alpha$ e $\beta$, nós temos a \autoref{eq:orb_mols} (\autoref{fig:MOs}).
+
+\begin{figure}[htb]
+\caption{\label{fig:MOs} Diagrama de energia dos orbitais moleculares do benzeno.}
+	\begin{center}
+		\includegraphics[width=0.75\textwidth]{images/MOs.png}
+	\end{center}
+	\fonte{Autor(a)}
+\end{figure}
+
+Os autovalores repetidos vão gerar orbitais degenerados, isto é, aqueles que estão no mesmo nível energético, como é possível notar no diagrama e nos valores de energia obtidos. Esses mesmos valores podem ser obtidos se calcularmos os autovalores da matriz de adjacência.
 
 \section{Influência de K}
 
 
 \section{Índices geométricos}
-
-\begin{figure}[htb!]
-    \centering
-    \includegraphics[width=0.36\textwidth]{images/kekulene.png}
-    \caption{Caption}
-    \label{fig:my_label}
-\end{figure}
-
-\begin{figure}[htb!]
-    \centering
-    \includegraphics[width=0.36\textwidth]{images/Icosaene.png}
-    \caption{Caption}
-    \label{fig:my_label}
-\end{figure}
-
-\begin{figure}[htb!]
-    \centering
-    \includegraphics[width=0.28\textwidth]{images/coronene.png}
-    \caption{Caption}
-    \label{fig:my_label}
-\end{figure}
-
-\begin{figure}[htb!]
-    \centering
-    \includegraphics[width=0.6\textwidth]{images/output.png}
-    \caption{Caption}
-    \label{fig:my_label}
-\end{figure}

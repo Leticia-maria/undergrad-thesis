@@ -52,6 +52,8 @@ Como o objetivo do trabalho é desenvolver uma ferramenta rápida e eficiente pa
 
 \section{Teoria de grafos}
 
+Ao acessar a interface gráfica, será possível ao usuário subir um arquivo de extensão .xyz, contendo as informações em coordenadas cartesianas da estrutura a ser analisada (\autoref{workflow}). O sistema de interesse será processado computacionalmente e transformado em um grafo $G$, que corresponde a uma coleção de vértices (pontos) chamados genericamente de $V$ e arestas (linhas) denotadas por $E$. Formalmente um grafo simples $G$ é definido como um par ordenado $(V(G), E(G))$, o qual consiste de um conjunto $V(G)$ de vértices $V$ não vazio e um conjunto de arestas $E(G) = E$ contendo pares não ordenados de elementos distintos de V, uma vez que cada elemento de $E(G)$ é uma linha que conecta dois pontos de $V(G)$. Para maiores detalhes sobre a teoria de grafos, acesse o \autoref{ap:graph}.
+
 \begin{figure}[htb]
 	\caption{\label{fig:M2} Exemplo ilustrativo de um grafo cíclico não direcionado. Os pontos em azul representam os seis vértices que se conectam através das linhas pretas correspondentes às arestas. O equivalente à esquerda é um anel benzênico de Kekulé, com seis átomos de carbono ocupando os nodos de um ciclo hexagonal.}
 	\begin{center}
@@ -59,6 +61,10 @@ Como o objetivo do trabalho é desenvolver uma ferramenta rápida e eficiente pa
 	\end{center}
 	\fonte{Autor(a).}
 \end{figure}
+
+Desse modo, transpõe-se a representação apresentada na \autoref{fig:graph} para as estruturas químicas de interesse, uma vez que os átomos podem ser considerados os análogos químicos dos vértices, e as ligações, das arestas. Enumerando-se sequencialmente os nodos do grafo derivado do benzeno como na \autoref{fig:graphEnumerated}, é possível então verificar computacionalmente onde esses pontos estão localizados.
+
+O DFS\autocite{Knuth1997-jf, Goodrich2001-pd} (busca em profundidade) é um algoritmo recursivo que perpassa todos os vértices de um grafo ou de uma árvore de dados através do conceito de \textit{backtracing} (retorno). Ou seja, ele começa em um nodo raiz definido arbitrariamente e a partir dele explora suas adjacências através da expansão da árvore de busca, aprofundando-se até que o alvo da busca seja encontrado ou até que ele se depare com um nó que não possui adjacências (nodo folha). Então a busca retrocede (\textit{backtrack}) e começa no próximo nó. Numa implementação não-recursiva, todos os nós expandidos recentemente são adicionados a uma pilha, para realizar a exploração (Algoritmo \ref{alg:1}, \autoref{fig:DFS}).
 
 \begin{figure}[htb]
 \caption{\label{fig:graphEnumerated}Representação do grafo mostrado na \autoref{fig:M2} com nodos enumerados sequencialmente de 1-6.}
@@ -77,3 +83,8 @@ Como o objetivo do trabalho é desenvolver uma ferramenta rápida e eficiente pa
 \end{figure}
 
 \section{Critérios quantitativos da aromaticidade}
+
+
+\section{Tratamento de resíduos}
+
+Como o trabalho em questão é teórico, foram utilizadas ferramentas computacionais dentro do Grupo de Estrutura Eletrônica Molecular (GEEM) da Universidade Federal de Santa Catarina (UFSC) para o desenvolvimento do mesmo. Desse modo, em caso de geração de lixo eletrônico, o descarte foi feito de forma apropriada junto às estações de coleta seletiva específicas, conhecidas como Ecopontos.
