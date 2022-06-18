@@ -46,19 +46,54 @@ Ainda sobre os ajustes de Blinn ao modelo de Phong, consideremos que o ângulo e
 
 Variando, portanto, o valor de $\alpha'$, é possível notar que, na \autoref{fig:representations}, quanto maior for seu valor, menor será o holofote especular, representado pelos pontos luminosos nas estruturas moleculares.
 
-\section{Influência de K}
-
-
-
 \section{Diagramas de orbitais moleculares}
 
+Seguindo o grafo mostrado na \autoref{fig:M2} e enumerado na \autoref{fig:graphEnumerated}, é possível construir uma matriz de adjacência de dimensão $n \times n$, onde $n$ é o número de átomos, excluindo-se os hidrogênios. No caso do benzeno, a ordem da matriz em questão é 6.
+
+\begin{equation}
+\label{eq:adjmatrix}
+\begin{bmatrix}
+    0 & 1 & 0 & 0 & 0 & 1 \\
+    1 & 0 & 1 & 0 & 0 & 0 \\
+    0 & 1 & 0 & 1 & 0 & 0 \\
+    0 & 0 & 1 & 0 & 1 & 0 \\
+    0 & 0 & 0 & 1 & 0 & 1 \\
+    1 & 0 & 0 & 0 & 1 & 0
+\end{bmatrix}
+\end{equation}
+
+\noindent Consideremos $a_{ij}$ o elemento geral associado à matriz da \autoref{eq:5}, sendo igual a uma unidade quando os carbonos $i$ e $j$ estão ligados. Analogamente, na teoria de Hueckel e de Hueckel estendido, a matriz do determinante secular (\autoref{eq:secularmatrix}) é aquela cujos autovalores determinam as energias dos orbitais moleculares.
+
+\begin{equation}
+\label{eq:secularmatrix}
+\begin{bmatrix}
+    \alpha - E & \beta & 0 & 0 & 0 & \beta \\
+    \beta & \alpha - E & \beta & 0 & 0 & 0 \\
+    0 & \beta & \alpha - E & \beta & 0 & 0 \\
+    0 & 0 & \beta & \alpha - E & \beta & 0 \\
+    0 & 0 & 0 & \beta & \alpha - E & \beta \\
+    \beta & 0 & 0 & 0 & \beta & \alpha - E \\
+\end{bmatrix}
+\end{equation}
+
+No caso do benzeno, ao resolver o determinante secular da matriz anterior (através do procedimento mostrado no \autoref{ap:a1}), obtemos a equação
+
 \begin{figure}[htb]
-	\caption{\label{fig:4} Valores de energia dos orbitais de fronteira do benzeno, obtidos com o Balmy.}
-	\begin{center}
-		\includegraphics[width=0.80\textwidth]{images/MOS1.png}
-	\end{center}
-	\fonte{Autor(a).}
+\begin{equation}
+    \label{eq:R3}
+    \tikzmarknode{variable}{\highlight{blue}{$x$}}^6 - 6\highlight{blue}{$x$}^4 + 9\highlight{blue}{$x$}^2 = 0
+\end{equation}
+\begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
+    \path (variable.south) ++ (1,-1.5em) node[anchor=north west,color=blue!67] (scalep){\textit{$x = \displaystyle \frac{\alpha - E}{\beta}$}};
+    \draw [color=blue!87](variable.south) |- ([xshift=1.65em,color=blue]scalep.north east);
+\end{tikzpicture}
+\vspace{2\baselineskip}
 \end{figure}
+
+Resolvendo o polinômio da \autoref{eq:R3}, conseguimos suas raízes ($x = \pm 1, \pm 1, \pm 2$) e, portanto, as energias para seis orbitais moleculares do benzeno (HOMO-2, HOMO-1, HOMO, LUMO, LUMO+1, LUMO+2). 
+
+\section{Influência de K}
+
 
 \section{Índices geométricos}
 
