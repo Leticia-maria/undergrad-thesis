@@ -38,7 +38,28 @@ Esse modelo baseia-se no fato de que a interação entre dois orbitais atômicos
 
 Posteriormente, essa teoria foi estendida para tratar moléculas com heteroátomos (aqueles diferentes do carbono e hidrogênio)\autocite{Liwschitz1963}. Uma mudança ainda maior foi feita por Roald Hoffmann \autocite{Hoffmann1963}, que desenvolveu o método \gls{EHMO}, o qual inclui todos os elétrons da valência (inclusive elétrons $\sigma$) no cálculo das energias dos orbitais moleculares. Esse método é classificado como semiempírico, ou seja, utiliza dados experimentais para facilitar o processo de cálculo das integrais que acessam a interação elétron-elétron para contabilizar os efeitos de correlação eletrônica na estrutura química.
 
-Como o objetivo do trabalho é desenvolver uma ferramenta rápida e eficiente para ser utilizada dentro no navegador de internet, tal método foi escolhido pelo seu baixo custo computacional de operação, devido às aproximações das matrizes Hamiltonianas pelo teorema de Koopman, responsável por aproximar os valores de $H_{ii}$ pelas energias de ionização. 
+Como o objetivo do trabalho é desenvolver uma ferramenta rápida e eficiente para ser utilizada dentro no navegador de internet, tal método foi escolhido pelo seu baixo custo computacional de operação, devido às aproximações das matrizes Hamiltonianas pelo teorema de Koopman, cujas consequências fazem os valores de $H_{ii}$ serem substituídos pelas energias de ionização (leia o \autoref{ap:EHMO} para mais detalhes).
+
+A metodologia de Hueckel estendido considera todos os elétrons da valência no cálculo, e baseia-se no princípio de que os orbitais moleculares são combinações de orbitais atômicos. Desse modo, os conjuntos de base mínimos utilizados para esse procedimento são os mesmos parâmetros empregados no \gls{YAeHMOP}\autocite{Avery2017}. 
+
+\begin{figure}[htb]
+    \vspace{2\baselineskip}
+\begin{equation}
+    \label{eq:LCAO}
+    LCAO \longrightarrow \psi_j = \sum_{r=1}^{N} c_{jr} \phi_j
+\end{equation}
+\begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
+    \path (norm.north) ++ (1,1.5em) node[anchor=south west,color=blue!67] (scalep){\textit{$\alpha = 98.89$}};
+    \draw [color=blue!87](norm.north) |- ([xshift=3em,color=blue]scalep.south east);
+    
+    \path (HOMA.north) ++ (-0.70,1.5em) node[anchor=south east,color=red!67] (scalep){\textit{(aromático perfeito) = 1}};
+    \draw [color=red!87](HOMA.north) |- ([xshift=-0.70em,color=red]scalep.south west);
+    
+    \path (HOMA.south) ++ (-1,-1.5em) node[anchor=north east,color=red!67] (scalep){\textit{(não aromático) = 0}};
+    \draw [color=red!87](HOMA.south) |- ([xshift=-1.65em,color=blue]scalep.north west);
+\end{tikzpicture}
+\vspace{2\baselineskip}
+\end{figure}
 
 %\section{Otimização de geometria}
 

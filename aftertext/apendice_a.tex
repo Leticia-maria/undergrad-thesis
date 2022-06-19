@@ -312,7 +312,7 @@ A função de onda eletrônica é considerada, nesse modelo, como um produto de 
     \vspace{2\baselineskip}
 \begin{equation}
     \label{ap:eq:14}
-    \psi_{\textbf{total}} = \phi_{\textbf{núcleo}} + \tikzmarknode{hmo}{\highlight{red}{$\phi_{\textbf{valência}}$}}
+    \psi_{\textbf{total}} = \psi_{\textbf{núcleo}} + \tikzmarknode{hmo}{\highlight{red}{$\psi_{\textbf{valência}}$}}
 \end{equation}
 \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
     \path (hmo.north) ++ (1.2em,1.5em) node[anchor=south west,color=red!67] (scalep){\textit{Hueckel estendido}};
@@ -323,10 +323,10 @@ A função de onda eletrônica é considerada, nesse modelo, como um produto de 
 \begin{figure}[htb]
     \vspace{2\baselineskip}
 \begin{equation}
-    \phi_{\textbf{valência}} = \psi_1 (1) \psi_2 (2) \psi_3 (3) \dots \tikzmarknode{j}{\highlight{red}{$\psi_j$}} (\tikzmarknode{n}{\highlight{blue}{$n$}})
+    \psi_{\textbf{valência}} = \psi_1 (1) \psi_2 (2) \psi_3 (3) \dots \tikzmarknode{j}{\highlight{red}{$\psi_j$}} (\tikzmarknode{n}{\highlight{blue}{$n$}})
 \end{equation}
 \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
-    \path (j.north) ++ (1.2em,1.5em) node[anchor=south west,color=red!67] (scalep){$\displaystyle \psi_j = \sum_{r=1}^N c_{jr} \phi_r$};
+    \path (j.north) ++ (1.2em,1.5em) node[anchor=south west,color=red!67] (scalep){$\displaystyle \psi_j = \sum_{r=1}^N c_{jr} \phi_j$};
     \draw [color=red!87](j.north) |- ([xshift=3em,color=red]scalep.south east);
     
     \path (n.south) ++ (1.2em,-1.5em) node[anchor=north west,color=blue!67] (scalep){\textit{$n^o$ de elétrons}};
@@ -342,14 +342,26 @@ A função de onda eletrônica é considerada, nesse modelo, como um produto de 
 
 \noindent onde $H$ é uma matriz quadrada contendo o $H_{rs}$, integrais de energia de um único elétron, e $C$ é a matriz dos coeficientes relativos aos orbitais atômicos. Cada coluna em $C$ é $C'$, que define um orbital molecular em termos das funções de base. Na teoria molecular de Hueckel estendido, a sobreposição não é negligenciado, e $S$ é a matriz das integrais de sobreposição. Essas matrizes são quadradas, possuem o tamanho igual ao número de orbitais atômicos usados na combinação linear. Para qualquer cálculo desse tipo, deve-se construir essas matrizes e então encontrar os autovalores (energias orbitais) e autovetores (coeficientes que definem o orbital molecular em termos das funções de base).
 
-Os elementos da matriz $H$ são atribuídos a partir de dados experimentais, uma vez que o método em questão é semi-empírico. Os elementos de matriz Hamiltoniana fora de diagonal são dados por uma aproximação feita por Wolfsberg e Helmholz, que relaciona com os elementos diagonais e o elemento da matriz de sobreposição, seguindo a \autoref{hamiltonian}.
+Os elementos da matriz $H$ são atribuídos a partir de dados experimentais, uma vez que o método em questão é semi-empírico. Os elementos de matriz Hamiltoniana fora de diagonal são dados por uma aproximação feita por Wolfsberg e Helmholz, que relaciona com os elementos diagonais e o elemento da matriz de sobreposição, seguindo a \autoref{hamiltonian}. De acordo com essa expressão, a energia deveria ser proporcional à energia dos orbitais atômicos, e será tão maior quanto maior a sobreposição desses orbitais. A contribuição desses efeitos com a energia é escalada pelo fator $K$. Hoffmann \autocite{Hoffmann1963} atribuiu o valor de 1.75 para $K$, após um estudo do efeito desse parâmetro nas energias dos orbitais ocupados do etano.
 
-\begin{equation}
+
+
+\begin{figure}[htb]
 \label{hamiltonian}
-    H_{ij} = \frac{1}{2} K(H_{ii} + H_{jj}) S_{ij}
+    \vspace{2\baselineskip}
+\begin{equation}
+    H_{ij} = \frac{1}{2} \tikzmarknode{k}{\highlight{red}{$K$}}(H_{ii} + H_{jj}) \tikzmarknode{s}{\highlight{blue}{$S_{ij}$}}
 \end{equation}
+\begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
+    \path (k.north) ++ (1.2em,1.5em) node[anchor=south west,color=red!67] (scalep){\textit{constante de Wolfsberg-Helmholtz}};
+    \draw [color=red!87](k.north) |- ([xshift=3em,color=red]scalep.south east);
+    
+    \path (s.south) ++ (-1.2em,-1.5em) node[anchor=north east,color=blue!67] (scalep){\textit{integral de sobreposição $\Longrightarrow S_{ij} = \langle \psi_j | \psi_j \rangle$}};
+    \draw [color=blue!87](s.south) |- ([xshift=-3em,color=blue]scalep.north west);
+\end{tikzpicture}
+\end{figure}
 
-De acordo com essa expressão, a energia deveria ser proporcional à energia dos orbitais atômicos, e será tão maior quanto maior a sobreposição desses orbitais. A contribuição desses efeitos com a energia é escalada pelo fator $K$. Hoffmann \autocite{Hoffmann1963} atribuiu o valor de 1.75 para $K$, após um estudo do efeito desse parâmetro nas energias dos orbitais ocupados do etano. Os valores de $H_{ii}$ são escolhidos como um estado de potenciais de ionização com o valor negativo, indicando ligação. Isso ocorre em função do teorema de Koopman\autocite{Koopmans1934}, cujo enunciado determina que a primeira energia de ionização de um sistema molecular é o oposto da energia atribuída ao \gls{HOMO}, uma vez que. no contexto do \gls{RHF}, considera-se que os orbitais do íon são idênticos àqueles da molécula neutra (segundo a aproximação do orbital \textit{congelado}). 
+ Os valores de $H_{ii}$ são escolhidos como um estado de potenciais de ionização com o valor negativo, indicando ligação. Isso ocorre em função do teorema de Koopman\autocite{Koopmans1934}, cujo enunciado determina que a primeira energia de ionização de um sistema molecular é o oposto da energia atribuída ao \gls{HOMO}, uma vez que. no contexto do \gls{RHF}, considera-se que os orbitais do íon são idênticos àqueles da molécula neutra (segundo a aproximação do orbital \textit{congelado}). 
 
 \begin{table}[htb]
 	\centering
