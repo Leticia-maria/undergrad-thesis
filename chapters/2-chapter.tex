@@ -46,20 +46,19 @@ A metodologia de Hueckel estendido considera todos os elétrons da valência no 
     \vspace{2\baselineskip}
 \begin{equation}
     \label{eq:LCAO}
-    LCAO \longrightarrow \psi_j = \sum_{r=1}^{N} c_{jr} \phi_j
+    \tikzmarknode{lcao}{\highlight{red}{LCAO}} \Longrightarrow \psi_j = \sum_{r=1}^{N} c_{jr} \tikzmarknode{aos}{\highlight{blue}{$\phi_r$}}
 \end{equation}
 \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
-    \path (norm.north) ++ (1,1.5em) node[anchor=south west,color=blue!67] (scalep){\textit{$\alpha = 98.89$}};
-    \draw [color=blue!87](norm.north) |- ([xshift=3em,color=blue]scalep.south east);
+    \path (lcao.north) ++ (-0.70,1.5em) node[anchor=south east,color=red!67] (scalep){\textit{combinação linear}};
+    \draw [color=red!87](lcao.north) |- ([xshift=-0.70em,color=red]scalep.south west);
     
-    \path (HOMA.north) ++ (-0.70,1.5em) node[anchor=south east,color=red!67] (scalep){\textit{(aromático perfeito) = 1}};
-    \draw [color=red!87](HOMA.north) |- ([xshift=-0.70em,color=red]scalep.south west);
-    
-    \path (HOMA.south) ++ (-1,-1.5em) node[anchor=north east,color=red!67] (scalep){\textit{(não aromático) = 0}};
-    \draw [color=red!87](HOMA.south) |- ([xshift=-1.65em,color=blue]scalep.north west);
+    \path (aos.south) ++ (-1,-1.5em) node[anchor=north east,color=blue!67] (scalep){\textit{orbitais atômicos (conjuntos de bases)}};
+    \draw [color=blue!87](aos.south) |- ([xshift=-1.65em,color=blue]scalep.north west);
 \end{tikzpicture}
 \vspace{2\baselineskip}
 \end{figure}
+
+
 
 %\section{Otimização de geometria}
 

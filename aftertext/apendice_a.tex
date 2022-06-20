@@ -326,7 +326,7 @@ A função de onda eletrônica é considerada, nesse modelo, como um produto de 
     \psi_{\textbf{valência}} = \psi_1 (1) \psi_2 (2) \psi_3 (3) \dots \tikzmarknode{j}{\highlight{red}{$\psi_j$}} (\tikzmarknode{n}{\highlight{blue}{$n$}})
 \end{equation}
 \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
-    \path (j.north) ++ (1.2em,1.5em) node[anchor=south west,color=red!67] (scalep){$\displaystyle \psi_j = \sum_{r=1}^N c_{jr} \phi_j$};
+    \path (j.north) ++ (1.2em,1.5em) node[anchor=south west,color=red!67] (scalep){$\displaystyle \psi_j = \sum_{r=1}^N c_{jr} \phi_r$};
     \draw [color=red!87](j.north) |- ([xshift=3em,color=red]scalep.south east);
     
     \path (n.south) ++ (1.2em,-1.5em) node[anchor=north west,color=blue!67] (scalep){\textit{$n^o$ de elétrons}};
