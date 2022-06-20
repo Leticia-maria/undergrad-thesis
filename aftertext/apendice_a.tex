@@ -344,31 +344,29 @@ A função de onda eletrônica é considerada, nesse modelo, como um produto de 
 
 Os elementos da matriz $H$ são atribuídos a partir de dados experimentais, uma vez que o método em questão é semi-empírico. Os elementos de matriz Hamiltoniana fora de diagonal são dados por uma aproximação feita por Wolfsberg e Helmholz, que relaciona com os elementos diagonais e o elemento da matriz de sobreposição, seguindo a \autoref{hamiltonian}. De acordo com essa expressão, a energia deveria ser proporcional à energia dos orbitais atômicos, e será tão maior quanto maior a sobreposição desses orbitais. A contribuição desses efeitos com a energia é escalada pelo fator $K$. Hoffmann \autocite{Hoffmann1963} atribuiu o valor de 1.75 para $K$, após um estudo do efeito desse parâmetro nas energias dos orbitais ocupados do etano.
 
-
-
 \begin{figure}[htb]
 \label{hamiltonian}
     \vspace{2\baselineskip}
 \begin{equation}
-    H_{ij} = \frac{1}{2} \tikzmarknode{k}{\highlight{red}{$K$}}(H_{ii} + H_{jj}) \tikzmarknode{s}{\highlight{blue}{$S_{ij}$}}
+    H_{rs} = \frac{1}{2} \tikzmarknode{k}{\highlight{red}{$K$}}(H_{rr} + H_{ss}) \tikzmarknode{s}{\highlight{blue}{$S_{rs}$}}
 \end{equation}
 \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
     \path (k.north) ++ (1.2em,1.5em) node[anchor=south west,color=red!67] (scalep){\textit{constante de Wolfsberg-Helmholtz}};
     \draw [color=red!87](k.north) |- ([xshift=3em,color=red]scalep.south east);
     
-    \path (s.south) ++ (-1.2em,-1.5em) node[anchor=north east,color=blue!67] (scalep){\textit{integral de sobreposição $\Longrightarrow S_{ij} = \langle \psi_j | \psi_j \rangle$}};
+    \path (s.south) ++ (-1.2em,-1.5em) node[anchor=north east,color=blue!67] (scalep){\textit{integral de sobreposição $\Longrightarrow S_{rs} = \langle \psi_r | \psi_s \rangle$}};
     \draw [color=blue!87](s.south) |- ([xshift=-3em,color=blue]scalep.north west);
 \end{tikzpicture}
 \end{figure}
 
- Os valores de $H_{ii}$ são escolhidos como um estado de potenciais de ionização com o valor negativo, indicando ligação. Isso ocorre em função do teorema de Koopman\autocite{Koopmans1934}, cujo enunciado determina que a primeira energia de ionização de um sistema molecular é o oposto da energia atribuída ao \gls{HOMO}, uma vez que. no contexto do \gls{RHF}, considera-se que os orbitais do íon são idênticos àqueles da molécula neutra (segundo a aproximação do orbital \textit{congelado}). 
+ Os valores de $H_{rs}$ são escolhidos como um estado de potenciais de ionização com o valor negativo, indicando ligação. Isso ocorre em função do teorema de Koopman\autocite{Koopmans1934}, cujo enunciado determina que a primeira energia de ionização de um sistema molecular é o oposto da energia atribuída ao \gls{HOMO}, uma vez que. no contexto do \gls{RHF}, considera-se que os orbitais do íon são idênticos àqueles da molécula neutra (segundo a aproximação do orbital \textit{congelado}). 
 
 \begin{table}[htb]
 	\centering
-	\caption{\label{qua:Quadro_1} Valores de $H_{ii}$ tomados a partir do potencial de ionização.}	
+	\caption{\label{qua:Quadro_1} Valores de $H_{rr}$ tomados a partir do potencial de ionização.}	
 	\begin{tabular}{ccc}
 		\toprule
-		\textbf{Sítio de ligação} & \textbf{Potencial de ionização/(eV)} & \textbf{Valores de $H_{ii}$/(eV)}
+		\textbf{Sítio de ligação} & \textbf{Potencial de ionização/(eV)} & \textbf{Valores de $H_{rr}$/(eV)}
 		\\ 
 		\midrule
         H-1s & 13.60 & -13.60 \\

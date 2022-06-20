@@ -29,10 +29,12 @@ Esse modelo baseia-se no fato de que a interação entre dois orbitais atômicos
 \begin{figure}[htb]
 	\caption{\label{fig:M1} Círculo de Frost para o benzeno.}
 	\begin{center}
-		\includegraphics[width=0.70\textwidth]{images/figM.png}
+		\includegraphics[width=0.60\textwidth]{images/figM.png}
 	\end{center}
 	\fonte{Autor(a).}
 \end{figure}
+
+Os valores de $H_{rs}$ são computados 
 
 %%% TODO : FROST DIAGRAM
 
@@ -58,7 +60,29 @@ A metodologia de Hueckel estendido considera todos os elétrons da valência no 
 \vspace{2\baselineskip}
 \end{figure}
 
+A energia do j-ésimo orbital é dada pela equação monoeletrônica de Schroedinger usando um Hamiltoniano ($h_{eff}$), que expressa a interação de um elétron com o restante da molécula.
 
+\begin{equation}
+    h_{eff} \psi_j = \epsilon_j \psi_j
+\end{equation}
+
+\begin{equation}
+    \epsilon_j = \frac{ \displaystyle \int \psi_j  \times h_{eff} \times \psi_j d\tau}{\displaystyle \int \psi_j \times \psi_j d\tau}
+\end{equation}
+
+\begin{equation}
+    \epsilon_j = \frac{ \displaystyle \bigg{\langle} \sum_{r=1}^{N} c_{jr} \psi_r \bigg{|} h_{eff} \bigg{|} \sum_{s=1}^{N} c_{js} \psi_s \bigg{\rangle}}{\displaystyle \bigg{\langle} \sum_{r=1}^{N} c_{jr} \psi_r \bigg{|} \sum_{s=1}^{N} c_{js} \psi_s \bigg{\rangle}}
+\end{equation}
+
+Dessa expressão decorrem as integrais que precisam ser calculadas no procedimento do método:
+
+\begin{itemize}
+    \item $\displaystyle S_{rs} = \langle \psi_r | \psi_j \rangle$ é a integral de sobreposição. Como estamos trabalhando com orbitais normalizados, $S_{rr} = 1$;
+    
+    \item $\displaystyle H_{rr} = \langle \psi_r | h_{eff} | \psi_r \rangle$ é a integral de Coulomb, aproximada pelo oposto do potencial de ionização (como é descrito no \autoref{ap:EHMO});
+    
+    \item $\displaystyle H_{rs} = \langle \psi_r | h_{eff} | \psi_s \rangle$ é a integral de ressonância. Essa integral nos dá a energia de um elétron na região do espaço onde as funções $\phi_r$ e, $\phi_s$ sobrepõem-se. 
+\end{itemize}
 
 %\section{Otimização de geometria}
 
