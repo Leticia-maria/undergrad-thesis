@@ -34,8 +34,6 @@ Esse modelo baseia-se no fato de que a interação entre dois orbitais atômicos
 	\fonte{Autor(a).}
 \end{figure}
 
-Os valores de $H_{rs}$ são computados 
-
 %%% TODO : FROST DIAGRAM
 
 Posteriormente, essa teoria foi estendida para tratar moléculas com heteroátomos (aqueles diferentes do carbono e hidrogênio)\autocite{Liwschitz1963}. Uma mudança ainda maior foi feita por Roald Hoffmann \autocite{Hoffmann1963}, que desenvolveu o método \gls{EHMO}, o qual inclui todos os elétrons da valência (inclusive elétrons $\sigma$) no cálculo das energias dos orbitais moleculares. Esse método é classificado como semiempírico, ou seja, utiliza dados experimentais para facilitar o processo de cálculo das integrais que acessam a interação elétron-elétron para contabilizar os efeitos de correlação eletrônica na estrutura química.
@@ -62,16 +60,39 @@ A metodologia de Hueckel estendido considera todos os elétrons da valência no 
 
 A energia do j-ésimo orbital é dada pela equação monoeletrônica de Schroedinger usando um Hamiltoniano ($h_{eff}$), que expressa a interação de um elétron com o restante da molécula.
 
+\begin{figure}[htb]
+    \vspace{2\baselineskip}
 \begin{equation}
-    h_{eff} \psi_j = \epsilon_j \psi_j
+        h_{eff} \psi_j = \epsilon_j \psi_j
 \end{equation}
+\end{figure}
+
+\begin{figure}[htb]
+    \vspace{2\baselineskip}
+\begin{equation}
+        \epsilon_j = \frac{\tikzmarknode{hamil}{\highlight{blue}{$\displaystyle \langle \psi_j | h_{eff} | \psi_j \rangle$}}}{\tikzmarknode{overlap}{\highlight{red}{$\displaystyle \langle \psi_j | \psi_j \rangle$}}}
+\end{equation}
+\begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
+    \path (hamil.north) ++ (-0.70,1.5em) node[anchor=south east,color=blue!67] (scalep){\textit{$\displaystyle \int \psi_j  \times h_{eff} \times \psi_j d\tau$}};
+    \draw [color=blue!87](hamil.north) |- ([xshift=-0.70em,color=blue]scalep.south west);
+    
+    \path (overlap.south) ++ (-1,-1.5em) node[anchor=north east,color=red!67] (scalep){\textit{$\displaystyle \int \psi_j \times \psi_j d\tau$}};
+    \draw [color=red!87](overlap.south) |- ([xshift=-1.65em,color=red]scalep.north west);
+\end{tikzpicture}
+\vspace{2\baselineskip}
+\end{figure}
+
 
 \begin{equation}
-    \epsilon_j = \frac{ \displaystyle \int \psi_j  \times h_{eff} \times \psi_j d\tau}{\displaystyle \int \psi_j \times \psi_j d\tau}
-\end{equation}
-
-\begin{equation}
+\label{eq:energy_j}
     \epsilon_j = \frac{ \displaystyle \bigg{\langle} \sum_{r=1}^{N} c_{jr} \psi_r \bigg{|} h_{eff} \bigg{|} \sum_{s=1}^{N} c_{js} \psi_s \bigg{\rangle}}{\displaystyle \bigg{\langle} \sum_{r=1}^{N} c_{jr} \psi_r \bigg{|} \sum_{s=1}^{N} c_{js} \psi_s \bigg{\rangle}}
+\end{equation}
+
+Generalizando a expressão da \autoref{eq:energy_j} para quaisquer orbitais moleculares, é omitido o índice $j$ (\autoref{eq:energy}).
+
+\begin{equation}
+\label{eq:energy}
+    \epsilon = \frac{\displaystyle \sum_{r=1}^{N} \sum_{s=1}^{N} c^*_r c_s \langle \psi_r | h_{eff} | \psi_s \rangle}{\displaystyle \sum_{r=1}^{N} \sum_{s=1}^{N} c^*_r c_s \langle \psi_r | \psi_s \rangle}
 \end{equation}
 
 Dessa expressão decorrem as integrais que precisam ser calculadas no procedimento do método:
@@ -81,8 +102,19 @@ Dessa expressão decorrem as integrais que precisam ser calculadas no procedimen
     
     \item $\displaystyle H_{rr} = \langle \psi_r | h_{eff} | \psi_r \rangle$ é a integral de Coulomb, aproximada pelo oposto do potencial de ionização (como é descrito no \autoref{ap:EHMO});
     
-    \item $\displaystyle H_{rs} = \langle \psi_r | h_{eff} | \psi_s \rangle$ é a integral de ressonância. Essa integral nos dá a energia de um elétron na região do espaço onde as funções $\phi_r$ e, $\phi_s$ sobrepõem-se. 
+    \item $\displaystyle H_{rs} = \langle \psi_r | h_{eff} | \psi_s \rangle$ é a integral de ressonância. Essa integral nos dá a energia de um elétron na região do espaço onde as funções $\phi_r$ e, $\phi_s$ sobrepõem-se. Os valores de $H_{rs}$ são computados pela \autoref{hamiltonian} (no \autoref{ap:EHMO}).
 \end{itemize}
+
+Substituindo então os elementos das integrais supracitadas na \autoref{eq:energy}, obtemos a \autoref{eq:energy_cont}.
+
+\begin{equation}
+\label{eq:energy_cont}
+    \epsilon = \frac{\displaystyle \sum_{r=1}^{N} \sum_{s=1}^{N} c^*_r c_s H_{rs}}{\displaystyle \sum_{r=1}^{N} \sum_{s=1}^{N} c^*_r c_s S_{rs}}
+\end{equation}
+
+\subsection{Integral de sobreposição}
+
+No Método de Hueckel Estendido, as integrais de sobreposição são calculadas utilizando orbitais atômicos de Slater, pois seus resultados são mais acurados, principalmente pelo fato de reproduzirem mais precisamente a região do cúspide e o decaimento orbital. Desse modo, os conjuntos de bases são obtidos pelas regras de Slater\autocite{Slater1930, Lu2006}.
 
 %\section{Otimização de geometria}
 
