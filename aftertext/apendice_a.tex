@@ -74,7 +74,6 @@ Usando a \autoref{ap:eq:4} (equação de Schroedinger) como base fundamental par
     \psi \hat{H} \psi = \psi^2 E
 \end{equation}
 
-
 Multiplicando ambos os lados por $\psi$, obtém-se a \autoref{ap:eq:5}. Aplicado a integral nessa expressão (mantendo a igualdade) e, em seguida, isolando a energia $E$, obtém-se a \autoref{ap:eq:6}.
 
 \begin{equation}
@@ -359,7 +358,9 @@ Os elementos da matriz $H$ são atribuídos a partir de dados experimentais, uma
 \end{tikzpicture}
 \end{figure}
 
- Os valores de $H_{rs}$ são escolhidos como um estado de potenciais de ionização com o valor negativo, indicando ligação. Isso ocorre em função do teorema de Koopman\autocite{Koopmans1934}, cujo enunciado determina que a primeira energia de ionização de um sistema molecular é o oposto da energia atribuída ao \gls{HOMO}, uma vez que. no contexto do \gls{RHF}, considera-se que os orbitais do íon são idênticos àqueles da molécula neutra (segundo a aproximação do orbital \textit{congelado}). 
+A expressão da \autoref{hamiltonian} pode ser racionalizada de forma a tratar a energia dos orbitais atômicos proporcionalmente à energia dos orbitais atômicos, aumentando diretamente de acordo com a integral de sobreposição e sendo escalada peo parâmetro $K$.
+
+ Os valores de $H_{rr}$ (quais sejam, os elementos da diagonal da matriz) são escolhidos como um estado de potenciais de ionização com o valor negativo, indicando ligação. Isso ocorre em função do teorema de Koopman\autocite{Koopmans1934}, cujo enunciado determina que a primeira energia de ionização de um sistema molecular é o oposto da energia atribuída ao \gls{HOMO}, uma vez que. no contexto do \gls{RHF}, considera-se que os orbitais do íon são idênticos àqueles da molécula neutra (segundo a aproximação do orbital \textit{congelado}). 
 
 \begin{table}[htb]
 	\centering
@@ -384,6 +385,10 @@ Os elementos da matriz $H$ são atribuídos a partir de dados experimentais, uma
 \end{table}
 
 É comum, em muitos estudos teóricos\autocite{Zubatiuk2021, BroJrgensen2021}, utilizar a metodologia em questão como um passo preliminar para determinar os orbitais moleculares por um método mais sofisticado, mais caro computacionalmente, como cálculo \textit{ab initio}.
+
+\section{Teorema de Koopman}
+
+
 
 \chapter{Teoria de grafos} \label{ap:graph}
 

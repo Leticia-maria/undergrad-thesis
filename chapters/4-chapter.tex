@@ -7,12 +7,22 @@ O WebBalmy.jl foi publicado utilizando o GitHub Pages, uma ferramenta gratuita p
 
 \section{Interface gráfica}
 
-A interface gráfica produzida é devidamente mostrada na \autoref{gui-pronta}. Os elementos interativos foram implementados para fazer com que o \textit{software} em questão fosse o mais amigável possível.
+A interface gráfica produzida é devidamente mostrada na \autoref{gui-pronta}. Os elementos interativos foram implementados para fazer com que o \textit{software} em questão fosse o mais amigável possível ao usuário, isto é, extremamente intuitiva e fácil de usar, tendo em vista que um dos objetivos do trabalho é produzir uma ferramenta que possa ser acessada pelo navegador e, assim, 
 
 \begin{figure}[htb]
 	\caption{\label{gui-pronta} Aqui é mostrada a interface gráfica produzida. Os círculos sinalizam as funções associadas às áreas da GUI (\textit{Graphical User Interface})}
 	\begin{center}
 		\includegraphics[width=1.0\textwidth]{images/GUI-EXAMPLE.png}
+	\end{center}
+	\fonte{Autor(a)}
+\end{figure}
+
+O fluxo de trabalho básico de funcionamento do WeBalmy.jl também é ilustrado pelo esquema da \autoref{workflow}, onde é possível notar que o usuário insere, como entrada, o arquivo contendo as coordenadas cartesianas do sistema químico que deseja estudar. A partir de tais informações, a estrutura é processada é representada tridimensionalmente e matematicamente pelo cálculo de Hueckel estendido, que vai calcular as energias dos orbitais moleculares, através dos quais é possível fazer análises do caráter aromático presente na estrutura.
+
+\begin{figure}[htb]
+	\caption{\label{workflow} Fluxo de trabalho do \textit{software} produzido.}
+	\begin{center}
+		\includegraphics[width=0.65\textwidth]{images/workflow.png}
 	\end{center}
 	\fonte{Autor(a)}
 \end{figure}

@@ -58,18 +58,12 @@ A metodologia de Hueckel estendido considera todos os elétrons da valência no 
 \vspace{2\baselineskip}
 \end{figure}
 
-A energia do j-ésimo orbital é dada pela equação monoeletrônica de Schroedinger usando um Hamiltoniano ($h_{eff}$), que expressa a interação de um elétron com o restante da molécula.
+A energia do j-ésimo orbital é dada pela equação monoeletrônica de Schroedinger ($ h_{eff} \psi_j = \epsilon_j \psi_j$) usando um Hamiltoniano ($h_{eff}$), que expressa a interação de um elétron com o restante da molécula.
 
 \begin{figure}[htb]
-    \vspace{2\baselineskip}
+    \vspace{3\baselineskip}
 \begin{equation}
-        h_{eff} \psi_j = \epsilon_j \psi_j
-\end{equation}
-\end{figure}
-
-\begin{figure}[htb]
-    \vspace{2\baselineskip}
-\begin{equation}
+\label{eq:energy_j1}
         \epsilon_j = \frac{\tikzmarknode{hamil}{\highlight{blue}{$\displaystyle \langle \psi_j | h_{eff} | \psi_j \rangle$}}}{\tikzmarknode{overlap}{\highlight{red}{$\displaystyle \langle \psi_j | \psi_j \rangle$}}}
 \end{equation}
 \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
@@ -82,6 +76,7 @@ A energia do j-ésimo orbital é dada pela equação monoeletrônica de Schroedi
 \vspace{2\baselineskip}
 \end{figure}
 
+A \autoref{eq:energy_j1} pode ser escrita como a \autoref{eq:energy_j}.
 
 \begin{equation}
 \label{eq:energy_j}
@@ -114,7 +109,56 @@ Substituindo então os elementos das integrais supracitadas na \autoref{eq:energ
 
 \subsection{Integral de sobreposição}
 
-No Método de Hueckel Estendido, as integrais de sobreposição são calculadas utilizando orbitais atômicos de Slater, pois seus resultados são mais acurados, principalmente pelo fato de reproduzirem mais precisamente a região do cúspide e o decaimento orbital. Desse modo, os conjuntos de bases são obtidos pelas regras de Slater\autocite{Slater1930, Lu2006}.
+No Método de Hueckel Estendido, as integrais de sobreposição são calculadas utilizando orbitais atômicos de Slater (representado por coordenadas esféricas na ), pois seus resultados são mais acurados, principalmente pelo fato de reproduzirem mais precisamente a região do cúspide e o decaimento orbital. Desse modo, os conjuntos de bases são obtidos pelas regras de Slater\autocite{Slater1930, Lu2006}.
+
+\begin{figure}[htb]
+    \vspace{3\baselineskip}
+\begin{equation}
+\label{stos}
+        \tikzmarknode{sto}{\highlight{blue}{$\chi_{nlm}(\zeta, r)$}} = \tikzmarknode{norm}{\highlight{gray}{$N$}} r^{n-1} e^{-\zeta r} \tikzmarknode{harmonic}{\highlight{red}{$Y_l^m (\theta, \Phi)$}}
+\end{equation}
+\begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
+    \path (sto.south) ++ (-0.70,-1.5em) node[anchor=north east,color=blue!67] (scalep){\textit{Slater Type Orbital}};
+    \draw [color=blue!87](sto.south) |- ([xshift=-0.70em,color=blue]scalep.north west);
+    
+    \path (norm.south) ++ (0.70,-1.5em) node[anchor=north west,color=gray!67] (scalep){\textit{$\displaystyle \bigg{[} \frac{(2 \zeta)^{n-1}}{(2n)!} \bigg{]}^{1/2}$}};
+    \draw [color=gray!87](norm.south) |- ([xshift=0.70em,color=gray]scalep.north east);
+    
+    \path (harmonic.north) ++ (-0.70,1.5em) node[anchor=south east,color=red!67] (scalep){\textit{$i^{m + |m|}\bigg{[}\displaystyle \frac{(2l+1)(l+|m|)!}{2(l + |m|)!}\bigg{]}^{1/2} P^m_l (cos \; \theta) \phi_m(\Phi)$}};
+    \draw [color=red!87](harmonic.north) |- ([xshift=-0.70em,color=red]scalep.south west);
+
+\end{tikzpicture}
+\vspace{2\baselineskip}
+\end{figure}
+
+Avaliando a \autoref{stos}, $N$ representa a constante de normalização, ou seja, $Y_l^m (\theta, \Phi)$ representa os esféricos harmônicos normalizados relacionados com polinômios de Legendre, definido pela \autoref{legendre}, e $\phi_m (\Phi)$ representa as funções ortonormais.
+
+\begin{figure}[htb]
+\begin{equation}
+    \phi_m (\Phi) = (2\pi)^{-1/2} e^{im\Phi}
+\end{equation}
+\end{figure}
+
+\begin{figure}[htb]
+    \vspace{3\baselineskip}
+\begin{equation}
+\label{legendre}
+    P^m_l(x) = (1 - x^2)^{m/2} \sum_{u=0}^{l - m} \tikzmarknode{c}{\highlight{blue}{$C_{lmu}$}} x^u
+\end{equation}
+\begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
+    \path (c.north) ++ (-0.50,1.5em) node[anchor=south east,color=blue!67] (scalep){\textit{$C_{lmu} = \displaystyle \frac{(-1)^{(l-m-u)/2}[1 + (-1)^{(l - m - u)}](l + m + u)!}{2^{l + 1}([l - m - u]/2)!([l + m + u]/2)!}$}};
+    \draw [color=blue!87](c.north) |- ([xshift=-0.20em,color=blue]scalep.south west);
+\end{tikzpicture}
+\end{figure}
+
+De maneira geral, pode-se definir, portanto, as integrais de sobreposição \autocite{Hoggan2011} definida por coordenadas esféricas.
+
+\begin{equation}
+\label{overlap}
+    S^{n_2 l_2 m_2}_{n_1 l_1 m_1} (\zeta_1; \zeta_2; \textbf{\textit{R}} ) = \int [\chi_{n_1 l_1 m_1} (\zeta_1, \textbf{\textit{r}})]^* \chi_{n_2 l_2 m_2} (\zeta_2, \textbf{\textit{r - R}})
+\end{equation}
+
+A expressão da \autoref{overlap} pode ser aproximada a uma expressão analítica por uma série de somatórios finitos ponderados por coeficientes binomiais, podendo então serem mais facilmente computadas e calculadas.
 
 %\section{Otimização de geometria}
 
@@ -159,7 +203,6 @@ O DFS\autocite{Knuth1997-jf, Goodrich2001-pd} (busca em profundidade) é um algo
 \end{figure}
 
 \section{Critérios quantitativos da aromaticidade}
-
 
 \section{Tratamento de resíduos}
 
