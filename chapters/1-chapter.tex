@@ -127,9 +127,9 @@ Simultaneamente, surgiram algumas estratégias experimentais para a determinaç�
 
 A geometria molecular é um fator primordial para determinar a aromaticidade quantitativamente, uma vez que a determinação dos comprimentos de ligação devido à deslocalização cíclica de elétrons tem sido considerada como um critério fundamental de tal propriedade. Esse fato não se associa somente aos elétrons $\pi$, mas também com elétrons $\sigma$ ou pode ainda apresentar um caráter misto \autocite{Evans1938, Evans1938a, Evans1939}.
 
-Nesse sentido, um parâmetro geométrico só faz-se confiável quando a estrutura analisada é obtida de forma acurada, seja experimentalmente, através de técnicas como difração de raios-X\footnote{Aqui podem ser citadas outras técnicas, a exemplo da difração de elétrons em fase gás, espectroscopia de microondas e difração de nêutrons, mas a difração de raios-X tem sido a mais empregada na determinação de estruturas moleculares, uma vez que os outros métodos são mais restritos por se aplicarem somente a moléculas mais simples e com alta simetria.}, ou de maneira teórica, por meio de cálculos \textit{ab initio} e DFT (onde as geometrias são totalmente dependentes do nível de teoria empregado). Isso se torna tão mais importante quanto maior é o interesse em visualizar/analisar pequenas diferenças de aromaticidade.
+Nesse sentido, um parâmetro geométrico só faz-se confiável quando a estrutura analisada é obtida de forma acurada, seja experimentalmente, através de técnicas como difração de raios-X\footnote{Aqui podem ser citadas outras técnicas, a exemplo da difração de elétrons em fase gás, espectroscopia de microondas e difração de nêutrons, mas a difração de raios-X tem sido a mais empregada na determinação de estruturas moleculares, uma vez que os outros métodos são mais restritos por se aplicarem somente a moléculas mais simples e com alta simetria.}, ou de maneira teórica, por meio de cálculos \textit{ab initio} e \gls{DFT} (onde as geometrias são totalmente dependentes do nível de teoria empregado). Isso se torna tão mais importante quanto maior é o interesse em visualizar/analisar pequenas diferenças de aromaticidade.
 
-Os critérios geométricos são aplicados não somente à molécula inteira, como nos outros critérios, mas também podem ser utilizados para estudar fragmentos de sistemas $\pi$-eletrônicos cíclicos ou não. Os indicadores NICS pode, por sua vez, ser aplicados aos anéis individualmente (dependendo do tamanho do ciclo em questão). Em quase todos os casos considerados, os índices geométricos descrevem o grau de elétrons-$\pi$ ou deslocalização de ligações duplas. A natureza da equalização dos comprimentos de ligação dupla é amplamente investigada, mas aqui, aceitamos o pressuposto de que ela é advinda da deslocalização eletrônica.
+Os critérios geométricos são aplicados não somente à molécula inteira, como nos outros critérios, mas também podem ser utilizados para estudar fragmentos de sistemas $\pi$-eletrônicos cíclicos ou não. Os indicadores \gls{NICS} pode, por sua vez, ser aplicados aos anéis individualmente (dependendo do tamanho do ciclo em questão). Em quase todos os casos considerados, os índices geométricos descrevem o grau de elétrons-$\pi$ ou deslocalização de ligações duplas. A natureza da equalização dos comprimentos de ligação dupla é amplamente investigada, mas aqui, aceitamos o pressuposto de que ela é advinda da deslocalização eletrônica.
 
 Ou seja, os índices geométricos de aromaticidade, servem para três propósitos:
 
@@ -143,7 +143,7 @@ No presente trabalho, daremos enfoque ao estudo dos critérios de classificaçã
 
 \subsection{O conceito de Julg Aj (1967)}
 
-A primeira abordagem quantitativa da definição de aromaticidade foi desenvolvida por Julg et al. \autocite{Julg1967, Bergmann1971}, que construiu uma função normalizada da variância dos comprimentos de ligação CC no perímetro de sistemas carbocíclicos $\pi$-eletrônicos.
+A primeira abordagem quantitativa da definição de aromaticidade foi desenvolvida por Julg et al. \autocite{Julg1967, Bergmann1971}, baseado na ideia de que a alternação dos comprimentos de ligação caracteriza o decréscimo da aromaticidade. Foi construída uma função normalizada da variância dos comprimentos de ligação CC no perímetro de sistemas carbocíclicos $\pi$-eletrônicos.
 
 \begin{figure}[htb]
     \vspace{2\baselineskip}
@@ -164,9 +164,102 @@ A primeira abordagem quantitativa da definição de aromaticidade foi desenvolvi
     \vspace{4\baselineskip}
 \end{figure}
 
-Na \autoref{eq:1}, a constante 225 resulta da condição de normalização, na qual $A_j$ assume valor 0 no caso na estrutura do benzeno de Kekulé (cujos comprimentos de ligação seriam diferentes). Para qualquer sistema que possui todas as ligações do mesmo comprimento, o valor de $A_j$ = 1. Em 1971, tal abordagem foi estendida para também incluir sistemas heterocíclicos, mas levando em conta somente as ligações CC.
+Na \autoref{eq:1}, a constante 225 resulta da condição de normalização, na qual $A_j$ assume valor 0 no caso na estrutura do benzeno de Kekulé (cujos comprimentos de ligação seriam diferentes). Para qualquer sistema que possui todas as ligações do mesmo comprimento, o valor de $A_j$ = 1. A limitação do método é que este só se aplica a sistemas carbocíclicos, tornando-se inviável sua aplicação a sistemas aromáticos que contenham heteroátomos, pois exclui contribuições que são devidas às interações entre heteroátomos e carbonos levando, portanto, a uma interpretação errônea da aromaticidade.
 
-\subsection{O modelo do oscilador harmônico (1972)}
+\begin{figure}[htb]
+	\caption{\label{fig:radialenos} Exemplos de radialenos.}
+	\begin{center}
+		\includegraphics[width=0.70\textwidth]{images/radialenos.png}
+	\end{center}
+	\fonte{Autor(a).}
+\end{figure}
+
+Outro problema intrínseco ao método foi observado ao avaliar a aromaticidade para sistemas de elétrons $\pi$ contendo todas as ligações com o mesmo comprimento, a exemplo dos radialenos (antiaromáticos) \autoref{fig:radialenos}, que apresentam todas as ligações CC alongadas ($1.53 \AA$) em comparação ao benzeno ($1.40 \AA$), mas apesar disso apresenta $A_j = 1$, o que é evidentemente incorreto, conforme demonstrado pelo índice HOMA e pelo NICS.
+
+
+\subsection{Análise das ordens de ligação}
+
+A próxima tentativa de uma descrição quantitativa da aromaticidade foi feita por Fringuelli et al.\autocite{Fringuelli1974}, que propuseram o uso das ordens de ligação ao invés dos comprimentos das mesmas, uma vez que a ligação entre dois átomos diferentes, mas podem diferir em suas respectivas ordens de ligação. Os valores de $N$ foram calculados pela \autoref{eq:5}, denominada equação de Gordy\autocite{Gordy1947},
+
+\begin{figure}[htb]
+\begin{equation}
+    \label{eq:5}
+    N = \bigg{(} \frac{a}{\tikzmarknode{length}{\highlight{blue}{R}}^2} \bigg{)} - b
+\end{equation}
+\begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
+    \path (length.south) ++ (-1,-1.5em) node[anchor=north east,color=blue!67] (scalep){\textit{comprimento de ligação}};
+    \draw [color=blue!87](length.south) |- ([xshift=-1.65em,color=blue]scalep.north west);
+\end{tikzpicture}
+\vspace{2\baselineskip}
+\end{figure}
+
+\noindent onde o R representa o comprimento de ligação observado e as constantes $a$ e $b$ são empíricas, dependentes da natureza da ligação, pois são determinadas a partir dos raios de ligação covalente e valores de eletronegatividades.
+
+Portanto, a soma das diferenças nas ordens de ligação em um anel $\bigg{(} \displaystyle \sum \Delta N \bigg{)}$ foi tomada como uma medida da aromaticidade. Desse modo, quanto menor esse valor, mais aromático o sistema, gerando uma escala do decréscimo da aromaticidade: benzeno > tiofeno > selenofeno > telurofeno > furano \autocite{Fringuelli1974} (\autoref{fig:4}). 
+
+\begin{table}[htb]
+	\centering
+	\caption{\label{tab:1} Valores das constantes $a$ e $b$ usadas no cálculo das ordens de ligação de acordo na \autoref{eq:5}.}
+	\begin{tabular}{cccc}
+		\toprule
+		\textbf{Tipo de ligação} & \textbf{\textit{a}} & \textbf{\textit{b}} & \textbf{Referência}
+		\\ 
+		\midrule
+        CC & 6.80 & 1.71 & \cite{Gordy1947} \\
+        CN & 6.48 & 2.00 & \cite{Gordy1947} \\
+        CP & 13.5 & 3.02 & \cite{Gordy1947} \\
+        CO & 5.75 & 1.85 & \cite{Gordy1947} \\
+        CS & 11.9 & 2.59 & \cite{Gordy1947} \\
+        CSe & 15.2 & 3.09 & \cite{Fringuelli1974}\\
+        CTe & 21.4 & 3.81 & \cite{Fringuelli1974}\\
+    \bottomrule
+	\end{tabular}
+	\fonte{\textit{Krygowski et al.}\autocite{krygowski-2014}}
+\end{table}
+
+
+%% TODO: explain values of a and b
+
+Os valores de $a$ (\autoref{a}) e $b$ (\autoref{b}) definidos na \autoref{eq:5} representam parâmetros de ajuste calculados com base nos deslocamentos químicos dos hidrogênios e no volume molar das espécies.
+
+\begin{equation}
+\label{a}
+    a = \Delta \delta_1 {V_m}^{2/3}
+\end{equation}
+
+\begin{equation}
+\label{b}
+    b = \frac{1}{\displaystyle \sum_{i,j} |(\Delta (\delta_2)_i - (\delta_2)_j|}
+\end{equation}
+
+%% add equations to a and b
+
+\begin{figure}[htb]
+	\caption{\label{fig:4} Valores de $\bigg{(} \displaystyle \sum \Delta N \bigg{)}$, definidos pela \autoref{eq:5} e parametrizadas pelos valores de $a$ e $b$ da \autoref{tab:1}.}
+	\begin{center}
+		\includegraphics[width=0.45\textwidth]{images/aromaticity(1).png}
+	\end{center}
+	\fonte{Autor(a). Os valores foram comparados com aqueles obtidos por Fringuelli et al.\autocite{Fringuelli1974}.}
+\end{figure}
+
+\subsection{Índice de Bird (1985)}
+
+Visando suprimir o problema dos heteroátomos no índice de Julg, Bird \autocite{Bird1985, Bird1986, Bird1992} utilizou a mesma ideia, substituindo os comprimentos de ligação por ordens de ligação \autocite{Gordy1947}, mostrado na \autoref{eq:5}. Foi definido então que o coeficiente de variação para as ordens de ligação de um sistema heterocíclico é dado pela \autoref{eq:bird}.
+
+\begin{equation}
+\label{eq:bird}
+    V = \frac{100}{N_{av}} \sqrt{\frac{\sum (N - N_{av})^2}{n}}
+\end{equation}
+
+No caso de um sistema heterocíclico totalmente deslocalizado, $V$ assumirá o valor 0, enquanto que para sistemas heterocíclicos com ligações simples e duplas alternadas, o valor dependerá do tipo de anel, sendo definido como um sistema não-deslocalizado de Kekulé e denotado por $V_k$. Por exemplo, para os anéis de cinco membros, temos $V_k = 35$; para os anéis de seis membros, $V_k = 33.3$; e para anéis fundidos, $V_k = 35$. A escala desses valores foi redefinida por Bird, calculando os seguintes índices: $I_5$, $I_6$ e $I_{5,6}$, dependendo do tipo de anel heterocíclico considerado.
+
+\begin{equation}
+    I = 100 \bigg{(} 1 - \frac{V}{V_k} \bigg{)}
+\end{equation}
+
+Em 1992, esse termo transformou-se em um índice unificado, denotado por $I_A$, com base nos valores de energia de deslocalização de Hueckel, os quais são: $2 \beta$ para o benzeno, $2.47 \beta$ para o ânion ciclopentadienil e $3.68 \beta$ para o naftaleno. Desse modo, o índice unificado foi definido como: $I_A = I_6 = 1.235 I_5 = 1.34 I_{6,6} = 2.085 I_{5,6}$. Apesar disso, esse método ainda descreve muito mal os sistemas que contenham comprimentos de ligação equalizados, como o próprio benzeno, que continua sendo tão aromático quanto um radialeno de acordo com esse descritor.
+
+\subsection{O modelo do oscilador harmônico}
 
 O próximo passo foi feito modificando a ideia de Julg, substituindo o comprimento de ligação médio ($R_{av}$) da \autoref{eq:1} por um valor conceitual, denominado o comprimento de ligação ótimo ($R_{opt}$)\footnote{No artigo original\autocite{Kruszewski1972}, esse valor é denotado por $d$}. Tal modelo baseia-se no fato de que a energia do oscilador harmônico relativa à extensão ou compressão de uma ligação química depende das constantes de força, diretamente relacionada aos comprimentos dessa ligação. Ou seja, $R_{opt}$ (\autoref{eq:2}) representa a medida da ligação cujo valor de energia requerido para estirá-la até o comprimento de uma ligação simples ou constringir até o comprimento de uma ligação dupla. Desse modo, os comprimentos das ligações CC no etano e no eteno foram tomadas como valores de referência, assumindo que a relação entre as constantes de força para ligações simples e duplas é 2:1.
 
@@ -230,70 +323,9 @@ A \autoref{eq:3} pode ser analiticamente convertido na \autoref{eq:4} \autocite{
 \vspace{2\baselineskip}
 \end{figure}
 
-Os componentes EN e GEO representam uma diminuição da aromaticidade devido ao aumento da alternação do comprimento de ligação. Enquanto o valor de EN revela quanto o comprimento médio desvia do ótimo, o GEO indica quanto o individual desvia da média. Note que, no caso do benzeno, por exemplo, todos os comprimentos de ligação são iguais, anulando ambos os termos e nos dando um valor de HOMA igual a 1, que é considerado \textit{perfeitamente aromático}. Essa normalização é feita pelo fator $\alpha$ presente na \autoref{eq:4}, que funciona somente para compostos carbocíclicos.
+Os componentes EN e GEO representam uma diminuição da aromaticidade devido ao aumento da alternação do comprimento de ligação, fornecendo informações mais detalhadas a respeito da aromaticidade. Enquanto o valor de EN revela quanto o comprimento médio desvia do ótimo, o GEO indica quanto o individual desvia da média. Note que, no caso do benzeno, por exemplo, todos os comprimentos de ligação são iguais, anulando ambos os termos e nos dando um valor de HOMA igual a 1, que é considerado \textit{perfeitamente aromático}. Essa normalização é feita pelo fator $\alpha$ presente na \autoref{eq:4}, que funciona somente para compostos carbocíclicos.
 
-\subsection{Análise das ordens de ligação}
-
-A próxima tentativa de uma descrição quantitativa da aromaticidade foi feita por Fringuelli et al.\autocite{Fringuelli1974}, que propuseram o uso das ordens de ligação ao invés dos comprimentos das mesmas, uma vez que a ligação entre dois átomos diferentes, mas podem diferir em suas respectivas ordens de ligação. Os valores de $N$ foram calculados pela \autoref{eq:5}, denominada equação de Gordy\autocite{Gordy1947}.
-
-\begin{figure}[htb]
-\begin{equation}
-    \label{eq:5}
-    N = \bigg{(} \frac{a}{\tikzmarknode{length}{\highlight{blue}{R}}^2} \bigg{)} - b
-\end{equation}
-\begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
-    \path (length.south) ++ (-1,-1.5em) node[anchor=north east,color=blue!67] (scalep){\textit{comprimento de ligação}};
-    \draw [color=blue!87](length.south) |- ([xshift=-1.65em,color=blue]scalep.north west);
-\end{tikzpicture}
-\vspace{2\baselineskip}
-\end{figure}
-
-Portanto, a soma das diferenças nas ordens de ligação em um anel $\bigg{(} \displaystyle \sum \Delta N \bigg{)}$ foi tomada como uma medida da aromaticidade. Desse modo, quanto menor esse valor, mais aromático o sistema, gerando uma escala do decréscimo da aromaticidade: benzeno > tiofeno > selenofeno > telurofeno > furano \autocite{Fringuelli1974} (\autoref{fig:4}). 
-
-\begin{table}[htb]
-	\centering
-	\caption{\label{tab:1} Valores das constantes $a$ e $b$ usadas no cálculo das ordens de ligação de acordo na \autoref{eq:5}.}
-	\begin{tabular}{cccc}
-		\toprule
-		\textbf{Tipo de ligação} & \textbf{\textit{a}} & \textbf{\textit{b}} & \textbf{Referência}
-		\\ 
-		\midrule
-        CC & 6.80 & 1.71 & \cite{Gordy1947} \\
-        CN & 6.48 & 2.00 & \cite{Gordy1947} \\
-        CP & 13.5 & 3.02 & \cite{Gordy1947} \\
-        CO & 5.75 & 1.85 & \cite{Gordy1947} \\
-        CS & 11.9 & 2.59 & \cite{Gordy1947} \\
-        CSe & 15.2 & 3.09 & \cite{Fringuelli1974}\\
-        CTe & 21.4 & 3.81 & \cite{Fringuelli1974}\\
-    \bottomrule
-	\end{tabular}
-	\fonte{\textit{Krygowski et al.}\autocite{krygowski-2014}}
-\end{table}
-
-
-%% TODO: explain values of a and b
-
-Os valores de $a$ (\autoref{a}) e $b$ (\autoref{b}) definidos na \autoref{eq:5} representam parâmetros de ajuste calculados com base nos deslocamentos químicos dos hidrogênios e no volume molar das espécies.
-
-\begin{equation}
-\label{a}
-    a = \Delta \delta_1 {V_m}^{2/3}
-\end{equation}
-
-\begin{equation}
-\label{b}
-    b = \frac{1}{\displaystyle \sum_{i,j} |(\Delta (\delta_2)_i - (\delta_2)_j|}
-\end{equation}
-
-%% add equations to a and b
-
-\begin{figure}[htb]
-	\caption{\label{fig:4} Valores de $\bigg{(} \displaystyle \sum \Delta N \bigg{)}$, definidos pela \autoref{eq:5} e parametrizadas pelos valores de $a$ e $b$ da \autoref{tab:1}.}
-	\begin{center}
-		\includegraphics[width=0.45\textwidth]{images/aromaticity(1).png}
-	\end{center}
-	\fonte{Autor(a). Os valores foram comparados com aqueles obtidos por Fringuelli et al.\autocite{Fringuelli1974}.}
-\end{figure}
+No entanto, uma modificação foi realizada para abranger no índice HOMA para torná-lo aplicável a sistemas que contenham heteroátomos, representando-as por números de ligação de Pauling.
 
 \section{Aplicações dos critérios geométricos}
 
@@ -301,7 +333,6 @@ No início, a aromaticidade estava fortemente relacionada à reatividade, uma ve
 
 Uma discussão qualitativa do caráter aromático de um anel particular em uma molécula de um hidrocarboneto policíclico benzenoide é oferecida pelas regras de Clar. Essas regras classificam os aneis de acordo com a estrutura dos seus elétrons $\pi$, podendo nomeá-los de acordo com um sexteto aromático, um anel vazio, anel de migração ou aquela espécie com ligações duplas localizadas, que pode ser facilmente identificada através do cálculo de HOMA.
 
-Adicionalmente, é valido mencionar que surgiram diversos outros tipos de aromaticidade.
 
 % ----------------------------------------------------------
 \chapter{Objetivos}
