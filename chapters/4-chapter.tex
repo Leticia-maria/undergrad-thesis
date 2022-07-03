@@ -63,34 +63,28 @@ Variando, portanto, o valor de $\alpha'$, é possível notar que, na \autoref{fi
 
 \section{Hidrocarbonetos aromáticos}
 
-Como o enfoque desse trabalho é a análise de compostos aromáticos, analisaremos de maneira mais aprofundada o exemplo do benzeno, cujas coordenadas estão mostradas na \autoref{tab:coords}. Os comprimentos de ligação obtidos para \ce{C-C} são $1.40 \AA$ e, para \ce{C-H}, são $1.10 \AA$.
+Analisando os dados da \autoref{tab:energies}, concluímos que a ordem das estabilidades dos compostos está de acordo com aqueles apresentados por Hoffmann \autocite{Hoffmann1963}, e com os dados experimentais publicados por Heilbronner. Por exemplo, o naftaleno mostra-se 32.3 kcal/mol mais estável do que o azuleno, o que é um ótimo resultado se comparado com o valor de referência (32.6 kcal/mol). O fulveno, por sua vez, é computado como sendo 25.6 kcal/mol menos estável do que o benzeno, em relação ao valor de 27 kcal/mol tomado como modelo. O antraceno, por sua vez, é 4.2 kcal/mol mais estável do que o fenantreno, enquanto o último isômero é, na verdade, 6.9 kcal/mol mais estável, o que provém do fato de que há repulsão estérica entre os hidrogênios do fenantreno.
 
 \begin{table}[htb]
 	\centering
-	\caption{\label{tab:coords} Coordenadas atômicas do benzeno.}	
-	\begin{tabular}{crrr}
+	\caption{\label{tab:energies} Energias dos elétrons $\pi$ nos compostos aromáticos.}	
+	\begin{tabular}{lrr}
 		\toprule
-		\textbf{Átomo (posição)} & $x$ & $y$ & $z$
+		\textbf{Molécula} & $E_\pi / (eV)$ & $E_\pi / (kcal/mol)$
 		\\ 
 		\midrule
-        C(1) &  1.40 &  0.00 & 0.00 \\ 
-        C(2) & -1.40 &  0.00 & 0.00 \\
-        C(3) &  0.70 &  1.21 & 0.00 \\
-        C(4) &  0.70 & -1.21 & 0.00 \\
-        C(5) & -0.70 & -1.21 & 0.00 \\
-        C(6) & -0.70 &  1.21 & 0.00 \\
-        H(1) &  2.50 &  0.00 & 0.00 \\
-        H(2) & -2.50 &  0.00 & 0.00 \\
-        H(3) &  1.25 &  2.16 & 0.00 \\
-        H(4) &  1.25 & -2.16 & 0.00 \\
-        H(5) & -1.25 & -2.16 & 0.00 \\
-        H(6) & -1.25 &  2.16 & 0.00 \\
+        Etileno & -26.336 & -609.628 \\
+        Butadieno & -52.964 & -1221.38 \\
+        Benzeno & -80.208 & -1849.64 \\
+        Fulveno & -78.928 & -1820.12 \\
+        Naftaleno & -133.676 & -3082.64 \\
+        Azuleno & -132.934 & -3065.53 \\
+        Fenantreno & -187.286 & -4318.92 \\
+        Antraceno & -187.020 & -4312.78 \\
     \bottomrule
 	\end{tabular}
 	\fonte{Autor(a).}
 \end{table}
-
-Analisando os dados da \autoref{qua:Quadro_1}, concluímos que a ordem das estabilidades dos compostos está de acordo com aqueles apresentados por Hoffmann \autocite{Hoffmann1963}, e com os dados experimentais publicados por Heilbronner. Por exemplo, o naftaleno mostra-se 32.3 kcal/mol mais estável do que o azuleno, o que é um ótimo resultado se comparado com o valor de referência (32.6 kcal/mol). O fulveno, por sua vez, é computado como sendo 25.6 kcal/mol menos estável do que o benzeno, em relação ao valor de 27 kcal/mol tomado como modelo.
 
 \section{Diagramas de orbitais moleculares}
 
@@ -202,7 +196,32 @@ Os autovalores repetidos vão gerar orbitais degenerados, isto é, aqueles que e
 	\fonte{Autor(a).}
 \end{table}
 
+Como o enfoque desse trabalho é a análise de compostos aromáticos, analisaremos de maneira mais aprofundada o exemplo do benzeno, cujas coordenadas estão mostradas na \autoref{tab:coords}. Os comprimentos de ligação obtidos para \ce{C-C} são $1.40 \AA$ e, para \ce{C-H}, são $1.10 \AA$.
 
+\begin{table}[htb]
+	\centering
+	\caption{\label{tab:coords} Coordenadas atômicas do benzeno.}	
+	\begin{tabular}{crrr}
+		\toprule
+		\textbf{Átomo (posição)} & $x$ & $y$ & $z$
+		\\ 
+		\midrule
+        C(1) &  1.40 &  0.00 & 0.00 \\ 
+        C(2) & -1.40 &  0.00 & 0.00 \\
+        C(3) &  0.70 &  1.21 & 0.00 \\
+        C(4) &  0.70 & -1.21 & 0.00 \\
+        C(5) & -0.70 & -1.21 & 0.00 \\
+        C(6) & -0.70 &  1.21 & 0.00 \\
+        H(1) &  2.50 &  0.00 & 0.00 \\
+        H(2) & -2.50 &  0.00 & 0.00 \\
+        H(3) &  1.25 &  2.16 & 0.00 \\
+        H(4) &  1.25 & -2.16 & 0.00 \\
+        H(5) & -1.25 & -2.16 & 0.00 \\
+        H(6) & -1.25 &  2.16 & 0.00 \\
+    \bottomrule
+	\end{tabular}
+	\fonte{Autor(a).}
+\end{table}
 
 \section{Influência de K}
 
