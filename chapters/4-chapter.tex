@@ -7,7 +7,7 @@ O WebBalmy.jl foi publicado utilizando o GitHub Pages, uma ferramenta gratuita p
 
 \section{Interface gráfica}
 
-A interface gráfica produzida é devidamente mostrada na \autoref{gui-pronta}. Os elementos interativos foram implementados para fazer com que o \textit{software} em questão fosse o mais amigável possível ao usuário, isto é, extremamente intuitiva e fácil de usar, tendo em vista que um dos objetivos do trabalho é produzir uma ferramenta que possa ser acessada pelo navegador e, assim, 
+A interface gráfica construída é devidamente mostrada na \autoref{gui-pronta}. Os elementos interativos foram implementados para fazer com que o \textit{software} em questão fosse o mais amigável possível ao usuário, isto é, extremamente intuitivo e fácil de usar, podendo ser acessado através do navegador e, assim, utilizado nas salas de aula da graduação.
 
 \begin{figure}[htb]
 	\caption{\label{gui-pronta} Aqui é mostrada a interface gráfica produzida. Os círculos sinalizam as funções associadas às áreas da GUI (\textit{Graphical User Interface})}
@@ -17,7 +17,7 @@ A interface gráfica produzida é devidamente mostrada na \autoref{gui-pronta}. 
 	\fonte{Autor(a)}
 \end{figure}
 
-O fluxo de trabalho básico de funcionamento do WeBalmy.jl também é ilustrado pelo esquema da \autoref{workflow}, onde é possível notar que o usuário insere, como entrada, o arquivo contendo as coordenadas cartesianas do sistema químico que deseja estudar. A partir de tais informações, a estrutura é processada é representada tridimensionalmente e matematicamente pelo cálculo de Hueckel estendido, que vai calcular as energias dos orbitais moleculares, através dos quais é possível fazer análises do caráter aromático presente na estrutura.
+O fluxo de trabalho básico de funcionamento do WeBalmy.jl também é ilustrado pelo esquema da \autoref{workflow}, onde é possível notar que o usuário insere, como entrada, o arquivo contendo as coordenadas cartesianas do sistema químico que deseja estudar. A partir de tais informações, a estrutura é processada é representada tridimensionalmente e as energias dos seus orbitais moleculares são calculados pelo cálculo de Hueckel estendido, através do qual é possível fazer análises do caráter aromático presente na estrutura.
 
 \begin{figure}[htb]
 	\caption{\label{workflow} Fluxo de trabalho do \textit{software} produzido.}
@@ -28,6 +28,7 @@ O fluxo de trabalho básico de funcionamento do WeBalmy.jl também é ilustrado 
 \end{figure}
 
 \section{Representação tridimensional}
+
 Para representar os modelos tridimensionais utilizando o Three.js, é utilizado o modelo de Blinn-Phong, capaz de simular superfícies brilhantes com holofotes especulares. O sombreamento é calculado \textit{per pixel} de acordo com o modelo de Phong. Desse modo, apesar de custar um pouco mais de tempo para renderizar, ele atinge uma acurácia maior do que outros modelos disponíveis (o de Lambert, por exemplo).
 
 No modelo primeiramente proposto por Phong, é calculado continuamente o produto escalar $R \cdot V$ entre um observador $V$ e o feixe de uma fonte de luz ($L$) refletida ($R$) sobre uma superfície. No ajuste proposto por Blinn, no entanto, calcula-se um vetor a meio caminho entre o espectador e os vetores de fonte luminosa, podendo substituir $R \cdot V$ por $N \cdot H$, onde $N$ é o vetor normal à superfície.
@@ -62,8 +63,7 @@ Variando, portanto, o valor de $\alpha'$, é possível notar que, na \autoref{fi
 
 \section{Hidrocarbonetos aromáticos}
 
-Como o enfoque desse trabalho é a análise de compostos aromáticos, analisaremos de maneira mais aprofundada o exemplo do benzeno, cujas coordenadas estão mostradas na \autoref{tab:coords}. Os comprimentos de ligação obtidos para \ce{C-C} são $1.40 \AA$ e, para \ce{C-H}, sã0 $1.10 \AA$.
-
+Como o enfoque desse trabalho é a análise de compostos aromáticos, analisaremos de maneira mais aprofundada o exemplo do benzeno, cujas coordenadas estão mostradas na \autoref{tab:coords}. Os comprimentos de ligação obtidos para \ce{C-C} são $1.40 \AA$ e, para \ce{C-H}, são $1.10 \AA$.
 
 \begin{table}[htb]
 	\centering
@@ -89,6 +89,8 @@ Como o enfoque desse trabalho é a análise de compostos aromáticos, analisarem
 	\end{tabular}
 	\fonte{Autor(a).}
 \end{table}
+
+Analisando os dados da \autoref{qua:Quadro_1}, concluímos que a ordem das estabilidades dos compostos está de acordo com aqueles apresentados por Hoffmann \autocite{Hoffmann1963}, e com os dados experimentais publicados por Heilbronner. Por exemplo, o naftaleno mostra-se 32.3 kcal/mol mais estável do que o azuleno, o que é um ótimo resultado se comparado com o valor de referência (32.6 kcal/mol). O fulveno, por sua vez, é computado como sendo 25.6 kcal/mol menos estável do que o benzeno, em relação ao valor de 27 kcal/mol tomado como modelo.
 
 \section{Diagramas de orbitais moleculares}
 
@@ -176,7 +178,7 @@ Resolvendo o polinômio da \autoref{eq:R3}, conseguimos suas raízes ($x = \pm 1
 	\fonte{Autor(a)}
 \end{figure}
 
-Os autovalores repetidos vão gerar orbitais degenerados, isto é, aqueles que estão no mesmo nível energético, como é possível notar no diagrama e nos valores de energia obtidos. Esses mesmos valores podem ser obtidos se calcularmos os autovalores da matriz de adjacência. Desse modo, ao solucionar o determinante e os autovalores da matriz secular, é possível obter os valores de energia e as populações associadas a cada orbital molecular da molécula de interesse.
+Os autovalores repetidos vão gerar orbitais degenerados, isto é, aqueles que estão no mesmo nível energético, como é possível notar no diagrama e nos valores de energia obtidos. Esses mesmos valores podem ser obtidos se calcularmos os autovalores da matriz de adjacência. Desse modo, comprovamos que, ao solucionar o determinante e os autovalores da matriz secular, é possível obter os valores de energia e as populações associadas a cada orbital molecular da molécula de interesse.
 
 \begin{table}[htb]
 	\centering
@@ -199,6 +201,8 @@ Os autovalores repetidos vão gerar orbitais degenerados, isto é, aqueles que e
 	\end{tabular}
 	\fonte{Autor(a).}
 \end{table}
+
+
 
 \section{Influência de K}
 
