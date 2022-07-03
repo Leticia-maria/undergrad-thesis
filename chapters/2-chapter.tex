@@ -161,6 +161,29 @@ definida por coordenadas esféricas.
 
 A expressão da \autoref{overlap} pode ser aproximada a uma expressão analítica por uma série de somatórios finitos ponderados por coeficientes binomiais, podendo então serem mais facilmente computadas e calculadas.
 
+\begin{figure}[htb]
+    \vspace{3\baselineskip}
+\begin{equation}
+\label{analitica}
+\begin{split}
+    S^{n_2 l_2 m_2}_{n_1 l_1 m_1} (\zeta_1; \zeta_2; \textbf{\textit{R}} ) = N N' (R/2)^{n_1 + n_2 + 1} \tikzmarknode{auxiliary}{\highlight{blue}{$D(l_1, l_2, m)$}}  \\ \sum_{u=0}^{l_1 - m} \sum_{v=0}^{l_2 - m} \sum_{p=0}^{n_1 - m - u} \sum_{p'=0}^{n_2 - m - v} \sum_{q=0}^{m} \sum_{q'=0}^{m} \sum_{t=0}^{u}  \sum_{t'=0}^{v} (-1)^{n_1 - m - u} C_{l_1 m u} C_{l_2 m v} F_p (n_1 - m - u) F_{p'} (n_2 - m - v) \\
+    F_q (m) F_{q'} (m) F_t (u) F_{t'} (v) A_i (\alpha) B_j (\beta) 
+\end{split}
+\begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
+    \path (auxiliary.north) ++ (-0.50,1.5em) node[anchor=south east,color=blue!67] (scalep){\textit{$D(l_1, l_2, m) = \displaystyle \sqrt{\frac{(2l_1 + 1)(2l_2 + 1)(l_1 - m)!(l_2 - m)!}{4(l_1 + m)!(l_1 + m)!}}$}};
+    \draw [color=blue!87](auxiliary.north) |- ([xshift=-0.20em,color=blue]scalep.south west);
+\end{tikzpicture}
+\end{equation}
+\end{figure}
+
+Nessa expressão (\autoref{analitica}), $A_i (\alpha)$ e $B_j (\beta)$ são funções auxiliares, $\alpha = R(\zeta_1 + \zeta_2)/2$, $\beta = R(\zeta_1 - \zeta_2)/2$ e $F_n(m)$ são os coeficientes binomiais \autocite{Mekelleche1997} e os termos $i$ e $j$ estão descritos na \autoref{termos}.
+
+\begin{align}
+\label{termos}
+    i = n_1 + n_2 - 2m - p - p' + 2q - t - t' \\
+    j = p + p' + 2m - 2q' + u + v - t - t'
+\end{align}
+
 %\section{Otimização de geometria}
 
 %Predizer o arranjo mais estável dos átomos em uma molécula é uma das mais importantes tarefas na %química quântica computacional. Essencialmente, este é um problema de otimização onde a energia total %da molécula é minimizada com relação às posições dos núcleos atômicos. A geometria molecular obtida %desse cálculo é, dessa forma, um ponto de partida para inúmeras simulações de propriedades %moleculares. Se a geometria não é acurada, então quaisquer cálculos que derivam dele também podem ser %espúrios.
