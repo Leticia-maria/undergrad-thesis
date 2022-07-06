@@ -4,15 +4,13 @@
 
 A profícua evolução do processamento computacional proporcionou avanços importantes em diversas áreas do conhecimento humano, como o \textit{design} de fármacos, o planejamento sintético e a ciência de materiais, com alto potencial de aplicabilidade. Essa tendência foi observada por Gordon E. Moore \autocite{Mack2011, Shalf2020}, químico estadunidense 
 cofundador da \href{https://www.intel.com/content/www/us/en/company-overview/company-overview.html}{\textit{Intel Corporation}}. A partir dele, foi cunhada uma expressão para designar o aumento bianual de 100\% no número de transistores dos chips microprocessadores, pelo mesmo custo. Isso possibilita, de maneira crescente, a implementação de ferramentas capazes de acessar - seja por meio de cálculos de estrutura eletrônica, 
-simulações, ou predições - propriedades que não podem ser obtidas experimentalmente de forma direta. Isto é, uma vez que a química é uma área de difícil abstração por ser acessada na escala quântica da matéria, os computadores ocupam um lugar de destaque no estudo fenomenológico a nível macroscópico \autocite{Allouche2010, Rayan2017}.
+simulações, ou predições - propriedades que não podem ser obtidas experimentalmente de forma direta. Isso faz com que os computadores ocupem um lugar de destaque no estudo fenomenológico dentro da  química \autocite{Allouche2010, Rayan2017}, acessando a escala quântica da matéria através de relações matemáticas.
 
-Nesse sentido, existe uma pungente necessidade de criar novas abordagens de compreensão da química através da visualização molecular tridimensional, que por vezes faz-se mais efetiva para criar modelos mentais do que o uso de esboços bidimensionais. Importante delimitar que o termo modelagem, aqui, refere-se a um procedimento visual de interação entre a realidade e a teoria a partir de um modelo: filosófico, mecânico ou computacional \autocite{Snyder2021}, cada qual com sua respectiva aproximação. Os fenômenos físicos envolvendo os núcleos dos átomos e seus elétrons são problemas dinâmicos, de múltiplos corpos, que não têm uma solução fechada, pois sistemas quânticos possuem alta complexidade e nem sempre é possível reproduzir de forma analítica os resultados experimentais de interesse.
+Nesse sentido, existe uma pungente necessidade de criar novas abordagens de compreensão da química através da visualização molecular tridimensional, que refere-se a um procedimento visual de interação entre a realidade e a teoria a partir de um modelo\footnote{Modelos mentais são dispositivos do pensamento por meio dos quais um ser humano tenta explicar, a si próprio e aos outros, como funciona o mundo real. É um tipo de símbolo interno de representação da realidade externa, hipotética, que tem um papel importante na cognição – ou seja, na forma como apreendemos o mundo.}, seja ele filosófico, mecânico ou computacional \autocite{Snyder2021}, cada qual com sua respectiva aplicação. Por exemplo, os fenômenos físicos envolvendo os núcleos dos átomos e seus elétrons são problemas dinâmicos, de múltiplos corpos, com alta complexidade. Desse modo, nem sempre é possível calcular analiticamente as grandezas de interesse, como a própria energia eletrônica dos sistemas não-hidrogeniônicos.
 
-Esse foi exatamente o processo empenhado ao longo da história da química orgânica: estudar as relações entre as propriedades químicas e a informação estrutural retida por meio de uma compreensão preditiva embasada teoricamente. Indubitavelmente, a aromaticidade desponta nesse sentido como uma das características mais importantes das moléculas, auxiliando na interpretação de dados de reatividade, por exemplo, uma vez que compostos aromáticos apresentam uma preferência pela substituição ao invés da adição, para reter seus elétrons $\pi$ nas reações químicas. Isso foi abordado primeiramente por Roald Hoffmann \autocite{Hoffmann2014}, e desde então tornou-se uma discussão exaustiva dentro da química, sendo desenvolvidos métodos cada vez mais acurados para determinar a geometria molecular e, portanto, suas informações estruturais, como já evidenciado.
+A interpretação desses fenômenos químicos a partir de informações estruturais auxilia na compreensão, seja ela qualitativa ou quantitativa, dos dados observados no mundo real, como a reatividade, por exemplo. Nesse sentido, a aromaticidade faz-se relevante para realizar análises preditivas, uma vez que a deslocalização eletrônica é um efeito estabilizador que gera consequências na seletividade de reações químicas.
 
-Nesse contexto, encontrar uma definição de aromaticidade que seja curta, formal e inequívoca é um desafio. Para dirimir tal dificuldade, é possível construir um conjunto de propriedades observadas em compostos que coincidem ao exibir o mesmo caráter aromático, mas de forma multidimensional. Classicamente, a aromaticidade pode ser definida pelo aumento da estabilidade termodinâmica de compostos cíclicos $\pi$-conjugados quando comparados aos seus análogos cujos elétrons são localizados.
-
-Desse modo, é possível comprovar tal tendência avaliando a entalpia envolvida na hidrogenação ($\Delta H^\circ$) de um alceno catalisada por paládio. Tal processo é sempre exotérmico, isto é, libera uma certa quantidade de calor. Por exemplo, se analisarmos a reação de um cicloexeno (\autoref{fig:1}), o valor numérico do $\Delta H^\circ$ será -28,6 kcal/mol (\autoref{fig:2}). 
+No entanto, encontrar uma definição de aromaticidade que seja curta, formal e inequívoca torna-se um desafio para os químicos, pois esta não é uma grandeza física. Para dirimir tal dificuldade, é possível elencar um conjunto de propriedades observadas em compostos que coincidem ao exibir o mesmo caráter aromático, mas de forma multidimensional, ou seja, que concerne a níveis ou campos variados. Isso nos leva a concluir que a aromaticidade, por não ser uma observável física, pode ser caracterizada através de diferentes critérios (geométricos, energéticos, magnéticos e topológicos) que apresentam certo grau de correlação. Classicamente, a aromaticidade pode ser definida pelo aumento da estabilidade termodinâmica de compostos cíclicos $\pi$-conjugados quando comparados aos seus análogos cujos elétrons são localizados. Essa tendência comprova-se avaliando a entalpia envolvida na hidrogenação ($\Delta H^\circ$) de um alceno catalisada por paládio. Tal processo é sempre exotérmico, isto é, libera uma certa quantidade de calor. Por exemplo, se analisarmos a reação de um cicloexeno (\autoref{fig:1}), o valor numérico do $\Delta H^\circ$ será -28,6 kcal/mol (\autoref{fig:2}). 
 
 %% TODO: adicionar imagem sobre estabilização termodinâmica de compostos aromáticos
 
@@ -31,16 +29,20 @@ Quando o anel possui três ligações duplas, como na hipótese de um cicloexatr
 \begin{figure}[htb]
 	\caption{\label{fig:2} Calores de hidrogenação relativos aos hidrocarbonetos cíclicos. Em vermelho, são mostradas as energias de estabilização aromática de cada um dos compostos.}
 	\begin{center}
-		\includegraphics[width=1.0\textwidth]{images/fig2.png}
+		\includegraphics[width=1.0\textwidth]{images/fig2(1).png}
 	\end{center}
 	\fonte{Autor(a)}
 \end{figure}
 
 %% TODO: falar dos orbitais moleculares de fronteira na aromaticidade.
 
-Como o conceito de aromaticidade é multidimensional\footnote{A multidimensionalidade refere-se ao fato de que o fenômeno da aromaticidade não corresponde, na maioria das vezes, aos mesmos aspectos observados.}, um problema recorrente nessas representações é que um dado critério utilizado para classificar esses compostos não pode, em geral, ser aplicado de maneira consistente. Em muitos casos, encontrar um ponto de referência apropriado é problemático. Por exemplo, os valores de energia de estabilização aromática dependem profundamente dos sistemas de referência em reações virtuais, uma vez que é praticamente impossível deduzir diferenças na aromaticidade de acordo com tendências de reatividade, a menos que sejam consideradas séries de reações estruturalmente similares, a citar, os hidrocarbonetos benzenoides \autocite{Ciesielski2009, Krygowski2014}. Nesse sentido, índices baseados na geometria molecular, tal como \gls{HOMA} \autocite{Kruszewski1972}, também são relativos à escala arbitrária definida previamente.
+Como o conceito de aromaticidade é multidimensional, um problema recorrente na sua representação é que um dado critério utilizado para classificar hidrocarbonetos, por exemplo, geralmente não pode ser aplicado de maneira consistente, pois encontrar um ponto de referência apropriado é problemático em muitos casos. Por exemplo, os valores de energia de estabilização aromática dependem profundamente dos sistemas de referência em reações virtuais, uma vez que é praticamente impossível deduzir diferenças na aromaticidade de acordo com tendências de reatividade, a menos que sejam consideradas séries de reações estruturalmente similares, a citar, os hidrocarbonetos benzenoides \autocite{Ciesielski2009, Krygowski2014}, do contrário, a intepolação não é verdadeira. Os índices baseados na geometria molecular e alternação dos comprimentos de ligação, tal como o índice de Julg e Françoise \autocite{Julg1967}, também são relativos à escala arbitrária definida previamente, porque são parametrizados de acordo com um único grupo de moléculas de interesse, como os sistemas carbocíclicos derivados do benzeno; e falham miseravelmente para descrever aquilo que está fora dessa escala, a exemplo dos heterociclos aromáticos, que contêm diferenças de eletronegatividade nas ligações entre o heteroátomo e o carbono. Consequências espectroscópicas nos deslocamentos químicos e diferenças topológicas na estrutura eletrônica também podem ser consideradas para classificar um composto orgânico de acordo com a sua aromaticidade. Em 1995, Schleyer \autocite{Schleyer1996} demonstrou que para compostos cíclicos do tipo \ce{(CH)_4 X} existem correlações entre os critérios geométricos, energéticos e magnéticos. Ele escreveu então que:
 
-De acordo com McWeeny, existem também muitas outras noções nos laboratórios de química e nas discussões científicas que podem ser classificadas como padrões fundamentais de entendimento (para além da aromaticidade), pois são lançados mão quase que diariamente para compreender processos químicos de maneira intuitiva. De forma mais específica, podem ser mencionados os termos: confôrmero, nucleófilo, eletrófilo, efeito de solvente, ligações de hidrogênio, acidez/basicidade de Lewis. Para analisar isso mais de perto, e de forma comparativa, foi contabilizado o número de trabalhos científicos por dia que citam alguns desses termos. Os dados mostrados na \autoref{fig:3} foram coletados do a partir de uma busca avançada no \href{https://www-periodicos-capes-gov-br.ez46.periodicos.capes.gov.br/index.php?}{\textit{Portal da Capes}}. É possível notar, através dessa pesquisa, que o tópico da aromaticidade ocupou o topo das pesquisas durante todo o período analisado, com uma média de 60 artigos publicados por dia nos últimos anos do gráfico. 
+\begin{citacao}
+Tentativas para se racionalizar e quantificar o conceito de aromaticidade devem empregar o maior número de critérios possíveis. Cada categoria de critérios tem suas limitações e ambiguidades\autocite{Schleyer1996}.
+\end{citacao}
+
+De acordo com McWeeny, existem também muitas outras noções utilizadas nos laboratórios de química e nas discussões científicas que podem ser classificadas como padrões fundamentais de entendimento (para além da aromaticidade), pois são lançados mão quase que diariamente para compreender processos químicos de maneira intuitiva. De forma mais específica, podem ser mencionados os termos: confôrmero, nucleófilo, eletrófilo, efeito de solvente, ligações de hidrogênio, acidez/basicidade de Lewis. Para analisar isso mais de perto, e de forma comparativa, foi contabilizado o número de trabalhos científicos por dia que citam alguns desses termos. Os dados mostrados na \autoref{fig:3} foram coletados do a partir de uma busca avançada no \href{https://www-periodicos-capes-gov-br.ez46.periodicos.capes.gov.br/index.php?}{\textit{Portal da Capes}}. Através dessa pesquisa, nota-se que o tópico da aromaticidade ocupou o topo das pesquisas durante todo o período analisado (2010-2020), com uma média de 60 artigos publicados por dia em 2020, contra 40 relativos ao tema da análise conformacional.
 
 \begin{figure}[htb]
 	\caption{\label{fig:3} Gráfico que relaciona a média de artigos científicos publicados por dia contendo cada um dos termos mostrados na legenda.}
@@ -55,7 +57,7 @@ De acordo com McWeeny, existem também muitas outras noções nos laboratórios 
 % Em tal seguimento, um dos avanços mais importantes é a aplicação da teoria de grafos à notação química e aos sistemas de busca de subestruturas e cálculos de propriedades, como a aromaticidade, que é muito sensível à geometria do sistema $\pi$, pois descreve as moléculas estabilizadas energeticamente pela deslocalização de elétrons móveis em ciclos (geometrias fechadas). Tal temática é extremamente explorada por trabalhos que vem sendo somados desde a primeira citação de Hoffmann na literatura, em 1855. Por exemplo, com uma busca sobre os termos aromático/aromaticidade no \textit{\href{https://scholar.google.com.br/scholar?hl=pt-BR&as_sdt=0\%2C5&as_ylo=2016&as_yhi=2022&q=aromatic&btnG=}{Google Scholar}} no período de 2016 a 2022, foram encontrados mais de 380 trabalhos/dia publicados, sendo a maioria destes na área de Química, uma vez que, entre os compostos carbocíclicos, destacam-se os derivados aromáticos, cuja estabilidade e reatividade dependem do caráter de deslocalização eletrônica. Para tais sistemas, é possível utilizar a equalização dos comprimentos de ligação como principal critério geométrico de análise quantitativa.
 
 
-O presente trabalho pretende, fundamentado nesse conjunto de informações, relacionar as propriedades extraídas das representações moleculares a partir da computação gráfica, produzindo uma interface para manipular esses compostos de forma facilitada e didática. Uma vez que as dificuldades de compreensão por parte dos graduandos em relação aos conceitos e fenômenos originam-se na forma com que são apresentados \autocite{Cunha2018}, a ferramenta proposta poderá ser difundida para uso didático-pedagógico, podendo ser utilizada por discentes e docentes durante as aulas no sentido de demonstrar os modelos de classificação e a multidimensionalidade da aromaticidade, facilitando o entendimento. O nome atribuído a tal ferramenta foi \textit{Balmy.jl}. A extensão (\textit{.jl}) junto ao nome testifica que o \textit{software} foi produzido na linguagem Julia; e o termo \textit{Balmy}, de origem inglesa, faz alusão ao primeiro critério qualitativo de classificação dos compostos aromáticos: o odor, resgatando a historicidade do conceito de forma criativa.
+Com base nesse conjunto de informações, o presente trabalho visa relacionar as propriedades extraídas das representações moleculares a partir da computação gráfica de forma facilitada e didática através da construção de uma inteface. É sabido que as dificuldades de compreensão por parte dos químicos (em qualquer nível de titularidade) em relação aos conceitos e fenômenos originam-se na forma com que são apresentados \autocite{Cunha2018}. Nesse sentido, a ferramenta proposta poderá ser difundida para uso didático-pedagógico, podendo ser utilizada por discentes e docentes durante as aulas com a intenção de demonstrar os modelos de classificação e a multidimensionalidade da aromaticidade, facilitando o entendimento. O \textit{software} em questão chama-se \textit{Balmy.jl}. A extensão (\textit{.jl}) junto ao nome indica que o mesmo foi produzido na linguagem Julia; e o termo \textit{Balmy}, de origem inglesa, faz alusão ao primeiro critério qualitativo de classificação dos compostos aromáticos: o odor, resgatando a historicidade do conceito de forma criativa.
 
 % Assim, usuário será capaz de calcular os parâmetros geométricos de aromaticidade, um conceito explorado de forma superficial e pouco visual dentro das salas de aula. 
 
@@ -63,9 +65,10 @@ O presente trabalho pretende, fundamentado nesse conjunto de informações, rela
 \chapter{Revisão Bibliográfica}
 % ----------------------------------------------------------
 
-Historicamente, as primeiras evidências do uso da terminologia \textit{aromática(o)} remontam ao ano de 1800, mais especificamente à classificação qualitativa\footnote{Importante ressaltar que a noção de \textit{classificação qualitativa} citada pelo trabalho refere-se ao fato de, na época, não se ter conhecimento da estrutura química desses compostos.} de substâncias e óleos essenciais oriundos de produtos naturais através do odor, a exemplo da vanilina e do anetol. Nada obstante, tal ideia caiu em desuso por conduzir, mesmo na época, a associações espúrias como no caso do (-)-mentol.
+Historicamente, as primeiras evidências do uso da terminologia \textit{aromática(o)} remontam ao ano de 1800, mais especificamente à classificação qualitativa\footnote{Importante ressaltar que a noção de \textit{classificação qualitativa} citada pelo trabalho refere-se ao fato de, na época, não se ter conhecimento da estrutura química desses compostos.} de substâncias e óleos essenciais oriundos de produtos naturais através do odor, a exemplo da vanilina e do anetol. Nada obstante, tal ideia caiu em desuso por conduzir, mesmo na época, a associações espúrias como no caso do (-)-mentol (\autoref{fig:4}).
 
 \begin{figure}[htb]
+\label{fig:4}
 	\caption{Reconhecimento de compostos aromáticos apenas pelo odor.}
 	\begin{center}
 		\includegraphics[width=1\textwidth]{images/MOs(1).png}
@@ -75,24 +78,36 @@ Historicamente, as primeiras evidências do uso da terminologia \textit{aromáti
 
 %% TODO: add the figure of these structures
 
-Décadas depois (1825), Michael Faraday\autocite{Faraday1925, Wilson2012, Martin2015} conseguiu isolar pela primeira vez o benzeno\footnote{O nome do benzeno é derivado do ácido benzoico, descoberto no século XVI. O ácido foi assim designado por ter sido obtido pela destilação seca da goma de benjoim, uma planta nativa da Sumatra, descrita pela primeira ver por Nostradamus em 1555, depois por Aleixo Pedemontanus em 1560 e, em seguida, por Blaise de Vinagère, no ano de 1596}, um hidrocarboneto aromático com alto grau de toxicidade associado\autocite{Solomon1977}. Esse produto foi obtido por fracionamento repetido do fluido obtido durante a compressão do gás petrolífero (o acetileno, usado na iluminação das ruas de Londres, e produzido através da pirólise do óleo de baleia) fornecido através da bondade do Sr. Gordon da \href{https://portablegas.co.uk/}{\textit{Portable Gas Company}}. Ele deduziu que a fórmula molecular do composto obtido correspondia ao "bicarbureto de hidrogênio" (\ce{C_6H_3}), baseado na massa do hidrogênio, que na época era incorreta. No entanto, ele determinou o ponto de ebulição associado ao produto final, além da sua densidade, com certa acurácia e, ao comparar seus dados com aqueles retidos do \textit{trans}-2-buteno, o qual Faraday também isolou, notou que era muito mais reativo do que o benzeno. Esse episódio representa um marco extremamente significativo para a construção da ideia de aromaticidade, uma vez que o benzeno é inegavelmente o composto mais famoso dessa classe de moléculas com propriedades derivadas da deslocalização de elétrons $\pi$\autocite{Faraday1825}. 
+Décadas depois (1825), Michael Faraday\autocite{Faraday1925, Wilson2012, Martin2015} conseguiu isolar pela primeira vez o benzeno\footnote{O nome do benzeno é derivado do ácido benzoico, descoberto no século XVI. O ácido foi assim designado por ter sido obtido pela destilação seca da goma de benjoim, uma planta nativa da Sumatra, descrita pela primeira ver por Nostradamus em 1555, depois por Aleixo Pedemontanus em 1560 e, em seguida, por Blaise de Vinagère, no ano de 1596}, um hidrocarboneto aromático com alto grau de toxicidade associado\autocite{Solomon1977}. Esse produto foi obtido por fracionamento repetido do fluido obtido durante a compressão do gás petrolífero (o acetileno, usado na iluminação das ruas de Londres, e produzido através da pirólise do óleo de baleia) fornecido através do Sr. Gordon da \href{https://portablegas.co.uk/}{\textit{Portable Gas Company}}. Esse episódio representa um marco extremamente significativo para a construção da ideia de aromaticidade, uma vez que o benzeno é inegavelmente o composto mais famoso dessa classe de moléculas com propriedades decorrentes da deslocalização de elétrons $\pi$\autocite{Faraday1825}. 
 
-Poucos anos depois, em 1834, Eilhard Mitscherlich também realizou a síntese do benzeno, mas agora partindo do ácido benzoico. Esse processo ocorre sob aquecimento na presença de cal virgem (\ce{CaO}), produzindo o benzeno como destilado do meio reacional e calcário (\ce{CaCO_3}). Uma alternativa foi proposta por Mansfield (1845), que isolou o benzeno a partir do alcatrão de hulha sob um procedimento que \textit{a posteriori} foi adaptado à indústria. Apesar da fórmula molecular \ce{C_6H_6} já ser conhecida em meados do século XIX, restavam muitas dúvidas sobre os aspectos estruturais do benzeno, uma vez que essa era uma área em defasagem na época. 
+Poucos anos depois, em 1834, Eilhard Mitscherlich também realizou a síntese do benzeno, mas agora partindo do ácido benzoico. Esse processo ocorre sob aquecimento na presença de cal virgem (\ce{CaO}), produzindo o benzeno como destilado do meio reacional e calcário (\ce{CaCO_3}) \autoref{fig:4a}. Uma alternativa foi proposta por Mansfield (1845), que isolou o benzeno a partir do alcatrão de hulha sob um procedimento que \textit{a posteriori} foi adaptado à indústria. Apesar da fórmula molecular do benzeno (\ce{C_6H_6}) já ser conhecida em meados do século XIX, restavam muitas dúvidas sobre os aspectos estruturais da molécula, uma vez que a elucidação de estruturas químicas era uma área em defasagem na época. 
 
-A partir de 1860 os químicos estruturalistas; como Loschimidt (1861) Laderburg (1869), Claus (1866) e Dewar (1866), começaram a intencionar hipóteses sobre a estrutura do benzeno, até chegar, em 1865, na proposta de Kekulé, que se assemelha mais ao que seria a real representação estrutural do composto, fato que só foi devidamente reconhecido décadas mais tarde (1890) e comprovado em 1929\autocite{Lonsdale1929}, com a obtenção da primeira estrutura de raios-X de um derivado, o hexametilbenzeno. A base que sustenta até hoje esse modelo foi relatada inicialmente em todo o seu trabalho envolvendo os ácidos benzóico e salicílico, de ordem crucial para o avenço de diversos conceitos químicos.
+\begin{figure}[htb]
+	\caption{Síntese de Mitscherlich – benzeno.}
+    \label{fig:4a}
+	\begin{center}
+		\includegraphics[width=0.65\textwidth]{images/fig2(2).png}
+	\end{center}
+	\fonte{Autor(a). Adaptado de Caramori et al. \autocite{Caramori2009}.}
+\end{figure}
+
+Foi então nos anos 1860 que químicos como Loschimidt (1861), Laderburg (1869), Claus (1866) e Dewar (1866) (\autoref{fig:5}), começaram a intencionar hipóteses sobre a estrutura do benzeno, até chegar, em 1865, na proposta de Kekulé, que se assemelha mais ao que seria a real representação estrutural do composto, fato que só foi devidamente reconhecido décadas mais tarde (1890) e comprovado em 1929\autocite{Lonsdale1929}, com a obtenção da primeira estrutura por difração de raios-X de um derivado, o hexametilbenzeno.
 
 \begin{figure}[htb]
 	\caption{Propostas para a estrutura do benzeno.}
+    \label{fig:5}
 	\begin{center}
 		\includegraphics[width=0.65\textwidth]{images/8(1).png}
 	\end{center}
 	\fonte{Autor(a). Adaptado de Caramori et al. \autocite{Caramori2009}.}
 \end{figure}
 
-Com a virada do século XIX para o XX, passou-se a ganhar entendimento da inexistência de um equilíbrio formal entre as formas isoláveis do benzeno, mas sim das estruturas canônicas de ressonância que perfazem um híbrido com elétrons móveis através de um efeito isomérico chamado mesomeria \autocite{Murrell1956, INGOLD1934, Oudar1975}. 
+Com a virada do século XIX para o XX, passou-se a ganhar entendimento da inexistência de
+um equilíbrio formal entre as formas isoláveis do benzeno, mas sim das estruturas canônicas de ressonância que perfazem um híbrido com elétrons móveis através de um efeito isomérico chamado mesomeria \autocite{Murrell1956, INGOLD1934, Oudar1975} (\autoref{fig:7}). 
 
 \begin{figure}[htb]
 	\caption{Estruturas de ressonância do benzeno.}
+    \label{fig:7}
 	\begin{center}
 		\includegraphics[width=0.6\textwidth]{images/7.png}
 	\end{center}
@@ -125,13 +140,13 @@ Simultaneamente, surgiram algumas estratégias experimentais para a determinaç�
 
 \section{Critérios Geométricos}
 
-A geometria molecular é um fator primordial para determinar a aromaticidade quantitativamente, uma vez que a determinação dos comprimentos de ligação devido à deslocalização cíclica de elétrons tem sido considerada como um critério fundamental de tal propriedade. Esse fato não se associa somente aos elétrons $\pi$, mas também com elétrons $\sigma$ ou pode ainda apresentar um caráter misto \autocite{Evans1938, Evans1938a, Evans1939}.
+A geometria molecular é um fator primordial para determinar a aromaticidade quantitativamente, uma vez que a alternação dos comprimentos de ligação devido à deslocalização cíclica de elétrons tem sido considerada como um critério fundamental de tal propriedade. Esse fato não se associa somente aos elétrons $\pi$, mas também com elétrons $\sigma$ ou pode ainda apresentar um caráter misto \autocite{Evans1938, Evans1938a, Evans1939}.
 
 Nesse sentido, um parâmetro geométrico só faz-se confiável quando a estrutura analisada é obtida de forma acurada, seja experimentalmente, através de técnicas como difração de raios-X\footnote{Aqui podem ser citadas outras técnicas, a exemplo da difração de elétrons em fase gás, espectroscopia de microondas e difração de nêutrons, mas a difração de raios-X tem sido a mais empregada na determinação de estruturas moleculares, uma vez que os outros métodos são mais restritos por se aplicarem somente a moléculas mais simples e com alta simetria.}, ou de maneira teórica, por meio de cálculos \textit{ab initio} e \gls{DFT} (onde as geometrias são totalmente dependentes do nível de teoria empregado). Isso se torna tão mais importante quanto maior é o interesse em visualizar/analisar pequenas diferenças de aromaticidade.
 
 Os critérios geométricos são aplicados não somente à molécula inteira, como nos outros critérios, mas também podem ser utilizados para estudar fragmentos de sistemas $\pi$-eletrônicos cíclicos ou não. Os indicadores \gls{NICS} pode, por sua vez, ser aplicados aos anéis individualmente (dependendo do tamanho do ciclo em questão). Em quase todos os casos considerados, os índices geométricos descrevem o grau de elétrons-$\pi$ ou deslocalização de ligações duplas. A natureza da equalização dos comprimentos de ligação dupla é amplamente investigada, mas aqui, aceitamos o pressuposto de que ela é advinda da deslocalização eletrônica.
 
-Ou seja, os índices geométricos de aromaticidade, servem para três propósitos:
+Ou seja, os índices geométricos servem para três propósitos centrais:
 
 \begin{enumerate}
     \item estimar o caráter aromático de uma dada molécula em comparação a outras;
@@ -139,7 +154,7 @@ Ou seja, os índices geométricos de aromaticidade, servem para três propósito
     \item estudar as mudanças na aromaticidade devido às perturbações intra- ou intermoleculares.
 \end{enumerate}
 
-No presente trabalho, daremos enfoque ao estudo dos critérios de classificação e quantificação baseados na equalização dos comprimentos de ligação, tratando a aromaticidade do ponto de vista estrutural. Além disso, também serão exploradas análises com base na teoria dos orbitais moleculares de Hueckel, que deu origem a uma das regras mais difundidas nos cursos de graduação para abordar a aromaticidade.
+No presente trabalho, daremos enfoque ao estudo dos critérios de classificação e quantificação baseados na equalização dos comprimentos de ligação, tratando a aromaticidade do ponto de vista estrutural. Além disso, também serão exploradas análises com base na teoria dos orbitais moleculares de Hueckel.
 
 \subsection{O índice de Julg Aj (1967)}
 
@@ -164,7 +179,7 @@ A primeira abordagem quantitativa da definição de aromaticidade foi desenvolvi
     \vspace{4\baselineskip}
 \end{figure}
 
-Na \autoref{eq:1}, a constante 225 resulta da condição de normalização, na qual $A_j$ assume valor 0 no caso na estrutura do benzeno de Kekulé (cujos comprimentos de ligação seriam diferentes). Para qualquer sistema que possui todas as ligações do mesmo comprimento, o valor de $A_j$ = 1. A limitação do método é que este só se aplica a sistemas carbocíclicos, tornando-se inviável sua aplicação a sistemas aromáticos que contenham heteroátomos, pois exclui contribuições que são devidas às interações entre heteroátomos e carbonos levando, portanto, a uma interpretação errônea da aromaticidade.
+Na \autoref{eq:1}, a constante 225 resulta da condição de normalização, onde $A_j = 0$ no caso na estrutura do benzeno de Kekulé (cujos comprimentos de ligação seriam diferentes). Para qualquer sistema que possui todas as ligações do mesmo comprimento, o valor de $A_j = 1$. A limitação do método é que este só se aplica a sistemas carbocíclicos, tornando-se inviável sua aplicação a sistemas aromáticos que contenham heteroátomos, pois exclui contribuições que são devidas às interações entre heteroátomos e carbonos levando, portanto, a uma interpretação errônea da aromaticidade.
 
 \begin{figure}[htb]
 	\caption{\label{fig:radialenos} Exemplos de radialenos.}
@@ -174,7 +189,7 @@ Na \autoref{eq:1}, a constante 225 resulta da condição de normalização, na q
 	\fonte{Autor(a).}
 \end{figure}
 
-Outro problema intrínseco ao método foi observado ao avaliar a aromaticidade para sistemas de elétrons $\pi$ contendo todas as ligações com o mesmo comprimento, a exemplo dos radialenos (antiaromáticos) \autoref{fig:radialenos}, que apresentam todas as ligações CC alongadas ($1.53 \AA$) em comparação ao benzeno ($1.40 \AA$), mas apesar disso apresenta $A_j = 1$, o que é evidentemente incorreto, conforme demonstrado pelo índice HOMA e pelo NICS.
+Outro problema intrínseco ao método foi observado ao avaliar a aromaticidade para sistemas de elétrons $\pi$ contendo todas as ligações com o mesmo comprimento, a exemplo dos radialenos (antiaromáticos) \autoref{fig:radialenos}, que apresentam todas as ligações CC alongadas ($1.53$ \AA) em comparação ao benzeno ($1.40$ \AA), mas apesar disso apresenta $A_j = 1$, o que é evidentemente incorreto, conforme demonstrado pelo índice HOMA e pelo NICS.
 
 
 \subsection{Análise das ordens de ligação}
@@ -248,7 +263,7 @@ Visando suprimir o problema dos heteroátomos no índice de Julg, Bird \autocite
 
 \begin{equation}
 \label{eq:bird}
-    V = \frac{100}{N_{av}} \sqrt{\frac{\sum (N - N_{av})^2}{n}}
+    V = \frac{100}{N_{av}} \sqrt{\displaystyle \frac{\displaystyle \sum (N - N_{av})^2}{n}}
 \end{equation}
 
 No caso de um sistema heterocíclico totalmente deslocalizado, $V$ assumirá o valor 0, enquanto que para sistemas heterocíclicos com ligações simples e duplas alternadas, o valor dependerá do tipo de anel, sendo definido como um sistema não-deslocalizado de Kekulé e denotado por $V_k$. Por exemplo, para os anéis de cinco membros, temos $V_k = 35$; para os anéis de seis membros, $V_k = 33.3$; e para anéis fundidos, $V_k = 35$. A escala desses valores foi redefinida por Bird, calculando os seguintes índices: $I_5$, $I_6$ e $I_{5,6}$, dependendo do tipo de anel heterocíclico considerado.
@@ -305,7 +320,7 @@ O valor obtido pela \autoref{eq:2} apresenta uma boa concordância com o valor e
 \vspace{2\baselineskip}
 \end{figure}
 
-A \autoref{eq:3} pode ser analiticamente convertido na \autoref{eq:4} \autocite{MarekKrygowski1998}. 
+A \autoref{eq:3} pode ser analiticamente convertida na \autoref{eq:4} \autocite{MarekKrygowski1998}. 
 
 \begin{figure}[htb]
     \vspace{2\baselineskip}
