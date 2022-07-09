@@ -292,7 +292,7 @@ Em 1992, esse termo transformou-se em um índice unificado, denotado por $I_A$, 
 O próximo passo foi feito modificando a ideia de Julg, substituindo o comprimento de ligação médio ($R_{av}$) da \autoref{eq:1} por um valor conceitual, denominado o comprimento de ligação ótimo ($R_{opt}$)\footnote{No artigo original\autocite{Kruszewski1972}, esse valor é denotado por $d$}. Tal modelo baseia-se no fato de que a energia do oscilador harmônico relativa à extensão ou compressão de uma ligação química depende das constantes de força, diretamente relacionada aos comprimentos dessa ligação. Ou seja, $R_{opt}$ (\autoref{eq:2}) representa a medida da ligação cujo valor de energia requerido para estirá-la até o comprimento de uma ligação simples ou constringir até o comprimento de uma ligação dupla. Desse modo, os comprimentos das ligações CC no etano e no eteno foram tomadas como valores de referência, assumindo que a relação entre as constantes de força para ligações simples e duplas é 2:1.
 
 \begin{figure}[htb]
-    \vspace{2\baselineskip}
+    \vspace{3\baselineskip}
 \begin{equation}
     \label{eq:2}
     R_{opt} = \frac{ \tikzmarknode{single}{ \highlight{blue}{$R_{C-C}$}} + 2 \tikzmarknode{double}{ \highlight{red}{$R_{C=C}$}}}{3} = 1.397 \textit{\AA}
@@ -312,7 +312,7 @@ O próximo passo foi feito modificando a ideia de Julg, substituindo o comprimen
 \end{tikzpicture}
 \end{figure}
 
-O valor obtido pela \autoref{eq:2} apresenta uma boa concordância com o valor experimental obtido para o benzeno (1.398 \AA) \footnote{Esse valor foi medido através de difração de raio X a 10 K\autocite{Stewart1991}.}. A fórmula para o HOMA está abaixo:
+O valor obtido pela \autoref{eq:2} apresenta uma boa concordância com o valor experimental obtido para o benzeno (1.398 \AA) \footnote{Esse valor foi medido através de difração de raio X a 10 K\autocite{Stewart1991}.}. A fórmula para o \gls{HOMA} está abaixo:
 
 \begin{figure}[htb]
     \vspace{2\baselineskip}
@@ -330,7 +330,7 @@ O valor obtido pela \autoref{eq:2} apresenta uma boa concordância com o valor e
     \path (HOMA.south) ++ (-1,-1.5em) node[anchor=north east,color=red!67] (scalep){\textit{(não aromático) = 0}};
     \draw [color=red!87](HOMA.south) |- ([xshift=-1.65em,color=blue]scalep.north west);
 \end{tikzpicture}
-\vspace{2\baselineskip}
+\vspace{1\baselineskip}
 \end{figure}
 
 A \autoref{eq:3} pode ser analiticamente convertida na \autoref{eq:4} \autocite{MarekKrygowski1998}. 
@@ -351,15 +351,40 @@ A \autoref{eq:3} pode ser analiticamente convertida na \autoref{eq:4} \autocite{
 \vspace{2\baselineskip}
 \end{figure}
 
-Os componentes EN e GEO representam uma diminuição da aromaticidade devido ao aumento da alternação do comprimento de ligação, fornecendo informações mais detalhadas a respeito da aromaticidade. Enquanto o valor de EN revela quanto o comprimento médio desvia do ótimo, o GEO indica quanto o individual desvia da média. Note que, no caso do benzeno, por exemplo, todos os comprimentos de ligação são iguais, anulando ambos os termos e nos dando um valor de HOMA igual a 1, que é considerado \textit{perfeitamente aromático}. Essa normalização é feita pelo fator $\alpha$ presente na \autoref{eq:4}, que funciona somente para compostos carbocíclicos.
+Os componentes EN e GEO representam uma diminuição da aromaticidade devido ao aumento da alternação do comprimento de ligação, fornecendo informações mais detalhadas a respeito da aromaticidade. Enquanto o valor de EN revela quanto o comprimento médio desvia do ótimo, o GEO indica quanto o individual desvia da média. Note que, no caso do benzeno, por exemplo, todos os comprimentos de ligação são iguais, anulando ambos os termos e nos dando um valor de \gls{HOMA} igual a 1, que é considerado \textit{perfeitamente aromático}. Essa normalização é feita pelo fator $\alpha$ presente na \autoref{eq:4}, que funciona somente para compostos carbocíclicos.
 
-No entanto, uma modificação foi realizada para abranger no índice HOMA para torná-lo aplicável a sistemas que contenham heteroátomos, representando-as por números de ligação de Pauling.
+No entanto, uma modificação foi realizada em 1993 para abranger no índice HOMA para torná-lo aplicável a sistemas que contenham heteroátomos, representando-as por números de ligação de Pauling. Inicialmente, o mesmo valor de $\alpha$ para as ligações \ce{CC} ($98.89$) foi aplicado para as ligações \ce{CX}, onde \ce{X} são heteroátomos. O $R_{opt}$ foi calculado de acordo com a \autoref{eq:rHOMA}, onde $R_s$ e $R_d$ são os comprimentos de ligação de referência para as ligações simples e duplas, respectivamente, e $\omega$ é a razão das constantes de força para ligações duplas e simples.
+
+Como referência, o comprimento da ligação \ce{C-C} no etano, \ce{C-N} na metilamina, e \ce{C-O} no metanol foram tomados como valores de $R_s$. De forma complementar, a ligação \ce{C=C} no eteno, \ce{C=N} na metilimina, e \ce{C=O} no formaldeído passaram a ser adotadas como as medidas padrão de $R_d$. Desse modo, foi criado o índice \gls{rHOMA} (veja a \autoref{eq:rHOMA}), levando em conta das coordenadas de ressonância.
+
+
+\begin{figure}[htb]
+    \vspace{2\baselineskip}
+\begin{equation}
+    \label{eq:rHOMA}
+    rHOMA = 1 - \frac{\tikzmarknode{alphah}{\highlight{blue}{$\alpha$}}}{n} \sum (\tikzmarknode{ropt}{\highlight{red}{$R_{opt}$}} - R_i)^2
+\end{equation}
+\begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
+    \path (alphah.north) ++ (1,1.5em) node[anchor=south west,color=blue!67] (scalep){\textit{$\alpha = \displaystyle \frac{2}{(R_o - R_s)^2 + (R_{opt} - R_d)^2}$}};
+    \draw [color=blue!87](alphah.north) |- ([xshift=3em,color=blue]scalep.south east);
+
+    \path (ropt.south) ++ (1,-1.5em) node[anchor=north west,color=red!67] (scalep){\textit{$R_{opt} = \displaystyle \frac{R_s + \omega R_d}{1 + \omega}$}};
+    \draw [color=red!87](ropt.south) |- ([xshift=3em,color=red]scalep.north east);
+\end{tikzpicture}
+\vspace{2\baselineskip}
+\end{figure}
+
+De acordo com a \autoref{eq:rHOMA}, os valores da constante de normalização $\alpha$ para cada tipo de ligação varia de 57.21 (\ce{NO}), 93.52 (\ce{CN}), 94.09 (\ce{CS}), 118.91 (\ce{CP}), 130.33 (\ce{NN}), 157.38 (\ce{CO}), até 257.7 (\ce{CC}). Apesar dos ajustes feitos no índice original do \gls{HOMA}, o \gls{rHOMA} forneceu valores incoerentes para alguns sistemas heterocíclicos aromáticos. Por exemplo, \gls{rHOMA} é próximo de 0 para o furano ($-0.181$) e perto de 0.5 para o pirrol, embora o conhecimento em físico-químico permita inferir que esses valores deveriam ser próximos a 1.
+
+Em 2010, Raczyńska et al.\autocite{Raczyska2010} introduziu o índice \gls{HOMED}. Suas modificações em relação ao \gls{rHOMA} foram feitas ao utilizar os métodos de química quântica para estimar os comprimentos de ligação para moléculas de referência, modificando, consequentemente, os valores de $\alpha$. Os autores argumentam que, utilizar o mesmo nível de teoria para otimizar as geometrias dos sistemas de referência e dos sistemas heterocíclicos tem a vantagem do cancelamento de erros durante a estimativa do HOMED.
 
 \section{Aplicações dos critérios geométricos}
 
 No início, a aromaticidade estava fortemente relacionada à reatividade, uma vez que os compostos aromáticos não são somente considerados menos reativos, mas compostos que preferivelmente reagem via mecanismo de substituição, ao invés da adição. Nas espécies policíclicas, as observações podem ser experimentalmente documentadas pela estimativa da basicidade relativa a posições particulares em hidrocarbonetos benzenoides.
 
-Uma discussão qualitativa do caráter aromático de um anel particular em uma molécula de um hidrocarboneto policíclico benzenoide é oferecida pelas regras de Clar. Essas regras classificam os aneis de acordo com a estrutura dos seus elétrons $\pi$, podendo nomeá-los de acordo com um sexteto aromático, um anel vazio, anel de migração ou aquela espécie com ligações duplas localizadas, que pode ser facilmente identificada através do cálculo de HOMA.
+Uma discussão qualitativa do caráter aromático de um anel particular em uma molécula de um hidrocarboneto policíclico benzenoide é oferecida pelas regras de Clar. Essas regras classificam os aneis de acordo com a estrutura dos seus elétrons $\pi$, podendo nomeá-los de acordo com um sexteto aromático, um anel vazio, anel de migração ou aquela espécie com ligações duplas localizadas, que pode ser facilmente identificada através do cálculo de \gls{HOMA}.
+
+
 
 
 % ----------------------------------------------------------
