@@ -19,7 +19,7 @@ Considerando métodos semi-empíricos fundamentados na teoria \gls{HF}, pode-se 
 \end{tikzpicture}
 \end{figure}
 
-Como somente os elétrons dos orbitais p estão contribuindo para a função de onda, a \autoref{ap:eq:1} pode ser escrita como a \autoref{ap:eq:2}.
+Como somente os elétrons dos orbitais $p$ estão contribuindo para a função de onda, a \autoref{ap:eq:1} pode ser escrita como a \autoref{ap:eq:2}.
 
 \begin{figure}[htb]
     \vspace{2\baselineskip}
@@ -29,7 +29,7 @@ Como somente os elétrons dos orbitais p estão contribuindo para a função de 
 \end{equation}
 \end{figure}
 
-Tomando o eteno como exemplo, pode-se afirmar que cada carbono contribui com um elétron para a ligação $\pi$, sendo $p_1$ e $p_2$ os elétrons dos átomos de carbono 1 e 2, cujas respectivas contribuições são ponderadas por $a_1$ e $a_2$. No caso dos orbitais p não hibridizados, os orbitais moleculares são formados pela \gls{LCAO} $p_1$ e $p_2$. Sobreposição entre orbitais atômicos podem ocorrer de forma simétrica (resultando em um orbital ligante) ou antissimétrica (formando um orbital antiligante).
+Tomando o eteno como exemplo, pode-se afirmar que cada carbono contribui com um elétron para a ligação $\pi$, sendo $p_1$ e $p_2$ os elétrons dos átomos de carbono 1 e 2, cujas respectivas contribuições são ponderadas por $a_1$ e $a_2$. No caso dos orbitais $p$ não hibridizados, os orbitais moleculares são formados pela \gls{LCAO} $p_1$ e $p_2$. Sobreposição entre orbitais atômicos podem ocorrer de forma simétrica (resultando em um orbital ligante) ou antissimétrica (formando um orbital antiligante).
 
 \begin{figure}[htb]
     \vspace{2\baselineskip}
@@ -50,7 +50,7 @@ Tomando o eteno como exemplo, pode-se afirmar que cada carbono contribui com um 
 \end{tikzpicture}
 \end{figure}
 
-Usando a \autoref{ap:eq:4} (equação de Schroedinger) como base fundamental para avançar na discussão do cálculo dos valores de energia associados aos orbitais, pode-se aplicar o princípio variacional como uma aproximação necessária e conveniente para encontrar as funções de minimização da energia relativa aos orbitais no estado fundamental. Este método consiste em escolher uma função de onda inicial que dependa de um ou mais parâmetros, e encontrar os valores destes parâmetros para cada valor esperado onde a energia seja a menor possível. A função de onda obtida na substituição dos parâmetros pelos valores encontrados será uma aproximação do estado fundamental da função de onda, e o valor esperado de energia neste estado será majorante para a energia deste estado fundamental.
+Usando a \autoref{ap:eq:4} (equação de Schroedinger) como base fundamental para avançar na discussão do cálculo dos valores de energia dos orbitais, pode-se aplicar o princípio variacional como uma aproximação necessária e conveniente para encontrar as funções de minimização da energia relativa aos orbitais no estado fundamental. Este método consiste em escolher uma função de onda inicial que dependa de um ou mais parâmetros, e encontrar os valores destes parâmetros para cada valor esperado onde a energia seja a menor possível. A função de onda obtida na substituição dos parâmetros pelos valores encontrados será uma aproximação do estado fundamental da função de onda, e o valor esperado de energia neste estado será majorante para a energia deste estado fundamental.
 
 %%% TODO: explicar o princípio variacional 
 
@@ -58,11 +58,14 @@ Usando a \autoref{ap:eq:4} (equação de Schroedinger) como base fundamental par
     \vspace{2\baselineskip}
 \begin{equation}
 \label{ap:eq:4}
-    \tikzmarknode{hamiltonian}{\highlight{red}{$\hat{H}$}} \psi = \tikzmarknode{energy}{\highlight{blue}{$E$}} \psi
+    \tikzmarknode{hamiltonian}{\highlight{red}{$\hat{H}$}} \psi = \tikzmarknode{energy}{\highlight{blue}{$E$}} \tikzmarknode{eigenfunction}{\highlight{gray}{$\psi$}}
 \end{equation}
 \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
-    \path (energy.north) ++ (-1.2em,1.5em) node[anchor=south east,color=blue!67] (scalep){\textit{energia}};
+    \path (energy.north) ++ (-1.2em,1.5em) node[anchor=south east,color=blue!67] (scalep){\textit{autovalor}};
     \draw [color=blue!87](energy.north) |- ([xshift=-3em,color=blue]scalep.south west);
+    
+    \path (eigenfunction.north) ++ (1.2em,1.5em) node[anchor=south west,color=gray!67] (scalep){\textit{autofunção}};
+    \draw [color=gray!87](eigenfunction.north) |- ([xshift=3em,color=gray]scalep.south east);
     
     \path (hamiltonian.south) ++ (1.2em,-1.5em) node[anchor=north west,color=red!67] (scalep){\textit{operador}};
     \draw [color=red!87](hamiltonian.south) |- ([xshift=3em,color=blue]scalep.north east);
@@ -81,7 +84,7 @@ Multiplicando ambos os lados por $\psi$, obtém-se a \autoref{ap:eq:5}. Aplicado
     E = \frac{\displaystyle \int \psi \hat{H} \psi d\tau}{\displaystyle \int \psi^2 d\tau}
 \end{equation}
 
-Na \autoref{ap:eq:5}, a energia esperada vai ser superestimada em relação ao valor real. Desse modo, o resultado calculado vai ser minimizado através de um procedimento matemático submetido a um conjunto de funções de base. No caso do eteno (\ce{C_2 H_2}), podemos substituir o termo $\psi$ da \autoref{ap:eq:6} pela \autoref{ap:eq:2}, obtendo a \autoref{ap:eq:7}.
+Na \autoref{ap:eq:6}, a energia esperada vai ser superestimada em relação ao valor real. Desse modo, o resultado calculado vai ser minimizado através de um procedimento matemático submetido a um conjunto de funções de base. No caso do eteno (\ce{C_2 H_2}), podemos substituir o termo $\psi$ da \autoref{ap:eq:6} pela \autoref{ap:eq:2}, obtendo a \autoref{ap:eq:7}.
 
 \begin{figure}[htb]
     \vspace{2\baselineskip}
@@ -109,7 +112,7 @@ Abrindo a expressão da \autoref{ap:eq:7}, é possível isolar as seguintes inte
 \end{tikzpicture}
 \end{figure}
 
-A integral de Coulomb, mostrada na \autoref{ap:eq:8}, é o Hamiltoniano para a energia de Coulomb relativa a um elétron com uma função de onda $p_i$ no campo do átomo $i$ e influenciado pelo seu núcleo. Esse elétron não sofre efeito de nenhum outro núcleo. Essa aproximação funciona melhor quando os átomos das vizinhanças não possuem cargas elétricas. Ou seja, $\alpha$ é uma função da carga nuclear e do tipo de orbital. Por ser um termo atrativo, possui um valor negativo. 
+A integral de Coulomb, mostrada na \autoref{ap:eq:8}, representa a energia de Coulomb de um elétron com uma função de onda $p_i$ no campo do átomo $i$ e influenciado pelo seu núcleo. Esse elétron não sofre efeito de nenhum outro núcleo. Essa aproximação funciona melhor quando os átomos das vizinhanças não possuem cargas elétricas. Ou seja, $\alpha$ é uma função da carga nuclear e do tipo de orbital. Por ser um termo atrativo, possui um valor negativo. 
 
 \begin{figure}[htb]
     \vspace{2\baselineskip}
@@ -333,7 +336,7 @@ A função de onda eletrônica é considerada, nesse modelo, como um produto de 
 \end{tikzpicture}
 \end{figure}
 
-\noindent onde $n$ é o número de elétrons e $j$ identifica o orbital molecular. Novamente, cada um dos \gls{MOs} é dada pela LCAO. O conjunto de orbitais aqui definidos são chamados \textit{conjunto mínimo de base}, pois contém somente as informações dos orbitais atômicos para a camada de valência dos átomos. 
+\noindent onde $n$ é o número de elétrons e $j$ identifica o orbital molecular. Novamente, cada um dos \gls{MOs} é obtido pela LCAO. O conjunto de orbitais aqui definidos são chamados \textit{conjunto mínimo de base}, pois contém somente as informações dos orbitais atômicos para a camada de valência dos átomos. 
 
 \begin{equation}
     HC = SCE

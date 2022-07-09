@@ -2,49 +2,39 @@
 \chapter{Resultados}
 % ----------------------------------------------------------
 
-\section{Interface gráfica}
+\section{Interface gráfica}\label{design}
 
-A interface gráfica construída é devidamente mostrada na \autoref{gui-pronta}. Os elementos interativos foram implementados para fazer com que o \textit{software} em questão fosse o mais amigável possível ao usuário, isto é, extremamente intuitivo e fácil de usar, podendo ser acessado através do navegador e, assim, utilizado nas salas de aula da graduação.
-
-\begin{figure}[htb]
-	\caption{\label{gui-pronta} Aqui é mostrada a interface gráfica produzida. Os círculos sinalizam as funções associadas às áreas da GUI (\textit{Graphical User Interface})}
-	\begin{center}
-		\includegraphics[width=1.0\textwidth]{images/GUI-EXAMPLE.png}
-	\end{center}
-	\fonte{Autor(a)}
-\end{figure}
-
-O fluxo de trabalho básico de funcionamento do WeBalmy.jl também é ilustrado pelo esquema da \autoref{workflow}, onde é possível notar que o usuário insere, como entrada, o arquivo contendo as coordenadas cartesianas do sistema químico que deseja estudar. A partir de tais informações, a estrutura é processada é representada tridimensionalmente e as energias dos seus orbitais moleculares são calculados pelo cálculo de Hueckel estendido, através do qual é possível fazer análises do caráter aromático presente na estrutura.
+A interface gráfica do \textit{Balmy.jl} é mostrada na \autoref{gui-pronta}. Os elementos interativos foram implementados para garantir o suporte e usabilidade do \textit{software}, sendo extremamente intuitivo e fácil de usar, pois é acessado através do navegador e, assim, pode utilizado nas salas de aula da graduação.
 
 \begin{figure}[htb]
 	\caption{\label{workflow} Fluxo de trabalho do \textit{software} produzido.}
 	\begin{center}
-		\includegraphics[width=0.65\textwidth]{images/workflow.png}
+		\includegraphics[width=0.6\textwidth]{images/workflow.png}
 	\end{center}
 	\fonte{Autor(a)}
 \end{figure}
 
-\section{Representação tridimensional}
-
-Para representar os modelos tridimensionais utilizando o Three.js, é utilizado o modelo de Blinn-Phong, capaz de simular superfícies brilhantes com holofotes especulares. O sombreamento é calculado \textit{per pixel} de acordo com o modelo de Phong. Desse modo, apesar de custar um pouco mais de tempo para renderizar, ele atinge uma acurácia maior do que outros modelos disponíveis (o de Lambert, por exemplo).
-
-No modelo primeiramente proposto por Phong, é calculado continuamente o produto escalar $R \cdot V$ entre um observador $V$ e o feixe de uma fonte de luz ($L$) refletida ($R$) sobre uma superfície. No ajuste proposto por Blinn, no entanto, calcula-se um vetor a meio caminho entre o espectador e os vetores de fonte luminosa, podendo substituir $R \cdot V$ por $N \cdot H$, onde $N$ é o vetor normal à superfície.
-
 \begin{figure}[htb]
-\begin{equation}
-    \label{eq:R1}
-    H = \frac{L + \highlight{blue}{V} }{||L + \tikzmarknode{value}{\highlight{blue}{V}}||}
-\end{equation}
-\begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
-    \path (value.south) ++ (-1,-1.5em) node[anchor=north east,color=blue!67] (scalep){\textit{$V = P_H (-L)$}};
-    \draw [color=blue!87](value.south) |- ([xshift=-1.65em,color=blue]scalep.north west);
-\end{tikzpicture}
-\vspace{2\baselineskip}
+	\caption{\label{gui-pronta} Aqui é mostrada a interface gráfica produzida. Os círculos sinalizam as funções associadas às áreas da \gls{GUI}.}
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]{images/GUI-EXAMPLE.png}
+	\end{center}
+	\fonte{Autor(a)}
 \end{figure}
 
-Na \autoref{eq:R1}, $P_H$ é a matriz de Householder que reflete um ponto no hiperplano que contém a origem e tem um vetor normal $H$. Este produto escalar é o cosseno de um ângulo que é metade do ângulo representado pelo produto escalar de Phong (se $V$, $L$, $N$ e $R$ estiverem todos no mesmo plano). Esta relação entre os ângulos sofre desvios discretos quando os vetores não se encontram no mesmo plano, especialmente em relação aos ângulos pequenos.
+O fluxo de trabalho básico de funcionamento do \textit{Balmy.jl} também é ilustrado pelo esquema da \autoref{workflow}, onde é possível notar que o usuário insere, como entrada, o arquivo contendo as coordenadas cartesianas do sistema químico que deseja estudar. A \autoref{fig:input} mostra um exemplo de \textit{input} do \textit{Balmy.jl} para a molécula de benzeno. É um arquivo de extensão \textit{.xyz} que contém as coordenadas cartesianas da molécula de interesse. Na primeira linha, temos o nome da estrutura, em seguida, um comentário, e a partir da terceira linha são mostradas as informações da geometria em quatro colunas. A primeira delas contém os símbolos dos átomos contidos na molécula. Da segunda à quarta coluna, são indicadas as coordenadas cartesianas do eixo $x$, $y$ e $z$, respectivamente. Esses dados aparecem na caixa de texto no lado direito da tela (espaço indicado na \autoref{gui-pronta}).
 
-Ainda sobre os ajustes de Blinn ao modelo de Phong, consideremos que o ângulo entre o vetor a meio caminho $(N \cdot H)$ e a superfície normal é provavelmente menor do que o ângulo entre $R$ e $V$ usado no modelo original (a menos que a superfície seja vista de um ângulo muito íngreme para o qual é provável que seja maior), e já que Phong está usando $(R \cdot V)^\alpha$, um expoente (chamado de constante de brilho) pode ser definido como $\alpha' > \alpha$, tal que $(N \cdot H)^{\alpha'}$ está mais próxima da expressão original de Phong.
+\begin{figure}[htb]
+	\caption{\label{fig:input} Exemplo de um arquivo de \textit{input} (\textit{.xyz}) para o \textit{Balmy.jl}.}
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]{images/fig2(4).png}
+	\end{center}
+	\fonte{Autor(a)}
+\end{figure}
+
+A partir das informações geométricas fornecidas pelo usuário, a estrutura é renderizada e representada tridimensionalmente pelo modelo das superfícies de Blinn-Phong (veja a \autoref{desenhoestrutural} para uma melhor descrição desse método). Nesse sentido, o \textit{Balmy.jl} é bastante versátil, pois é possível customizar o modelo através dos efeitos de iluminação empregados nas estruturas. Por exemplo, variando o valor de $\alpha'$ (coeficiente de brilho), é possível notar que, na \autoref{fig:representations}, quanto maior for o valor, menor será o holofote especular, representado pelos pontos luminosos nas estruturas moleculares.
+
+%%% discutir equação do alpha
 
 \begin{figure}[htb]
 \caption{\label{fig:representations} Exemplo da aplicação do modelo de Blinn-Phong na molécula de benzenos a partir da alteração dos coeficientes $\alpha'$ para os átomos (representados por esferas). Da direita para a esquerda, os valores atribuídos foram: 0, 10, 50, 100, 1000; respectivamente.}
@@ -54,34 +44,55 @@ Ainda sobre os ajustes de Blinn ao modelo de Phong, consideremos que o ângulo e
 	\fonte{Autor(a)}
 \end{figure}
 
-Variando, portanto, o valor de $\alpha'$, é possível notar que, na \autoref{fig:representations}, quanto maior for seu valor, menor será o holofote especular, representado pelos pontos luminosos nas estruturas moleculares.
+Antes da realização dos cálculos, é possível ainda acessar a terceira aba do \textit{Balmy.jl} para modificar o padrão das configurações (\autoref{fig:conf}). Por exemplo, é possível alterar a carga do composto (embora, por definição, o \textit{Balmy.jl} considere a moléula neutra) e o parâmetro de Wolfsberg-Helmholtz ($K$) (o padrão adotado é 1.75, parametrizado para hidrocarbonetos \autocite{Hoffmann1963}), que será discutido mais profundamente na \autoref{wolfsberg}.
 
-\section{Hidrocarbonetos aromáticos}
+\begin{figure}[htb]
+	\caption{\label{fig:conf} Aqui, é mostrada a aba de configurações do cálculo realizado no \textit{Balmy.jl}}
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]{images/conf.png}
+	\end{center}
+	\fonte{Autor(a)}
+\end{figure}
 
-Analisando os dados da \autoref{tab:energies}, concluímos que a ordem das estabilidades dos compostos está de acordo com aqueles apresentados por Hoffmann \autocite{Hoffmann1963}, e com os dados experimentais publicados por Heilbronner \autocite{ginsburg1959}. Por exemplo, o naftaleno mostra-se 32.3 kcal/mol mais estável do que o azuleno, o que é um ótimo resultado se comparado com o valor de referência (32.6 kcal/mol)\autocite{ginsburg1959}. O fulveno, por sua vez, é computado como sendo 25.6 kcal/mol menos estável do que o benzeno, em relação ao valor de 27 kcal/mol tomado como modelo\autocite{CHENG1956}. O antraceno, por sua vez, é 4.2 kcal/mol mais estável do que o fenantreno, enquanto o último isômero é, na verdade, 6.9 kcal/mol mais estável \autocite{Hoffmann1963}, o que provém do fato de que há repulsão estérica entre os hidrogênios do fenantreno.
+
+Ao clicar no botão \textit{Start}, o usuário emite a requisição ao servidor para que o cálculo de \gls{EHMO} seja iniciado. Em questão de segundos, será possível acessar os resultados relativos ãs funções de onda e aos \gls{MOs} na segunda aba (\autoref{fig:results}). Para o caso do benzeno, os resultados serão discutidos na \autoref{sec:benzene}.
+
+\begin{figure}[htb]
+	\caption{\label{fig:results} Aqui, é mostrada a aba de resultados do cálculo realizado no \textit{Balmy.jl}}
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]{images/results.png}
+	\end{center}
+	\fonte{Autor(a)}
+\end{figure}
+
+\section{Diagramas de orbitais moleculares}\label{sec:benzene}
+
+Como o enfoque desse trabalho é a análise de compostos aromáticos, analisaremos de maneira mais aprofundada o exemplo do benzeno, cujas coordenadas estão mostradas na \autoref{tab:coords}. Os comprimentos de ligação obtidos para \ce{C-C} são $1.40$ \AA, e para \ce{C-H} são $1.10$ \AA.
 
 \begin{table}[htb]
 	\centering
-	\caption{\label{tab:energies} Energias dos elétrons $\pi$ nos compostos aromáticos.}	
-	\begin{tabular}{lrr}
+	\caption{\label{tab:coords} Coordenadas atômicas do benzeno.}	
+	\begin{tabular}{crrr}
 		\toprule
-		\textbf{Molécula} & $E_\pi / (eV)$ & $E_\pi / (kcal/mol)$
+		\textbf{Átomo (posição)} & coordenada $x$ & coordenada $y$ & coordenada $z$
 		\\ 
 		\midrule
-        Etileno & -26.336 & -609.628 \\
-        Butadieno & -52.964 & -1221.38 \\
-        Benzeno & -80.208 & -1849.64 \\
-        Fulveno & -78.928 & -1820.12 \\
-        Naftaleno & -133.676 & -3082.64 \\
-        Azuleno & -132.934 & -3065.53 \\
-        Fenantreno & -187.286 & -4318.92 \\
-        Antraceno & -187.020 & -4312.78 \\
+C(1)  &    0.000000000000  &   1.950000000000  &   1.391500000000  \\
+C(2)  &    1.205074349366  &   1.950000000000  &   0.695750000000  \\
+C(3)  &    1.205074349366  &   1.950000000000  &  -0.695750000000  \\
+C(4)  &   -0.000000000000  &   1.950000000000  &  -1.391500000000  \\
+C(5)  &   -1.205074349366  &   1.950000000000  &  -0.695750000000  \\
+C(6)  &   -1.205074349366  &   1.950000000000  &   0.695750000000  \\
+H(1)  &    0.000000000000  &   1.950000000000  &   2.471500000000  \\
+H(2)  &    2.140381785453  &   1.950000000000  &   1.235750000000  \\
+H(3)  &    2.140381785453  &   1.950000000000  &  -1.235750000000  \\
+H(4)  &   -0.000000000000  &   1.950000000000  &  -2.471500000000  \\
+H(5)  &   -2.140381785453  &   1.950000000000  &  -1.235750000000  \\
+H(6)  &   -2.140381785453  &   1.950000000000  &   1.235750000000  \\
     \bottomrule
 	\end{tabular}
 	\fonte{Autor(a).}
 \end{table}
-
-\section{Diagramas de orbitais moleculares}
 
 Seguindo o grafo mostrado na \autoref{fig:M2} e enumerado na \autoref{fig:graphEnumerated}, é possível construir uma matriz de adjacência de dimensão $n \times n$, onde $n$ é o número de átomos, excluindo-se os hidrogênios. No caso do benzeno, a ordem da matriz em questão é 6.
 
@@ -164,10 +175,32 @@ Resolvendo o polinômio da \autoref{eq:R3}, conseguimos suas raízes ($x = \pm 1
 	\begin{center}
 		\includegraphics[width=0.75\textwidth]{images/MOs.png}
 	\end{center}
-	\fonte{Autor(a)}
+	\fonte{Autor(a).}
 \end{figure}
 
 Os autovalores repetidos vão gerar orbitais degenerados, isto é, aqueles que estão no mesmo nível energético, como é possível notar no diagrama e nos valores de energia obtidos. Esses mesmos valores podem ser obtidos se calcularmos os autovalores da matriz de adjacência. Desse modo, comprovamos que, ao solucionar o determinante e os autovalores da matriz secular, é possível obter os valores de energia e as populações associadas a cada orbital molecular da molécula de interesse.
+
+O diagrama de níveis de energia para o benzeno é dado na \autoref{fig:MOs}. Os seis elétrons $\pi$ são colocados nos três níveis de energia mais baixos. Desse modo, a energia eletrônica em benzeno é definida pela \autoref{epi}.
+
+\begin{equation}
+\label{epi}
+    E_\pi = 2(\alpha + 2\beta) + 4(\alpha + \beta) = 6\alpha + 8\beta
+\end{equation}
+
+As funções de onda resultantes para os seis orbitais moleculares $\pi$ do benzeno são dados pela \autoref{wavefunctions}.
+
+\begin{equation}
+\label{wavefunctions}
+\begin{split}
+    \psi_1 = \frac{1}{\sqrt{6}}(2p_{z1} + 2p_{z2} + 2p_{z3} + 2p_{z4} + 2p_{z5} + 2p_{z6}) \Longrightarrow E_1 = \alpha + 2\beta \\
+    \psi_2 = \frac{1}{\sqrt{4}}(2p_{z2} + 2p_{z3} - 2p_{z5} - 2p_{z6}) \Longrightarrow E_2 = \alpha + \beta \\
+   \psi_3 = \frac{1}{\sqrt{3}}(2p_{z1} + \frac{1}{2} 2p_{z2} - \frac{1}{2} 2p_{z3} - 2p_{z4} - \frac{1}{2} 2p_{z5} + \frac{1}{2} 2p_{z6}) \Longrightarrow E_3 = \alpha + \beta \\
+     \psi_4 = \frac{1}{\sqrt{4}}(2p_{z2} - 2p_{z3} + 2p_{z5} - 2p_{z6}) \Longrightarrow E_4 = \alpha - \beta \\
+      \psi_5 = \frac{1}{\sqrt{3}}(2p_{z1} - \frac{1}{2} 2p_{z2} - \frac{1}{2} 2p_{z3} + 2p_{z4} - \frac{1}{2} 2p_{z5} - \frac{1}{2} 2p_{z6}) \Longrightarrow E_5 = \alpha - \beta \\
+      \psi_6 = \frac{1}{\sqrt{6}}(2p_{z1} - 2p_{z2} + 2p_{z3} - 2p_{z4} +  2p_{z5} -  2p_{z6}) \Longrightarrow E_6 = \alpha - 2\beta 
+\end{split}
+\end{equation}
+
 
 \begin{table}[htb]
 	\centering
@@ -177,7 +210,7 @@ Os autovalores repetidos vão gerar orbitais degenerados, isto é, aqueles que e
 		\textbf{Molécula} & \textbf{HOMO/(eV)} & \textbf{LUMO/(eV)} & \textbf{Gap/(eV)}
 		\\ 
 		\midrule
-        benzeno & -12.797 & -8.345 & 4.452 \\
+        benzeno & -12.808 & -8.282 & 4.452 \\
         naftaleno & -12.073 & -9.338 & 2.635 \\
         antraceno & -11.642 & -9.839 & 1.803 \\
         fenantreno & -12.023 & -9.310 & 2.713 \\
@@ -191,34 +224,66 @@ Os autovalores repetidos vão gerar orbitais degenerados, isto é, aqueles que e
 	\fonte{Autor(a).}
 \end{table}
 
-Como o enfoque desse trabalho é a análise de compostos aromáticos, analisaremos de maneira mais aprofundada o exemplo do benzeno, cujas coordenadas estão mostradas na \autoref{tab:coords}. Os comprimentos de ligação obtidos para \ce{C-C} são $1.40 \AA$ e, para \ce{C-H}, são $1.10 \AA$.
+\section{Hidrocarbonetos aromáticos}
+
+Analisando os dados da \autoref{tab:energies}, concluímos que a ordem das estabilidades dos compostos está de acordo com aqueles apresentados por Hoffmann \autocite{Hoffmann1963}, e com os dados experimentais publicados por Heilbronner \autocite{ginsburg1959}. Por exemplo, o naftaleno mostra-se 32.3 kcal/mol mais estável do que o azuleno, o que é um ótimo resultado se comparado com o valor de referência (32.6 kcal/mol)\autocite{ginsburg1959}. O fulveno, por sua vez, é computado como sendo 25.6 kcal/mol menos estável do que o benzeno, em relação ao valor de 27 kcal/mol tomado como modelo\autocite{CHENG1956}. O antraceno, por sua vez, é 4.2 kcal/mol mais estável do que o fenantreno, enquanto o último isômero é, na verdade, 6.9 kcal/mol mais estável \autocite{Hoffmann1963}, o que provém do fato de que há repulsão estérica entre os hidrogênios do fenantreno.
 
 \begin{table}[htb]
 	\centering
-	\caption{\label{tab:coords} Coordenadas atômicas do benzeno.}	
-	\begin{tabular}{crrr}
+	\caption{\label{tab:energies} Energias dos elétrons $\pi$ nos compostos aromáticos.}	
+	\begin{tabular}{lrr}
 		\toprule
-		\textbf{Átomo (posição)} & $x$ & $y$ & $z$
+		\textbf{Molécula} & $E_\pi / (eV)$ & $E_\pi / (kcal/mol)$
 		\\ 
 		\midrule
-        C(1) &  1.40 &  0.00 & 0.00 \\ 
-        C(2) & -1.40 &  0.00 & 0.00 \\
-        C(3) &  0.70 &  1.21 & 0.00 \\
-        C(4) &  0.70 & -1.21 & 0.00 \\
-        C(5) & -0.70 & -1.21 & 0.00 \\
-        C(6) & -0.70 &  1.21 & 0.00 \\
-        H(1) &  2.50 &  0.00 & 0.00 \\
-        H(2) & -2.50 &  0.00 & 0.00 \\
-        H(3) &  1.25 &  2.16 & 0.00 \\
-        H(4) &  1.25 & -2.16 & 0.00 \\
-        H(5) & -1.25 & -2.16 & 0.00 \\
-        H(6) & -1.25 &  2.16 & 0.00 \\
+        Etileno & -26.336 & -609.628 \\
+        Butadieno & -52.964 & -1221.38 \\
+        Benzeno & -80.208 & -1849.64 \\
+        Fulveno & -78.928 & -1820.12 \\
+        Naftaleno & -133.676 & -3082.64 \\
+        Azuleno & -132.934 & -3065.53 \\
+        Fenantreno & -187.286 & -4318.92 \\
+        Antraceno & -187.020 & -4312.78 \\
     \bottomrule
 	\end{tabular}
 	\fonte{Autor(a).}
 \end{table}
 
-\section{Influência de K}
+\section{Influência de K}\label{wolfsberg}
 
 
 \section{Índices geométricos}
+
+\subsection{Hidrocarbonetos policíclicos aromáticos}
+
+Além dos orbitais moleculares e das funções de onda, o \textit{Balmy.jl} também permite analisar o \gls{HOMA}, um índice geométrico de aromaticidade. O arquivo de saída gerado pelo \textit{Balmy.jl} está representado na \autoref{fig:HOMA}. A ideia original e fundamental é que cada par de átomos pode ser envolvido em ambas as ligações $\sigma$ e $\pi$, com $R_\sigma > R_\pi$. A distância de ligação $R_i$ representa uma compressão de $R_\sigma$ e uma extensão de $R_\pi$. Ao observar os valores na \autoref{fig:HOMA}, nota-se que os sextetos mais aromáticos estão na região perférica mais externa (\gls{HOMA} $= 0.9$), o que é um fenômeno importante, pois o \gls{HOMA} conhecidamente superestima os valores de aromaticidade para sextetos periféricos\autocite{giov2020}. 
+
+\begin{figure}[htb]
+\caption{\label{fig:HOMA} Valores de HOMA para a estrutura do Kekuleno gerados com o \textit{Balmy.jl}.}
+	\begin{center}
+		\includegraphics[width=0.65\textwidth]{images/geom.png}
+	\end{center}
+	\fonte{Autor(a).}
+\end{figure}
+
+\begin{figure}[htb]
+\caption{\label{fig:HOMA2} Valores de HOMA para a estrutura do Kekuleno gerados com o \textit{Balmy.jl}.}
+	\begin{center}
+		\includegraphics[width=1.0\textwidth]{images/fig2(6).png}
+	\end{center}
+	\fonte{Autor(a).}
+\end{figure}
+
+\subsection{Heterociclos aromáticos}
+
+O efeito da ressonância em estruturas heterocíclicas depende da geometria do sistema e do tipo de heteroátomo presente no anel. No caso dos compostos que correspondem a anéis de cinco membros, como pirrol, furano, e seus derivados, são possíveis conjugações entre os pares de elétrons livres (do(s) heteroátomo(s)) e o sistema $\pi$. Consequentemente, são gerados híbridos de ressonância não equivalentes entre si, uma com separação de carga, e outra sem, não permitindo que a deslocalização eletrônica seja completa. Por outro lado, anéis de seis membros, a exemplo da piridina e seus derivados, apresentam conjugação $\pi-\pi$ total, com estruturas de ressonância que não têm separação de carga.
+
+Após os efeitos de ressonância, os índices HOMED (Tabela 11) calculados para as estruturas otimizadas
+do pirrol e do furano são
+inferiores aos dos heteroaromáticos de seis membros, como a piridina e o íon piranil, respectivamente.
+O índice HOMED para o íon piranilíaco também é menor do que o índice para a piridina. Uma substituição do íon CH
+pelo átomo N-aza em anéis com cinco membros parece reduzir o índice HOMED em maior grau
+para O- que para N-derivados. Para anéis com seis membros, presença do átomo adicional N-aza em azinas
+não destrói o sistema de deslocalização completa de elétrons $\pi$ no sistema. Para os anéis de seis membros
+O-derivados, o índice HOMED depende fortemente da posição do átomo N-aza. Ele diminui
+para posições 3 e 3,5; onde o átomo N pode estar próximo do átomo C+, e aumenta para a posição 4 onde o átomo N pode assumir a carga positiva.

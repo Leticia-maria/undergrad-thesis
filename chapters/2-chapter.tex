@@ -6,26 +6,47 @@
 
 De forma descritiva, o \textit{Balmy.jl} classifica-se como uma aplicação \textit{web}, isto é, um sistema projetado para utilização através de um navegador, lançando mão de linguagens \gls{HTML}, JavaScript, \gls{CSS} e Julia. Em geral, esse tipo de ferramenta é executada a partir de um servidor \gls{HTTP} ou localmente, no dispositivo do usuário. Na \gls{API} em questão (\textit{Balmy.jl}), a publicação foi feita no GitHub Pages, um servidor gratuito que hospeda sites criados a partir de repositórios Git, um sistema de controle de versionamento distribuído, aplicável principalmente ao desenvolvimento de \textit{software}, pois salva todo o histórico de edições contido no processo de construção de um programa computacional. A função do servidor \textit{web} é receber uma solicitação (requisição) e devolver (resposta) algo para o usuário, mediando essa interação que ocorre em tempo real. 
 
-A infraestrutura da aplicação divide-se em duas partes. A primeira delas é o \textit{front-end}, que corresponde ao \textit{design} gráfico da interface com a qual o usuário lida. Esta é construída com JavaScript, HTML e CSS, de maneira composta, pois estas são as únicas linguagens de programação que o navegador consegue interpretar. Dentro do contexto, torna-se mandatório preocupar-se com a intuitividade dos elementos adicionados e como a experiência do cliente será delineada dentro da arquitetura da API. Em contrapartida, temos o \textit{back-end}, que dá suporte para a interface e realiza as operações solicitadas sem que o usuário comunique-se diretamente com o código escrito em Julia.
+A infraestrutura da aplicação divide-se em duas partes. A primeira delas é o \textit{front-end}, que corresponde ao \textit{design} gráfico da interface com a qual o usuário lida. Esta é construída com JavaScript, \gls{HTML} e \gls{CSS}, de maneira composta, pois estas são as únicas linguagens de programação que o navegador consegue interpretar. Dentro do contexto, torna-se mandatório preocupar-se com a intuitividade dos elementos adicionados e como a experiência do usuário será delineada dentro da arquitetura da API. Em contrapartida, temos o \textit{back-end}, que dá suporte para a interface e realiza as operações solicitadas sem que o usuário comunique-se diretamente com o código em Julia, linguagem criada especificamente para ciência e mineração de dados, álgebra linear (com a biblioteca nativa chamada \textit{LinearAlgebra.jl}) e aprendizado de máquina. Sua vantagem principal é a velocidade, devido ao fato de ser compilada via tradução dinâmica (\textit{Just In Time}) e por sua tipagem ser forte e dinâmica. Tais fatores contibuem para o incremento significativo no desempenho da linguagem Julia em relação à linguagem Python, por exemplo. No caso dos cálculos que serão realizados, a escolha é justificada porque a linguagem é otimizada para o uso matemático, devido à sua sintaxe adaptada para equações
+e expressões numéricas.
 
-As vantagens desse método de desenvolvimento de \textit{software} em relação a um aplicativo \textit{desktop} são muitas, a começar pela total exclusão da necessidade de instalação local (uma vez que a API está hospedada em um servidor remoto), que torna-se muito complexa à medida que você adiciona dependências ou muda de sistema operacional. Em razão dessa escalabilidade, todas as atualizações do \textit{Balmy.jl} são/serão realizadas no servidor, ou seja, qualquer alteração na aplicação, já permite o acesso direto a todos os usuários de uma vez só. Como consequência, o custo de manutenção e o tempo de trabalho empregados para incrementar novas funcionalidades à aplicação são reduzidos, pois tudo é feito em um só local.
+As vantagens em desenvolver uma aplicação \textit{web} em relação a um aplicativo \textit{desktop} são muitas, a começar pela total exclusão da necessidade de instalação local (uma vez que a \gls{API} está hospedada em um servidor remoto), que torna-se muito complexa à medida que você adiciona dependências ou muda de sistema operacional. Em razão dessa escalabilidade, todas as atualizações do \textit{Balmy.jl} são/serão realizadas no servidor, ou seja, qualquer alteração na aplicação, já permite o acesso direto a todos os usuários de uma vez só. Como consequência, o custo de manutenção e o tempo de trabalho empregados para incrementar novas funcionalidades ao \textit{site} são reduzidos, pois tudo é feito em um servidor centralizado, sem que o usuário precise atualizar em seu computador pessoal.
 
 Por fim, um último ponto a ser destacado é a usabilidade dos sistemas \textit{web}, que são pensados para oferecer uma experiência diferenciado ao usuário, baseada em múltiplos tipos de dispositivos. Um grande exemplo disso é a responsividade, que consiste em adaptar o conteúdo do sistema à tela do dispositivo utilizado. O endereço eletrônico do \textit{Balmy.jl}, a citar, pode ser acessado tanto por um computador, quanto por um dispositivo móvel (\textit{smartphone}), sendo altamente versátil.
 
 %% vantagens
 
 
-\section{Representação tridimensional}
+\section{Representação tridimensional}\label{desenhoestrutural}
 
-As representações tridimensionais moleculares foram feitas com o \textit{Three.js}, uma biblioteca que usa \textit{WebGL} renderizar objetos tridimensionais. No caso das moléculas, são aplicados modelos conhecidos, como o \textit{ball and stick}), utilizado para exibir geometrias em 3D por meio de bolas (átomos) e bastões (ligações químicas). As esferas são comumente coloridas de acordo com a convenção CPK (Corey-Pauling-Koltun), que se popularizou por distinguir os elementos químicos com um bom contraste. Em 1952, Corey e Pauling publicaram uma descrição dos modelos de preenchimento de espaço de proteínas e outras biomoléculas que eles haviam construído na Caltech \autocite{Corey1953}. Tal proposição foi melhorada em 1965, por Koltun, que estendeu essa técnica aos halogênios e metais \autocite{Crossland2004-ll}. 
+As representações tridimensionais das moléculas foram feitas com o \textit{Three.js}, uma biblioteca que usa \textit{WebGL} para renderizar os objetos no espaço. No caso das moléculas, são aplicados modelos conhecidos, como o \textit{ball and stick}), utilizado para exibir geometrias em 3D por meio de bolas (átomos) e bastões (ligações químicas). As esferas são comumente coloridas de acordo com a convenção \gls{CPK}, que se popularizou por distinguir os elementos químicos com um bom contraste. Em 1952, Corey e Pauling publicaram uma descrição dos modelos de preenchimento de espaço de proteínas e outras biomoléculas que eles haviam construído na Caltech \autocite{Corey1953}. Tal proposição foi melhorada em 1965, por Koltun, que estendeu essa técnica aos halogênios e metais \autocite{Crossland2004-ll}. 
 
-Várias das cores do CPK referem-se mnemonicamente às cores dos elementos puros ou de seus compostos notáveis. Por exemplo, o hidrogênio é um gás incolor, o carbono como carvão vegetal ou grafite é preto, o enxofre em pó é amarelo, o cloro é um gás esverdeado, o bromo é um líquido vermelho escuro, o iodo no éter é violeta, o fósforo amorfo é vermelho, a ferrugem é vermelho alaranjado escuro, etc. Para algumas cores, tais como as de oxigênio e nitrogênio, a inspiração é menos clara. Talvez o vermelho para o oxigênio seja inspirado no fato de que o químico que contém oxigênio no sangue, hemoglobina, é vermelho vivo; e o azul para o nitrogênio é uma consequência dele ser o principal componente da atmosfera terrestre, que aos olhos humanos parece ser de cor azul (na tonalidade do céu).
+Várias das cores do \gls{CPK} referem-se mnemonicamente às cores dos elementos puros ou de seus compostos notáveis. Por exemplo, o hidrogênio é um gás incolor, o carbono como carvão vegetal ou grafite é preto, o enxofre em pó é amarelo, o cloro é um gás esverdeado, o bromo é um líquido vermelho escuro, o iodo no éter é violeta, o fósforo amorfo é vermelho, a ferrugem é vermelho alaranjado escuro, etc. Para algumas cores, tais como as de oxigênio e nitrogênio, a inspiração é menos clara. Talvez o vermelho para o oxigênio seja inspirado no fato de que o químico que contém oxigênio no sangue, hemoglobina, é vermelho vivo; e o azul para o nitrogênio é uma consequência dele ser o principal componente da atmosfera terrestre, que aos olhos humanos parece ser de cor azul (na tonalidade do céu).
 
 Essa convenção foi muito provavelmente inspirada por modelos no século XIX. Em 1865, August Wilhelm von Hofmann, em uma palestra no \textit{Royal Institution} em Londres, estava usando modelos feitos de bolas de \textit{croquet} para ilustrar vários átomos (por exemplo, preto para o carbono, branco para o hidrogênio, verde para o cloro, vermelho para o oxigênio, azul para o nitrogênio)\autocite{Crossland2004-ll}. Na época, o \textit{croquet} era o esporte mais popular na Inglaterra, portanto, as bolas eram abundantes.
 
+Para implementar o modelo molecular utilizando o \textit{Three.js}, é empregado o modelo de Blinn-Phong, capaz de simular superfícies brilhantes com holofotes especulares. O sombreamento é calculado \textit{per pixel} de acordo com o modelo de Phong. Desse modo, apesar de custar um pouco mais de tempo para renderizar, ele atinge uma acurácia maior do que outros modelos disponíveis no \textit{WebGL} (o de Lambert, por exemplo).
+
+No modelo primeiramente proposto por Phong, é calculado continuamente o produto escalar $R \cdot V$ entre um observador $V$ e o feixe de uma fonte de luz ($L$) refletida ($R$) sobre uma superfície. No ajuste proposto por Blinn, no entanto, calcula-se um vetor a meio caminho entre o espectador e os vetores de fonte luminosa, podendo substituir $R \cdot V$ por $N \cdot H$, onde $N$ é o vetor normal à superfície.
+
+\begin{figure}[htb]
+\begin{equation}
+    \label{eq:R1}
+    H = \frac{L + \highlight{blue}{V} }{||L + \tikzmarknode{value}{\highlight{blue}{V}}||}
+\end{equation}
+\begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
+    \path (value.south) ++ (-1,-1.5em) node[anchor=north east,color=blue!67] (scalep){\textit{$V = P_H (-L)$}};
+    \draw [color=blue!87](value.south) |- ([xshift=-1.65em,color=blue]scalep.north west);
+\end{tikzpicture}
+\vspace{2\baselineskip}
+\end{figure}
+
+Na \autoref{eq:R1}, $P_H$ é a matriz de Householder que reflete um ponto no hiperplano que contém a origem e tem um vetor normal $H$. Este produto escalar é o cosseno de um ângulo que é metade do ângulo representado pelo produto escalar de Phong (se $V$, $L$, $N$ e $R$ estiverem todos no mesmo plano). Esta relação entre os ângulos sofre desvios discretos quando os vetores não se encontram no mesmo plano, especialmente em relação aos ângulos pequenos.
+
+Ainda sobre os ajustes de Blinn ao modelo de Phong, consideremos que o ângulo entre o vetor a meio caminho $(N \cdot H)$ e a superfície normal é provavelmente menor do que o ângulo entre $R$ e $V$ usado no modelo original (a menos que a superfície seja vista de um ângulo muito íngreme para o qual é provável que seja maior), e já que Phong está usando $(R \cdot V)^\alpha$, um expoente (chamado de constante de brilho) pode ser definido como $\alpha' > \alpha$, tal que $(N \cdot H)^{\alpha'}$ está mais próxima da expressão original de Phong. Os resultados das estruturas geradas no \textit{Balmy.jl} estão na \autoref{design}
+
 \section{Método de Hueckel Estendido}
 
-O \gls{HMO} foi inicialmente proposto por Erich Hueckel em 1930 \autocite{Hckel1931} como uma alternativa para calcular orbitais moleculares como combinações lineares de orbitais atômicos\autocite{Coulson1978-ot}. Tal teoria prediz os orbitais moleculares de elétrons $\pi$ em moléculas com estrutura eletrônica deslocalizada., tal como o etileno, benzeno, butadieno e piridina. Isso nos fornece uma base teórica para fundamentar a regra de Hueckel, responsável por enunciar que moléculas cíclicas, planares ou espécies químicas iônicas com $4n + 2$ elétrons $\pi$ são aromáticos.
+O \gls{HMO} foi inicialmente proposto por Erich Hueckel em 1930 \autocite{Hckel1931} como uma alternativa para calcular orbitais moleculares como combinações lineares de orbitais atômicos\autocite{Coulson1978-ot}. Tal teoria prediz os orbitais moleculares de elétrons $\pi$ em moléculas com estrutura eletrônica deslocalizada., tal como o etileno, benzeno, butadieno e piridina. Isso nos fornece uma base teórica para fundamentar a regra de Hueckel, responsável por enunciar que moléculas cíclicas, planares ou espécies químicas iônicas com $4n + 2$ elétrons $\pi$ são aromáticos, sendo $n$ um número inteiro positivo $0, 1, 2, \cdots, n$.
 
 Esse modelo baseia-se no fato de que a interação entre dois orbitais atômicos (sobreposição) produz um orbital molecular ligante mais estável (energia mais baixa), e um orbital molecular antiligante, menos estável do que aqueles que o geraram. Dessa forma, o número de orbitais moleculares novos é igual ao número de orbitais atômicos envolvidos (a combinação linear). A estabilidade relativa ou as energias dos orbitais moleculares em um polieno completamente conjugado, cíclico, planar pode ser predita pela teoria de Hueckel. Tomando o benzeno como exemplo, é possível ilustrar, através de um círculo de Frost (\autoref{fig:M1}), os níveis de energia dos seus orbitais moleculares de fronteira.
 
@@ -61,16 +82,16 @@ A metodologia de Hueckel estendido considera todos os elétrons da valência no 
 \vspace{2\baselineskip}
 \end{figure}
 
-A energia do j-ésimo orbital é dada pela equação monoeletrônica de Schroedinger ($ h_{eff} \psi_j = \epsilon_j \psi_j$) usando um Hamiltoniano ($h_{eff}$), que expressa a interação de um elétron com o restante da molécula.
+A energia do j-ésimo orbital é dada pela equação monoeletrônica de Schroedinger ($\hat{H}_{eff} \psi_j = \epsilon_j \psi_j$) usando um Hamiltoniano ($\hat{H}_{eff}$), que expressa a interação de um elétron com o restante da molécula.
 
 \begin{figure}[htb]
     \vspace{3\baselineskip}
 \begin{equation}
 \label{eq:energy_j1}
-        \epsilon_j = \frac{\tikzmarknode{hamil}{\highlight{blue}{$\displaystyle \langle \psi_j | h_{eff} | \psi_j \rangle$}}}{\tikzmarknode{overlap}{\highlight{red}{$\displaystyle \langle \psi_j | \psi_j \rangle$}}}
+        \epsilon_j = \frac{\tikzmarknode{hamil}{\highlight{blue}{$\displaystyle \langle \psi_j | \hat{H}_{eff} | \psi_j \rangle$}}}{\tikzmarknode{overlap}{\highlight{red}{$\displaystyle \langle \psi_j | \psi_j \rangle$}}}
 \end{equation}
 \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
-    \path (hamil.north) ++ (-0.70,1.5em) node[anchor=south east,color=blue!67] (scalep){\textit{$\displaystyle \int \psi_j  \times h_{eff} \times \psi_j d\tau$}};
+    \path (hamil.north) ++ (-0.70,1.5em) node[anchor=south east,color=blue!67] (scalep){\textit{$\displaystyle \int \psi_j  \times \hat{H}_{eff} \times \psi_j d\tau$}};
     \draw [color=blue!87](hamil.north) |- ([xshift=-0.70em,color=blue]scalep.south west);
     
     \path (overlap.south) ++ (-1,-1.5em) node[anchor=north east,color=red!67] (scalep){\textit{$\displaystyle \int \psi_j \times \psi_j d\tau$}};
@@ -79,28 +100,28 @@ A energia do j-ésimo orbital é dada pela equação monoeletrônica de Schroedi
 \vspace{2\baselineskip}
 \end{figure}
 
-A \autoref{eq:energy_j1} pode ser escrita como a \autoref{eq:energy_j}.
+A \autoref{eq:energy_j1} pode ser escrita como a \autoref{eq:energy_j} ao substituirmos a \autoref{eq:LCAO} na \autoref{eq:energy_j}.
 
 \begin{equation}
 \label{eq:energy_j}
-    \epsilon_j = \frac{ \displaystyle \bigg{\langle} \sum_{r=1}^{N} c_{jr} \psi_r \bigg{|} h_{eff} \bigg{|} \sum_{s=1}^{N} c_{js} \psi_s \bigg{\rangle}}{\displaystyle \bigg{\langle} \sum_{r=1}^{N} c_{jr} \psi_r \bigg{|} \sum_{s=1}^{N} c_{js} \psi_s \bigg{\rangle}}
+    \epsilon_j = \frac{ \displaystyle \bigg{\langle} \sum_{r=1}^{N} c_{jr} \psi_r \bigg{|} \hat{H}_{eff} \bigg{|} \sum_{s=1}^{N} c_{js} \psi_s \bigg{\rangle}}{\displaystyle \bigg{\langle} \sum_{r=1}^{N} c_{jr} \psi_r \bigg{|} \sum_{s=1}^{N} c_{js} \psi_s \bigg{\rangle}}
 \end{equation}
 
 Generalizando a expressão da \autoref{eq:energy_j} para quaisquer orbitais moleculares, é omitido o índice $j$ (\autoref{eq:energy}).
 
 \begin{equation}
 \label{eq:energy}
-    \epsilon = \frac{\displaystyle \sum_{r=1}^{N} \sum_{s=1}^{N} c^*_r c_s \langle \psi_r | h_{eff} | \psi_s \rangle}{\displaystyle \sum_{r=1}^{N} \sum_{s=1}^{N} c^*_r c_s \langle \psi_r | \psi_s \rangle}
+    \epsilon = \frac{\displaystyle \sum_{r=1}^{N} \sum_{s=1}^{N} c^*_r c_s \langle \psi_r | \hat{H}_{eff} | \psi_s \rangle}{\displaystyle \sum_{r=1}^{N} \sum_{s=1}^{N} c^*_r c_s \langle \psi_r | \psi_s \rangle}
 \end{equation}
 
-Dessa expressão decorrem as integrais que precisam ser calculadas no procedimento do método:
+Da \autoref{eq:energy} decorrem as integrais moleculares a serem calculadas (recomenda-se a leitura do \autoref{ap:HMO} e do \autoref{ap:EHMO} para mais detalhes):
 
 \begin{itemize}
     \item $\displaystyle S_{rs} = \langle \psi_r | \psi_j \rangle$ é a integral de sobreposição. Como estamos trabalhando com orbitais normalizados, $S_{rr} = 1$;
     
-    \item $\displaystyle H_{rr} = \langle \psi_r | h_{eff} | \psi_r \rangle$ é a integral de Coulomb, aproximada pelo oposto do potencial de ionização (como é descrito no \autoref{ap:EHMO});
+    \item $\displaystyle H_{rr} = \langle \psi_r | \hat{H}_{eff} | \psi_r \rangle$ é a integral de Coulomb, aproximada pelo oposto do potencial de ionização (como é descrito no \autoref{ap:EHMO});
     
-    \item $\displaystyle H_{rs} = \langle \psi_r | h_{eff} | \psi_s \rangle$ é a integral de ressonância. Essa integral nos dá a energia de um elétron na região do espaço onde as funções $\phi_r$ e, $\phi_s$ sobrepõem-se. Os valores de $H_{rs}$ são computados pela \autoref{hamiltonian} (no \autoref{ap:EHMO}).
+    \item $\displaystyle H_{rs} = \langle \psi_r | \hat{H}_{eff} | \psi_s \rangle$ é a integral de ressonância. Essa integral nos dá a energia de um elétron na região do espaço onde as funções $\phi_r$ e, $\phi_s$ sobrepõem-se. Os valores de $H_{rs}$ são computados pela \autoref{hamiltonian} (no \autoref{ap:EHMO}).
 \end{itemize}
 
 Substituindo então os elementos das integrais supracitadas na \autoref{eq:energy}, obtemos a \autoref{eq:energy_cont}.
@@ -112,7 +133,7 @@ Substituindo então os elementos das integrais supracitadas na \autoref{eq:energ
 
 \subsection{Integral de sobreposição}
 
-No Método de Hueckel Estendido, as integrais de sobreposição são calculadas utilizando orbitais atômicos de Slater (representado por coordenadas esféricas na ), pois seus resultados são mais acurados, principalmente pelo fato de reproduzirem mais precisamente a região do cúspide e o decaimento orbital. Desse modo, os conjuntos de bases são obtidos pelas regras de Slater\autocite{Slater1930, Lu2006}.
+No Método de Hueckel Estendido, as integrais de sobreposição são calculadas utilizando orbitais atômicos de Slater (representado por coordenadas esféricas na \autoref{stos}), pois seus resultados são mais acurados, principalmente pelo fato de reproduzirem mais precisamente a região do cúspide e o decaimento orbital. Desse modo, os conjuntos de bases são obtidos pelas regras de Slater\autocite{Slater1930, Lu2006}.
 
 \begin{figure}[htb]
     \vspace{3\baselineskip}
@@ -169,7 +190,7 @@ A expressão da \autoref{overlap} pode ser aproximada a uma expressão analític
 \begin{equation}
 \label{analitica}
 \begin{split}
-    S^{n_2 l_2 m_2}_{n_1 l_1 m_1} (\zeta_1; \zeta_2; \textbf{\textit{R}} ) = N N' (R/2)^{n_1 + n_2 + 1} \tikzmarknode{auxiliary}{\highlight{blue}{$D(l_1, l_2, m)$}}  \\ \sum_{u=0}^{l_1 - m} \sum_{v=0}^{l_2 - m} \sum_{p=0}^{n_1 - m - u} \sum_{p'=0}^{n_2 - m - v} \sum_{q=0}^{m} \sum_{q'=0}^{m} \sum_{t=0}^{u}  \sum_{t'=0}^{v} (-1)^{n_1 - m - u} C_{l_1 m u} C_{l_2 m v} F_p (n_1 - m - u) F_{p'} (n_2 - m - v) \\
+    S^{n_2 l_2 m_2}_{n_1 l_1 m_1} (\zeta_1; \zeta_2; \textbf{\textit{R}} ) = N N' (R/2)^{n_1 + n_2 + 1} \tikzmarknode{auxiliary}{\highlight{blue}{$D(l_1, l_2, m)$}}  \\[0.35cm] \sum_{u=0}^{l_1 - m} \sum_{v=0}^{l_2 - m} \sum_{p=0}^{n_1 - m - u} \sum_{p'=0}^{n_2 - m - v} \sum_{q=0}^{m} \sum_{q'=0}^{m} \sum_{t=0}^{u}  \sum_{t'=0}^{v} (-1)^{n_1 - m - u} C_{l_1 m u} C_{l_2 m v} \\[0.35cm] F_p (n_1 - m - u) F_{p'} (n_2 - m - v)
     F_q (m) F_{q'} (m) F_t (u) F_{t'} (v) A_i (\alpha) B_j (\beta) 
 \end{split}
 \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
@@ -211,7 +232,7 @@ Ao acessar a interface gráfica, será possível ao usuário fornecer um arquivo
 
 Desse modo, transpõe-se a representação apresentada na \autoref{fig:graph} para as estruturas químicas de interesse, uma vez que os átomos podem ser considerados os análogos químicos dos vértices, e as ligações, das arestas. Enumerando-se sequencialmente os nodos do grafo derivado do benzeno como na \autoref{fig:graphEnumerated}, é possível então verificar computacionalmente onde esses pontos estão localizados.
 
-O DFS\autocite{Knuth1997-jf, Goodrich2001-pd} (busca em profundidade) é um algoritmo recursivo que perpassa todos os vértices de um grafo ou de uma árvore de dados através do conceito de \textit{backtracing} (retorno). Ou seja, ele começa em um nodo raiz definido arbitrariamente e a partir dele explora suas adjacências através da expansão da árvore de busca, aprofundando-se até que o alvo da busca seja encontrado ou até que ele se depare com um nó que não possui adjacências (nodo folha). Então a busca retrocede (\textit{backtrack}) e começa no próximo nó. Numa implementação não-recursiva, todos os nós expandidos recentemente são adicionados a uma pilha, para realizar a exploração (Algoritmo \ref{alg:1}, \autoref{fig:DFS}).
+O \gls{DFS}\autocite{Knuth1997-jf, Goodrich2001-pd} é um algoritmo recursivo que perpassa todos os vértices de um grafo ou de uma árvore de dados através do conceito de \textit{backtracing} (retorno). Ou seja, ele começa em um nodo raiz definido arbitrariamente e a partir dele explora suas adjacências através da expansão da árvore de busca, aprofundando-se até que o alvo da busca seja encontrado ou até que ele se depare com um nó que não possui adjacências (nodo folha). Então a busca retrocede (\textit{backtrack}) e começa no próximo nó. Numa implementação não-recursiva, todos os nós expandidos recentemente são adicionados a uma pilha, para realizar a exploração (Algoritmo \ref{alg:1}, \autoref{fig:DFS}).
 
 \begin{figure}[htb]
 \caption{\label{fig:graphEnumerated}Representação do grafo mostrado na \autoref{fig:M2} com nodos enumerados sequencialmente de 1-6.}
@@ -228,8 +249,6 @@ O DFS\autocite{Knuth1997-jf, Goodrich2001-pd} (busca em profundidade) é um algo
 	\end{center}
 	\fonte{Autor(a)}
 \end{figure}
-
-\section{Critérios quantitativos da aromaticidade}
 
 \section{Tratamento de resíduos}
 
