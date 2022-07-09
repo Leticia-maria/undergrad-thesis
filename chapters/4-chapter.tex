@@ -251,12 +251,47 @@ Analisando os dados da \autoref{tab:energies}, concluímos que a ordem das estab
 
 \section{Influência de K}\label{wolfsberg}
 
+\newpage
 
 \section{Índices geométricos}
 
+Além dos orbitais moleculares e das funções de onda, o \textit{Balmy.jl} também permite analisar o \gls{HOMA}. Esse índice geométrico de aromaticidade foi modelado de acordo com uma escala normalizada pelo fator $\alpha$ (\autoref{eq:3}), onde o benzeno seria a referência de \textit{aromaticidade perfeita}, tendo \gls{HOMA} $=1$, pois o desvio entre os comprimentos de ligação individuais ($R_i$) e o comprimento ótimo de ligação ($R_{opt}$) (\autoref{eq:2}) é nulo. Isso faz com que os termos $EN$ e $GEO$, que diminuem a aromaticidade, sejam iguais a $0$.
+
+\begin{equation}
+    HOMA = 1 - EN - GEO \Longrightarrow HOMA = 1 - 0 - 0 \Longrightarrow HOMA = 1
+\end{equation}
+
+\begin{table}[htb]
+	\centering
+	\caption{\label{tab:ccbc} Comprimentos de ligação entre átomos de carbono. Como notação, adotamos a simbologia \ce{C-C} para representar a ligação simples, \ce{C=C} para a ligação dupla, \ce{C\simeq C} para representar a ligação CC aromática na molécula do benzeno.}	
+	\begin{tabular}{ccc}
+		\toprule
+		\textbf{Tipo de ligação} & \textbf{Energia de ligação} & \textbf{Comprimento de ligação} \\
+		\midrule
+         \ce{C-C}  & 345 kJ/mol & 1.53 \AA \\
+         \ce{C=C} & 612 kJ/mol & 1.34 \AA \\
+         (\ce{C\simeq C} & 420 kJ/mol & 1.40 \AA \\
+    \bottomrule
+	\end{tabular}
+	\fonte{Autor(a).}
+\end{table}
+
+Por outro lado, \gls{HOMA} $= 0$ para o cicloexatrieno hipotético (\autoref{fig:2}), composto por ligações simples e duplas, sem deslocalização. Pode-se facilmente deduzir isso através da substituição dos valores da \autoref{tab:ccbc} na \autoref{eq:4}.
+
+\begin{equation}
+    \begin{split}
+        HOMA = 1 - \bigg\{ \frac{98.89}{6} \{ 3[(1.40 - R_{\ce{C-C}})^2] + 3[(1.40 - R_{\ce{C=C}})^2] \} \bigg\} \\
+        HOMA = 1 - \bigg\{ \frac{98.89}{6} \{ 3[(1.40 - 1.53)^2] + 3[(1.40 - 1.34)^2] \} \bigg\} \\
+        HOMA = 1 - \bigg[ \frac{98.89}{6} (0.0615) \bigg] \\
+        HOMA = 1 - 1 = 0
+    \end{split}
+\end{equation}
+
+%Ou seja, a ideia original e fundamental é que cada par de átomos pode ser envolvido em ambas as ligações $\sigma$ e $\pi$, com $R_\sigma > R_\pi$. A distância de ligação $R_i$ representa uma compressão de $R_\sigma$ e uma extensão de $R_\pi$.
+
 \subsection{Hidrocarbonetos policíclicos aromáticos}
 
-Além dos orbitais moleculares e das funções de onda, o \textit{Balmy.jl} também permite analisar o \gls{HOMA}, um índice geométrico de aromaticidade. O arquivo de saída gerado pelo \textit{Balmy.jl} está representado na \autoref{fig:HOMA}. A ideia original e fundamental é que cada par de átomos pode ser envolvido em ambas as ligações $\sigma$ e $\pi$, com $R_\sigma > R_\pi$. A distância de ligação $R_i$ representa uma compressão de $R_\sigma$ e uma extensão de $R_\pi$. Ao observar os valores na \autoref{fig:HOMA}, nota-se que os sextetos mais aromáticos estão na região perférica mais externa (\gls{HOMA} $= 0.9$), o que é um fenômeno importante, pois o \gls{HOMA} conhecidamente superestima os valores de aromaticidade para sextetos periféricos\autocite{giov2020}. 
+O arquivo de saída gerado pelo \textit{Balmy.jl} para o usuário analisar e visualizar essas relações está representado na \autoref{fig:HOMA}. Para explorar um pouco mais a importância do \gls{HOMA}, o índice foi aplicado a alguns sistemas policíclicos aromáticos. Ao observar os valores na \autoref{fig:HOMA}, nota-se que os sextetos mais aromáticos estão na região perférica mais externa (\gls{HOMA} $= 0.9$), o que é um fenômeno importante, pois o \gls{HOMA} conhecidamente superestima os valores de aromaticidade para sextetos periféricos\autocite{giov2020}. 
 
 \begin{figure}[htb]
 \caption{\label{fig:HOMA} Valores de HOMA para a estrutura do Kekuleno gerados com o \textit{Balmy.jl}.}
@@ -269,7 +304,7 @@ Além dos orbitais moleculares e das funções de onda, o \textit{Balmy.jl} tamb
 \begin{figure}[htb]
 \caption{\label{fig:HOMA2} Valores de HOMA para a estrutura do Kekuleno gerados com o \textit{Balmy.jl}.}
 	\begin{center}
-		\includegraphics[width=1.0\textwidth]{images/fig2(6).png}
+		\includegraphics[width=1.0\textwidth]{images/15.png}
 	\end{center}
 	\fonte{Autor(a).}
 \end{figure}
@@ -279,3 +314,15 @@ Além dos orbitais moleculares e das funções de onda, o \textit{Balmy.jl} tamb
 O efeito da ressonância em estruturas heterocíclicas depende da geometria do sistema e do tipo de heteroátomo presente no anel. No caso dos compostos que correspondem a anéis de cinco membros, como pirrol, furano, e seus derivados, são possíveis conjugações entre os pares de elétrons livres (do(s) heteroátomo(s)) e o sistema $\pi$. Consequentemente, são gerados híbridos de ressonância não equivalentes entre si, uma com separação de carga, e outra sem, não permitindo que a deslocalização eletrônica seja completa. Por outro lado, anéis de seis membros, a exemplo da piridina e seus derivados, apresentam conjugação $\pi-\pi$ total, com estruturas de ressonância que não têm separação de carga.
 
 Após os efeitos de ressonância, os índices \gls{HOMED} (Tabela 11) calculados para as estruturas otimizadas do pirrol e do furano são inferiores aos dos heteroaromáticos de seis membros, como a piridina e o íon piranil, respectivamente. O índice \gls{HOMED} para o íon piranilíaco também é menor do que o índice para a piridina. Uma substituição do íon \ce{CH} pelo átomo N-aza em anéis com cinco membros parece reduzir o índice \gls{HOMED} em maior grau para O- que para N-derivados. Para anéis com seis membros, presença do átomo adicional N-aza em azinas não destrói o sistema de deslocalização completa de elétrons $\pi$ no sistema. Para os anéis de seis membros O-derivados, o índice \gls{HOMED} depende fortemente da posição do átomo N-aza. Ele diminui para posições 3 e 3,5; onde o átomo N pode estar próximo do átomo C+, e aumenta para a posição 4 onde o átomo N pode assumir a carga positiva.
+
+\section{Análise estatística}
+
+Para além dos resultados já mostrados, ainda é possível discutir o porquê do índice \gls{HOMA} ser a melhor alternativa para trabalhar com a aromaticidade a nível geométrico. Matematicamente, podemos interpretar o \gls{HOMA} como uma função matemática de objetos como o quadrado da distância em um espaço molecular abstrato de dimensão $n$. Chamemos ele de \gls{MS}, no qual uma molécula pode ser representada por um ponto $X = (x_1, x_2, \cdots, x_n)$, onde as coordenadas subsequentes correspondem aos comprimentos da ligação \ce{CC} selecionada. Uma comparação entre duas moléculas, $X$ e $Y$, pode ser expressa como uma distância $d(X, Y) = \displaystyle \sqrt{\sum_{i=1}^{n} (x_i - y_i)^2}$ no \gls{MS}. 
+
+Essa comparação também faz sentido se estivermos interessados somente em uma diferença entre os fragmentos restritos, como os anéis, para avaliar sua aromaticidade. É suficiente dizer que, nessa definição:
+
+\begin{equation}
+    HOMA = 1 - \textit{const} \cdot d^2(X, Y)
+\end{equation}
+
+\noindent onde $d(\cdot)$ corresponde à distância no \gls{MS}, $X$ é um anel em uma dada molécula e $Y = (y_1, y_2, \cdots, y_n)$ é o benzeno, no qual todas as coordenadas são iguais entre si: $y_1 = y_2 = \cdots = y_n = y = d(CC)$. É uma representação espacial do que seria o $R_{opt}$ na \autoref{eq:3}. Por outro lado, \textit{const} corresponde ao fator $\alpha / n$ da \autoref{eq:3}. Adicionalmente, se nós assumirmos que existe uma molécula $Y$ na qual $y_1 = y_2 = \cdots = y_m = y = d(CC_{benzeno})$, mas $m \neq 6$, então nós calculamos o \gls{HOMA} para qualquer molécula composta por um número arbitrário de átomos de carbono.
