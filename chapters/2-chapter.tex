@@ -46,13 +46,13 @@ Ainda sobre os ajustes de Blinn ao modelo de Phong, consideremos que o ângulo e
 
 \subsection{Ligações Químicas}
 
-Para exibir as ligações no \textit{Balmy.jl}, foi implementado um algoritmo baseado nos raios covalentes de van der Waals, que representa, pictoricamente, o raio de uma esfera sólida imaginária empregada para representar um átomo. Tal parâmetro é representado a partir de definições termodinâmicas da equação de estado de van der Waals.
+Para exibir as ligações no \textit{Balmy.jl}, foi implementado um algoritmo baseado nos raios covalentes de van der Waals, que representa, pictoricamente, o raio de uma esfera sólida imaginária empregada para representar um átomo. Tal parâmetro é representado a partir de definições termodinâmicas da equação de estado de van der Waals, onde $N_a$ é o número de Avogadro e $r$ é o raio.
 
 \begin{equation}
     b = \frac{16}{3} \pi N_a r^3
 \end{equation}
 
-Os parâmetros $a$ e $b$ são obtidos experimentalmente e dependem da natureza do gás. O fator de correção $b$ é denominado volume de exclusão, referindo-se tanto ao volume próprio dos átomos, como o volume circundante onde não pode haver outros porque nessa distância predominam as forças de repulsão entre os átomos do gás (forças de van der Waals). Desse modo, se a distância entre os dois átomos que estão sendo analisados é maior do que a soma dos raios de van der Waals, não é detectada uma ligação química pelo \textit{Balmy.jl}.
+Os parâmetros $a$ e $b$ são obtidos experimentalmente e dependem da natureza do gás. O fator de correção $b$ é denominado volume de exclusão, referindo-se tanto ao volume próprio dos átomos, como o volume circundante onde não pode haver outros porque nessa distância predominam as forças de repulsão entre os átomos do gás (forças de van der Waals). Desse modo, se a distância entre os dois átomos que estão sendo analisados é maior do que a soma dos seus raios de van der Waals, não é detectada uma ligação química pelo \textit{Balmy.jl}.
 
 \section{Método de Hueckel Estendido}
 
@@ -196,7 +196,7 @@ definida por coordenadas esféricas.
 A expressão da \autoref{overlap} pode ser aproximada a uma expressão analítica por uma série de somatórios finitos ponderados por coeficientes binomiais, podendo então serem mais facilmente computadas e calculadas.
 
 \begin{figure}[htb]
-    \vspace{3\baselineskip}
+    \vspace{4\baselineskip}
 \begin{equation}
 \label{analitica}
 \begin{split}
@@ -230,14 +230,22 @@ Nessa expressão (\autoref{analitica}), $A_i (\alpha)$ e $B_j (\beta)$ são fun�
 
 \section{Teoria de grafos}
 
-Ao acessar a interface gráfica, será possível ao usuário fornecer um arquivo de extensão .xyz, contendo as informações em coordenadas cartesianas da estrutura a ser analisada (\autoref{workflow}). O sistema de interesse será processado computacionalmente e transformado em um grafo $G$, que corresponde a uma coleção de vértices (pontos) chamados genericamente de $V$ e arestas (linhas) denotadas por $E$. Formalmente um grafo simples $G$ é definido como um par ordenado $(V(G), E(G))$, o qual consiste de um conjunto $V(G)$ de vértices $V$ não vazio e um conjunto de arestas $E(G) = E$ contendo pares não ordenados de elementos distintos de V, uma vez que cada elemento de $E(G)$ é uma linha que conecta dois pontos de $V(G)$. Para maiores detalhes sobre a teoria de grafos, acesse o \autoref{ap:graph}.
+Ao acessar a interface gráfica, será possível ao usuário fornecer um arquivo de extensão \textit{.xyz}, contendo as informações em coordenadas cartesianas da estrutura a ser analisada (\autoref{workflow}). O sistema de interesse será processado computacionalmente e transformado em um grafo $G$, que corresponde a uma coleção de vértices (pontos) chamados genericamente de $V$ e arestas (linhas) denotadas por $E$. Formalmente um grafo simples $G$ é definido como um par ordenado $(V(G), E(G))$, o qual consiste de um conjunto $V(G)$ de vértices $V$ não vazio e um conjunto de arestas $E(G) = E$ contendo pares não ordenados de elementos distintos de V, uma vez que cada elemento de $E(G)$ é uma linha que conecta dois pontos de $V(G)$. Para maiores detalhes sobre a teoria de grafos, acesse o \autoref{ap:graph}.
 
 \begin{figure}[htb]
 	\caption{\label{fig:M2} Exemplo ilustrativo de um grafo cíclico não direcionado. Os pontos em azul representam os seis vértices que se conectam através das linhas pretas correspondentes às arestas. O equivalente à esquerda é um anel benzênico de Kekulé, com seis átomos de carbono ocupando os nodos de um ciclo hexagonal.}
 	\begin{center}
-		\includegraphics[width=0.65\textwidth]{images/grafo(2).png}
+		\includegraphics[width=0.55\textwidth]{images/grafo(2).png}
 	\end{center}
 	\fonte{Autor(a).}
+\end{figure}
+
+\begin{figure}[htb]
+\caption{\label{fig:graphEnumerated}Representação do grafo mostrado na \autoref{fig:M2} com nodos enumerados sequencialmente de 1-6.}
+	\begin{center}
+		\includegraphics[width=0.55\textwidth]{images/graphEnumerated.png}
+	\end{center}
+	\fonte{Autor(a)}
 \end{figure}
 
 Desse modo, transpõe-se a representação apresentada na \autoref{fig:graph} para as estruturas químicas de interesse, uma vez que os átomos podem ser considerados os análogos químicos dos vértices, e as ligações, das arestas. Enumerando-se sequencialmente os nodos do grafo derivado do benzeno como na \autoref{fig:graphEnumerated}, é possível então verificar computacionalmente onde esses pontos estão localizados.
@@ -245,20 +253,31 @@ Desse modo, transpõe-se a representação apresentada na \autoref{fig:graph} pa
 O \gls{DFS}\autocite{Knuth1997-jf, Goodrich2001-pd} é um algoritmo recursivo que perpassa todos os vértices de um grafo ou de uma árvore de dados através do conceito de \textit{backtracing} (retorno). Ou seja, ele começa em um nodo raiz definido arbitrariamente e a partir dele explora suas adjacências através da expansão da árvore de busca, aprofundando-se até que o alvo da busca seja encontrado ou até que ele se depare com um nó que não possui adjacências (nodo folha). Então a busca retrocede (\textit{backtrack}) e começa no próximo nó. Numa implementação não-recursiva, todos os nós expandidos recentemente são adicionados a uma pilha, para realizar a exploração (Algoritmo \ref{alg:1}, \autoref{fig:DFS}).
 
 \begin{figure}[htb]
-\caption{\label{fig:graphEnumerated}Representação do grafo mostrado na \autoref{fig:M2} com nodos enumerados sequencialmente de 1-6.}
+\caption{\label{fig:DFS} Representação esquemática do algoritmo DFS (Algoritmo \ref{alg:1}). Todos os nodos adjacentes são visitados até que sejam marcados como visitados (cinza). O ciclo é encontrado quando o último nodo é igual ao nodo raiz.}
 	\begin{center}
-		\includegraphics[width=0.65\textwidth]{images/graphEnumerated.png}
+		\includegraphics[width=0.65\textwidth]{images/DFS.png}
 	\end{center}
 	\fonte{Autor(a)}
 \end{figure}
 
-\begin{figure}[htb]
-\caption{\label{fig:DFS} Representação esquemática do algoritmo DFS (Algoritmo \ref{alg:1}). Todos os nodos adjacentes são visitados até que sejam marcados como visitados (cinza). O ciclo é encontrado quando o último nodo é igual ao nodo raiz.}
-	\begin{center}
-		\includegraphics[width=0.75\textwidth]{images/DFS.png}
-	\end{center}
-	\fonte{Autor(a)}
-\end{figure}
+\SetKwComment{Comment}{/* }{ */}
+
+\begin{algorithm}
+\caption{Detecção de ciclos em grafos via DFS}\label{alg:1}
+\LinesNumbered
+\KwData{vértice geral $v_n$ }
+\KwResult{$true$ se o ciclo é encontrado}
+\SetKwFunction{FMain}{detectcycle}
+
+  \SetKwProg{Pn}{Function}{}{}
+  \Pn{\FMain{$v_n$}}{$mark(v_n, visited\;)$\;
+        \For{$ v_{n'} \in \; neighbors(v_n) $}{
+        \eIf{$mark(v_n) == \; visited$}
+        {\If{$v_n ==v_{n'}$ \textbf{or} $v_n \; != \; parent(v_{n'})$}{\textbf{return} $true$ \;}}
+        {\If{$detectcycle(v_{n'})$}{\textbf{return $true$} \;}}
+    }
+    }
+\end{algorithm}
 
 \section{Tratamento de resíduos}
 
