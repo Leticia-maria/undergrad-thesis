@@ -44,9 +44,7 @@ Na \autoref{eq:R1}, $P_H$ é a matriz de Householder que reflete um ponto no hip
 
 Ainda sobre os ajustes de Blinn ao modelo de Phong, consideremos que o ângulo entre o vetor a meio caminho $(N \cdot H)$ e a superfície normal é provavelmente menor do que o ângulo entre $R$ e $V$ usado no modelo original (a menos que a superfície seja vista de um ângulo muito íngreme para o qual é provável que seja maior), e já que Phong está usando $(R \cdot V)^\alpha$, um expoente (chamado de constante de brilho) pode ser definido como $\alpha' > \alpha$, tal que $(N \cdot H)^{\alpha'}$ está mais próxima da expressão original de Phong. Os resultados das estruturas geradas no \textit{Balmy.jl} estão na \autoref{design}.
 
-\subsection{Ligações Químicas}
-
-Para exibir as ligações no \textit{Balmy.jl}, foi implementado um algoritmo baseado nos raios covalentes de van der Waals, que representa, pictoricamente, o raio de uma esfera sólida imaginária empregada para representar um átomo. Tal parâmetro é representado a partir de definições termodinâmicas da equação de estado de van der Waals, onde $N_a$ é o número de Avogadro e $r$ é o raio.
+Para detectar as ligações químicas, foi implementado um algoritmo baseado nos raios covalentes de van der Waals, que representa, pictoricamente, o raio de uma esfera sólida imaginária empregada para representar um átomo. Tal parâmetro é representado a partir de definições termodinâmicas da equação de estado de van der Waals, onde $N_a$ é o número de Avogadro e $r$ é o raio.
 
 \begin{equation}
     b = \frac{16}{3} \pi N_a r^3
