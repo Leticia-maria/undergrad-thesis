@@ -326,3 +326,25 @@ Essa comparação também faz sentido se estivermos interessados somente em uma 
 \end{equation}
 
 \noindent onde $d(\cdot)$ corresponde à distância no \gls{MS}, $X$ é um anel em uma dada molécula e $Y = (y_1, y_2, \cdots, y_n)$ é o benzeno, no qual todas as coordenadas são iguais entre si: $y_1 = y_2 = \cdots = y_n = y = d(CC)$. É uma representação espacial do que seria o $R_{opt}$ na \autoref{eq:3}. Por outro lado, \textit{const} corresponde ao fator $\alpha / n$ da \autoref{eq:3}. Adicionalmente, se nós assumirmos que existe uma molécula $Y$ na qual $y_1 = y_2 = \cdots = y_m = y = d(CC_{benzeno})$, mas $m \neq 6$, então nós calculamos o \gls{HOMA} para qualquer molécula composta por um número arbitrário de átomos de carbono.
+
+No campo da estatística, o $k$-ésimo momento central da função de probabilidade de uma variável aleatória $x$, $\mu_k$, ou seja, o $k$-ésimo grau do valor esperado, é definido como se segue: $\mu_k = \langle (x - \langle x \rangle)^k \rangle = \displaystyle \frac{1}{n} \sum_{i = 1}^n (x_i - \bar{x})^k$, onde $\langle \bullet \rangle$ e $\bar{x}$ denotam a média aritmética.
+Desse modo, o $k$-ésimo momento, $m_k = \langle x^k \rangle = \displaystyle \frac{1}{n} \sum_{i=1}^n (x_i)^k$, não é tomado sobre a média e $\mu_2 = m_2 - m_1^2$.
+
+Então, se $x_i$ é identificado como o i-ésimo comprimento $R_i$ em uma molécula (um anel) e $\bar{x}$ como o $R_{opt}$, então o índice \gls{HOMA} está conectado à variância, que é o segundo momento central para as múltiplas variáveis discretas aleatórias: $x_1, x_2, \cdots, x_n$, ou seja, 
+
+\begin{equation}
+\label{statistic}
+\begin{split}
+    HOMA = 1 - \alpha \bigg[\frac{1}{n} \sum_{i=1}^n (x_i - \bar{x})^2 \bigg] = 1 - \alpha \cdot \mu_2 \\ = 1 - \alpha \cdot (m_2 - m_1^2 )
+\end{split}
+\end{equation}
+
+\noindent onde o $\alpha$ corresponde à mesma constante de normalização da \autoref{eq:3}. Notemos que a \autoref{statistic} permite que $n$ seja maior do que 6 porque pode ser compreendido como o número de comparações com o comprimento de ligação ótimo. Ou seja, o índice \gls{HOMA} pode ser calculado para qualquer molécula composto por um número arbitrário de ligações \ce{CC}.
+
+Uma vez que o índice \gls{HOMA} pode ser expresso como uma função linear de $d^2$ ou $\mu_2$, uma descrição melhor da aromaticidade geométrica pode ser buscada entre as extensões do \gls{HOMA}, o que é tratado como uma distância abstrata ou um parâmetro estatístico. Aqui, será explorada a abordagem estatística.
+
+\begin{equation}
+    \Gamma = 100 \cdot (\mu_1^\circ + \mu_2^\circ + \mu_3^\circ + \mu_4^\circ)
+\end{equation}
+
+\noindent onde $\mu_k = \displaystyle \frac{\mu_k}{(m_{1, ref})^k}$ e $m_{1, ref}$ é a média na molécula de referência. Dividindo $\mu_k$ pelo $k$-ésimo. Dividir $\mu_k$ pela potência de $m_{1, ref}$ garante a adimensionlidade do índice $\Gamma$.
