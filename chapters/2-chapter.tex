@@ -143,7 +143,7 @@ Substituindo então os elementos das integrais supracitadas na \autoref{eq:energ
 
 \subsection{Integral de sobreposição}
 
-No Método de Hueckel Estendido, as integrais de sobreposição são calculadas utilizando orbitais atômicos de Slater (representado por coordenadas esféricas na \autoref{stos}), pois seus resultados são mais acurados, principalmente pelo fato de reproduzirem mais precisamente a região do cúspide e o decaimento orbital. Desse modo, os conjuntos de bases são obtidos pelas regras de Slater\autocite{Slater1930, Lu2006}.
+No Método de Hueckel Estendido, as integrais de sobreposição são calculadas utilizando orbitais atômicos de Slater (representado por coordenadas esféricas na \autoref{stos}), pois seus resultados são mais acurados (mesmo que não sejam solução exata), principalmente pelo fato de reproduzirem mais precisamente a região do cúspide e o decaimento orbital. Essa aproximação é feita porque a descrição matemática dos orbitais atômicos não pode ser exatamente conhecida, mas aproximada pela forma dos orbitais dos sistemas hidrogeniônicos, uma vez que o problema torna-se intratável analiticamente para qualquer sistema multieletrônico. Desse modo, os conjuntos de bases são obtidos pelas regras de Slater\autocite{Slater1930, Lu2006}.
 
 \begin{figure}[htb]
     \vspace{3\baselineskip}
@@ -165,7 +165,7 @@ No Método de Hueckel Estendido, as integrais de sobreposição são calculadas 
 \vspace{2\baselineskip}
 \end{figure}
 
-Avaliando a \autoref{stos}, $N$ representa a constante de normalização, ou seja, $Y_l^m (\theta, \Phi)$ representa os esféricos harmônicos normalizados relacionados com polinômios de Legendre, definido pela \autoref{legendre}, e $\phi_m (\Phi)$ representa as funções ortonormais.
+Avaliando a \autoref{stos}, $N$ representa a constante de normalização, $r^{n-1}e^{-\zeta r}$ é a parte radial da função (onde $r$ é a distância entre o elétron e o núcleo do átomo e $\zeta$ é uma constante de proteção relacionada à carga efetiva do núcleo, sendo a carga nuclear parcialmente protegida por elétrons), e $Y_l^m (\theta, \Phi)$ representa a parte angular, onde os esféricos harmônicos normalizados são relacionados com polinômios de Legendre, definido pela \autoref{legendre}, e $\phi_m (\Phi)$ representa as funções ortonormais.
 
 \begin{figure}[htb]
 \begin{equation}
