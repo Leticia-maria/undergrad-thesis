@@ -254,8 +254,17 @@ Analisando os dados da \autoref{tab:energies}, concluímos que a ordem das estab
 
 \section{Performance}
 
+Para testar a performance da implementação do cálculo de \gls{EHMO} no \textit{Balmy.jl}, foi feita a comparação dos tempos de execução para os cálculos das energias eletrônicas. O tamanho do sistema químico avaliado foi variado com base na estrutura do polietileno. Partiu-se do monômero (que contém 4 orbitais atômicos em seu conjunto de bases) até uma estrutura com grau de polimerização igual a 1250 (que contém 10000 orbitais atômicos em seu conjunto de bases). O resultado está mostrado na \autoref{fig:times}.
 
-\newpage
+\begin{figure}[htb]
+\caption{\label{fig:times} Gráfico da relação entre o número de bases da estrutura e o tempo de execução, em milisegundos (ms).}
+	\begin{center}
+		\includegraphics[width=0.75\textwidth]{images/tttt.png}
+	\end{center}
+	\fonte{Autor(a).}
+\end{figure}
+
+O perfil do gráfico mostra que o custo computacional para o cálculo da energia de uma molécula pode crescer exponencialmente. Comparando as duas curvas, ajustadas de acordo com a função exponencial, nota-se que há um ganho de tempo no uso do \textit{Balmy.jl} em relação ao \gls{YAeHMOP} conforme as estruturas de entrada crescem, que é escrito em linguagem C, que também é compilada. Isso ocorre pois, no código do \textit{Balmy.jl}, são implementadas otimizações inerentes à linguagem de programação Julia, como o dispacho múltiplo, que torna mais rápida a execução de funções matemáticas, junto à associação com \textit{macros}, que torna mais eficientes as iterações ao computar integrais.
 
 \section{Índices geométricos}
 
@@ -318,6 +327,37 @@ O arquivo de saída gerado pelo \textit{Balmy.jl} para o usuário analisar e vis
 O efeito da ressonância em estruturas heterocíclicas depende da geometria do sistema e do tipo de heteroátomo presente no anel. No caso dos compostos que correspondem a anéis de cinco membros, como pirrol, furano, e seus derivados, são possíveis conjugações entre os pares de elétrons livres (do(s) heteroátomo(s)) e o sistema $\pi$. Consequentemente, são gerados híbridos de ressonância não equivalentes entre si, uma com separação de carga, e outra sem, não permitindo que a deslocalização eletrônica seja completa. Por outro lado, anéis de seis membros, a exemplo da piridina e seus derivados, apresentam conjugação $\pi-\pi$ total, com estruturas de ressonância que não têm separação de carga.
 
 Após os efeitos de ressonância, os índices \gls{HOMED} (Tabela 11) calculados para as estruturas otimizadas do pirrol e do furano são inferiores aos dos heteroaromáticos de seis membros, como a piridina e o íon piranil, respectivamente. O índice \gls{HOMED} para o íon piranilíaco também é menor do que o índice para a piridina. Uma substituição do íon \ce{CH} pelo átomo N-aza em anéis com cinco membros parece reduzir o índice \gls{HOMED} em maior grau para O- que para N-derivados. Para anéis com seis membros, presença do átomo adicional N-aza em azinas não destrói o sistema de deslocalização completa de elétrons $\pi$ no sistema. Para os anéis de seis membros O-derivados, o índice \gls{HOMED} depende fortemente da posição do átomo N-aza. Ele diminui para posições 3 e 3,5; onde o átomo N pode estar próximo do átomo C+, e aumenta para a posição 4 onde o átomo N pode assumir a carga positiva.
+
+\begin{figure}[htb]
+\caption{\label{fig:HOMA3} Valores de HOMA para a estrutura do Kekuleno gerados com o \textit{Balmy.jl}.}
+	\begin{center}
+		\includegraphics[width=1.0\textwidth]{images/fig2(7).png}
+	\end{center}
+	\fonte{Autor(a).}
+\end{figure}
+
+\begin{table}[htb]
+	\centering
+	\caption{\label{tab:homed/homa} Índices \gls{HOMED} e \gls{rHOMA} para sistemas simples heteroaromáticos.}
+	\begin{tabular}{cccccc}
+		\toprule
+	\textbf{Molécula} & \gls{HOMED} & \textbf{Molécula} & \gls{HOMED} & \textbf{Molécula} & \gls{HOMED}
+ \\
+  & \gls{rHOMA} & & \gls{rHOMA} & & \gls{rHOMA}
+ \\
+		\midrule
+    (\textbf{f}) & 0.921 & (\textbf{j}) & 0.9997 & (\textbf{n}) & 0.926 \\
+    & 0.854 & & 0.995 & & 0.748 \\
+    (\textbf{g}) & 0.903 & (\textbf{k}) & 0.9995  & (\textbf{o}) & 0.893 \\
+    & 0.882 & & 0.999 & &  0.699 \\
+    (\textbf{h}) & 0.749  & (\textbf{l}) & 0.9999 & (\textbf{p}) & 0.951 \\
+    & 0.189 & & 0.996 & & 0.816 \\
+    (\textbf{i}) & 0.702 & (\textbf{m}) & 1 (\textbf{padrão}) & (\textbf{q}) & 0.870  \\
+    & 0.224 & & 1.000 & & 0.661 \\
+    \bottomrule
+	\end{tabular}
+	\fonte{Autor(a).}
+\end{table}
 
 \section{Análise estatística}
 
