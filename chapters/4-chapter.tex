@@ -9,7 +9,7 @@ Para testar a performance da implementação do cálculo de \gls{EHMO} no \texti
 \begin{figure}[htb]
 \caption{\label{fig:pe} Estrutura monomérica do polietileno, onde \gls{DP} varia de 1 a 1250. Cada monômero de polietileno contém 8 orbitais atômicos de valência: pois cada carbono (C) contribui com $2s, 2p$, e cada hidrogênio (H) contribui com $1s$.}
 	\begin{center}
-		\includegraphics[width=0.30\textwidth]{images/aromaticity(2).png}
+		\includegraphics[width=0.24\textwidth]{images/aromaticity(2).png}
 	\end{center}
 	\fonte{Autor(a).}
 \end{figure}
@@ -22,9 +22,7 @@ Para testar a performance da implementação do cálculo de \gls{EHMO} no \texti
 	\fonte{Autor(a).}
 \end{figure}
 
-O perfil do gráfico na \autoref{fig:times} mostra que o custo computacional para o cálculo da energia de uma molécula pode crescer exponencialmente. Comparando as duas curvas, ajustadas de acordo com a função exponencial, nota-se que há um ganho de tempo no uso do \textit{Balmy.jl} em relação ao \gls{YAeHMOP} conforme as estruturas de entrada crescem, que é escrito em linguagem C, que também é compilada. Isso ocorre pois, no código do \textit{Balmy.jl}, são implementadas otimizações inerentes à linguagem de programação Julia, como o dispacho múltiplo, que torna mais rápida a execução de funções matemáticas, junto à associação com \textit{macros}, que torna mais eficientes as iterações ao computar integrais.
-
-
+O perfil do gráfico na \autoref{fig:times} mostra que o custo computacional para o cálculo da energia de uma molécula pode crescer exponencialmente (a curva laranja é proporcional a $\textit{exp}({\displaystyle \frac{bases}{4000}})$, enquanto a curva azul é proporcional a $\textit{exp}({\displaystyle \frac{bases}{4500}})$). Comparando as duas curvas, nota-se que há um ganho de aproximadamente 12.5\% no tempo de execução do \textit{Balmy.jl} em relação ao \gls{YAeHMOP}, conforme as estruturas de entrada crescem. O \gls{YAeHMOP} é escrito na linguagem C, que também é compilada. A aceleração em Julia ocorre, pois, no código do \textit{Balmy.jl}, são implementadas otimizações inerentes à linguagem de programação, como o despacho múltiplo, que torna mais rápida a execução de funções matemáticas, junto à associação com \textit{macros}, que torna mais eficientes as iterações ao computar integraisde sobreposição (\autoref{sec:overlap}).
 
 \section{Interface gráfica}\label{design}
 

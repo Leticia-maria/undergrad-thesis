@@ -147,17 +147,20 @@ No Método de Hueckel Estendido, as integrais de sobreposição são calculadas 
     \vspace{3\baselineskip}
 \begin{equation}
 \label{stos}
-        \tikzmarknode{sto}{\highlight{blue}{$\chi_{nlm}(\zeta, r)$}} = \tikzmarknode{norm}{\highlight{gray}{$N$}} r^{n-1} e^{-\zeta r} \tikzmarknode{harmonic}{\highlight{red}{$Y_l^m (\theta, \Phi)$}}
+        \tikzmarknode{sto}{\highlight{red}{$\chi_{nlm}(\zeta, r)$}} = \tikzmarknode{norm}{\highlight{gray}{$N$}} \tikzmarknode{radial}{\highlight{magenta}{$r^{n-1} e^{-\zeta r}$}} \tikzmarknode{harmonic}{\highlight{blue}{$Y_l^m (\theta, \Phi)$}}
 \end{equation}
 \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
-    \path (sto.south) ++ (-0.70,-1.5em) node[anchor=north east,color=blue!67] (scalep){\textit{Slater Type Orbital}};
-    \draw [color=blue!87](sto.south) |- ([xshift=-0.70em,color=blue]scalep.north west);
+    \path (sto.south) ++ (-0.70,-1.5em) node[anchor=north east,color=red!67] (scalep){\textit{Slater Type Orbital}};
+    \draw [color=red!87](sto.south) |- ([xshift=-0.70em,color=red]scalep.north west);
     
-    \path (norm.south) ++ (0.70,-1.5em) node[anchor=north west,color=gray!67] (scalep){\textit{$\displaystyle \bigg{[} \frac{(2 \zeta)^{n-1}}{(2n)!} \bigg{]}^{1/2}$}};
-    \draw [color=gray!87](norm.south) |- ([xshift=0.70em,color=gray]scalep.north east);
+    \path (norm.south) ++ (1.00,-1.5em) node[anchor=north west,color=gray!67] (scalep){\textit{$\displaystyle \bigg{[} \frac{(2 \zeta)^{n-1}}{(2n)!} \bigg{]}^{1/2}$}};
+    \draw [color=gray!87](norm.south) |- ([xshift=1.00em,color=gray]scalep.north east);
+
+    \path (radial.north) ++ (-2.00,1.5em) node[anchor=south east,color=magenta!67] (scalep){\textit{função radial}};
+    \draw [color=magenta!87](radial.north) |- ([xshift=-2.00em,color=magenta]scalep.south west);
     
-    \path (harmonic.north) ++ (-0.70,1.5em) node[anchor=south east,color=red!67] (scalep){\textit{função angular}};
-    \draw [color=red!87](harmonic.north) |- ([xshift=-0.70em,color=red]scalep.south west);
+    \path (harmonic.north) ++ (2.00,1.5em) node[anchor=south west,color=blue!67] (scalep){\textit{função angular}};
+    \draw [color=blue!87](harmonic.north) |- ([xshift=2.00em,color=blue]scalep.south east);
 
 \end{tikzpicture}
 \vspace{2\baselineskip}
@@ -166,28 +169,26 @@ No Método de Hueckel Estendido, as integrais de sobreposição são calculadas 
 \noindent onde:
 
 \begin{equation}
-    \textcolor{red!67}{i^{m + |m|}\bigg{[}\displaystyle \frac{(2l+1)(l+|m|)!}{2(l + |m|)!}\bigg{]}^{1/2} P^m_l (cos \; \theta) \phi_m(\Phi)}
+    \textcolor{blue!87}{i^{m + |m|}\bigg{[}\displaystyle \frac{(2l+1)(l+|m|)!}{2(l + |m|)!}\bigg{]}^{1/2} P^m_l (cos \; \theta) \phi_m(\Phi)}
 \end{equation}
 
 Avaliando a \autoref{stos}, $N$ representa a constante de normalização, $r^{n-1}e^{-\zeta r}$ é a parte radial da função (onde $r$ é a distância entre o elétron e o núcleo do átomo e $\zeta$ é uma constante de proteção relacionada à carga efetiva do núcleo, sendo a carga nuclear parcialmente protegida por elétrons), e $Y_l^m (\theta, \Phi)$ representa a parte angular, onde os esféricos harmônicos normalizados são relacionados com polinômios de Legendre, definido pela \autoref{legendre}, e $\phi_m (\Phi)$ representa as funções ortonormais.
 
-\begin{figure}[htb]
 \begin{equation}
     \phi_m (\Phi) = (2\pi)^{-1/2} e^{im\Phi}
 \end{equation}
-\end{figure}
 
-\begin{figure}[htb]
-    \vspace{3\baselineskip}
+
 \begin{equation}
 \label{legendre}
-    P^m_l(x) = (1 - x^2)^{m/2} \sum_{u=0}^{l - m} \tikzmarknode{c}{\highlight{blue}{$C_{lmu}$}} x^u
+    P^m_l(x) = (1 - x^2)^{m/2} \sum_{u=0}^{l - m} \highlight{blue}{$C_{lmu}$} x^u
 \end{equation}
-\begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
-    \path (c.north) ++ (-0.50,1.5em) node[anchor=south east,color=blue!67] (scalep){\textit{$C_{lmu} = \displaystyle \frac{(-1)^{(l-m-u)/2}[1 + (-1)^{(l - m - u)}](l + m + u)!}{2^{l + 1}([l - m - u]/2)!([l + m + u]/2)!}$}};
-    \draw [color=blue!87](c.north) |- ([xshift=-0.20em,color=blue]scalep.south west);
-\end{tikzpicture}
-\end{figure}
+
+\noindent onde:
+
+\begin{equation}
+    \textcolor{blue!87}{C_{lmu} = \displaystyle \frac{(-1)^{(l-m-u)/2}[1 + (-1)^{(l - m - u)}](l + m + u)!}{2^{l + 1}([l - m - u]/2)!([l + m + u]/2)!}}
+\end{equation}
 
 De maneira geral, pode-se definir, portanto, as integrais de sobreposição \autocite{Hoggan2011}
 definida por coordenadas esféricas.
@@ -200,25 +201,26 @@ definida por coordenadas esféricas.
 A expressão da \autoref{overlap} pode ser aproximada a uma expressão analítica por uma série de somatórios finitos ponderados por coeficientes binomiais, podendo então serem mais facilmente computadas e calculadas.
 
 \begin{figure}[htb]
-    \vspace{4\baselineskip}
 \begin{equation}
 \label{analitica}
 \begin{split}
-    S^{n_2 l_2 m_2}_{n_1 l_1 m_1} (\zeta_1; \zeta_2; \textbf{\textit{R}} ) = N N' (R/2)^{n_1 + n_2 + 1} \tikzmarknode{auxiliary}{\highlight{blue}{$D(l_1, l_2, m)$}}  \\[0.35cm] \sum_{u=0}^{l_1 - m} \sum_{v=0}^{l_2 - m} \sum_{p=0}^{n_1 - m - u} \sum_{p'=0}^{n_2 - m - v} \sum_{q=0}^{m} \sum_{q'=0}^{m} \sum_{t=0}^{u}  \sum_{t'=0}^{v} (-1)^{n_1 - m - u} C_{l_1 m u} C_{l_2 m v} \\[0.35cm] F_p (n_1 - m - u) F_{p'} (n_2 - m - v)
+    S^{n_2 l_2 m_2}_{n_1 l_1 m_1} (\zeta_1; \zeta_2; \textbf{\textit{R}} ) = N N' (R/2)^{n_1 + n_2 + 1} \highlight{blue}{$D(l_1, l_2, m)$}  \\[0.35cm] \sum_{u=0}^{l_1 - m} \sum_{v=0}^{l_2 - m} \sum_{p=0}^{n_1 - m - u} \sum_{p'=0}^{n_2 - m - v} \sum_{q=0}^{m} \sum_{q'=0}^{m} \sum_{t=0}^{u}  \sum_{t'=0}^{v} (-1)^{n_1 - m - u} C_{l_1 m u} C_{l_2 m v} \\[0.35cm] F_p (n_1 - m - u) F_{p'} (n_2 - m - v)
     F_q (m) F_{q'} (m) F_t (u) F_{t'} (v) A_i (\alpha) B_j (\beta) 
 \end{split}
-\begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
-    \path (auxiliary.north) ++ (-0.50,1.5em) node[anchor=south east,color=blue!67] (scalep){\textit{$D(l_1, l_2, m) = \displaystyle \sqrt{\frac{(2l_1 + 1)(2l_2 + 1)(l_1 - m)!(l_2 - m)!}{4(l_1 + m)!(l_1 + m)!}}$}};
-    \draw [color=blue!87](auxiliary.north) |- ([xshift=-0.20em,color=blue]scalep.south west);
-\end{tikzpicture}
 \end{equation}
 \end{figure}
+
+\noindent onde:
+
+\begin{equation}
+    \textcolor{blue!87}{D(l_1, l_2, m) = \displaystyle \sqrt{\frac{(2l_1 + 1)(2l_2 + 1)(l_1 - m)!(l_2 - m)!}{4(l_1 + m)!(l_1 + m)!}}}
+\end{equation}
 
 Nessa expressão (\autoref{analitica}), $A_i (\alpha)$ e $B_j (\beta)$ são funções auxiliares, $\alpha = R(\zeta_1 + \zeta_2)/2$, $\beta = R(\zeta_1 - \zeta_2)/2$ e $F_n(m)$ são os coeficientes binomiais \autocite{Mekelleche1997} e os termos $i$ e $j$ estão descritos na \autoref{termos}.
 
 \begin{align}
 \label{termos}
-    i = n_1 + n_2 - 2m - p - p' + 2q - t - t' \\
+    i = n_1 + n_2 - 2m - p - p' + 2q - t - t' \\[0.35cm]
     j = p + p' + 2m - 2q' + u + v - t - t'
 \end{align}
 
@@ -284,6 +286,8 @@ O \gls{DFS}\autocite{Knuth1997-jf, Goodrich2001-pd} é um algoritmo recursivo qu
 \end{algorithm}
 
 Ao identificar os ciclos a partir do algoritmo \gls{DFS}, é possível classificar os ciclos, análogos aos anéis aromáticos, e calcular os índices geométricos (para uma descrição do formalismo dos índices geométricos, veja a \autoref{sec:HOMA}) referente a cada um dos sextetos das estruturas policíclicas (veja um exemplo dessa aplicação na \autoref{sec:policicle}). 
+
+\newpage
 
 \section{Tratamento de resíduos}
 
