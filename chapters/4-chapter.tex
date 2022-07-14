@@ -17,7 +17,7 @@ Para testar a performance da implementação do cálculo de \gls{EHMO} no \texti
 \begin{figure}[htb]
 \caption{\label{fig:times} Gráfico da relação entre o número de bases da estrutura e o tempo de execução, em milisegundos (ms).}
 	\begin{center}
-		\includegraphics[width=0.75\textwidth]{images/tttt.png}
+		\includegraphics[width=0.65\textwidth]{images/tttt.png}
 	\end{center}
 	\fonte{Autor(a).}
 \end{figure}
@@ -114,6 +114,25 @@ Ao clicar no botão \textit{Start}, o usuário emite a requisição ao servidor 
 	\fonte{Autor(a)}
 \end{figure}
 
+Depois de executado o cálculo, ao clicar em \textit{Show MO}, o orbital molecular de interesse é renderizado, também utilizando o \textit{Three.js}. Na \autoref{fig:HOMobenz} e na \autoref{fig:LUMobenz} são mostrados, respectivamente, os orbitais \gls{HOMO} e \gls{LUMO} do benzeno.
+
+\begin{figure}[htb]
+\caption{\label{fig:HOMobenz} \gls{HOMO} da molécula de benzeno renderizado no \textit{Balmy.jl}.}
+	\begin{center}
+		\includegraphics[width=0.5\textwidth]{images/30.png}
+	\end{center}
+	\fonte{Autor(a).}
+\end{figure}
+
+\begin{figure}[htb]
+\caption{\label{fig:LUMobenz} \gls{LUMO} da molécula de benzeno renderizado no \textit{Balmy.jl}.}
+	\begin{center}
+		\includegraphics[width=0.5\textwidth]{images/31.png}
+	\end{center}
+	\fonte{Autor(a).}
+\end{figure}
+
+\newpage
 \section{Orbitais moleculares}\label{sec:benzene}
 
 Como o enfoque desse trabalho é a análise de compostos aromáticos, analisaremos de maneira mais aprofundada o exemplo do benzeno, cujas coordenadas atômicas estão mostradas na \autoref{tab:coords}. Segundo o grafo mostrado na \autoref{fig:M2} e enumerado na \autoref{fig:graphEnumerated}, é possível construir uma matriz de adjacência (\autoref{eq:adjmatrix}) de dimensão $n \times n$, onde $n$ é o número de átomos, excluindo-se os hidrogênios (veja a \autoref{ap:graph} para a descrição da matriz de adjacência). No caso do benzeno, a ordem da matriz em questão é 6, devido ao número de carbonos (\autoref{fig:graphEnumerated}).
@@ -220,7 +239,7 @@ Tendo a distribuição eletrônica dos elétrons $\pi$ nos orbitais moleculares,
 \end{tikzpicture}
 \end{figure}
 
-O \textit{Balmy.jl}, além de fornecer os \gls{MOs} e suas densidades, também nos dá as funções de onda ($\psi$) resultantes para os seis orbitais moleculares $\pi$ do benzeno (\autoref{wavefunctions}). Essas expressões são da forma: $\psi_i = a_1 \phi_1 + a_2 \phi_2$ (\autoref{ap:eq:2}), onde $a_i$ corresponde ao coeficiente de contribuição (também chamado coeficiente de expansão) de cada orbital atômico. Essas funções são substituídas na Equação de Schroedinger (\autoref{ap:eq:4}), que torna-se $\hat{H} |\psi_i \rangle = E_i |\psi_i \rangle$, sendo $\hat{H}$ o Hamiltoniano e $E_i$ a energia correspondente ao orbital molecular: $\hat{H}a_1|\phi_1\rangle + \hat{H}a_2|\phi_2\rangle = Ea_1|\phi_1\rangle + Ea_2|\phi_2\rangle$. Essa expressão, ao ser multiplicada por $\langle \phi_1 |$ e, em seguida, integrada, torna-se $a_1(H_{21} - ES_{21}) + a_2(H_{22} - ES_{22}) = 0$, pois $S_{21} = \langle \phi_1 | \phi_2 \rangle = \displaystyle \int \phi_1 \phi_2 d\tau$ e $H_{21} = \langle \phi_1 | \hat{H} | \phi_2 \rangle = \displaystyle \int \phi_1 \hat{H} \phi_2 d\tau$. Isso nos leva ao procedimento da teoria \gls{EHMO} que permite calcular as energias eletrônicas moleculares (\autoref{tab:energies}).
+O \textit{Balmy.jl}, portanto, fornece aos usuários os \gls{MOs} e suas densidades (veja as renderizações dos orbitais moleculares do benzeno na \autoref{fig:HOMobenz} e na \autoref{fig:LUMobenz}) e também as funções de onda ($\psi$) resultantes para os seis orbitais moleculares $\pi$ do benzeno (\autoref{wavefunctions}). Essas expressões são da forma: $\psi_i = a_1 \phi_1 + a_2 \phi_2$ (\autoref{ap:eq:2}), onde $a_i$ corresponde ao coeficiente de contribuição (também chamado coeficiente de expansão) de cada orbital atômico. Essas funções são substituídas na Equação de Schroedinger (\autoref{ap:eq:4}), que torna-se $\hat{H} |\psi_i \rangle = E_i |\psi_i \rangle$, sendo $\hat{H}$ o Hamiltoniano e $E_i$ a energia correspondente ao orbital molecular: $\hat{H}a_1|\phi_1\rangle + \hat{H}a_2|\phi_2\rangle = Ea_1|\phi_1\rangle + Ea_2|\phi_2\rangle$. Essa expressão, ao ser multiplicada por $\langle \phi_1 |$ e, em seguida, integrada, torna-se $a_1(H_{21} - ES_{21}) + a_2(H_{22} - ES_{22}) = 0$, pois $S_{21} = \langle \phi_1 | \phi_2 \rangle = \displaystyle \int \phi_1 \phi_2 d\tau$ e $H_{21} = \langle \phi_1 | \hat{H} | \phi_2 \rangle = \displaystyle \int \phi_1 \hat{H} \phi_2 d\tau$. Isso nos leva ao procedimento da teoria \gls{EHMO} que permite calcular as energias eletrônicas moleculares (\autoref{tab:energies}).
 
 \begin{equation}
 \label{wavefunctions}
@@ -234,10 +253,13 @@ O \textit{Balmy.jl}, além de fornecer os \gls{MOs} e suas densidades, também n
 \end{split}
 \end{equation}
 
+Outros exemplos também foram explorados para demonstrar a aplicabilidade do \textit{Balmy.jl}, sendo calculados os \textit{gaps} entre as energias dos orbitais de fronteira das moléculas mostradas na \autoref{tab:gapsO}. Algo importante de ser mencionado é que o fato mais interessante do esquema de energia para alguns compostos aromáticos (como o próprio benzeno, já discutido de forma mais detalhada) da \autoref{tab:gapsO} é que o orbital $\pi$ ligante mais baixo ainda está localizado abaixo dos níveis $\sigma$. No entanto, esse comportamento não é notado para todos os aromáticos: o orbital mais alto ocupado foi do tipo $\pi$, assim como os níveis mais baixos não ocupados; mas, os orbitais mais baixos alternam-se entre $\sigma$ e $\pi$.
+
+Pelo teorema de Koopman (veja o \autoref{ap:EHMO} para um detalhamento), os \textit{gaps} entre os orbitais \gls{HOMO} e \gls{LUMO} correspondem, de forma aproximada, aos valores das energias de ionização. Comparando então o que é mostrado na \autoref{tab:gapsO}, os valores obtidos foram os mesmos mostrados por Hoffmann \autocite{Hoffmann1963}. Isso nos assegura que o método está bem implementado. Discutindo, no entanto, sob a luz do método de Hueckel estendido, observamos que os valores obtidos para as energias de ionização (\textit{gaps}) são muito grandes, se comparadas com as experimentais. Vale ressaltar que esse problema é intrínseco ao método \gls{EHMO}, e não ao \textit{Balmy.jl}.
 
 \begin{table}[htb]
 	\centering
-	\caption{\label{qua:Quadro_1} Energias dos orbitais de fronteira de alguns hidrocarbonetos aromáticos.}	
+	\caption{\label{tab:gapsO} Energias dos orbitais de fronteira de alguns hidrocarbonetos aromáticos.}	
 	\begin{tabular}{lrrr}
 		\toprule
 		\textbf{Molécula} & \textbf{HOMO/(eV)} & \textbf{LUMO/(eV)} & \textbf{Gap/(eV)}
@@ -259,24 +281,8 @@ O \textit{Balmy.jl}, além de fornecer os \gls{MOs} e suas densidades, também n
 
 \section{Hidrocarbonetos aromáticos}
 
-Analisando os dados da \autoref{tab:energies}, concluímos que a ordem das estabilidades dos compostos está de acordo com aqueles apresentados por Hoffmann \autocite{Hoffmann1963}, e com os dados experimentais publicados por Heilbronner \autocite{ginsburg1959}. Por exemplo, o naftaleno mostra-se 32.3 kcal/mol mais estável do que o azuleno, o que é um ótimo resultado se comparado com o valor de referência (32.6 kcal/mol)\autocite{ginsburg1959}. O fulveno, por sua vez, é computado como sendo 25.6 kcal/mol menos estável do que o benzeno, em relação ao valor de 27 kcal/mol tomado como modelo\autocite{CHENG1956}. O antraceno, por sua vez, é 4.2 kcal/mol mais estável do que o fenantreno, enquanto o último isômero é, na verdade, 6.9 kcal/mol mais estável \autocite{Hoffmann1963}, o que provém do fato de que há repulsão estérica entre os hidrogênios do fenantreno.
+Analisando os dados da \autoref{tab:energies}, cujas energias foram obtidas com o \textit{Balmy.jl}, concluímos que a ordem das estabilidades dos compostos está de acordo com aqueles apresentados por Hoffmann \autocite{Hoffmann1963}, e com os dados experimentais publicados por Heilbronner \autocite{ginsburg1959}. Por exemplo, o naftaleno mostra-se 32.3 kcal/mol mais estável do que o azuleno, o que é um ótimo resultado se comparado com o valor de referência (32.6 kcal/mol)\autocite{ginsburg1959}. O fulveno, por sua vez, é computado como sendo 25.6 kcal/mol menos estável do que o benzeno, em relação ao valor de 27 kcal/mol tomado como modelo\autocite{CHENG1956}. O antraceno, por sua vez, é 4.2 kcal/mol mais estável do que o fenantreno, enquanto o último isômero é, na verdade, 6.9 kcal/mol mais estável \autocite{Hoffmann1963}, o que provém do fato de que há repulsão estérica entre os hidrogênios do fenantreno.
 
-
-\begin{figure}[htb]
-\caption{\label{fig:HOMobenz} \gls{HOMO} da molécula de benzeno renderizado no \textit{Balmy.jl}.}
-	\begin{center}
-		\includegraphics[width=0.6\textwidth]{images/30.png}
-	\end{center}
-	\fonte{Autor(a).}
-\end{figure}
-
-\begin{figure}[htb]
-\caption{\label{fig:HOMobenz} \gls{LUMO} da molécula de benzeno renderizado no \textit{Balmy.jl}.}
-	\begin{center}
-		\includegraphics[width=0.6\textwidth]{images/31.png}
-	\end{center}
-	\fonte{Autor(a).}
-\end{figure}
 
 \begin{table}[htb]
 	\centering
@@ -349,6 +355,8 @@ O arquivo de saída gerado pelo \textit{Balmy.jl} para o usuário analisar e vis
 	\end{center}
 	\fonte{Autor(a).}
 \end{figure}
+
+No arquivo de saída, a escala de cores em tons de vermelho
 
 \begin{figure}[htb]
 \caption{\label{fig:HOMA2} Valores de HOMA para a estrutura do Kekuleno gerados com o \textit{Balmy.jl}.}
