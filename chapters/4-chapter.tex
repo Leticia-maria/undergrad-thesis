@@ -268,7 +268,9 @@ Analisando os dados da \autoref{tab:energies}, concluímos que a ordem das estab
 Além dos orbitais moleculares e das funções de onda, o \textit{Balmy.jl} também permite analisar o \gls{HOMA}. Esse índice geométrico de aromaticidade foi modelado de acordo com uma escala normalizada pelo fator $\alpha$ (\autoref{eq:3}), onde o benzeno seria a referência de \textit{aromaticidade perfeita}, tendo \gls{HOMA} $=1$, pois o desvio entre os comprimentos de ligação individuais ($R_i$) e o comprimento ótimo de ligação ($R_{opt}$) (\autoref{eq:2}) é nulo. Isso faz com que os termos $EN$ e $GEO$, que diminuem a aromaticidade, sejam iguais a $0$.
 
 \begin{equation}
-    HOMA = 1 - EN - GEO \Longrightarrow HOMA = 1 - 0 - 0 \Longrightarrow HOMA = 1
+\begin{split}
+    HOMA = 1 - EN - GEO \Longrightarrow \\  HOMA = 1 - 0 - 0 \Longrightarrow \\  HOMA = 1
+\end{split}
 \end{equation}
 
 \begin{table}[htb]
@@ -290,15 +292,16 @@ Por outro lado, \gls{HOMA} $= 0$ para o cicloexatrieno hipotético (\autoref{fig
 
 \begin{equation}
     \begin{split}
-        HOMA = 1 - \bigg\{ \frac{98.89}{6} \{ 3[(1.40 - R_{\ce{C-C}})^2] + 3[(1.40 - R_{\ce{C=C}})^2] \} \bigg\} \\
-        HOMA = 1 - \bigg\{ \frac{98.89}{6} \{ 3[(1.40 - 1.53)^2] + 3[(1.40 - 1.34)^2] \} \bigg\} \\
-        HOMA = 1 - \bigg[ \frac{98.89}{6} (0.0615) \bigg] \\
-        HOMA = 1 - 1 = 0
+        HOMA = 1 - \bigg\{ \frac{98.89}{6} \{ 3[(1.40 - R_{\ce{C-C}})^2] + 3[(1.40 - R_{\ce{C=C}})^2] \} \bigg\} \Longrightarrow \\ 
+        HOMA = 1 - \bigg\{ \frac{98.89}{6} \{ 3[(1.40 - 1.53)^2] + 3[(1.40 - 1.34)^2] \} \bigg\} \Longrightarrow \\ 
+        HOMA = 1 - \bigg[ \frac{98.89}{6} (0.0615) \bigg] \Longrightarrow \\ 
+        HOMA = 1 - 1 \Longrightarrow \\  
+        HOMA = 0
     \end{split}
 \end{equation}
 
 %Ou seja, a ideia original e fundamental é que cada par de átomos pode ser envolvido em ambas as ligações $\sigma$ e $\pi$, com $R_\sigma > R_\pi$. A distância de ligação $R_i$ representa uma compressão de $R_\sigma$ e uma extensão de $R_\pi$.
-
+\newpage
 \subsection{Hidrocarbonetos policíclicos aromáticos}
 
 O arquivo de saída gerado pelo \textit{Balmy.jl} para o usuário analisar e visualizar essas relações está representado na \autoref{fig:HOMA}. Para explorar um pouco mais a importância do \gls{HOMA}, o índice foi aplicado a alguns sistemas policíclicos aromáticos. Ao observar os valores na \autoref{fig:HOMA}, nota-se que os sextetos mais aromáticos estão na região perférica mais externa (\gls{HOMA} $= 0.9$), o que é um fenômeno importante, pois o \gls{HOMA} conhecidamente superestima os valores de aromaticidade para sextetos periféricos\autocite{giov2020}. 
@@ -306,7 +309,7 @@ O arquivo de saída gerado pelo \textit{Balmy.jl} para o usuário analisar e vis
 \begin{figure}[htb]
 \caption{\label{fig:HOMA} Valores de HOMA para a estrutura do Kekuleno gerados com o \textit{Balmy.jl}.}
 	\begin{center}
-		\includegraphics[width=0.65\textwidth]{images/geom.png}
+		\includegraphics[width=0.60\textwidth]{images/geom.png}
 	\end{center}
 	\fonte{Autor(a).}
 \end{figure}
@@ -314,7 +317,7 @@ O arquivo de saída gerado pelo \textit{Balmy.jl} para o usuário analisar e vis
 \begin{figure}[htb]
 \caption{\label{fig:HOMA2} Valores de HOMA para a estrutura do Kekuleno gerados com o \textit{Balmy.jl}.}
 	\begin{center}
-		\includegraphics[width=1.0\textwidth]{images/15.png}
+		\includegraphics[width=0.9\textwidth]{images/15.png}
 	\end{center}
 	\fonte{Autor(a).}
 \end{figure}
@@ -323,7 +326,7 @@ O arquivo de saída gerado pelo \textit{Balmy.jl} para o usuário analisar e vis
 
 \subsection{Heterociclos aromáticos}
 
-O efeito da ressonância em estruturas heterocíclicas depende da geometria do sistema e do tipo de heteroátomo presente no anel (\autoref{fig:homed}). No caso dos compostos que correspondem a anéis de cinco membros, como pirrol, furano, e seus derivados, são possíveis conjugações entre os pares de elétrons livres (do(s) heteroátomo(s)) e o sistema $\pi$. Consequentemente, são gerados híbridos de ressonância não equivalentes entre si, uma com separação de carga, e outra sem, não permitindo que a deslocalização eletrônica seja completa. Por outro lado, anéis de seis membros, a exemplo da piridina e seus derivados, apresentam conjugação $\pi-\pi$ total, com estruturas de ressonância que não têm separação de carga.
+Como o índice \gls{HOMA} não é capaz de descrever a aromaticidade em estruturas heterocíclicas, também foram implementados no \textit{Balmy.jl} os fatores \gls{rHOMA} e \gls{HOMED}. O efeito da ressonância em estruturas heterocíclicas depende da geometria do sistema e do tipo de heteroátomo presente no anel (\autoref{fig:homed}). No caso dos compostos que correspondem a anéis de cinco membros, como pirrol, furano, e seus derivados, são possíveis conjugações entre os pares de elétrons livres (do(s) heteroátomo(s)) e o sistema $\pi$. Consequentemente, são gerados híbridos de ressonância não equivalentes entre si, uma com separação de carga, e outra sem, não permitindo que a deslocalização eletrônica seja completa. Por outro lado, anéis de seis membros, a exemplo da piridina e seus derivados, apresentam conjugação $\pi-\pi$ total, com estruturas de ressonância que não têm separação de carga.
 
 \begin{figure}[htb]
 \caption{\label{fig:homed} Estruturas heterocíclicas para as quais os valores de \gls{HOMED} e \gls{rHOMA} são apresentados na \autoref{tab:homed/homa}.}
@@ -333,13 +336,13 @@ O efeito da ressonância em estruturas heterocíclicas depende da geometria do s
 	\fonte{Autor(a).}
 \end{figure}
 
-Após os efeitos de ressonância, os índices \gls{HOMED} (\autoref{tab:homed/homa}) calculados para as estruturas otimizadas do pirrol e do furano são inferiores aos dos heteroaromáticos de seis membros, como a piridina e o íon pirranil, respectivamente. O índice \gls{HOMED} para o íon pirranilíaco também é menor do que o índice para a piridina. Uma substituição do íon \ce{CH} pelo átomo \ce{N}-aza em anéis com cinco membros parece reduzir o índice \gls{HOMED} em maior grau para \ce{O}- que para \ce{N}-derivados. Para anéis com seis membros, presença do átomo adicional \ce{N}-aza em azinas não destrói o sistema de deslocalização completa de elétrons $\pi$ no sistema. Para os anéis de seis membros \ce{O}-derivados, o índice \gls{HOMED} depende da posição do átomo \ce{N}-aza. Ele diminui para posições 3 e 3,5; onde o átomo \ce{N} pode estar próximo do átomo \ce{C+}, e aumenta para a posição 4 onde o átomo \ce{N} pode assumir a carga positiva. Assim como ocorre com os sistemas acíclicos, os valores de \gls{rHOMA} não descrevem bem a deslocalização nos compostos heteroaromáticos. Por exemplo, os valores mostrados para o furano e o seu derivado \ce{N}-aza são próximos de zero, embora estes sejam compostos conhecidamente aromáticos. Para o pirrol, imidazol, e pirranil, os valores de \gls{rHOMA} são maiores do que 0.6, enquanto que, para as azinas, aproxima-se de 1. 
+Após os efeitos de ressonância, os índices \gls{HOMED} (\autoref{tab:homed/homa}) calculados para as estruturas otimizadas do pirrol e do furano são inferiores aos dos heteroaromáticos de seis membros, como a piridina e o íon pirranil, respectivamente. O índice \gls{HOMED} para o íon pirranilíaco também é menor do que o índice para a piridina. Uma substituição do grupo \ce{CH} pelo átomo de nitrogênio em anéis com cinco membros parece reduzir o índice \gls{HOMED} em maior grau para os derivados com oxigênio do que para aqueles com o nitrogênio. Para anéis com seis membros, a presença do átomo adicional do nitrogênio em azinas não destrói o sistema de deslocalização completa de elétrons $\pi$ no sistema. Para os anéis de seis membros com oxigênio, o índice \gls{HOMED} depende da posição do átomo de nitrogênio. Ele diminui para posições 3 e 3,5; onde o átomo \ce{N} pode estar próximo do átomo \ce{C+}, e aumenta para a posição 4 onde o átomo \ce{N} pode assumir a carga positiva. Os valores de \gls{rHOMA} não descrevem bem a deslocalização nos compostos heteroaromáticos. Por exemplo, os valores mostrados para o furano e o seu derivado \ce{N}-aza são próximos de zero, embora estes sejam compostos conhecidamente aromáticos. Para o pirrol, imidazol, e pirranil, os valores de \gls{rHOMA} são maiores do que 0.6, enquanto que, para as azinas, aproxima-se de 1. 
 
 Ou seja, é correto afirmar que o índice \gls{HOMED} descreve melhor os compostos heterocíclicos aromáticos do que o índice \gls{rHOMA}, seguindo as tendências da literatura para as estruturas mais aromáticas. Para sistemas fracamente conjugados, o índice \gls{HOMED} não é maior do que 0.4. Para sistemas $n-\pi$ ou $\pi-\pi$ conjugados, os índices \gls{HOMED} estão entre 0.4 e 0.8. Para sistemas fortemente conjugados, os valores de \gls{HOMED} são próximos de 1.
 
 \begin{table}[htb]
 	\centering
-	\caption{\label{tab:homed/homa} Índices \gls{HOMED} e \gls{rHOMA} para sistemas simples heteroaromáticos.}
+	\caption{\label{tab:homed/homa} Índices \gls{HOMED} e \gls{rHOMA} para sistemas os heteroaromáticos apresentados na \autoref{fig:homed}.}
 	\begin{tabular}{cccccc}
 		\toprule
 	\textbf{Molécula} & \gls{HOMED} & \textbf{Molécula} & \gls{HOMED} & \textbf{Molécula} & \gls{HOMED}
@@ -361,6 +364,37 @@ Ou seja, é correto afirmar que o índice \gls{HOMED} descreve melhor os compost
 \end{table}
 
 As discrepâncias entre os dois índices acontecem em função da escolha dos sistemas moleculares como referência para o \gls{rHOMA}. Para compostos que contêm uma série de heteroátomos, o índice \gls{rHOMA} não tem sentido físico-químico. Por exemplo, ele é negativo para alguns derivados aromáticos com oxigênio, enquanto é positivo ou próximo de 1 para análogos substituídos por nitrogênio. Os únicos casos em que o \gls{rHOMA} descreve melhor o comportamento aromático são os sistemas homo ou heteroaromáticos que contêm um número par de ligações \ce{CC}, \ce{CX} ou \ce{XX} (sendo \ce{X} o heteroátomo) do mesmo tipo.
+
+\begin{figure}[htb]
+\caption{\label{fig:homed/2} Estruturas heterocíclicas para as quais os valores de \gls{HOMED} e \gls{rHOMA} são apresentados na \autoref{tab:homed/homa}.}
+	\begin{center}
+		\includegraphics[width=0.95\textwidth]{images/fig2(8).png}
+	\end{center}
+	\fonte{Autor(a).}
+\end{figure}
+
+Além disso, o \gls{rHOMA}, diferentemente do \gls{HOMED}, não descreve os efeitos de ressonância. Se analisarmos as pironas, por exemplo, conjugações $n$-$\pi$ mistas são possíveis, similarmente ao furano. Nessa estrutura, a carbonila está conjugada com as ligações \ce{C=C} e \ce{C=N}. Devido à separação das cargas nas estruturas de ressonância, as conjugações mistas fornecem índices \gls{HOMED} mais baixos para a $\alpha$-pirona (\gls{HOMED} $=0.618$) e $\gamma$-pirona (\gls{HOMED} $=0.666$). A presença de grupos azo na estrutura do piranil reduz o valor de \gls{HOMED}. Os valores de \gls{rHOMA}, por sua vez, são erroneamente negativos (ou muito próximos de zero).
+
+\begin{table}[htb]
+	\centering
+	\caption{\label{tab:homed/homa} Índices \gls{HOMED} e \gls{rHOMA} para sistemas os heteroaromáticos apresentados na \autoref{fig:homed}.}
+	\begin{tabular}{cccccc}
+		\toprule
+	\textbf{Molécula} & \gls{HOMED} & \textbf{Molécula} & \gls{HOMED} & \textbf{Molécula} & \gls{HOMED}
+ \\
+  & \gls{rHOMA} & & \gls{rHOMA} & & \gls{rHOMA}
+ \\
+		\midrule
+    (\textbf{r}) & 0.618 & (\textbf{s}) & 0.543 & (\textbf{t}) & 0.483 \\
+     & -0.052 &  & -0.122 &  & -0.169 \\
+    & & (\textbf{u}) & 0.601 & (\textbf{v}) & 0.557 \\
+    & &  & -0.044 & & -0.024 \\
+    (\textbf{w}) & 0.666 & (\textbf{x}) & 0.562 & (\textbf{y}) & 0.462 \\
+    & -0.045 & & 0.176 & & 0.064 \\
+    \bottomrule
+	\end{tabular}
+	\fonte{Autor(a).}
+\end{table}
 
 \section{Análise estatística}
 
