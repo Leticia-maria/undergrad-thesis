@@ -18,7 +18,7 @@ O perfil do gráfico mostra que o custo computacional para o cálculo da energia
 
 \section{Interface gráfica}\label{design}
 
-A interface gráfica do \textit{Balmy.jl} é mostrada na \autoref{gui-pronta}. Os elementos interativos foram implementados para garantir o suporte e usabilidade do \textit{software}, sendo extremamente intuitivo e fácil de usar, pois é acessado através do navegador e, assim, pode utilizado nas salas de aula da graduação.
+A interface gráfica do \textit{Balmy.jl} é mostrada na \autoref{gui-pronta}. Os elementos interativos foram implementados para garantir o suporte e usabilidade do \textit{software}, sendo extremamente intuitivo e fácil de usar, pois é acessado através do navegador e, assim, pode utilizado nas salas de aula.
 
 \begin{figure}[htb]
 	\caption{\label{workflow} Fluxo de trabalho do \textit{software} produzido.}
@@ -36,7 +36,7 @@ A interface gráfica do \textit{Balmy.jl} é mostrada na \autoref{gui-pronta}. O
 	\fonte{Autor(a)}
 \end{figure}
 
-O fluxo de trabalho básico de funcionamento do \textit{Balmy.jl} também é ilustrado pelo esquema da \autoref{workflow}, onde é possível notar que o usuário insere, como entrada, o arquivo contendo as coordenadas cartesianas do sistema químico que deseja estudar. A \autoref{fig:input} mostra um exemplo de \textit{input} do \textit{Balmy.jl} para a molécula de benzeno. É um arquivo de extensão \textit{.xyz} que contém as coordenadas cartesianas da molécula de interesse. Na primeira linha, temos o nome da estrutura, em seguida, um comentário, e a partir da terceira linha são mostradas as informações da geometria em quatro colunas. A primeira delas contém os símbolos dos átomos contidos na molécula. Da segunda à quarta coluna, são indicadas as coordenadas cartesianas do eixo $x$, $y$ e $z$, respectivamente. Esses dados aparecem na caixa de texto no lado direito da tela (espaço indicado na \autoref{gui-pronta}).
+O fluxo de trabalho básico de funcionamento do \textit{Balmy.jl} também é ilustrado pelo esquema da \autoref{workflow}, onde é possível notar que o usuário insere, como entrada, o arquivo contendo as coordenadas cartesianas do sistema químico que deseja estudar. A \autoref{fig:input} mostra um exemplo de \textit{input} do \textit{Balmy.jl} para a molécula de benzeno. É um arquivo de extensão \textit{.xyz} que contém as coordenadas cartesianas da molécula de interesse (\autoref{tab:coords}). Na primeira linha, temos o nome da estrutura, em seguida, um comentário, e a partir da terceira linha são mostradas as informações da geometria em quatro colunas. A primeira delas contém os símbolos dos átomos contidos na molécula. Da segunda à quarta coluna, são indicadas as coordenadas cartesianas do eixo $x$, $y$ e $z$, respectivamente. Esses dados aparecem na caixa de texto no lado direito da tela (espaço indicado na \autoref{gui-pronta}).
 
 \begin{figure}[htb]
 	\caption{\label{fig:input} Exemplo de um arquivo de \textit{input} (\textit{.xyz}) para o \textit{Balmy.jl}.}
@@ -45,6 +45,31 @@ O fluxo de trabalho básico de funcionamento do \textit{Balmy.jl} também é ilu
 	\end{center}
 	\fonte{Autor(a)}
 \end{figure}
+
+\begin{table}[htb]
+	\centering
+	\caption{\label{tab:coords} Coordenadas atômicas do benzeno.}	
+	\begin{tabular}{crrr}
+		\toprule
+		\textbf{Átomo (posição)} & coordenada $x$ & coordenada $y$ & coordenada $z$
+		\\ 
+		\midrule
+C(1)  &    0.000000000000  &   1.950000000000  &   1.391500000000  \\
+C(2)  &    1.205074349366  &   1.950000000000  &   0.695750000000  \\
+C(3)  &    1.205074349366  &   1.950000000000  &  -0.695750000000  \\
+C(4)  &   -0.000000000000  &   1.950000000000  &  -1.391500000000  \\
+C(5)  &   -1.205074349366  &   1.950000000000  &  -0.695750000000  \\
+C(6)  &   -1.205074349366  &   1.950000000000  &   0.695750000000  \\
+H(1)  &    0.000000000000  &   1.950000000000  &   2.471500000000  \\
+H(2)  &    2.140381785453  &   1.950000000000  &   1.235750000000  \\
+H(3)  &    2.140381785453  &   1.950000000000  &  -1.235750000000  \\
+H(4)  &   -0.000000000000  &   1.950000000000  &  -2.471500000000  \\
+H(5)  &   -2.140381785453  &   1.950000000000  &  -1.235750000000  \\
+H(6)  &   -2.140381785453  &   1.950000000000  &   1.235750000000  \\
+    \bottomrule
+	\end{tabular}
+	\fonte{Autor(a).}
+\end{table}
 
 A partir das informações geométricas fornecidas pelo usuário, a estrutura é renderizada e representada tridimensionalmente pelo modelo das superfícies de Blinn-Phong (veja a \autoref{desenhoestrutural} para uma melhor descrição desse método). Nesse sentido, o \textit{Balmy.jl} é bastante versátil, pois é possível customizar o modelo através dos efeitos de iluminação empregados nas estruturas. Por exemplo, variando o valor de $\alpha'$ (coeficiente de brilho), é possível notar que, na \autoref{fig:representations}, quanto maior for o valor, menor será o holofote especular, representado pelos pontos luminosos nas estruturas moleculares.
 
@@ -81,34 +106,7 @@ Ao clicar no botão \textit{Start}, o usuário emite a requisição ao servidor 
 
 \section{Orbitais moleculares}\label{sec:benzene}
 
-Como o enfoque desse trabalho é a análise de compostos aromáticos, analisaremos de maneira mais aprofundada o exemplo do benzeno, cujas coordenadas estão mostradas na \autoref{tab:coords}. Os comprimentos de ligação obtidos para \ce{C-C} são $1.40$ \AA, e para \ce{C-H} são $1.10$ \AA.
-
-\begin{table}[htb]
-	\centering
-	\caption{\label{tab:coords} Coordenadas atômicas do benzeno.}	
-	\begin{tabular}{crrr}
-		\toprule
-		\textbf{Átomo (posição)} & coordenada $x$ & coordenada $y$ & coordenada $z$
-		\\ 
-		\midrule
-C(1)  &    0.000000000000  &   1.950000000000  &   1.391500000000  \\
-C(2)  &    1.205074349366  &   1.950000000000  &   0.695750000000  \\
-C(3)  &    1.205074349366  &   1.950000000000  &  -0.695750000000  \\
-C(4)  &   -0.000000000000  &   1.950000000000  &  -1.391500000000  \\
-C(5)  &   -1.205074349366  &   1.950000000000  &  -0.695750000000  \\
-C(6)  &   -1.205074349366  &   1.950000000000  &   0.695750000000  \\
-H(1)  &    0.000000000000  &   1.950000000000  &   2.471500000000  \\
-H(2)  &    2.140381785453  &   1.950000000000  &   1.235750000000  \\
-H(3)  &    2.140381785453  &   1.950000000000  &  -1.235750000000  \\
-H(4)  &   -0.000000000000  &   1.950000000000  &  -2.471500000000  \\
-H(5)  &   -2.140381785453  &   1.950000000000  &  -1.235750000000  \\
-H(6)  &   -2.140381785453  &   1.950000000000  &   1.235750000000  \\
-    \bottomrule
-	\end{tabular}
-	\fonte{Autor(a).}
-\end{table}
-
-Seguindo o grafo mostrado na \autoref{fig:M2} e enumerado na \autoref{fig:graphEnumerated}, é possível construir uma matriz de adjacência de dimensão $n \times n$, onde $n$ é o número de átomos, excluindo-se os hidrogênios. No caso do benzeno, a ordem da matriz em questão é 6.
+Como o enfoque desse trabalho é a análise de compostos aromáticos, analisaremos de maneira mais aprofundada o exemplo do benzeno, cujas coordenadas atômicas estão mostradas na \autoref{tab:coords}. Segundo o grafo mostrado na \autoref{fig:M2} e enumerado na \autoref{fig:graphEnumerated}, é possível construir uma matriz de adjacência (\autoref{eq:adjmatrix}) de dimensão $n \times n$, onde $n$ é o número de átomos, excluindo-se os hidrogênios (veja a \autoref{ap:graph} para a descrição da matriz de adjacência). No caso do benzeno, a ordem da matriz em questão é 6, devido ao número de carbonos (\autoref{fig:graphEnumerated}).
 
 \begin{figure}[htb]
 \vspace{0.8\baselineskip}
@@ -125,7 +123,7 @@ Seguindo o grafo mostrado na \autoref{fig:M2} e enumerado na \autoref{fig:graphE
 \end{equation}
 \end{figure}
 
-\noindent Consideremos $a_{ij}$ o elemento geral associado à matriz da \autoref{eq:5}, sendo igual a uma unidade quando os carbonos $i$ e $j$ estão ligados. Analogamente, na teoria de Hueckel e de Hueckel estendido, a matriz do determinante secular (\autoref{eq:secularmatrix}) é aquela cujos autovalores determinam as energias dos orbitais moleculares.
+ Consideremos $a_{ij}$ o elemento geral associado à matriz da \autoref{eq:adjmatrix}, sendo igual a uma unidade quando os carbonos $i$ e $j$ estão ligados, e igual a $0$ quando os átomos não estão interagindo diretamente. Analogamente, na teoria \gls{HMO} e \gls{EHMO}, a matriz do determinante secular (\autoref{eq:secularmatrix}) é aquela cujos autovalores determinam as energias dos orbitais moleculares.
 
 \begin{figure}[htb]
 \vspace{0.8\baselineskip}
@@ -142,7 +140,7 @@ Seguindo o grafo mostrado na \autoref{fig:M2} e enumerado na \autoref{fig:graphE
 \end{equation}
 \end{figure}
 
-No caso do benzeno, ao resolver o determinante secular da matriz anterior (através do procedimento mostrado no \autoref{ap:HMO} e no \autoref{ap:EHMO}), obtemos a equação
+No caso do benzeno, ao resolver o determinante secular da matriz anterior (através do procedimento mostrado no \autoref{ap:HMO} e no \autoref{ap:EHMO}), obtemos a \autoref{eq:R3}.
 
 \begin{figure}[htb]
 \begin{equation}
@@ -182,35 +180,46 @@ No caso do benzeno, ao resolver o determinante secular da matriz anterior (atrav
 \end{tikzpicture}
 \end{figure}
 
-Resolvendo o polinômio da \autoref{eq:R3}, conseguimos suas raízes ($x = \pm 1, \pm 1, \pm 2$) e, portanto, as energias para seis orbitais moleculares do benzeno (HOMO-1, HOMO, LUMO, LUMO+1). Combinando as raízes com os parâmetros $\alpha$ e $\beta$, nós temos a \autoref{eq:orb_mols} (\autoref{fig:MOs}).
+Resolvendo o polinômio (chamado polinômio característico) da \autoref{eq:R3}, obtém-se as raízes ($x = \pm 1, \pm 1, \pm 2$), que são os autovalores da \autoref{eq:secularmatrix}. Esses valores correspondem às energias para os seis orbitais moleculares $\pi$ do benzeno (\gls{HOMO}-1, \gls{HOMO}, \gls{LUMO}, \gls{LUMO}+1). Combinando as raízes do polinômio característico (\autoref{eq:R3}) com os parâmetros $\alpha$ e $\beta$ presentes na \autoref{eq:secularmatrix}, obtemos a \autoref{eq:orb_mols} (\autoref{fig:MOs}) (veja o \autoref{ap:HMO} para um detalhamento dos parâmetros $\alpha$ e $\beta$).
+
+Os autovalores repetidos vão gerar orbitais degenerados, isto é, que estão no mesmo nível energético, como é possível notar no diagrama da \autoref{fig:MOs} e nas expressões de energia da \autoref{eq:orb_mols}. Esses mesmos valores podem ser obtidos se calcularmos os autovalores da matriz de adjacência (\autoref{eq:adjmatrix}). Ou seja, ao solucionar o determinante da matriz secular (\autoref{eq:secularmatrix}), os resultados serão iguais aos autovalores da \autoref{eq:adjmatrix}, sendo possível calcular os valores de energia e as populações associadas a cada orbital molecular da molécula que está sendo analisada (no caso, o benzeno). Dessa forma, ao respeitar o princípio de \textit{Aufbau}, os seis elétrons $\pi$ da valência são colocados nos três níveis de energia mais baixos (\autoref{fig:MOs}).
 
 \begin{figure}[htb]
-\caption{\label{fig:MOs} Diagrama de energia dos orbitais moleculares do benzeno.}
+\caption{\label{fig:MOs} Diagrama de energia dos orbitais moleculares do benzeno, cujas coordenadas atômicas estão mostrados na \autoref{tab:coords}.}
 	\begin{center}
 		\includegraphics[width=0.75\textwidth]{images/MOs.png}
 	\end{center}
 	\fonte{Autor(a).}
 \end{figure}
 
-Os autovalores repetidos vão gerar orbitais degenerados, isto é, aqueles que estão no mesmo nível energético, como é possível notar no diagrama e nos valores de energia obtidos. Esses mesmos valores podem ser obtidos se calcularmos os autovalores da matriz de adjacência. Desse modo, comprovamos que, ao solucionar o determinante e os autovalores da matriz secular, é possível obter os valores de energia e as populações associadas a cada orbital molecular da molécula de interesse.
+Tendo a distribuição eletrônica dos elétrons $\pi$ nos orbitais moleculares, é possível calcular $E_\pi$ (\autoref{epi}) do benzeno (\autoref{tab:energies}), que corresponde à energia eletrônica dos elétrons $\pi$ no sistema em estudo. Como o nível de energia $E_1$ está ocupado por dois elétrons, calculamos $E_\pi$ multiplicando o valor $\alpha + 2 \beta$ por dois e somamos às energias dos elétrons no \gls{HOMO} do benzeno (\autoref{fig:MOs}), em que $E_2 = E_3$ (multiplica-se então $\alpha + \beta$ por 4, pois esse é o número de elétrons que ocupa esse nível de energia).
 
-O diagrama de níveis de energia para o benzeno é dado na \autoref{fig:MOs}. Os seis elétrons $\pi$ são colocados nos três níveis de energia mais baixos. Desse modo, a energia eletrônica em benzeno é definida pela \autoref{epi}.
+
+\begin{figure}[htb]
+\vspace{2\baselineskip}
 
 \begin{equation}
-\label{epi}
-    E_\pi = 2(\alpha + 2\beta) + 4(\alpha + \beta) = 6\alpha + 8\beta
+\begin{split}
+    \label{epi}
+    \tikzmarknode{epi}{\highlight{red}{$E_\pi$}} = 2(\alpha + 2\beta) + 4(\alpha + \beta) \Longrightarrow \\[0.35cm] \highlight{red}{$E_\pi$} = 6\alpha + 8\beta
+\end{split}
 \end{equation}
+\begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
+    \path (epi.north) ++ (1,1.5em) node[anchor=south west,color=red!67] (scalep){\textit{energia dos elétrons $\pi$}};
+    \draw [color=red!87](epi.north) |- ([xshift=1.65em,color=red]scalep.south east);
+\end{tikzpicture}
+\end{figure}
 
-As funções de onda resultantes para os seis orbitais moleculares $\pi$ do benzeno são dados pela \autoref{wavefunctions}.
+O \textit{Balmy.jl}, além de fornecer os \gls{MOs} e suas densidades, também nos dá as funções de onda ($\psi$) resultantes para os seis orbitais moleculares $\pi$ do benzeno (\autoref{wavefunctions}). Essas expressões são da forma: $\psi_i = a_1 \phi_1 + a_2 \phi_2$ (\autoref{ap:eq:2}), onde $a_i$ corresponde ao coeficiente de contribuição (também chamado coeficiente de expansão) de cada orbital atômico. Essas funções são substituídas na Equação de Schroedinger (\autoref{ap:eq:4}), que torna-se $\hat{H} |\psi_i \rangle = E_i |\psi_i \rangle$, sendo $\hat{H}$ o Hamiltoniano e $E_i$ a energia correspondente ao orbital molecular: $\hat{H}a_1|\phi_1\rangle + \hat{H}a_2|\phi_2\rangle = Ea_1|\phi_1\rangle + Ea_2|\phi_2\rangle$. Essa expressão, ao ser multiplicada por $\langle \phi_1 |$ e, em seguida, integrada, torna-se $a_1(H_{21} - ES_{21}) + a_2(H_{22} - ES_{22}) = 0$, pois $S_{21} = \langle \phi_1 | \phi_2 \rangle = \displaystyle \int \phi_1 \phi_2 d\tau$ e $H_{21} = \langle \phi_1 | \hat{H} | \phi_2 \rangle = \displaystyle \int \phi_1 \hat{H} \phi_2 d\tau$. Isso nos leva ao procedimento da teoria \gls{EHMO} que permite calcular as energias eletrônicas moleculares (\autoref{tab:energies}).
 
 \begin{equation}
 \label{wavefunctions}
 \begin{split}
-    \psi_1 = \frac{1}{\sqrt{6}}(2p_{z1} + 2p_{z2} + 2p_{z3} + 2p_{z4} + 2p_{z5} + 2p_{z6}) \Longrightarrow E_1 = \alpha + 2\beta \\
-    \psi_2 = \frac{1}{\sqrt{4}}(2p_{z2} + 2p_{z3} - 2p_{z5} - 2p_{z6}) \Longrightarrow E_2 = \alpha + \beta \\
-   \psi_3 = \frac{1}{\sqrt{3}}(2p_{z1} + \frac{1}{2} 2p_{z2} - \frac{1}{2} 2p_{z3} - 2p_{z4} - \frac{1}{2} 2p_{z5} + \frac{1}{2} 2p_{z6}) \Longrightarrow E_3 = \alpha + \beta \\
-     \psi_4 = \frac{1}{\sqrt{4}}(2p_{z2} - 2p_{z3} + 2p_{z5} - 2p_{z6}) \Longrightarrow E_4 = \alpha - \beta \\
-      \psi_5 = \frac{1}{\sqrt{3}}(2p_{z1} - \frac{1}{2} 2p_{z2} - \frac{1}{2} 2p_{z3} + 2p_{z4} - \frac{1}{2} 2p_{z5} - \frac{1}{2} 2p_{z6}) \Longrightarrow E_5 = \alpha - \beta \\
+    \psi_1 = \frac{1}{\sqrt{6}}(2p_{z1} + 2p_{z2} + 2p_{z3} + 2p_{z4} + 2p_{z5} + 2p_{z6}) \Longrightarrow E_1 = \alpha + 2\beta \\[0.35cm]
+    \psi_2 = \frac{1}{\sqrt{4}}(2p_{z2} + 2p_{z3} - 2p_{z5} - 2p_{z6}) \Longrightarrow E_2 = \alpha + \beta \\[0.35cm]
+   \psi_3 = \frac{1}{\sqrt{3}}(2p_{z1} + \frac{1}{2} 2p_{z2} - \frac{1}{2} 2p_{z3} - 2p_{z4} - \frac{1}{2} 2p_{z5} + \frac{1}{2} 2p_{z6}) \Longrightarrow E_3 = \alpha + \beta \\[0.35cm]
+     \psi_4 = \frac{1}{\sqrt{4}}(2p_{z2} - 2p_{z3} + 2p_{z5} - 2p_{z6}) \Longrightarrow E_4 = \alpha - \beta \\[0.35cm]
+      \psi_5 = \frac{1}{\sqrt{3}}(2p_{z1} - \frac{1}{2} 2p_{z2} - \frac{1}{2} 2p_{z3} + 2p_{z4} - \frac{1}{2} 2p_{z5} - \frac{1}{2} 2p_{z6}) \Longrightarrow E_5 = \alpha - \beta \\[0.35cm]
       \psi_6 = \frac{1}{\sqrt{6}}(2p_{z1} - 2p_{z2} + 2p_{z3} - 2p_{z4} +  2p_{z5} -  2p_{z6}) \Longrightarrow E_6 = \alpha - 2\beta 
 \end{split}
 \end{equation}
