@@ -390,10 +390,20 @@ Para um sistema que contém um número par de ligações ($2i$), ou seja, o mesm
     \end{cases}
 \end{equation}
 
+A fim de descrever corretamente a deslocalização dos elétrons $\pi$ em sistemas heteroatômicos cíclicos e acíclicos, o \gls{HOMED} considera os comprimentos de ligação \ce{CC}, \ce{CX} e \ce{XY} simples e dupla em várias moléculas pequenas que
+poderiam ser empregadas como moléculas de referência. No procedimento \gls{HOMED}, os compostos saturados acíclicos como o etano, a metilamina e o metanol podem ser usadas para parametrizar os comprimentos de ligação \ce{C-C}, \ce{C-N}, e \ce{C-O}; e as moléculas insaturadas acíclicas como: eteno, metilimina e formaldeído podem ser aplicadas às ligações duplas \ce{C=C}, \ce{C=N} e \ce{C=O}, da mesma forma que foi proposto para o índice \gls{HOMA} original. 
+
+De um ponto de vista matemático, o método empregado ao índice \gls{HOMED} é o mesmo do \gls{HOMA} e do \gls{rHOMA}, sendo diferentes apenas os comprimentos de referência $R_s$, $R_d$, $R_{opt}$
+e o fator $\alpha$. O índice \gls{HOMED} descreve o mesmo fenômeno -
+encurtamento da ligação simples e alongamento da dupla ligação devido à deslocalização de elétrons $\pi$ no sistema. A escolha dos compostos mais simples como referência possibilita
+medir a força de qualquer tipo de conjugação em qualquer tipo de sistema heteroatômico: $\sigma-\pi$, $n-\pi$
+e $\pi-\pi$ \autocite{Kruszewski1972}.
+
 \section{Aplicações dos critérios geométricos}
 
+Conforme mencionado, ao longo da história da química, a conceituação da aromaticidade enquanto uma propriedade não se dissociou dos aspectos observados nos compostos classificados como aromáticos. Essa subdivisão, no entanto, é arbitrária, e só pode funcionar caso esteja baseado em algum tipo de padrão, de preferência quantificável e mensurável experimentalmente para haver corroboração da hipótese enunciada. De tal necessidade então, emergiram os índices de aromaticidade aplicáveis a múltiplos sistemas $\pi$-eletrônicos, dotados de uma estabilização extra em relação à análogos não deslocalizados. Contudo, estimar essa observação não é uma tarefa simples, devido às limitações de precisão que podem surgir quando escolhemos um sistema de referência. 
 
-
+Um dos critérios comparativos utilizados para verificar a existência de aromaticidade em um determinado sistema de interesse é a reatividade, que é uma propriedade extremamente correlacionável ao mundo real e fortemente dependente da aromaticidade. Nesse contexto, entra mais uma vez a aplicabilidade do \textit{Balmy.jl}, uma aplicação focalizada na avaliação de moléculas e seus orbitais em tempo real, através do uso de um navegador \textit{web}, permitindo fazer esse tipo de abstração e mensuração de uma forma extremamente simplificada ao usuário.
 
 % ----------------------------------------------------------
 \chapter{Objetivos}
