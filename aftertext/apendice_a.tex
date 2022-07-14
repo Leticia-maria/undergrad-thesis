@@ -344,7 +344,7 @@ A função de onda eletrônica é considerada, nesse modelo, como um produto de 
 
 \noindent onde $H$ é uma matriz quadrada contendo o $H_{rs}$, integrais de energia de um único elétron, e $C$ é a matriz dos coeficientes relativos aos orbitais atômicos. Cada coluna em $C$ é $C'$, que define um orbital molecular em termos das funções de base. Na teoria molecular de Hueckel estendido, a sobreposição não é negligenciado, e $S$ é a matriz das integrais de sobreposição. Essas matrizes são quadradas, possuem o tamanho igual ao número de orbitais atômicos usados na combinação linear. Para qualquer cálculo desse tipo, deve-se construir essas matrizes e então encontrar os autovalores (energias orbitais) e autovetores (coeficientes que definem o orbital molecular em termos das funções de base).
 
-Os elementos da matriz $H$ são atribuídos a partir de dados experimentais, uma vez que o método em questão é semi-empírico. Os elementos de matriz Hamiltoniana fora de diagonal são dados por uma aproximação feita por Wolfsberg e Helmholz, que relaciona com os elementos diagonais e o elemento da matriz de sobreposição, seguindo a \autoref{hamiltonian}. De acordo com essa expressão, a energia deveria ser proporcional à energia dos orbitais atômicos, e será tão maior quanto maior a sobreposição desses orbitais. A contribuição desses efeitos com a energia é escalada pelo fator $K$. Hoffmann \autocite{Hoffmann1963} atribuiu o valor de 1.75 para $K$, após um estudo do efeito desse parâmetro nas energias dos orbitais ocupados do etano.
+Os elementos da matriz $H$ são atribuídos a partir de dados experimentais, uma vez que o método em questão é semi-empírico. Os elementos de matriz Hamiltoniana fora de diagonal são dados por uma aproximação feita por Wolfsberg e Helmholz, que relaciona com os elementos diagonais e o elemento da matriz de sobreposição, seguindo a \autoref{hamiltonian}.
 
 \begin{figure}[htb]
 \label{hamiltonian}
@@ -361,7 +361,18 @@ Os elementos da matriz $H$ são atribuídos a partir de dados experimentais, uma
 \end{tikzpicture}
 \end{figure}
 
-A expressão da \autoref{hamiltonian} pode ser racionalizada de forma a tratar a energia dos orbitais atômicos proporcionalmente à energia dos orbitais atômicos, aumentando diretamente de acordo com a integral de sobreposição e sendo escalada peo parâmetro $K$.
+A expressão da \autoref{hamiltonian} pode ser racionalizada de forma a tratar a energia dos orbitais atômicos proporcionalmente à energia dos orbitais atômicos, aumentando diretamente de acordo com a integral de sobreposição e sendo escalada pelo parâmetro $K$. Ou seja, uma vez que, na teoria \gls{EHMO}, decide-se não ignorar os elementos que estão fora da diagonal da matriz do determinante secular $|H_{rs} - ES_{rs}| = 0$, temos que calcular as integrais de sobreposição e construir as matrizes Hamiltonianas.
+
+Inicialmente, Hoffmann estabeleceu a relação de que $H_{rs} = K' S_{rs}$, onde $K' = -21 eV$. No entanto, se estamos a considerar uma grande variedade de heteroátomos, é necessário utilizar um valor de $K'$ com magnitude significativamente mais alta, pois $K'$ deve ser menor do que qualquer elemento da diagonal da matriz, qual seja, o potencial de ionização. Por exemplo, suponhamos que $H_{rr} = \alpha$, e escolhemos $K'$ igual a $\alpha$. Nessas condições, a equação secular torna-se $|(\alpha - E)S_{ij}| = 0$, que é satisfeita por todo $E = \alpha$. Hoffmann mostrou que, se $K' > \alpha$, os cálculos geram resultados espúrios \autocite{Hoffmann1963}. Desse modo, é imposta a condição de que $K' < \alpha$.
+
+A melhor aproximação proposta foi, então, a \autoref{hamiltonian}. Mas, para saber qual o melhor valor de $K$, diversas análises foram feitas. Por exemplo, se utilizarmos a aproximação de Mulliken (\autoref{eq:mulliken}) considerando o produto de duas distribuições de carga $\chi_r$ e $\chi_s$, obtém-se $K=1$. No entanto, Hoffmann mostrou que esses valores conduzem, novamente, a resultados absurdos para o caso homonuclear.
+
+\begin{equation}
+\label{eq:mulliken}
+    \chi_r \chi_s = \frac{1}{2} S_{rs}(\chi_r \chi_r + \chi_s \chi_s)
+\end{equation}
+
+Portanto, aplicando valores de $K > 1$, Hoffmann \autocite{Hoffmann1963} demonstrou que os melhores resultados relativos às populações de Mulliken para o etano em diferentes conformações assumiu uma estabilidade maior quando $K = 1.75$. Desse modo, esse valor foi adotado como padrão para os hidrocarbonetos desde 1963.
 
  Os valores de $H_{rr}$ (quais sejam, os elementos da diagonal da matriz) são escolhidos como um estado de potenciais de ionização com o valor negativo, indicando ligação. Isso ocorre em função do teorema de Koopman\autocite{Koopmans1934}, cujo enunciado determina que a primeira energia de ionização de um sistema molecular é o oposto da energia atribuída ao \gls{HOMO}, uma vez que. no contexto do \gls{RHF}, considera-se que os orbitais do íon são idênticos àqueles da molécula neutra (segundo a aproximação do orbital \textit{congelado}). 
 
@@ -395,14 +406,11 @@ A expressão da \autoref{hamiltonian} pode ser racionalizada de forma a tratar a
 A Teoria dos Grafos tem uma origem relativamente recente (século XVIII) na
 história da Matemática. Desenvolvida já no século XX, cuja importância se tem
 imposto por suas ligações e aplicações em outras ciências, bem como em outras
-áreas da Matemática, pois estuda as relações entre os objetos de um determinado conjunto\autocite{neto2016topicos, soares2014introduccao}.
-
-Tal conceito simples torna claro que ele permite a modelagem de situações concretas como: redes de computadores, de comunicações, a Web (ligação física entre
-os nós da rede), árvores genealógicas, Química Orgânica (isômeros), etc.
-Contudo, a ligação física não é necessária; também pode ser associado um grafo
+áreas da Matemática, pois estuda as relações entre os objetos de um determinado conjunto\autocite{neto2016topicos, soares2014introduccao}, permitindo a modelagem de diversas situações do mundo real, como: redes de computadores, de comunicações, a \textit{web} (ligação física entre
+os nós da rede), árvores genealógicas, Química Orgânica (isômeros), etc. Também pode ser associado um grafo
 a um qualquer conjunto no qual esteja definida uma relação binária, como a relação
-(a é primo com b) que determina um grafo num conjunto fixado de inteiros, ou a
-relação (a é filho de b) que permite associar a uma dada família um grafo (árvore
+($a$ é primo com $b$) que determina um grafo num conjunto fixado de inteiros, ou a
+relação ($a$ é filho de $b$) que permite associar a uma dada família um grafo (árvore
 genealógica).
 
 
@@ -421,7 +429,7 @@ Grafos são geralmente representados por diagramas, onde os elementos de $V$ cor
 \begin{figure}[htb]
 	\caption{\label{fig:G1} Imagem representativa de um grafo simples não direcionado.}
 	\begin{center}
-		\includegraphics[width=0.6\textwidth]{images/grafo.png}
+		\includegraphics[width=0.4\textwidth]{images/grafo.png}
 	\end{center}
 	\fonte{Autor(a).}
 \end{figure}
@@ -431,7 +439,7 @@ Grafos são geralmente representados por diagramas, onde os elementos de $V$ cor
 \end{equation}
 
 \begin{definition}
-Seja G = (V,E) um grafo. Se u $\in$, o \textbf{grau} de u, denotado $d_G(u)$, é o número de vértices adjacentes a u: 
+Seja G = (V,E) um grafo. Se u $\in$ G, o \textbf{grau} de u, denotado $d_G(u)$, é o número de vértices adjacentes a u: 
 \begin{center}
 $d_G(u) = \#N_G(u)$
 \end{center}

@@ -139,7 +139,7 @@ Substituindo então os elementos das integrais supracitadas na \autoref{eq:energ
     \epsilon = \frac{\displaystyle \sum_{r=1}^{N} \sum_{s=1}^{N} c^*_r c_s H_{rs}}{\displaystyle \sum_{r=1}^{N} \sum_{s=1}^{N} c^*_r c_s S_{rs}}
 \end{equation}
 
-\subsection{Integral de sobreposição}
+\subsection{Integral de sobreposição}\label{sec:overlap}
 
 No Método de Hueckel Estendido, as integrais de sobreposição são calculadas utilizando orbitais atômicos de Slater (representado por coordenadas esféricas na \autoref{stos}), pois seus resultados são mais acurados (mesmo que não sejam solução exata), principalmente pelo fato de reproduzirem mais precisamente a região do cúspide e o decaimento orbital. Essa aproximação é feita porque a descrição matemática dos orbitais atômicos não pode ser exatamente conhecida, mas aproximada pela forma dos orbitais dos sistemas hidrogeniônicos, uma vez que o problema torna-se intratável analiticamente para qualquer sistema multieletrônico. Desse modo, os conjuntos de bases são obtidos pelas regras de Slater\autocite{Slater1930, Lu2006}.
 
@@ -156,12 +156,18 @@ No Método de Hueckel Estendido, as integrais de sobreposição são calculadas 
     \path (norm.south) ++ (0.70,-1.5em) node[anchor=north west,color=gray!67] (scalep){\textit{$\displaystyle \bigg{[} \frac{(2 \zeta)^{n-1}}{(2n)!} \bigg{]}^{1/2}$}};
     \draw [color=gray!87](norm.south) |- ([xshift=0.70em,color=gray]scalep.north east);
     
-    \path (harmonic.north) ++ (-0.70,1.5em) node[anchor=south east,color=red!67] (scalep){\textit{$i^{m + |m|}\bigg{[}\displaystyle \frac{(2l+1)(l+|m|)!}{2(l + |m|)!}\bigg{]}^{1/2} P^m_l (cos \; \theta) \phi_m(\Phi)$}};
+    \path (harmonic.north) ++ (-0.70,1.5em) node[anchor=south east,color=red!67] (scalep){\textit{função angular}};
     \draw [color=red!87](harmonic.north) |- ([xshift=-0.70em,color=red]scalep.south west);
 
 \end{tikzpicture}
 \vspace{2\baselineskip}
 \end{figure}
+
+\noindent onde:
+
+\begin{equation}
+    \textcolor{red!67}{i^{m + |m|}\bigg{[}\displaystyle \frac{(2l+1)(l+|m|)!}{2(l + |m|)!}\bigg{]}^{1/2} P^m_l (cos \; \theta) \phi_m(\Phi)}
+\end{equation}
 
 Avaliando a \autoref{stos}, $N$ representa a constante de normalização, $r^{n-1}e^{-\zeta r}$ é a parte radial da função (onde $r$ é a distância entre o elétron e o núcleo do átomo e $\zeta$ é uma constante de proteção relacionada à carga efetiva do núcleo, sendo a carga nuclear parcialmente protegida por elétrons), e $Y_l^m (\theta, \Phi)$ representa a parte angular, onde os esféricos harmônicos normalizados são relacionados com polinômios de Legendre, definido pela \autoref{legendre}, e $\phi_m (\Phi)$ representa as funções ortonormais.
 
@@ -246,7 +252,7 @@ Ao acessar a interface gráfica, será possível ao usuário fornecer um arquivo
 	\fonte{Autor(a)}
 \end{figure}
 
-Desse modo, transpõe-se a representação apresentada na \autoref{fig:graph} para as estruturas químicas de interesse, uma vez que os átomos podem ser considerados os análogos químicos dos vértices, e as ligações, das arestas. Enumerando-se sequencialmente os nodos do grafo derivado do benzeno como na \autoref{fig:graphEnumerated}, é possível então verificar computacionalmente onde esses pontos estão localizados.
+Desse modo, transpõe-se a representação apresentada na \autoref{fig:M2} para as estruturas químicas de interesse, uma vez que os átomos podem ser considerados os análogos químicos dos vértices, e as ligações, das arestas. Enumerando-se sequencialmente os nodos do grafo derivado do benzeno como na \autoref{fig:graphEnumerated}, é possível então verificar computacionalmente onde esses pontos estão localizados. Ao identificar a estrutura como um grafo, é mais fácil construir a matriz do determinante secular da teoria \gls{EHMO} (veja a discussão desse resultado na \autoref{sec:benzene}). 
 
 O \gls{DFS}\autocite{Knuth1997-jf, Goodrich2001-pd} é um algoritmo recursivo que perpassa todos os vértices de um grafo ou de uma árvore de dados através do conceito de \textit{backtracing} (retorno). Ou seja, ele começa em um nodo raiz definido arbitrariamente e a partir dele explora suas adjacências através da expansão da árvore de busca, aprofundando-se até que o alvo da busca seja encontrado ou até que ele se depare com um nó que não possui adjacências (nodo folha). Então a busca retrocede (\textit{backtrack}) e começa no próximo nó. Numa implementação não-recursiva, todos os nós expandidos recentemente são adicionados a uma pilha, para realizar a exploração (Algoritmo \ref{alg:1}, \autoref{fig:DFS}).
 
@@ -276,6 +282,8 @@ O \gls{DFS}\autocite{Knuth1997-jf, Goodrich2001-pd} é um algoritmo recursivo qu
     }
     }
 \end{algorithm}
+
+Ao identificar os ciclos a partir do algoritmo \gls{DFS}, é possível classificar os ciclos, análogos aos anéis aromáticos, e calcular os índices geométricos (para uma descrição do formalismo dos índices geométricos, veja a \autoref{sec:HOMA}) referente a cada um dos sextetos das estruturas policíclicas (veja um exemplo dessa aplicação na \autoref{sec:policicle}). 
 
 \section{Tratamento de resíduos}
 
