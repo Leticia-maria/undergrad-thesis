@@ -4,7 +4,15 @@
 
 \section{Performance}
 
-Para testar a performance da implementação do cálculo de \gls{EHMO} no \textit{Balmy.jl}, foi feita a comparação dos tempos de execução para os cálculos das energias eletrônicas. O tamanho do sistema químico avaliado foi variado com base na estrutura do polietileno. Partiu-se do monômero (que contém 8 orbitais atômicos em seu conjunto de bases) até uma estrutura com grau de polimerização igual a 1250 (que contém 10000 orbitais atômicos em seu conjunto de bases). O resultado está mostrado na \autoref{fig:times}.
+Para testar a performance da implementação do cálculo de \gls{EHMO} no \textit{Balmy.jl}, foi feita a comparação dos tempos de execução para os cálculos das energias eletrônicas. O tamanho do sistema químico avaliado foi variado com base na estrutura do polietileno. Partiu-se do monômero (que contém 8 orbitais atômicos de valência em seu conjunto mínimo de bases) até uma estrutura com \gls{DP} igual a 1250 (que contém 10000 orbitais atômicos de valência em seu conjunto mínimo de bases) (\autoref{fig:pe}).
+
+\begin{figure}[htb]
+\caption{\label{fig:pe} Estrutura monomérica do polietileno, onde \gls{DP} varia de 1 a 1250. Cada monômero de polietileno contém 8 orbitais atômicos de valência: pois cada carbono (C) contribui com $2s, 2p$, e cada hidrogênio (H) contribui com $1s$.}
+	\begin{center}
+		\includegraphics[width=0.30\textwidth]{images/aromaticity(2).png}
+	\end{center}
+	\fonte{Autor(a).}
+\end{figure}
 
 \begin{figure}[htb]
 \caption{\label{fig:times} Gráfico da relação entre o número de bases da estrutura e o tempo de execução, em milisegundos (ms).}
@@ -14,7 +22,9 @@ Para testar a performance da implementação do cálculo de \gls{EHMO} no \texti
 	\fonte{Autor(a).}
 \end{figure}
 
-O perfil do gráfico mostra que o custo computacional para o cálculo da energia de uma molécula pode crescer exponencialmente. Comparando as duas curvas, ajustadas de acordo com a função exponencial, nota-se que há um ganho de tempo no uso do \textit{Balmy.jl} em relação ao \gls{YAeHMOP} conforme as estruturas de entrada crescem, que é escrito em linguagem C, que também é compilada. Isso ocorre pois, no código do \textit{Balmy.jl}, são implementadas otimizações inerentes à linguagem de programação Julia, como o dispacho múltiplo, que torna mais rápida a execução de funções matemáticas, junto à associação com \textit{macros}, que torna mais eficientes as iterações ao computar integrais.
+O perfil do gráfico na \autoref{fig:times} mostra que o custo computacional para o cálculo da energia de uma molécula pode crescer exponencialmente. Comparando as duas curvas, ajustadas de acordo com a função exponencial, nota-se que há um ganho de tempo no uso do \textit{Balmy.jl} em relação ao \gls{YAeHMOP} conforme as estruturas de entrada crescem, que é escrito em linguagem C, que também é compilada. Isso ocorre pois, no código do \textit{Balmy.jl}, são implementadas otimizações inerentes à linguagem de programação Julia, como o dispacho múltiplo, que torna mais rápida a execução de funções matemáticas, junto à associação com \textit{macros}, que torna mais eficientes as iterações ao computar integrais.
+
+
 
 \section{Interface gráfica}\label{design}
 
