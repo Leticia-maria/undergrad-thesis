@@ -49,7 +49,7 @@ A interface gráfica do \textit{Balmy.jl} é mostrada na \autoref{gui-pronta}. O
 O fluxo de trabalho básico de funcionamento do \textit{Balmy.jl} também é ilustrado pelo esquema da \autoref{workflow}, onde é possível notar que o usuário insere, como entrada, o arquivo contendo as coordenadas cartesianas do sistema químico que deseja estudar. A \autoref{fig:input} mostra um exemplo de \textit{input} do \textit{Balmy.jl} para a molécula de benzeno. É um arquivo de extensão \textit{.xyz} que contém as coordenadas cartesianas da molécula de interesse (\autoref{tab:coords}). Na primeira linha, temos o nome da estrutura, em seguida, um comentário, e a partir da terceira linha são mostradas as informações da geometria em quatro colunas. A primeira delas contém os símbolos dos átomos contidos na molécula. Da segunda à quarta coluna, são indicadas as coordenadas cartesianas do eixo $x$, $y$ e $z$, respectivamente. Esses dados aparecem na caixa de texto no lado direito da tela (espaço indicado na \autoref{gui-pronta}).
 
 \begin{figure}[htb]
-	\caption{\label{fig:input} Exemplo de um arquivo de \textit{input} (\textit{.xyz}) para o \textit{Balmy.jl}.}
+	\caption{\label{fig:input} Exemplo de um arquivo de \textit{input} (\textit{.xyz}) para o \textit{Balmy.jl}. Essa geometria molecular de partida foi otimizada a um nível de teoria CCSD(T), com uma base def2-TZVP, e correção de dispersão de Grimme D4.}
 	\begin{center}
 		\includegraphics[width=0.8\textwidth]{images/fig2(4).png}
 	\end{center}
@@ -58,7 +58,7 @@ O fluxo de trabalho básico de funcionamento do \textit{Balmy.jl} também é ilu
 
 \begin{table}[htb]
 	\centering
-	\caption{\label{tab:coords} Coordenadas atômicas do benzeno.}	
+	\caption{\label{tab:coords} Coordenadas atômicas do benzeno. Essa geometria molecular de partida foi otimizada a um nível de teoria CCSD(T), com uma base def2-TZVP, e correção de dispersão de Grimme D4.}	
 	\begin{tabular}{crrr}
 		\toprule
 		\textbf{Átomo (posição)} & coordenada $x$ & coordenada $y$ & coordenada $z$
@@ -86,7 +86,7 @@ A partir das informações geométricas fornecidas pelo usuário, a estrutura é
 %%% discutir equação do alpha
 
 \begin{figure}[htb]
-\caption{\label{fig:representations} Exemplo da aplicação do modelo de Blinn-Phong na molécula de benzenos a partir da alteração dos coeficientes $\alpha'$ para os átomos (representados por esferas). Da direita para a esquerda, os valores atribuídos foram: 0, 10, 50, 100, 1000; respectivamente.}
+\caption{\label{fig:representations} Exemplo da aplicação do modelo de Blinn-Phong na molécula de benzeno (coordenadas retiradas da \autoref{tab:coords}) a partir da alteração dos coeficientes $\alpha'$ para os átomos (representados por esferas). Da direita para a esquerda, os valores atribuídos foram: 0, 10, 50, 100, 1000; respectivamente.}
 	\begin{center}
 		\includegraphics[width=1.0\textwidth]{images/shininess(1).png}
 	\end{center}
@@ -117,7 +117,7 @@ Ao clicar no botão \textit{Start}, o usuário emite a requisição ao servidor 
 Depois de executado o cálculo, ao clicar em \textit{Show MO}, o orbital molecular de interesse é renderizado, também utilizando o \textit{Three.js}. Na \autoref{fig:HOMobenz} e na \autoref{fig:LUMobenz} são mostrados, respectivamente, os orbitais \gls{HOMO} e \gls{LUMO} do benzeno.
 
 \begin{figure}[htb]
-\caption{\label{fig:HOMobenz} \gls{HOMO} da molécula de benzeno renderizado no \textit{Balmy.jl}.}
+\caption{\label{fig:HOMobenz} \gls{HOMO} da molécula de benzeno (\autoref{tab:coords}) renderizado no \textit{Balmy.jl}.}
 	\begin{center}
 		\includegraphics[width=0.5\textwidth]{images/30.png}
 	\end{center}
@@ -125,7 +125,7 @@ Depois de executado o cálculo, ao clicar em \textit{Show MO}, o orbital molecul
 \end{figure}
 
 \begin{figure}[htb]
-\caption{\label{fig:LUMobenz} \gls{LUMO} da molécula de benzeno renderizado no \textit{Balmy.jl}.}
+\caption{\label{fig:LUMobenz} \gls{LUMO} da molécula de benzeno (\autoref{tab:coords}) renderizado no \textit{Balmy.jl}.}
 	\begin{center}
 		\includegraphics[width=0.5\textwidth]{images/31.png}
 	\end{center}
@@ -343,37 +343,27 @@ Por outro lado, \gls{HOMA} $= 0$ para o cicloexatrieno hipotético (\autoref{fig
 \end{equation}
 
 %Ou seja, a ideia original e fundamental é que cada par de átomos pode ser envolvido em ambas as ligações $\sigma$ e $\pi$, com $R_\sigma > R_\pi$. A distância de ligação $R_i$ representa uma compressão de $R_\sigma$ e uma extensão de $R_\pi$.
-\newpage
+
 \subsection{Hidrocarbonetos policíclicos aromáticos}
 
-O arquivo de saída gerado pelo \textit{Balmy.jl} para o usuário analisar e visualizar essas relações está representado na \autoref{fig:HOMA}. Para explorar um pouco mais a importância do \gls{HOMA}, o índice foi aplicado a alguns sistemas policíclicos aromáticos. Ao observar os valores na \autoref{fig:HOMA}, nota-se que os sextetos mais aromáticos estão na região perférica mais externa (\gls{HOMA} $= 0.9$), o que é um fenômeno importante, pois o \gls{HOMA} conhecidamente superestima os valores de aromaticidade para sextetos periféricos\autocite{giov2020}. 
+Essa abordagem do \gls{HOMA} pode ser estendida aos sitemas aromáticos  policíclicos. O arquivo de saída gerado pelo \textit{Balmy.jl} para o usuário analisar e visualizar essas relações está sendo mostrado na \autoref{fig:HOMA}. Para explorar um pouco mais a importância do \gls{HOMA}, o índice foi aplicado a alguns sistemas policíclicos aromáticos. Ao observar os valores na \autoref{fig:HOMA}, nota-se que os sextetos mais aromáticos estão na região perférica mais externa (\gls{HOMA} $= 0.9$), o que é um fenômeno importante, pois o \gls{HOMA} conhecidamente superestima os valores de aromaticidade para sextetos periféricos\autocite{giov2020}. 
 
 \begin{figure}[htb]
-\caption{\label{fig:HOMA} Valores de HOMA para a estrutura do Kekuleno gerados com o \textit{Balmy.jl}.}
+\caption{\label{fig:HOMA} Valores de HOMA para a estrutura do Kekuleno gerados com o \textit{Balmy.jl}. Essa geometria molecular de partida foi otimizada a um nível de teoria CCSD(T), com uma base def2-TZVP, e correção de dispersão de Grimme D4.}
 	\begin{center}
 		\includegraphics[width=0.60\textwidth]{images/geom.png}
 	\end{center}
 	\fonte{Autor(a).}
 \end{figure}
 
-No arquivo de saída, a escala de cores em tons de vermelho
-
-\begin{figure}[htb]
-\caption{\label{fig:HOMA2} Valores de HOMA para a estrutura do Kekuleno gerados com o \textit{Balmy.jl}.}
-	\begin{center}
-		\includegraphics[width=0.9\textwidth]{images/15.png}
-	\end{center}
-	\fonte{Autor(a).}
-\end{figure}
-
-\newpage
+No arquivo de saída, a escala de cores em tons de vermelho representa a variação do índice \gls{HOMA} em cada ciclo do kekuleno, e a escala que varia em tons de amarelo e azul refere-se aos comprimentos de ligação em cada um dos setextos. Analisando de forma mais detalhada a \autoref{fig:HOMA}, é possível afirmar que a perda de aromaticidade nos ciclos que apresentam \gls{HOMA} $= 0.1$ é pelo desvio do comprimento de ligação individual em relação à ao comprimento médio, uma vez que, na escala de cores, o desvio é sempre comparado com o valor central do comprimento de ligação. 
 
 \subsection{Heterociclos aromáticos}
 
 Como o índice \gls{HOMA} não é capaz de descrever a aromaticidade em estruturas heterocíclicas, também foram implementados no \textit{Balmy.jl} os fatores \gls{rHOMA} e \gls{HOMED}. O efeito da ressonância em estruturas heterocíclicas depende da geometria do sistema e do tipo de heteroátomo presente no anel (\autoref{fig:homed}). No caso dos compostos que correspondem a anéis de cinco membros, como pirrol, furano, e seus derivados, são possíveis conjugações entre os pares de elétrons livres (do(s) heteroátomo(s)) e o sistema $\pi$. Consequentemente, são gerados híbridos de ressonância não equivalentes entre si, uma com separação de carga, e outra sem, não permitindo que a deslocalização eletrônica seja completa. Por outro lado, anéis de seis membros, a exemplo da piridina e seus derivados, apresentam conjugação $\pi-\pi$ total, com estruturas de ressonância que não têm separação de carga.
 
 \begin{figure}[htb]
-\caption{\label{fig:homed} Estruturas heterocíclicas para as quais os valores de \gls{HOMED} e \gls{rHOMA} são apresentados na \autoref{tab:homed/homa}.}
+\caption{\label{fig:homed} Estruturas heterocíclicas para as quais os valores de \gls{HOMED} e \gls{rHOMA} são apresentados na \autoref{tab:homed/homa}. Para que a comparação fosse efetiva, as geometrias foram todas retiradas do artigo \cite{giov2020}.}
 	\begin{center}
 		\includegraphics[width=1.0\textwidth]{images/fig2(7).png}
 	\end{center}
@@ -386,7 +376,7 @@ Ou seja, é correto afirmar que o índice \gls{HOMED} descreve melhor os compost
 
 \begin{table}[htb]
 	\centering
-	\caption{\label{tab:homed/homa} Índices \gls{HOMED} e \gls{rHOMA} para sistemas os heteroaromáticos apresentados na \autoref{fig:homed}.}
+	\caption{\label{tab:homed/homa} Índices \gls{HOMED} e \gls{rHOMA} para sistemas os heteroaromáticos apresentados na \autoref{fig:homed}. Para que a comparação fosse efetiva, as geometrias foram todas retiradas do artigo \cite{giov2020}.}
 	\begin{tabular}{cccccc}
 		\toprule
 	\textbf{Molécula} & \gls{HOMED} & \textbf{Molécula} & \gls{HOMED} & \textbf{Molécula} & \gls{HOMED}
@@ -410,7 +400,7 @@ Ou seja, é correto afirmar que o índice \gls{HOMED} descreve melhor os compost
 As discrepâncias entre os dois índices acontecem em função da escolha dos sistemas moleculares como referência para o \gls{rHOMA}. Para compostos que contêm uma série de heteroátomos, o índice \gls{rHOMA} não tem sentido físico-químico. Por exemplo, ele é negativo para alguns derivados aromáticos com oxigênio, enquanto é positivo ou próximo de 1 para análogos substituídos por nitrogênio. Os únicos casos em que o \gls{rHOMA} descreve melhor o comportamento aromático são os sistemas homo ou heteroaromáticos que contêm um número par de ligações \ce{CC}, \ce{CX} ou \ce{XX} (sendo \ce{X} o heteroátomo) do mesmo tipo.
 
 \begin{figure}[htb]
-\caption{\label{fig:homed/2} Estruturas heterocíclicas para as quais os valores de \gls{HOMED} e \gls{rHOMA} são apresentados na \autoref{tab:homed/homa}.}
+\caption{\label{fig:homed/2} Estruturas heterocíclicas para as quais os valores de \gls{HOMED} e \gls{rHOMA} são apresentados na \autoref{tab:homed/homa}. Para que a comparação fosse efetiva, as geometrias foram todas retiradas do artigo \cite{giov2020}.}
 	\begin{center}
 		\includegraphics[width=0.95\textwidth]{images/fig2(8).png}
 	\end{center}
@@ -421,7 +411,7 @@ Além disso, o \gls{rHOMA}, diferentemente do \gls{HOMED}, não descreve os efei
 
 \begin{table}[htb]
 	\centering
-	\caption{\label{tab:homed/homa} Índices \gls{HOMED} e \gls{rHOMA} para sistemas os heteroaromáticos apresentados na \autoref{fig:homed}.}
+	\caption{\label{tab:homed/homa} Índices \gls{HOMED} e \gls{rHOMA} para sistemas os heteroaromáticos apresentados na \autoref{fig:homed}. Para que a comparação fosse efetiva, as geometrias foram todas retiradas do artigo \cite{giov2020}.}
 	\begin{tabular}{cccccc}
 		\toprule
 	\textbf{Molécula} & \gls{HOMED} & \textbf{Molécula} & \gls{HOMED} & \textbf{Molécula} & \gls{HOMED}
@@ -439,6 +429,8 @@ Além disso, o \gls{rHOMA}, diferentemente do \gls{HOMED}, não descreve os efei
 	\end{tabular}
 	\fonte{Autor(a).}
 \end{table}
+
+\noindent É importante ressaltar que esses problemas do \gls{rHOMA} são devido à uma questão intrínseca ao método e como ele foi parametrizado, e não são relativas à erros de implementação, uma vez que, ao comparar com os resultados da literatura, observa-se uma boa concordância, indicando que a implementação das equações descritas na \autoref{sec:HOMA} foram precisas.
 
 \section{Análise estatística}
 
