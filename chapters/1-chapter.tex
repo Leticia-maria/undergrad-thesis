@@ -363,7 +363,7 @@ De acordo com a \autoref{eq:rHOMA}, os valores de $\alpha$ variam de 57.21 (\ce{
     \vspace{2\baselineskip}
 \begin{equation}
     \label{eq:rHOMA}
-    rHOMA = 1 - \frac{\tikzmarknode{alphah}{\highlight{blue}{$\alpha$}}}{n} \sum (\tikzmarknode{ropt}{\highlight{red}{$R_{opt}$}} - R_i)^2
+    rHOMA = 1 - \frac{\tikzmarknode{alphah}{\highlight{blue}{$\alpha$}}}{n} \sum_i^n (\tikzmarknode{ropt}{\highlight{red}{$R_{opt}$}} - R_i)^2
 \end{equation}
 \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
     \path (alphah.north) ++ (1,1.5em) node[anchor=south west,color=blue!67] (scalep){\textit{$\alpha = \displaystyle \frac{2}{(R_o - R_s)^2 + (R_{opt} - R_d)^2}$}};
@@ -379,6 +379,16 @@ Apesar dos ajustes feitos no índice original (\gls{HOMA}), o \gls{rHOMA} ainda 
 apenas numéricas e não têm nada em comum com a real deslocalização dos elétrons $\pi$ em sistemas heteroaromáticos, pois usam referências com aromaticidades de diferentes origens ($n-\pi$, $\pi-\pi$).
 
 Para corrigir essas inconsistências, em 2010, Raczyńska et al.\autocite{Raczyska2010} introduziu o índice \gls{HOMED}. Suas modificações em relação ao \gls{rHOMA} foram feitas ao utilizar os métodos de química quântica para estimar os comprimentos de ligação para moléculas de referência. Os autores argumentam que, utilizar o mesmo nível de teoria para otimizar as geometrias dos sistemas de referência e dos sistemas heterocíclicos tem a vantagem do cancelamento de erros durante a estimativa do \gls{HOMED}.
+
+Para um sistema que contém um número par de ligações ($2i$), ou seja, o mesmo número de ligações simples ($i$) e duplas ($i$), o $\alpha$ pode ser calculado pela \autoref{eq:rHOMA}. Porém, caso tenha-se um número ímpar de ligações ($2i + 1$), a constante $\alpha$ é definida pela \autoref{eq:alphas}, onde o primeiro caso serve quando temos ($i + 1$) ligações simples e ($i$) ligações duplas; e o segundo caso aplica-se à situação inversa: ($i$) ligações simples e ($i + 1$) ligações duplas.
+
+\begin{equation}
+\label{eq:alphas}
+    \begin{cases}
+        \alpha = \displaystyle \frac{(2i + 1)}{(i+1)(R_{opt} - R_s)^2 + i(R_{opt} - R_d)^2} \\[0.35cm]
+        \alpha = \displaystyle \frac{(2i + 1)}{i(R_{opt} - R_s)^2 + (i + 1)(R_{opt} - R_d)^2}
+    \end{cases}
+\end{equation}
 
 \section{Aplicações dos critérios geométricos}
 
