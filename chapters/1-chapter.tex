@@ -177,7 +177,7 @@ A primeira abordagem quantitativa da definição de aromaticidade foi desenvolvi
     \vspace{2\baselineskip}
 \begin{equation}
     \label{eq:1}
-    A_j = 1 - \frac{225}{\tikzmarknode{numberOfBonds}{\highlight{blue}{$n$}}} \sum^n_{i=1} \bigg{(}1 - \frac{\tikzmarknode{bondLengths}{\highlight{red}{$R_i$}}}{\tikzmarknode{bondAverage}{\highlight{red}{$R_{av}$}}} \bigg{)}^2
+    \gls{Aj} = 1 - \frac{225}{\tikzmarknode{numberOfBonds}{\highlight{blue}{$n$}}} \sum^n_{i=1} \bigg{(}1 - \frac{\tikzmarknode{bondLengths}{\highlight{red}{$R_i$}}}{\tikzmarknode{bondAverage}{\highlight{red}{$\gls{Rav}$}}} \bigg{)}^2
 \end{equation}
 \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
     \path (numberOfBonds.south) ++ (-1,-2em) node[anchor=north east,color=blue!67] (scalep){\textit{número de ligações}};
@@ -186,13 +186,13 @@ A primeira abordagem quantitativa da definição de aromaticidade foi desenvolvi
     \path (bondLengths.north) ++ (1,2em) node[anchor=south west,color=red!67] (scalep){\textit{comprimento de ligação}};
     \draw [color=red!87](bondLengths.north) |- ([xshift=1.0em,color=red]scalep.south east);
     
-    \path (bondAverage.south) ++ (1,-2em) node[anchor=north west,color=red!67] (scalep){\textit{$\displaystyle R_{av} = \frac{\displaystyle \sum_{i=1}^{n} R_i}{\displaystyle n}$}};
+    \path (bondAverage.south) ++ (1,-2em) node[anchor=north west,color=red!67] (scalep){\textit{$\displaystyle \gls{Rav} = \frac{\displaystyle \sum_{i=1}^{n} R_i}{\displaystyle n}$}};
     \draw [color=red!87](bondAverage.south) |- ([xshift=4.3em,color=red]scalep.north east);
 \end{tikzpicture}
     \vspace{4\baselineskip}
 \end{figure}
 
-Na \autoref{eq:1}, a constante 225 resulta da condição de normalização, onde $A_j = 0$ no caso na estrutura do benzeno de Kekulé (cujos comprimentos de ligação seriam diferentes). Para qualquer sistema que possui todas as ligações do mesmo comprimento, o valor de $A_j = 1$. A limitação do método é que este só se aplica a sistemas carbocíclicos, tornando-se inviável sua aplicação a sistemas aromáticos que contenham heteroátomos, pois exclui contribuições que são devidas às interações entre heteroátomos e carbonos levando, portanto, a uma interpretação errônea da aromaticidade.
+Na \autoref{eq:1}, a constante 225 resulta da condição de normalização, onde $\gls{Aj} = 0$ no caso na estrutura do benzeno de Kekulé (cujos comprimentos de ligação seriam diferentes). Para qualquer sistema que possui todas as ligações do mesmo comprimento, o valor de $\gls{Aj} = 1$. A limitação do método é que este só se aplica a sistemas carbocíclicos, tornando-se inviável sua aplicação a sistemas aromáticos que contenham heteroátomos, pois exclui contribuições que são devidas às interações entre heteroátomos e carbonos levando, portanto, a uma interpretação errônea da aromaticidade.
 
 \begin{figure}[htb]
 	\caption{\label{fig:radialenos} Exemplos de radialenos.}
@@ -202,7 +202,7 @@ Na \autoref{eq:1}, a constante 225 resulta da condição de normalização, onde
 	\fonte{Autor(a).}
 \end{figure}
 
-Outro problema intrínseco ao método foi observado ao avaliar a aromaticidade para sistemas de elétrons $\pi$ contendo todas as ligações com o mesmo comprimento, a exemplo dos radialenos (antiaromáticos) \autoref{fig:radialenos}, que apresentam todas as ligações CC alongadas ($1.53$ \AA) em comparação ao benzeno ($1.40$ \AA), mas apesar disso apresenta $A_j = 1$, o que é evidentemente incorreto, conforme demonstrado pelo índice \gls{HOMA} e pelo NICS.
+Outro problema intrínseco ao método foi observado ao avaliar a aromaticidade para sistemas de elétrons $\pi$ contendo todas as ligações com o mesmo comprimento, a exemplo dos radialenos (antiaromáticos) \autoref{fig:radialenos}, que apresentam todas as ligações CC alongadas ($1.53$ \AA) em comparação ao benzeno ($1.40$ \AA), mas apesar disso apresenta $\gls{Aj} = 1$, o que é evidentemente incorreto, conforme demonstrado pelo índice \gls{HOMA} e pelo \gls{NICS}.
 
 \subsection{Análise das ordens de ligação}
 
@@ -247,11 +247,11 @@ Portanto, a soma das diferenças nas ordens de ligação em um anel $\bigg{(} \d
 
 %% TODO: explain values of a and b
 
-Os valores de $a$ (\autoref{a}) e $b$ (\autoref{b}) definidos na \autoref{eq:5} representam parâmetros de ajuste calculados com base nos deslocamentos químicos dos hidrogênios (os parâmetros $\delta$) e no volume molar das espécies.
+Os valores de $a$ (\autoref{a}) e $b$ (\autoref{b}) definidos na \autoref{eq:5} representam parâmetros de ajuste calculados com base nos deslocamentos químicos dos hidrogênios (os parâmetros $\gls{delta}$) e no volume molar das espécies.
 
 \begin{equation}
 \label{a}
-    a = \Delta \delta_1 {V_m}^{2/3}
+    a = \Delta \delta_1 {\gls{molarvol}}^{2/3}
 \end{equation}
 
 \begin{equation}
@@ -275,7 +275,7 @@ Bird \autocite{Bird1985, Bird1986, Bird1992} utilizou a mesma ideia, substituind
 
 \begin{equation}
 \label{eq:bird}
-    V = \frac{100}{N_{av}} \sqrt{\displaystyle \frac{\displaystyle \sum (N - N_{av})^2}{n}}
+    V = \frac{100}{N_{av}} \sqrt{\displaystyle \frac{\displaystyle \sum (\gls{order} - \gls{Nav})^2}{n}}
 \end{equation}
 
 No caso de um sistema heterocíclico totalmente deslocalizado, $V$ assumirá o valor 0, enquanto que para sistemas heterocíclicos com ligações simples e duplas alternadas, o valor dependerá do tipo de anel, sendo definido como um sistema não-deslocalizado de Kekulé e denotado por $V_k$. Por exemplo, para os anéis de cinco membros, temos $V_k = 35$; para os anéis de seis membros, $V_k = 33.3$; e para anéis fundidos, $V_k = 35$. A escala desses valores foi redefinida por Bird, calculando os seguintes índices: $I_5$, $I_6$ e $I_{5,6}$, dependendo do tipo de anel heterocíclico considerado.
@@ -288,19 +288,19 @@ Em 1992, esse termo transformou-se em um índice unificado, denotado por $I_A$, 
 
 \subsection{O modelo do oscilador harmônico}\label{sec:HOMA}
 
-O próximo passo foi feito modificando a ideia de Julg, substituindo o comprimento de ligação médio ($R_{av}$) da \autoref{eq:1} por um valor conceitual, denominado o comprimento de ligação ótimo ($R_{opt}$)\footnote{No artigo original\autocite{Kruszewski1972}, esse valor é denotado por $d$}. Tal modelo baseia-se no fato de que a energia do oscilador harmônico relativa à extensão ou compressão de uma ligação química depende das constantes de força, diretamente relacionada aos comprimentos dessa ligação. Ou seja, $R_{opt}$ (\autoref{eq:2}) representa a medida da ligação cujo valor de energia requerido para estirá-la até o comprimento de uma ligação simples ou constringir até o comprimento de uma ligação dupla. Desse modo, os comprimentos das ligações CC no etano e no eteno foram tomadas como valores de referência, assumindo que a relação entre as constantes de força para ligações simples e duplas é 2:1.
+O próximo passo foi feito modificando a ideia de Julg, substituindo o comprimento de ligação médio ($\gls{Rav}$) da \autoref{eq:1} por um valor conceitual, denominado o comprimento de ligação ótimo ($\gls{Ropt}$)\footnote{No artigo original\autocite{Kruszewski1972}, esse valor é denotado por $d$}. Tal modelo baseia-se no fato de que a energia do oscilador harmônico relativa à extensão ou compressão de uma ligação química depende das constantes de força, diretamente relacionada aos comprimentos dessa ligação. Ou seja, $\gls{Ropt}$ (\autoref{eq:2}) representa a medida da ligação cujo valor de energia requerido para estirá-la até o comprimento de uma ligação simples (\gls{Rs}) ou constringir até o comprimento de uma ligação dupla (\gls{Rd}). Desse modo, os comprimentos das ligações CC no etano e no eteno foram tomadas como valores de referência, assumindo que a relação entre as constantes de força para ligações simples e duplas é 2:1.
 
 \begin{figure}[htb]
     \vspace{3\baselineskip}
 \begin{equation}
     \label{eq:2}
-    R_{opt} = \frac{ \tikzmarknode{single}{ \highlight{blue}{$R_{C-C}$}} + 2 \tikzmarknode{double}{ \highlight{red}{$R_{C=C}$}}}{3} = 1.40 \textit{\AA}
+    \gls{Ropt} = \frac{ \tikzmarknode{single}{ \highlight{blue}{$R_s$}} + 2 \tikzmarknode{double}{ \highlight{red}{$R_d$}}}{3} = 1.40 \textit{\AA}
 \end{equation}
 \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
-    \path (single.north) ++ (-1,1.5em) node[anchor=south east,color=blue!67] (scalep){\textit{$R_{C-C} = 1.53$} \AA};
+    \path (single.north) ++ (-1,1.5em) node[anchor=south east,color=blue!67] (scalep){\textit{$R_s = 1.53$} \AA};
     \draw [color=blue!87](single.north) |- ([xshift=-3em,color=blue]scalep.south west);
     
-    \path (double.north) ++ (1,1.5em) node[anchor=south west, color=red!67] (scalep){\textit{$R_{C=C} = 1.34$} \AA};
+    \path (double.north) ++ (1,1.5em) node[anchor=south west, color=red!67] (scalep){\textit{$R_d = 1.34$} \AA};
     \draw [color=red!87](double.north) |- ([xshift=3em,color=red]scalep.south east);
     
     \path (single.south) ++ (-1,-1.5em) node[anchor=north east,color=blue!67] (scalep){\textit{etano}};
@@ -317,10 +317,10 @@ O valor obtido pela \autoref{eq:2} apresenta uma boa concordância com o valor e
     \vspace{2\baselineskip}
 \begin{equation}
     \label{eq:3}
-    \tikzmarknode{HOMA}{\highlight{red}{HOMA}} = 1 - \frac{\tikzmarknode{norm}{\highlight{blue}{$\alpha$}}}{n} \sum_i^n (R_{opt} - R_i)^2
+    \tikzmarknode{HOMA}{\highlight{red}{HOMA}} = 1 - \frac{\tikzmarknode{norm}{\highlight{blue}{$\alpha_{HOMA}$}}}{n} \sum_i^n (\gls{Ropt} - \gls{Ri})^2
 \end{equation}
 \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
-    \path (norm.north) ++ (1,1.5em) node[anchor=south west,color=blue!67] (scalep){\textit{$\alpha = 98.89$}};
+    \path (norm.north) ++ (1,1.5em) node[anchor=south west,color=blue!67] (scalep){\textit{$\alpha_{HOMA} = 98.89$}};
     \draw [color=blue!87](norm.north) |- ([xshift=3em,color=blue]scalep.south east);
     
     \path (HOMA.north) ++ (-0.70,1.5em) node[anchor=south east,color=red!67] (scalep){\textit{(aromático perfeito) = 1}};
@@ -332,6 +332,7 @@ O valor obtido pela \autoref{eq:2} apresenta uma boa concordância com o valor e
 \vspace{1\baselineskip}
 \end{figure}
 
+\newpage
 A \autoref{eq:3} pode ser analiticamente convertida na \autoref{eq:4} \autocite{MarekKrygowski1998}. 
 
 \begin{figure}[htb]
@@ -341,33 +342,33 @@ A \autoref{eq:3} pode ser analiticamente convertida na \autoref{eq:4} \autocite{
     HOMA = 1 - \tikzmarknode{en}{\highlight{blue}{EN}} - \tikzmarknode{geo}{\highlight{red}{GEO}}
 \end{equation}
 \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
-    \path (en.north) ++ (1,1.5em) node[anchor=south west,color=blue!67] (scalep){\textit{$\alpha(R_{opt} - R_{av})^2$}};
+    \path (en.north) ++ (1,1.5em) node[anchor=south west,color=blue!67] (scalep){\textit{$\alpha_{HOMA}(R_{opt} - R_{av})^2$}};
     \draw [color=blue!87](en.north) |- ([xshift=3em,color=blue]scalep.south east);
     
-    \path (geo.south) ++ (-1,-1.5em) node[anchor=north east,color=red!67] (scalep){\textit{$\displaystyle \frac{1}{n} \sum_i \alpha(R_{av} - R_i)^2$}};
+    \path (geo.south) ++ (-1,-1.5em) node[anchor=north east,color=red!67] (scalep){\textit{$\displaystyle \frac{1}{n} \sum_i \alpha_{HOMA}(R_{av} - R_i)^2$}};
     \draw [color=red!87](geo.south) |- ([xshift=-1.65em,color=red]scalep.north west);
 \end{tikzpicture}
 \vspace{2\baselineskip}
 \end{figure}
 
-Os componentes EN e GEO representam uma diminuição da aromaticidade devido ao aumento da alternação do comprimento de ligação, fornecendo informações mais detalhadas a respeito da aromaticidade. Enquanto o valor de EN revela quanto o comprimento médio desvia do ótimo, o GEO indica quanto o individual desvia da média. Note que, no caso do benzeno, por exemplo, todos os comprimentos de ligação são iguais, anulando ambos os termos e nos dando um valor de \gls{HOMA} igual a 1, que é considerado \textit{perfeitamente aromático}. Essa normalização é feita pelo fator $\alpha$ presente na \autoref{eq:4}, que funciona somente para compostos carbocíclicos.
+Os componentes EN e GEO representam uma diminuição da aromaticidade devido ao aumento da alternação do comprimento de ligação, fornecendo informações mais detalhadas a respeito da aromaticidade. Enquanto o valor de EN revela quanto o comprimento médio desvia do ótimo, o GEO indica quanto o individual desvia da média. Note que, no caso do benzeno, por exemplo, todos os comprimentos de ligação são iguais, anulando ambos os termos e nos dando um valor de \gls{HOMA} igual a 1, que é considerado \textit{perfeitamente aromático}. Essa normalização é feita pelo fator $\alpha_{HOMA}$ presente na \autoref{eq:4}, que funciona somente para compostos carbocíclicos.
 
 No entanto, uma modificação foi realizada em 1993 para abranger no índice HOMA para torná-lo aplicável a sistemas que contenham heteroátomos, representando-as por números de ligação de Pauling. Seguindo o conceito de coordenada de ressonância, cunhado por Jug e Koester \autocite{Jug1990}, algumas novas moléculas de referência foram propostas para parametrizar o \gls{rHOMA}. Por exemplo, o 1,3-butadieno e o ácido fórmico foram usados para as ligações \ce{CC} e \ce{CO}, respectivamente. Os elétrons $\pi$ são moderadamente deslocalizados no 1,3-butadieno em razão da conjugação $\pi-\pi$, enquanto que a aromaticidade no ácido fórmico dá-se pela conjugação $n-\pi$. No entanto, para as ligações \ce{CN}, foram implementadas como referência moléculas com pouca aromaticidade, metilamina e metilimina. 
 
-Essa reformulação envolveu a mudança dos parâmetros. O $R_{opt}$ foi calculado de acordo com a \autoref{eq:rHOMA}, onde $R_s$ e $R_d$ são, respectivamente, os comprimentos de ligação de referência para as ligações simples e duplas dos compostos tomados como padrão, e $\omega$ é a razão das constantes de força para ligações duplas e simples. A constante de normalização $\alpha$, por sua vez, precisou ser parametrizada de forma diferente para cada tipo de ligação.
-De acordo com a \autoref{eq:rHOMA}, os valores de $\alpha$ variam de 57.21 (\ce{NO}), 93.52 (\ce{CN}), 94.09 (\ce{CS}), 118.91 (\ce{CP}), 130.33 (\ce{NN}), 157.38 (\ce{CO}), até 257.7 (\ce{CC}) \autocite{Krygowski2000, krygowski2001}.
+Essa reformulação envolveu a mudança dos parâmetros. O $\gls{Ropt}$ foi calculado de acordo com a \autoref{eq:rHOMA}, onde $\gls{Rs}$ e $\gls{Rd}$ são, respectivamente, os comprimentos de ligação de referência para as ligações simples e duplas dos compostos tomados como padrão, e $\omega$ é a razão das constantes de força para ligações duplas e simples. A constante de normalização $\gls{alphaHOMA}$, por sua vez, precisou ser parametrizada de forma diferente para cada tipo de ligação.
+De acordo com a \autoref{eq:rHOMA}, os valores de $\gls{alphaRHOMA}$ variam de 57.21 (\ce{NO}), 93.52 (\ce{CN}), 94.09 (\ce{CS}), 118.91 (\ce{CP}), 130.33 (\ce{NN}), 157.38 (\ce{CO}), até 257.7 (\ce{CC}) \autocite{Krygowski2000, krygowski2001}.
 %Como referência, o comprimento da ligação \ce{C-C} no etano, \ce{C-N} na metilamina, e \ce{C-O} no metanol foram tomados como valores de $R_s$. De forma complementar, a ligação \ce{C=C} no eteno, \ce{C=N} na metilimina, e \ce{C=O} no formaldeído passaram a ser adotadas como as medidas padrão de $R_d$. 
 
 
 \begin{figure}[htb]
-    \vspace{2\baselineskip}
+    \vspace{3\baselineskip}
 \begin{equation}
     \label{eq:rHOMA}
-    rHOMA = 1 - \frac{\tikzmarknode{alphah}{\highlight{blue}{$\alpha$}}}{n} \sum_i^n (\tikzmarknode{ropt}{\highlight{red}{$R_{opt}$}} - R_i)^2
+    rHOMA = 1 - \frac{\tikzmarknode{alphah}{\highlight{blue}{$\alpha_{rHOMA}$}}}{n} \sum_i^n (\tikzmarknode{ropt}{\highlight{red}{$R_{opt}$}} - R_i)^2
 \end{equation}
 \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
-    \path (alphah.north) ++ (1,1.5em) node[anchor=south west,color=blue!67] (scalep){\textit{$\alpha = \displaystyle \frac{2}{(R_o - R_s)^2 + (R_{opt} - R_d)^2}$}};
-    \draw [color=blue!87](alphah.north) |- ([xshift=3em,color=blue]scalep.south east);
+    \path (alphah.north) ++ (1,1.5em) node[anchor=south west,color=blue!67] (scalep){\textit{$\alpha_{rHOMA} = \displaystyle \frac{2}{(R_{opt} - R_s)^2 + (R_{opt} - R_d)^2}$}};
+    \draw [color=blue!87](alphah.north) |- ([xshift=1em,color=blue]scalep.south east);
 
     \path (ropt.south) ++ (1,-1.5em) node[anchor=north west,color=red!67] (scalep){\textit{$R_{opt} = \displaystyle \frac{R_s + \omega R_d}{1 + \omega}$}};
     \draw [color=red!87](ropt.south) |- ([xshift=3em,color=red]scalep.north east);
@@ -380,21 +381,21 @@ apenas numéricas e não têm nada em comum com a real deslocalização dos elé
 
 Para corrigir essas inconsistências, em 2010, Raczyńska et al.\autocite{Raczyska2010} introduziu o índice \gls{HOMED}. Suas modificações em relação ao \gls{rHOMA} foram feitas ao utilizar os métodos de química quântica para estimar os comprimentos de ligação para moléculas de referência. Os autores argumentam que, utilizar o mesmo nível de teoria para otimizar as geometrias dos sistemas de referência e dos sistemas heterocíclicos tem a vantagem do cancelamento de erros durante a estimativa do \gls{HOMED}.
 
-Para um sistema que contém um número par de ligações ($2i$), ou seja, o mesmo número de ligações simples ($i$) e duplas ($i$), o $\alpha$ pode ser calculado pela \autoref{eq:rHOMA}. Porém, caso tenha-se um número ímpar de ligações ($2i + 1$), a constante $\alpha$ é definida pela \autoref{eq:alphas}, onde o primeiro caso serve quando temos ($i + 1$) ligações simples e ($i$) ligações duplas; e o segundo caso aplica-se à situação inversa: ($i$) ligações simples e ($i + 1$) ligações duplas.
+Para um sistema que contém um número par de ligações ($2i$), ou seja, o mesmo número de ligações simples ($i$) e duplas ($i$), o $\gls{alphaRHOMA}$ pode ser calculado pela \autoref{eq:rHOMA}. Porém, caso tenha-se um número ímpar de ligações ($2i + 1$), a constante $\gls{alphaHOMED}$ é definida pela \autoref{eq:alphas}, onde o primeiro caso serve quando temos ($i + 1$) ligações simples e ($i$) ligações duplas; e o segundo caso aplica-se à situação inversa: ($i$) ligações simples e ($i + 1$) ligações duplas.
 
 \begin{equation}
 \label{eq:alphas}
     \begin{cases}
-        \alpha = \displaystyle \frac{(2i + 1)}{(i+1)(R_{opt} - R_s)^2 + i(R_{opt} - R_d)^2} \\[0.50cm]
-        \alpha = \displaystyle \frac{(2i + 1)}{i(R_{opt} - R_s)^2 + (i + 1)(R_{opt} - R_d)^2}
+        \alpha_{HOMED} = \displaystyle \frac{(2i + 1)}{(i+1)(\gls{Ropt} - R_s)^2 + i(\gls{Ropt} - R_d)^2} \\[0.50cm]
+        \alpha_{HOMED} = \displaystyle \frac{(2i + 1)}{i(\gls{Ropt} - R_s)^2 + (i + 1)(\gls{Ropt} - R_d)^2}
     \end{cases}
 \end{equation}
 
 A fim de descrever corretamente a deslocalização dos elétrons $\pi$ em sistemas heteroatômicos cíclicos e acíclicos, o \gls{HOMED} considera os comprimentos de ligação \ce{CC}, \ce{CX} e \ce{XY} simples e dupla em várias moléculas pequenas que
 poderiam ser empregadas como moléculas de referência. No procedimento \gls{HOMED}, os compostos saturados acíclicos como o etano, a metilamina e o metanol podem ser usadas para parametrizar os comprimentos de ligação \ce{C-C}, \ce{C-N}, e \ce{C-O}; e as moléculas insaturadas acíclicas como: eteno, metilimina e formaldeído podem ser aplicadas às ligações duplas \ce{C=C}, \ce{C=N} e \ce{C=O}, da mesma forma que foi proposto para o índice \gls{HOMA} original. 
 
-De um ponto de vista matemático, o método empregado ao índice \gls{HOMED} é o mesmo do \gls{HOMA} e do \gls{rHOMA}, sendo diferentes apenas os comprimentos de referência $R_s$, $R_d$, $R_{opt}$
-e o fator $\alpha$. O índice \gls{HOMED} descreve o mesmo fenômeno -
+De um ponto de vista matemático, o método empregado ao índice \gls{HOMED} é o mesmo do \gls{HOMA} e do \gls{rHOMA}, sendo diferentes apenas os comprimentos de referência $R_s$, $R_d$, $\gls{Ropt}$
+e o fator $\alpha_{HOMED}$. O índice \gls{HOMED} descreve o mesmo fenômeno -
 encurtamento da ligação simples e alongamento da dupla ligação devido à deslocalização de elétrons $\pi$ no sistema. A escolha dos compostos mais simples como referência possibilita
 medir a força de qualquer tipo de conjugação em qualquer tipo de sistema heteroatômico: $\sigma-\pi$, $n-\pi$
 e $\pi-\pi$ \autocite{Kruszewski1972}.

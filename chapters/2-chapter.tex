@@ -26,31 +26,32 @@ Essa convenção foi muito provavelmente inspirada por modelos no século XIX. E
 
 Para implementar o modelo molecular utilizando o \textit{Three.js}, é empregado o modelo de Blinn-Phong, capaz de simular superfícies brilhantes com holofotes especulares. O sombreamento é calculado \textit{per pixel} de acordo com o modelo de Phong. Desse modo, apesar de custar um pouco mais de tempo para renderizar, ele atinge uma acurácia maior do que outros modelos disponíveis no \textit{WebGL} (o de Lambert, por exemplo).
 
-No modelo primeiramente proposto por Phong, é calculado continuamente o produto escalar $R \cdot V$ entre um observador $V$ e o feixe de uma fonte de luz ($L$) refletida ($R$) sobre uma superfície. No ajuste proposto por Blinn, no entanto, calcula-se um vetor a meio caminho entre o espectador e os vetores de fonte luminosa, podendo substituir $R \cdot V$ por $N \cdot H$, onde $N$ é o vetor normal à superfície.
+No modelo primeiramente proposto por Phong, é calculado continuamente o produto escalar $\gls{R} \cdot \gls{V}$ entre um observador $\gls{V}$ e o feixe de uma fonte de luz ($\gls{L}$) refletida ($\gls{R}$) sobre uma superfície. No ajuste proposto por Blinn, no entanto, calcula-se um vetor a meio caminho entre o espectador e os vetores de fonte luminosa, podendo substituir $\gls{R} \cdot \gls{V}$ por $\gls{N} \cdot \gls{H}$, onde $\gls{N}$ é o vetor normal à superfície.
 
 \begin{figure}[htb]
 \begin{equation}
     \label{eq:R1}
-    H = \frac{L + \highlight{blue}{V} }{||L + \tikzmarknode{value}{\highlight{blue}{V}}||}
+    \gls{H} = \frac{\gls{L} + \highlight{blue}{$\gls{V}$} }{||\gls{L} + \tikzmarknode{value}{\highlight{blue}{$\gls{V}$}}||}
 \end{equation}
 \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
-    \path (value.south) ++ (-1,-1.5em) node[anchor=north east,color=blue!67] (scalep){\textit{$V = P_H (-L)$}};
+    \path (value.south) ++ (-1,-1.5em) node[anchor=north east,color=blue!67] (scalep){\textit{$\gls{V} = \gls{PH} (-\gls{L})$}};
     \draw [color=blue!87](value.south) |- ([xshift=-1.65em,color=blue]scalep.north west);
 \end{tikzpicture}
 \vspace{2\baselineskip}
 \end{figure}
 
-Na \autoref{eq:R1}, $P_H$ é a matriz de Householder que reflete um ponto no hiperplano que contém a origem e tem um vetor normal $H$. Este produto escalar é o cosseno de um ângulo que é metade do ângulo representado pelo produto escalar de Phong (se $V$, $L$, $N$ e $R$ estiverem todos no mesmo plano). Esta relação entre os ângulos sofre desvios discretos quando os vetores não se encontram no mesmo plano, especialmente em relação aos ângulos pequenos.
+Na \autoref{eq:R1}, $\gls{PH}$ é a matriz de Householder que reflete um ponto no hiperplano que contém a origem e tem um vetor normal $\gls{H}$. Este produto escalar é o cosseno de um ângulo que é metade do ângulo representado pelo produto escalar de Phong (se $\gls{V}$, $\gls{L}$, $\gls{N}$ e $\gls{R}$ estiverem todos no mesmo plano). Esta relação entre os ângulos sofre desvios discretos quando os vetores não se encontram no mesmo plano, especialmente em relação aos ângulos pequenos.
 
-Ainda sobre os ajustes de Blinn ao modelo de Phong, consideremos que o ângulo entre o vetor a meio caminho $(N \cdot H)$ e a superfície normal é provavelmente menor do que o ângulo entre $R$ e $V$ usado no modelo original (a menos que a superfície seja vista de um ângulo muito íngreme para o qual é provável que seja maior), e já que Phong está usando $(R \cdot V)^\alpha$, um expoente (chamado de constante de brilho) pode ser definido como $\alpha' > \alpha$, tal que $(N \cdot H)^{\alpha'}$ está mais próxima da expressão original de Phong. Os resultados das estruturas geradas no \textit{Balmy.jl} estão na \autoref{design}.
+Ainda sobre os ajustes de Blinn ao modelo de Phong, consideremos que o ângulo entre o vetor a meio caminho $(\gls{N} \cdot \gls{H})$ e a superfície normal é provavelmente menor do que o ângulo entre $\gls{R}$ e $\gls{V}$ usado no modelo original (a menos que a superfície seja vista de um ângulo muito íngreme para o qual é provável que seja maior), e já que Phong está usando $(\gls{R} \cdot \gls{V})^\mathfrak{a}$, um expoente (chamado de constante de brilho) pode ser definido como $\gls{cte}' > \gls{cte}$, tal que $(\gls{N} \cdot \gls{H})^{\mathfrak{a}'}$ está mais próxima da expressão original de Phong. Os resultados das estruturas geradas no \textit{Balmy.jl} estão na \autoref{design}.
 
-Para detectar as ligações químicas, foi implementado um algoritmo baseado nos raios covalentes de van der Waals, que representa, pictoricamente, o raio de uma esfera sólida imaginária empregada para representar um átomo. Tal parâmetro é representado a partir de definições termodinâmicas da equação de estado de van der Waals, onde $N_a$ é o número de Avogadro e $r$ é o raio.
+Para detectar as ligações químicas, foi implementado um algoritmo baseado nos raios covalentes de van der Waals ($\gls{rw}$), que representa, pictoricamente, o raio de uma esfera sólida imaginária empregada para representar um átomo. Tal parâmetro é representado a partir de definições termodinâmicas da equação de estado de van der Waals (\autoref{vdw})\autocite{Volodina2022}.
 
 \begin{equation}
-    b = \frac{16}{3} \pi N_a r^3
+\label{vdw}
+    \gls{Vw} = \frac{4}{3} \pi {\gls{rw}}^3
 \end{equation}
 
-Os parâmetros $a$ e $b$ são obtidos experimentalmente e dependem da natureza do gás. O fator de correção $b$ é denominado volume de exclusão, referindo-se tanto ao volume próprio dos átomos, como o volume circundante onde não pode haver outros porque nessa distância predominam as forças de repulsão entre os átomos do gás (forças de van der Waals). Desse modo, se a distância entre os dois átomos que estão sendo analisados é maior do que a soma dos seus raios de van der Waals, não é detectada uma ligação química pelo \textit{Balmy.jl}.
+O parâmetro $\gls{Vw}$ é obtido experimentalmente e depende da natureza do gás. Ele é denominado volume de exclusão, referindo-se tanto ao volume próprio dos átomos, como o volume circundante onde não pode haver outros porque nessa distância predominam as forças de repulsão entre os átomos do gás (forças de van der Waals). Desse modo, se a distância entre os dois átomos que estão sendo analisados é maior do que a soma dos seus raios de van der Waals, não é detectada uma ligação química pelo \textit{Balmy.jl}.
 
 \section{Método de Hueckel Estendido}
 
@@ -90,7 +91,7 @@ A metodologia de Hueckel estendido considera todos os elétrons da valência no 
 \vspace{2\baselineskip}
 \end{figure}
 
-A energia do j-ésimo orbital é dada pela equação monoeletrônica de Schroedinger ($\hat{H}_{eff} \psi_j = \epsilon_j \psi_j$) usando um Hamiltoniano ($\hat{H}_{eff}$), que expressa a interação de um elétron com o restante da molécula.
+A energia do j-ésimo orbital é dada pela equação monoeletrônica de Schroedinger ($\gls{Hamilt}_{eff} \psi_j = \epsilon_j \gls{wave}_j$) usando um Hamiltoniano ($\hat{H}_{eff}$), que expressa a interação de um elétron com o restante da molécula.
 
 \begin{figure}[htb]
     \vspace{3\baselineskip}
