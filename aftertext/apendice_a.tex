@@ -2,7 +2,7 @@
 \chapter{Método de Hueckel} \label{ap:HMO}
 % ----------------------------------------------------------
 
-Considerando métodos semi-empíricos fundamentados na teoria \gls{HF}, pode-se citar o \gls{HMO}, no qual se aplicam as devidas aproximações resultantes dos conceitos e dados experimentais, pois estes tendem a ser intuitivos. Em alcenos e alcinos, os elétrons-$\pi$ estão presentes nos orbitais p, os quais são considerados como independentes da estrutura sigma dos orbitais híbridos e elétrons sigma. Funções de onda $\psi$ é dada pela \autoref{ap:eq:1}.
+Considerando métodos semiempíricos fundamentados na teoria \gls{HF}, pode-se citar o \gls{HMO}, no qual se aplicam as devidas aproximações resultantes dos conceitos e dados experimentais, pois estes tendem a ser intuitivos. Em alcenos e alcinos, os elétrons-$\pi$ estão presentes nos orbitais $p$, os quais são considerados como independentes da estrutura sigma dos orbitais híbridos e dos elétrons sigma. A respectiva função de onda ($\psi$) para esse caso é dada pela \autoref{ap:eq:1}.
 
 \begin{figure}[htb]
     \vspace{2\baselineskip}
@@ -11,25 +11,27 @@ Considerando métodos semi-empíricos fundamentados na teoria \gls{HF}, pode-se 
     \psi = \tikzmarknode{coefficient}{\highlight{red}{$a_1$}} \tikzmarknode{wavefunction}{\highlight{blue}{$\phi_1$}} + a_2\phi_2 + \dots + a_i \phi_i
 \end{equation}
 \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
-    \path (wavefunction.north) ++ (-1.2em,1.5em) node[anchor=south east,color=blue!67] (scalep){\textit{função de onda}};
+    \path (wavefunction.north) ++ (-1.2em,1.5em) node[anchor=south east,color=blue!67] (scalep){\textit{orbital atômico}};
     \draw [color=blue!87](wavefunction.north) |- ([xshift=-3em,color=blue]scalep.south west);
     
     \path (coefficient.south) ++ (1.2em,-1.5em) node[anchor=north west,color=red!67] (scalep){\textit{coeficiente de contribuição}};
     \draw [color=red!87](coefficient.south) |- ([xshift=3em,color=red]scalep.north east);
 \end{tikzpicture}
+    \vspace{1\baselineskip}
+
 \end{figure}
 
-Como somente os elétrons dos orbitais $p$ estão contribuindo para a função de onda, a \autoref{ap:eq:1} pode ser escrita como a \autoref{ap:eq:2}.
+Como somente os elétrons dos orbitais $p$ estão contribuindo para essa função de onda, a \autoref{ap:eq:1} pode ser escrita como a \autoref{ap:eq:2}.
 
 \begin{figure}[htb]
-    \vspace{2\baselineskip}
+    \vspace{1\baselineskip}
 \begin{equation}
     \label{ap:eq:2}
     \psi = a_1 p_1 + a_2 p_2 + \dots + a_i p_i
 \end{equation}
 \end{figure}
 
-Tomando o eteno como exemplo, pode-se afirmar que cada carbono contribui com um elétron para a ligação $\pi$, sendo $p_1$ e $p_2$ os elétrons dos átomos de carbono 1 e 2, cujas respectivas contribuições são ponderadas por $a_1$ e $a_2$. No caso dos orbitais $p$ não hibridizados, os orbitais moleculares são formados pela \gls{LCAO} $p_1$ e $p_2$. Sobreposição entre orbitais atômicos podem ocorrer de forma simétrica (resultando em um orbital ligante) ou antissimétrica (formando um orbital antiligante).
+Tomando o eteno como exemplo, pode-se afirmar que cada carbono contribui com um elétron para a ligação $\pi$, sendo $p_1$ e $p_2$ os elétrons dos átomos de carbono 1 e 2, cujas respectivas contribuições são ponderadas por $a_1$ e $a_2$. No caso dos orbitais $p$ não hibridizados, os orbitais moleculares são formados pela \gls{LCAO} $p_1$ e $p_2$. Sobreposição entre orbitais atômicos pode ocorrer de forma simétrica (resultando em um orbital ligante) ou antissimétrica (formando um orbital antiligante).
 
 \begin{figure}[htb]
     \vspace{2\baselineskip}
@@ -48,9 +50,10 @@ Tomando o eteno como exemplo, pode-se afirmar que cada carbono contribui com um 
     \path (antissimetric.south) ++ (1.2em,-1.5em) node[anchor=north west,color=red!67] (scalep){\textit{função antissimétrica}};
     \draw [color=red!87](antissimetric.south) |- ([xshift=3em,color=red]scalep.north east);
 \end{tikzpicture}
+    \vspace{1\baselineskip}
 \end{figure}
 
-Usando a \autoref{ap:eq:4} (equação de Schroedinger) como base fundamental para avançar na discussão do cálculo dos valores de energia dos orbitais, pode-se aplicar o princípio variacional como uma aproximação necessária e conveniente para encontrar as funções de minimização da energia relativa aos orbitais no estado fundamental. Este método consiste em escolher uma função de onda inicial que dependa de um ou mais parâmetros, e encontrar os valores destes parâmetros para cada valor esperado onde a energia seja a menor possível. A função de onda obtida na substituição dos parâmetros pelos valores encontrados será uma aproximação do estado fundamental da função de onda, e o valor esperado de energia neste estado será majorante para a energia deste estado fundamental.
+Usando a \autoref{ap:eq:4} (equação de Schroedinger) como base para avançar na discussão do cálculo dos valores de energia dos orbitais, pode-se aplicar o princípio variacional como uma aproximação necessária e conveniente para encontrar as funções de minimização da energia relativa aos orbitais no estado fundamental. Este método consiste em escolher uma função de onda inicial que dependa de um ou mais parâmetros, e encontrar os valores destes parâmetros para cada valor esperado onde a energia seja a menor possível. A função de onda obtida na substituição dos parâmetros pelos valores encontrados será uma aproximação do estado fundamental da função de onda, e o valor esperado de energia neste estado será majorante para a energia deste estado fundamental.
 
 %%% TODO: explicar o princípio variacional 
 
@@ -84,7 +87,7 @@ Multiplicando ambos os lados por $\psi$, obtém-se a \autoref{ap:eq:5}. Aplicado
     E = \frac{\displaystyle \int \psi \hat{H} \psi d\tau}{\displaystyle \int \psi^2 d\tau}
 \end{equation}
 
-Na \autoref{ap:eq:6}, a energia esperada vai ser superestimada em relação ao valor real. Desse modo, o resultado calculado vai ser minimizado através de um procedimento matemático submetido a um conjunto de funções de base. No caso do eteno (\ce{C_2 H_2}), podemos substituir o termo $\psi$ da \autoref{ap:eq:6} pela \autoref{ap:eq:2}, obtendo a \autoref{ap:eq:7}.
+Na \autoref{ap:eq:6}, a energia esperada vai ser superestimada em relação ao valor real, em razão do princípio variacional. Desse modo, o resultado calculado vai ser minimizado através de um procedimento matemático submetido a um conjunto de funções de base. No caso do eteno (\ce{C_2 H_2}), podemos substituir o termo $\psi$ da \autoref{ap:eq:6} pela \autoref{ap:eq:2}, obtendo a \autoref{ap:eq:7}.
 
 \begin{figure}[htb]
     \vspace{2\baselineskip}
@@ -101,7 +104,7 @@ Na \autoref{ap:eq:6}, a energia esperada vai ser superestimada em relação ao v
 Abrindo a expressão da \autoref{ap:eq:7}, é possível isolar as seguintes integrais:
 
 \begin{figure}[htb]
-    \vspace{2\baselineskip}
+    \vspace{1.5\baselineskip}
 \begin{equation}
 \label{ap:eq:8}
     \displaystyle \int (p_1 \hat{H} p_1) d\tau = \tikzmarknode{alpha}{\highlight{blue}{$\alpha$}} \\
@@ -115,7 +118,7 @@ Abrindo a expressão da \autoref{ap:eq:7}, é possível isolar as seguintes inte
 A integral de Coulomb, mostrada na \autoref{ap:eq:8}, representa a energia de Coulomb de um elétron com uma função de onda $p_i$ no campo do átomo $i$ e influenciado pelo seu núcleo. Esse elétron não sofre efeito de nenhum outro núcleo. Essa aproximação funciona melhor quando os átomos das vizinhanças não possuem cargas elétricas. Ou seja, $\alpha$ é uma função da carga nuclear e do tipo de orbital. Por ser um termo atrativo, possui um valor negativo. 
 
 \begin{figure}[htb]
-    \vspace{2\baselineskip}
+    \vspace{2.3\baselineskip}
 \begin{equation}
 \label{ap:eq:9}
     \displaystyle \int (p_1 \hat{H} p_2) d\tau = \displaystyle \int (p_2 \hat{H} p_1) d\tau = \tikzmarknode{beta}{\highlight{blue}{$\beta$}}
@@ -126,10 +129,12 @@ A integral de Coulomb, mostrada na \autoref{ap:eq:8}, representa a energia de Co
 \end{tikzpicture}
 \end{figure}
 
+\newpage
+
 As integrais de sobreposição são dadas pelas expressões na \autoref{ap:eq:10}. Se $i=j$, então $S_{ii} = \displaystyle \int p_i p_i d \tau$ para os orbitais atômicos normalizados. Se $i \neq j $, a integral de sobreposição é igual a $0$ para os orbitais atômicos ortogonais. Ou seja, o valor de $S$ varia de $0$ a $1$ e representa uma medida da não-ortogonalidade dos orbitais. Uma vez que as funções $p$ dos orbitais são amplamente separadas no espaço e são independentes, espera-se que elas sejam ortogonais.
 
 \begin{figure}[htb]
-    \vspace{2\baselineskip}
+    \vspace{2.3\baselineskip}
 \begin{equation}
 \label{ap:eq:10}
 \displaystyle \int (p_i p_j) d\tau =
@@ -167,20 +172,19 @@ Com as simplificações feitas anteriormente, é possível reescrever a express�
 Desse modo, conhecendo $\alpha$, $\beta$ e $S$, a energia pode ser calculada. O critério de minimização em relação a alguns parâmetros é mostrado na \autoref{ap:eq:12}.
 
 \begin{figure}[htb]
-    \vspace{2\baselineskip}
+    \vspace{1\baselineskip}
 \begin{equation}
 \label{ap:eq:13}
     \frac{\partial E}{\partial a_1} = \frac{\partial E}{\partial a_2} = 0
 \end{equation}
 \end{figure}
 
-Como alternativa, ao invés de variar a função teste para encontrar o valor mínimo de $E$ (\autoref{ap:eq:12}), pode-se variar os coeficientes lineares. Esse é um caso direto da busca pelo mínimo de uma função. Aplicando, então, a condição da \autoref{ap:eq:13}, obtém-se a \autoref{ap:eq:13a}.
+Como alternativa, ao invés de variar a função teste para encontrar o valor mínimo de $E$ (\autoref{ap:eq:12}), pode-se variar os coeficientes lineares. Esse é um caso direto da busca pelo mínimo de uma função. Aplicando, então, a condição da \autoref{ap:eq:13}, obtém-se a \autoref{ap:eq:13a1}.
 
 \begin{figure}[htb]
     \vspace{2\baselineskip}
-
 \begin{align}
-\label{ap:eq:13a}
+\label{ap:eq:13a1}
    \frac{\partial E}{\partial a_1} = \frac{\tikzmarknode{nlinha}{\highlight{blue}{$N'$}}D - E \tikzmarknode{dlinha}{\highlight{red}{$D'$}}}{D^2} = \frac{N' - ED'}{D} = 0 \\[0.3cm]
     \frac{\partial E}{\partial a_2} = \frac{\tikzmarknode{nlinha2}{\highlight{blue}{$N'$}}D - E \tikzmarknode{dlinha2}{\highlight{red}{$D'$}}}{D^2} = \frac{N' - ED'}{D} = 0
 \end{align}
@@ -199,6 +203,8 @@ Como alternativa, ao invés de variar a função teste para encontrar o valor m�
 \end{tikzpicture}
 \end{figure}
 
+\newpage
+
 Simplificando \autoref{ap:eq:13a}, temos que $N' - ED' = 0$ e, portanto, $N' = ED'$. Desse modo, fazendo as substituições obtidas nas expressões da  \label{ap:eq:13a}, obtemos a \autoref{ap:eq:13b}.
 
 \begin{figure}[htb]
@@ -214,9 +220,9 @@ Simplificando \autoref{ap:eq:13a}, temos que $N' - ED' = 0$ e, portanto, $N' = E
 Para prosseguir, assumimos que as funções de onda $p_1$ e $p_2$ retêm a condição de ortonormalidade, mesmo no estadop molecular. Ou seja, $S_{12} = S_{21} = 0$ e $S_{11} = S_{22} = 1$. Substituindo essas aproximações nas equações anteriores, temos:
 
 \begin{figure}[htb]
-    \vspace{2\baselineskip}
+    \vspace{1\baselineskip}
 \begin{align}
-\label{ap:eq:13b}
+\label{ap:eq:13b1}
     a_1 (\alpha - E) + a_2 \beta = 0 \\[0.35cm]
     a_2 (\alpha - E) + a_1 \beta = 0
 \end{align}
@@ -224,6 +230,8 @@ Para prosseguir, assumimos que as funções de onda $p_1$ e $p_2$ retêm a condi
 
 Essas equações ortonormais são chamadas equações seculares, cujos coeficientes podem ser transformados em uma matriz quadrada, para o caso do eteno (\autoref{ap:eq:13c}). A partir dessa matriz, a solução de $E$ é computacionalmente simples, uma vez que este é autovalor da matriz secular dos coeficientes.
 
+\begin{figure}[htb]
+    \vspace{1\baselineskip}
 \begin{equation}
 \label{ap:eq:13c}
 \begin{bmatrix}
@@ -231,8 +239,12 @@ Essas equações ortonormais são chamadas equações seculares, cujos coeficien
     \beta  & (\alpha - E)
 \end{bmatrix}
 \end{equation}
+\end{figure}
+
 
 Se dividirmos os elementos da matriz representada na \autoref{ap:eq:13c} por $\beta$, obtemos a \autoref{ap:eq:13d}, que pode ainda ser reduzida à \autoref{ap:eq:13e}.
+
+\newpage
 
 \begin{figure}[htb]
     \vspace{3 \baselineskip}
@@ -279,7 +291,7 @@ Assim, para o eteno, nós obtemos dois autovalores: $E = \alpha - \beta$ e $E = 
 	\begin{center}
 		\includegraphics[width=0.75\textwidth]{images/figA2.png}
 	\end{center}
-	\fonte{Autor(a).}
+	\fonte{Autor(a) (2022).}
 \end{figure}
 
 Tomemos agora como exemplo um sistema alílico \ce{[CH_2=CH-CH_2-]}, que possui 3 carbonos. Obtém-se, portanto, uma matriz $3 \times 3$ como matriz secular dos coeficientes, cujos elementos seguem as seguintes regras:
